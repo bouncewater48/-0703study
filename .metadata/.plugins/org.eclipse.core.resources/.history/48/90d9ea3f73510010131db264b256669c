@@ -1,0 +1,15 @@
+package constroctorBasic02;
+//2번 : 기본생성자 확인
+class Student{
+
+	//기본생성자
+	public Student() {
+	
+	}
+	
+}
+public class StudentMain {
+	public static void main(String[] args) {
+		
+	}
+}

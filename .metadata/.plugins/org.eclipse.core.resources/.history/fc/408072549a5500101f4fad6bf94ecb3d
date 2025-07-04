@@ -1,0 +1,10 @@
+package Mento;
+
+public class ex2 {
+	public static void main(String[] args) {
+//		2차원 배열을 이용한 로또 만들기
+		int[][] = lotto;
+		
+		
+	}
+}

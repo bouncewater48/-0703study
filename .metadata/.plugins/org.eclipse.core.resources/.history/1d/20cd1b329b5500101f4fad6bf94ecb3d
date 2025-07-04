@@ -1,0 +1,22 @@
+package Mento;
+
+public class ex2 {
+	public static void main(String[] args) {
+//		2차원 배열을 이용한 로또 만들기
+//		int r1 = (int)((Math.random()*50)+1);
+//		int r2 = (int)((Math.random()*50)+1);
+		
+		int Lotto[] = new int[6];
+//		로또번호를 담을 6행 선언
+		int Random = 0; 
+//		Random 변수 초기화
+		
+		while(true) {
+			Random = (int)((Math.random()*45)+1);
+			System.out.printf("%d",Random);
+			if(r1)
+		}
+		
+		
+	}
+}

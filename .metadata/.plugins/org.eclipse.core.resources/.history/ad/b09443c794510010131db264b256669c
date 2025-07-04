@@ -1,0 +1,7 @@
+package StaticTest;
+// 9번 : 정적변수와 정적메소드
+public class MyClassA {
+	//필드(인스턴스 변수, 스태틱 변수, 상수)
+	
+	
+}

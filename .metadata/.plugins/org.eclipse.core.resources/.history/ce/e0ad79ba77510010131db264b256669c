@@ -1,0 +1,39 @@
+package constroctorThis02;
+// 4번 : this
+public class CarMain {
+	public static void main(String[] args) {
+		Car car1 = new Car("BMW");
+		System.out.println(car1);
+	
+	}
+}
+
+class Car{
+	//필드
+	String brand;
+	int speed;
+	
+	//생성자 : alt + shift + s + o
+	public Car(String brand) {
+		this.brand = brand;
+		System.out.println("생성자호출 : " + this);
+	}
+	
+	//메소드
+	void printInfo() {
+		System.out.println("모델 : " + this.brand);
+		System.out.println("속도 : " + this.speed);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

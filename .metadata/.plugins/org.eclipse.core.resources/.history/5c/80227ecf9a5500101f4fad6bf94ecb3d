@@ -1,0 +1,15 @@
+package Mento;
+
+public class ex2 {
+	public static void main(String[] args) {
+//		2차원 배열을 이용한 로또 만들기
+		int r1 = (int)((Math.random()*50)+1);
+		int r2 = (int)((Math.random()*50)+1);
+		
+		while(true) {
+			if(r1)
+		}
+		
+		
+	}
+}

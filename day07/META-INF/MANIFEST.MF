@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Day07
+Bundle-SymbolicName: day07
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: day07
+Bundle-RequiredExecutionEnvironment: JavaSE-21

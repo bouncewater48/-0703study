@@ -1,0 +1,11 @@
+package StaticTest;
+//8번 : 정적메소드
+public class MathUtils {
+	//메소드
+	static int getMax(int num1, int num2) {
+		return(num1 > num2) ? num1 : num2;
+	}
+	
+	
+	
+}

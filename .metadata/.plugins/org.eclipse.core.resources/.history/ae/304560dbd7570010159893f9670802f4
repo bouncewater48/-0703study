@@ -1,0 +1,7 @@
+package exceptionTest;
+// 11번 : Exception Basic
+public class ExceptionTest02 {
+	public static void main(String[] args) {
+		
+	}
+}

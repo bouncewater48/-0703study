@@ -1,0 +1,10 @@
+package interfaceTest05;
+
+public class CalculMain {
+	public static void main(String[] args) {
+		Calculator c = new CalculImpl();
+		System.out.println(c);
+		System.out.println(c.add(10, 20));
+		System.out.println(c.add(10, -20));
+	}
+}

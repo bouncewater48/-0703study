@@ -1,0 +1,13 @@
+package test_강승훈;
+
+public class Major {
+	Major major = new Major();
+	String name{
+		
+	}
+	name = " ";
+	
+		
+		
+		
+}

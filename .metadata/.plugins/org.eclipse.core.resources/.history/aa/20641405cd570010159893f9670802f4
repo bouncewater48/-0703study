@@ -1,0 +1,45 @@
+package Mento0630;
+import java.util.Random;
+public class Test03 {
+	public static void main(String[] args) {
+
+//	177p Q3
+//	3. 조건 : 1~100까지 숫자 중 랜덤하게 10장 뽑기
+//	   메소드 정의하기
+	
+//  배열/Random 객체 이용해야함
+//	배열에 1~100의 숫자를 넣고, Random 메소드로 10개의 숫자를 출력
+//		Random 객체 선언, java util에서 끌어오기
+		Random r = new Random();
+		
+//		1 ~ 100 배열 선언
+		int [] arr = new int[100+1];
+		
+//		랜덤값 10개 선언
+		int a1  = (int)(Math.random()*100) ;
+		int a2  = (int)(Math.random()*100) ;
+		int a3  = (int)(Math.random()*100) ;
+		int a4  = (int)(Math.random()*100) ;
+		int a5  = (int)(Math.random()*100) ;
+		int a6  = (int)(Math.random()*100) ;
+		int a7  = (int)(Math.random()*100) ;
+		int a8  = (int)(Math.random()*100) ;
+		int a9  = (int)(Math.random()*100) ;
+		int a10 = (int)(Math.random()*100);
+		
+//		for(int i = 1; i < arr.length; i++) {
+//			arr[i] = 100;
+//			System.out.println(i);
+//			}
+//		조건문 for문 작성
+		for(int i = 0; i < 1; i++) {
+//			System.out.println("철수는 " + a1 + ", " + a2 + ", " + a3 + 
+//					", " + a4 + ", " + a5 + ", " + a6 + ", " + a7 
+//					+ ", " + a8 + ", " + a1 + ", " + " 총 6개의 숫자를 뽑았다!");
+		System.out.printf("철수는 100개의 숫자 중 %d,%d,%d,%d,"
+				+ "%d,%d,%d,%d,%d,%d 총 10개의 숫자를 뽑았다!",a1,a2,a3,a4,a5,a6,a7,a8,a9,a10);
+//			a1이 2번 이상 출력되는걸 방지
+			}if (a1 > 2)	{
+			}return;
+	}
+}

@@ -1,0 +1,6 @@
+package inheritanceConstructor01;
+// 3번 : 상속관계-생성자 확인
+//부모클래스(슈퍼클래스)
+public class Parents {
+
+}

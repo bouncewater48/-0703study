@@ -1,0 +1,27 @@
+package StaticTest;
+
+// 2번 : 클래스 상수와 인스턴스 상수
+public class ConstantTest {
+	// 필드
+	// 클래스 내부에서 상수 선언
+	final double PI = 3.14159265359; // 인스턴스 상수
+	// Heap 영역, 객체 생성시 초기화,
+	// 객체마다 독립적임;같은값이 나온거처럼 보여도 실제론 Heap메모리 2개가 생성된것
+	// 특정 객체마다 고유한 상수를 정의할 때 사용한다
+
+	static final int MAX_LENGTH = 100; // 클래스 상수(스태틱 상수)
+	// 스태틱이 붙지 않고 쓰이면 인스턴스 상수이다
+	// method 영역, 클래스 로드시 초기화, 모든 객체가 공유, 클래스 전체에서 공통으로 사용하는 상수
+
+	// 메소드
+	public static void main(String[] args) {
+		ConstantTest ct = new ConstantTest();
+		// 메인메소드 안이 아닌 밖에 객체를 작성했으므로 필드가 반드시 필요
+
+		System.out.println(ct.PI); // 3.14159265359
+//		System.out.println(ct.MAX_LENGTH);//사용은 가능하나, 하나의 값으로만 고정된 상태
+		System.out.println(ConstantTest.MAX_LENGTH); // 100
+		System.out.println(new ConstantTest().PI); // Heap메모리에 바로 만들고 PI값 출력, 사용가능
+
+	}
+}

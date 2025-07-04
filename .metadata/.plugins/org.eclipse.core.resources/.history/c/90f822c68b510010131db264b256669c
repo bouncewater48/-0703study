@@ -1,0 +1,5 @@
+package constroctorThis03;
+//6-2번 : this() 자기자신의 생성자 호출
+public class PersonMain {
+
+}

@@ -1,0 +1,18 @@
+package StaticTest;
+
+// 2번 : 클래스 상수와 인스턴스 상수
+public class ConstantTest {
+	// 필드
+	// 클래스 내부에서 상수 선언
+	final double PI = 3.14159265359; // 인스턴스 상수
+	static final int MAX_LENGTH = 100; // 클래스 상수(스태틱 상수)
+	// 스태틱이 붙지 않고 쓰이면 인스턴스 상수이다
+
+	// 메소드
+	public static void main(String[] args) {
+		ConstantTest ct = new ConstantTest();
+		//메인메소드 안이 아닌 밖에 객체를 작성했으므로 필드가 반드시 필요
+		
+		System.out.println(ct.PI); //3.14159265359
+	}
+}

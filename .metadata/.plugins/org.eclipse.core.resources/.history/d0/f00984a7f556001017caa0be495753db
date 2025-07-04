@@ -1,0 +1,19 @@
+package interfaceTest02;
+// 9번 : 인터페이스 연습
+public class Ballad implements Music{
+	
+	//발라드 클래스
+	//	"발라드 모드"를 출력하는 mode 구현
+	//	"오직 발라드만 실행" 출력하는 onlyBallad 메소드 만들기
+	
+	@Override
+	public void mode() {
+		System.out.println("발라드 모드");
+	}
+	
+	void onlyBallad() {
+		System.out.println("오직 발라드만 실행");
+	}
+	
+	
+}

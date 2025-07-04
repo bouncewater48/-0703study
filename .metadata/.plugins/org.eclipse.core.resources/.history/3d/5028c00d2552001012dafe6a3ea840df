@@ -1,0 +1,5 @@
+package StaticTest;
+// 1번 : 정적 블록
+public class StaticBlock {
+
+}

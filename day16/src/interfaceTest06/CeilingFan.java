@@ -1,0 +1,21 @@
+package interfaceTest06;
+//CeilingFan 클래스
+//3개 메소드 천장선풍기를 켭니다, 천장선풍기를 끕니다, 비워두기
+public class CeilingFan extends FanAdapter{
+
+	@Override
+	public void on() {
+		System.out.println("천장 선풍기를 켭니다");
+	}
+	@Override
+	public void off() {
+		System.out.println("천장 선풍기를 끕니다");
+	}
+//	@Override
+//	public void turbo() {
+//		System.out.println();
+//	}
+//	public void () {
+//		System.out.println();
+//	}
+}

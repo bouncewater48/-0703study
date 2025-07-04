@@ -1,0 +1,60 @@
+package review02;
+
+import java.util.Scanner;
+
+public class Task01 {
+	public static void main(String[] args) {
+		 // 객체명.메소드명 호출
+	      Task01 t1 = new Task01();
+
+//	      String str = "hello java";
+//	      for(int i = 0; i < str.length(); i++ ) {
+//	         System.out.println(str.charAt(i));
+//	      }
+
+	      // 1. 매개변수 o 리턴값 o => syso(객체명.메소드명(인수));
+	      System.out.println(t1.countWord(null));
+	      System.out.println(t1.countWord("i love java"));
+	      System.out.println(t1.countWord("        안녕하세요   공백이 많아도 제대로 계산되는지 확인하기 !!!"));
+
+	      //2. 매개변수 o 리턴값 o => syso(객체명.메소드명(인수));
+	      System.out.println(t1.getGender1("250625-0"));
+	      System.out.println(t1.getGender2("250625-0"));
+	      
+	      //3. 매개변수 o 2차원배열 리턴값 o
+	      Scanner sc = new Scanner(System.in);
+	      int[][] scores = t1.inputScore(3, 3, sc);
+	      System.out.println(scores);
+	      
+	      System.out.println("----학점결과----");
+	      for(int i=0; i < scores.length; i++) {
+	         String grade = t1.getGrade(scores[i][0], scores[i][1], scores[i][2]);
+	         System.out.println((i+1) + "번 학생의 학점 : " + grade);
+	      }
+	      
+	   }
+	   // 1. 문자열 속의 단어를 공백 기준으로 세기
+	   // 메소드명 : countWord
+	   // 매개변수 : String str
+	   // ex) I love java => 3개
+	   // ex) 안녕하세요 저는 김영선입니다 java 공부 중입니다 => 6개
+
+	   // 1) 리턴타입 => void
+	   // 2) 메소드명 => countWord
+	   // 3) 매개변수 => String str
+	   // 4) 구현부
+	   // 조건문(if문) str이 null과 같다면 str == null
+	   // return 0;
+	   // 변수 2개(정수형1, 논리형2)
+	   // 반복문 초기식 int i = 0;
+	   // 조건식 i < str.length();
+	   // 증감식 i++
+	   // 문자형변수3 = str.charAt(i);
+	   // 조건문if(변수3 != ' ' && !변수2)
+	   // 변수2 = true
+	   // 변수1++;
+	   // 조건문 else if(변수3 == ' ')
+	   // 변수2 = false
+	   // return 변수1;
+	}
+}

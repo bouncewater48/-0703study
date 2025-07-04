@@ -1,0 +1,14 @@
+package inheritanceTest02;
+// 2번 : 상속기초
+public class Animal {
+	//필드
+	String name;
+	int age;
+	String type;
+	
+	//생성자
+	
+	
+	//메소드
+	
+}

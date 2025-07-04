@@ -1,0 +1,16 @@
+package accessmModifier;
+// 7번 : 접근 제한자
+public class Parents {
+	//필드
+//	접근제한자 타입 변수
+//	접근제한자 앞에 (default)가 기본적으로 적혀있으나, 생략됨
+	public String publicVar = "public";
+	protected String protectedVar = "protected";
+	String defaultVar = "default";
+	private String privateVar = "private";
+	
+	//메소드
+//	접근제한자 리턴타입 메소드명(자료형 매개변수){}
+	
+	
+}

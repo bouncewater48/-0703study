@@ -1,0 +1,10 @@
+package ex05_강승훈;
+
+public class Major {
+	String name = "이름";
+	String major = "전공";
+	enum(getKoreanName){
+		
+	}
+	
+}

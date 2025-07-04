@@ -1,0 +1,8 @@
+package test_강승훈;
+
+public class Major {
+	
+	enum(final private koreanName){
+		"컴퓨터공학", "정보보안학", "인공지능학"
+	}
+}

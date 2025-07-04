@@ -1,0 +1,13 @@
+package classBasic2;
+// 13-1번 : 클래스의 특징3(객체 생성의 틀)
+public class Car {
+	//바퀴, 핸들, 색상, 엔진, 모델명, 제조사, 속도	
+	
+	
+	//필드
+	String model; //모델명(제조사)
+	String color; //색상
+	int speed;	  //속도
+	
+	//메소드	
+}

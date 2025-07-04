@@ -1,0 +1,33 @@
+package Review;
+
+public class Gugudan04 {
+	public static void main(String[] args) {
+//		10. while문만 이용 구구단 출력(단별로 가로로 출력하기)
+		
+		while(true) {
+			for(int i = 1; i <= 9; i += 3) {
+				for(int j = 1; j <= 9; j++) {
+					for(int k = i; k <= 9; k++) {
+						System.out.println(k + " * " + j + " = " + (j + k)
+								+ "\t");
+					}
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

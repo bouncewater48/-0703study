@@ -1,0 +1,10 @@
+package inheritance;
+// 1번 : 상속 기초
+public class Tv {
+	//필드 
+	int ch;
+	int vol;
+	boolean power;
+	
+	//메소드
+}

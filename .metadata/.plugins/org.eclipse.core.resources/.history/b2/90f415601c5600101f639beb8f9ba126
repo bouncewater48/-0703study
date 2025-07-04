@@ -1,0 +1,19 @@
+package test_강승훈;
+
+import java.io.InputStream;
+
+public class ex03 {
+	//1. 메인메소드 선언
+	//2. 입력메소드 선언
+	//3. 변수 초기화
+	//4. 배열 선언
+	//	4-1) for()문 작성
+	//	4-2) 
+	
+	
+	public static void main(String[] args) {
+		Scanner sc = Scanner(System.in);
+		int i = 0;
+		int [] ar1 = int[5]
+	}
+}

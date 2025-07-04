@@ -1,0 +1,5 @@
+package markerINter;
+
+public interface Carnivore {
+
+}

@@ -1,0 +1,5 @@
+package InnerTest;
+// 26번 : 내부클래스와 외부클래스의 객체화
+public class InnerMain {
+
+}

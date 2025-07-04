@@ -1,0 +1,5 @@
+package anonymousTest;
+// 5번 : 인터페이스 객체화 위한 Main 메소드
+public class InterMain {
+
+}

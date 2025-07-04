@@ -1,0 +1,6 @@
+package task01;
+
+public class Main {
+	//슈퍼 클래스 : Person
+	//서브 클래스 : Student
+}

@@ -1,0 +1,5 @@
+package inheritanceTest02;
+// 2번 : 상속기초
+public class Bird {
+
+}

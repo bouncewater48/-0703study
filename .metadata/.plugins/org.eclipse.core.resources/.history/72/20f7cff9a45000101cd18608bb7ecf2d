@@ -1,0 +1,12 @@
+package Method;
+//3번 : 메소드 사용이유3(유지보수에 유리함)
+public class MethodBasic03 {
+	public static void main(String[] args) {
+		//(메소드는 1개의 부품, 해당 메소드만 수정하거나 지워도 나머지는 그대로 사용가능)
+		// 코드의 구조를 모듈화(=부품화)함으로써 수정과 확장이 쉬워진다
+		
+		
+		
+		
+	}
+}

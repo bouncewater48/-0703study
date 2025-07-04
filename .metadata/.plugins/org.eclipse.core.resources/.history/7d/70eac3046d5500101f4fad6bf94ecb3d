@@ -1,0 +1,14 @@
+package inheritanceConstructor01;
+// 3번 : 상속관계-생성자 확인
+public class Main {
+	public static void main(String[] args) {
+//		Parents p = new Parents();
+//		stack메모리	heap메모리
+		Child c = new Child();
+		
+//		Parents 클래스 생성자 호출
+//		Child 클래스 생성자 호출
+//		항상 부모클래스가 먼저 호출되고 자식클래스가 호출된다
+//		모든 클래스의 최상위 클래스는 항상 Object 클래스이다
+	}
+}

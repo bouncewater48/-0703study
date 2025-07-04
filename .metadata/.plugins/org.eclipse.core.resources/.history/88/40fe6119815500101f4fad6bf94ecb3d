@@ -1,0 +1,7 @@
+package accessmModifier02;
+
+import accessmModifier.Parents;
+
+public class Child extends Parents{
+	
+}

@@ -1,0 +1,45 @@
+package StaticTest;
+// 9-1번 : 정적변수와 정적메소드
+public class MyClassA {
+	//필드(인스턴스 변수, 스태틱 변수, 상수)
+	//인스턴스 변수
+	int instanceVar;
+	//스태틱 변수
+	static int staticVar;
+	
+	//생성자 => 컴파일러가 기본생성자를 만든다
+	
+	//메소드(인스턴스 메소드, 스태틱 메소드)
+	//인스턴스메소드1
+	void instanceMethod1() {
+		System.out.println("인스턴스 메소드1 호출되었습니다");
+		this.instanceVar = 10;
+		System.out.println("인스턴스메소드1에서의 인스턴스 변수값 : "+ this.instanceVar);
+		staticVar = 100; //기존 저장된 값을 무시하고 마지막 100으로 다시 저장
+		System.out.println("인스턴스메소드1에서의 스태틱 변수값 : " + staticVar);
+		instanceMethod2();
+		staticMethod1();
+	}
+	
+	//인스턴스메소드2
+	void instanceMethod2() {
+		System.out.println("인스턴스 메소드2 호출되었습니다");
+	}
+	
+	//스태틱 메소드1
+	static void staticMethod1() {
+		System.out.println("스태틱 메소드1 호출되었습니다");
+//		instanceMethod01(); //스태틱 메소드에서 인스턴스 메소드 호출 불가
+//		instanceVar = 1000; //스태틱메소드에서 인스턴스 변수 접근불가
+		staticVar = 1000;
+		System.out.println("스태틱메소드1에서 스태틱 변수값 : " + staticVar);
+		staticMethod2();
+		
+	}
+	
+	//스태틱 메소드2
+	static void staticMethod2() {
+		System.out.println("스태틱 메소드2 호출되었습니다");
+	}
+	
+}

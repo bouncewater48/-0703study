@@ -1,0 +1,38 @@
+package constroctorBasic01;
+// 1-1번 : 생성자 기초
+public class Tv {
+	//필드
+	//채널, 볼륨, 전원, 색상, 브랜드
+	boolean power; //기본값 : false
+	int ch;
+	int vol;
+	String color;
+	String brand;
+	
+	//메소드
+	//전원이 꺼져있으면 키고, 켜져있으면 끄는 메소드
+	//메소드명 : powerOnOff()
+	void powerOnOff() {
+		// 전원이 켜져있으면 끈다
+//		power = !power; //true로 바뀜
+		if(power) { //현재 꺼져있는 상태
+			
+		}
+	}
+	
+	//볼륨을 올릴 수 있는 메소드
+	//메소드명 : increaseVolume()
+	
+	//볼륨을 내릴 수 있는 메소드
+	//메소드명 : decreaseVolume()
+	
+	//채널을 올리는 메솓
+	//메소드명 : nextChannel()
+	
+	//채널을 내리는 메소드
+	//메소드명 : previousChannel()
+	
+	
+	
+	
+}

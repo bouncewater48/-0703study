@@ -1,0 +1,18 @@
+package lambdaTest;
+// 6번 : 람다식 만드는 방법
+public class LambdaTest {
+	
+	void printHello() {
+		System.out.println("안녕하세요");
+	}
+	
+	//매개변수 x, 리턴값 x, 출력문 1개 메소드 생성
+//	void printHello() {System.out.println("안녕하세요");}
+	
+//	1. 이름을 없애고 ()뒤에 -> 를 붙힌다
+//	void () -> { System.out.println("안녕하세요");}
+//	2. 반환타입은 추론이 가능하므로 생략한다
+	
+	
+	
+}

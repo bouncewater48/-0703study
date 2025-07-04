@@ -1,0 +1,5 @@
+package Accessmodifier02;
+
+public class AccessTarget extends AccessTest{
+
+}

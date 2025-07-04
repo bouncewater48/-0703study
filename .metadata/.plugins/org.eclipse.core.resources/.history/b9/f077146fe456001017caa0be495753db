@@ -1,0 +1,9 @@
+package abstractTest01;
+// 2번 : 추상 클래스(추상메소드와 일반메소드)
+public class ClassB {
+	//추상메소드
+	abstract void method1();
+	
+	
+	
+}

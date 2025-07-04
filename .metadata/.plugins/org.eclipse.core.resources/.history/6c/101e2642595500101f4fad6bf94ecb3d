@@ -1,0 +1,18 @@
+package inheritanceConstructor02;
+// 4번 : 상속관계-생성자 확인2
+public class SuperCar {
+	//필드
+	boolean booster;
+
+	//생성자
+	public SuperCar() {
+		super();
+	}
+
+	public SuperCar(boolean booster) {
+		super();
+		this.booster = booster;
+	}
+	
+	
+}

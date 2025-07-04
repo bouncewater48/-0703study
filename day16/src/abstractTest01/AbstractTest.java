@@ -1,0 +1,28 @@
+package abstractTest01;
+// 4번 : 일반 클래스와 추상 클래스 객체화
+public class AbstractTest {
+	public static void main(String[] args) {
+		//일반 클래스 ClassA 객체화
+		ClassA a = new ClassA();
+		System.out.println(a);
+		a.method1();
+		
+		//추상클래스 ClassB 객체화 불가능 - 미완성된 클래스이기 때문
+//		ClassB b = new ClassB();
+		
+		//추상클래스 ClassB를 상속받은 일반 클래스 ClassC 객체화
+		ClassC c = new ClassC();
+		System.out.println(c);
+		c.method1(); //추상클래스에 정의된 추상 메소드, ClassC에서 재정의
+		c.method2();
+		
+		//up Casting, 오버라이딩
+		ClassB b = new ClassC();
+		System.out.println(b);
+		b.method1(); //오버라이딩 된 메소드 호출
+		
+		//b라는 객체로 printNumber 메소드 호출; Down Casting
+		((ClassC)b).printNumber();
+		
+	}
+}

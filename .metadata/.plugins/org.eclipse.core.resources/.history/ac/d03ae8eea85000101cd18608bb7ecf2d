@@ -1,0 +1,14 @@
+package Method;
+// 5번 : 스택오버플로우 발생
+public class StackOverFlow {
+	public static void main(String[] args) {
+		
+		recursiveMethod();
+	}
+	
+	
+	static void recursiveMethod() {
+		recursiveMethod();
+		//자기 자신의 메소드에서 다시 자기자신을 호출하는걸 재귀호출 이라고 부름
+	}
+}

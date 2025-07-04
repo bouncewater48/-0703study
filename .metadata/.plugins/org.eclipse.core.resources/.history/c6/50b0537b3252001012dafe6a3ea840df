@@ -1,0 +1,13 @@
+package variableTest;
+// 5번 : 가변길이 매개변수
+public class VariableTest02 {
+	public static void main(String[] args) {
+		
+	}
+	
+	voi printNumbers(String name, int ... numbers) {
+		
+	}
+	
+	
+}

@@ -1,0 +1,5 @@
+package inheritanceConstructor02;
+// 4번 : 상속관계-생성자 확인2
+public class SuperCar {
+
+}

@@ -1,0 +1,7 @@
+package ex01_강승훈;
+
+public interface InterA {
+
+	public final static int age = 27;
+	public abstract void method
+}

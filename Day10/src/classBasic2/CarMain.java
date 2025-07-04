@@ -1,0 +1,54 @@
+package classBasic2;
+// 13-2번 : Car 클래스 main
+public class CarMain {
+	public static void main(String[] args) {
+		
+		//객체화(인스턴스화)
+		Car myCar = new Car();
+		
+		myCar.model = "Tesla Model 3";
+		myCar.color = "black";
+		myCar.speed = 0;
+		
+		System.out.println("모델명 : " + myCar.model);
+		System.out.println("색상 : + " +  myCar.color);
+		System.out.println("현재 속도 : " + myCar.speed);
+	
+		myCar.accelerate(120);
+		
+		myCar.accelerate(180);
+		System.out.println(myCar.speed);
+		
+		myCar.stop();
+		System.out.println("현재 속도 : " + myCar.speed);
+		
+//		모델명 : Tesla Model 3
+//		색상 : + black
+//		현재 속도 : 0
+//		현재 속도 : 120
+//		현재 속도 : 300
+//		300
+//		현재 속도 : 0
+		
+		myCar.accelerate(50);
+		myCar.decrease();
+		System.out.println("현재 속도 : " + myCar.speed);
+		
+		myCar.decrease();
+		System.out.println("현재 속도 : " + myCar.speed);
+
+		myCar.decrease();
+		System.out.println("현재 속도 : " + myCar.speed);
+		
+		myCar.decrease();
+		System.out.println("현재 속도 : " + myCar.speed);
+	
+	
+	
+	
+	
+	
+	}
+	
+	
+}

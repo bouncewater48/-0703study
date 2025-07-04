@@ -1,0 +1,7 @@
+package accessmModifier02;
+
+public class OuterClass {
+	public void printAccess() {
+		Parents p = new Parents();
+	}
+}

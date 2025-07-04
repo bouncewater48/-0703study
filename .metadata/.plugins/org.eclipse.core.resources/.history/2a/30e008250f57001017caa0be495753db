@@ -1,0 +1,5 @@
+package interfaceTest05;
+// 20번 : static 메소드, default 메소드, private 메소드
+public interface Calculator {
+	
+}

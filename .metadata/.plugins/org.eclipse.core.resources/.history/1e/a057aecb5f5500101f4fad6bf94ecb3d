@@ -1,0 +1,9 @@
+package inheritance;
+// 5번 : this, this(), super, super()
+public class Main {
+	public static void main(String[] args) {
+		System.out.println("=====Student 기본 생성자======");
+		Student st1 = new Student();
+		
+	}
+}

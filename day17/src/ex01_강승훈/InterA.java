@@ -1,0 +1,6 @@
+package ex01_강승훈;
+
+public interface InterA {
+
+
+}

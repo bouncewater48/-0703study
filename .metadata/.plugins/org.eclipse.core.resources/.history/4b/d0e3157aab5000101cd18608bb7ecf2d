@@ -1,0 +1,16 @@
+package Method;
+// 7번 : 메소드 오버로딩2
+public class MethodOverloading02 {
+	public static void main(String[] args) {
+		
+		MethodOverloading02 m = new MethodOverloading02();
+	
+	
+	}
+	
+	int add(int num1, int num2) {
+		return num1 + num2;
+	}
+	
+	
+}

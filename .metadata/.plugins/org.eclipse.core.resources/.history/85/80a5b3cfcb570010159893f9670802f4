@@ -1,0 +1,12 @@
+package Mento0630;
+
+public class Char {
+	public static void main(String[] args) {
+		
+		int numI = 'A';
+		System.out.println(numI);
+		
+		char numC = 66;
+		System.out.println(numC);
+	}
+}

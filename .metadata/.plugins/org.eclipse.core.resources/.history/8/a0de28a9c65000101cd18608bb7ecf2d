@@ -1,0 +1,17 @@
+package classBasic;
+// 10-2번 : Student 클래스의 객체를 만들 클래스
+public class StudentMain {
+	public static void main(String[] args) {
+		//객체를 만들때는 반드시 {}시작점이 필요
+		Student st1 = new Student(); // new = 새로운 큰 메모리
+		//st1이라는 새로운 저장공간을 선언, st2라는걸 새로 선언하면 별도로 생성이다
+		System.out.println(st1); //주소값; st1이 여기에 저장됨
+		Student st2 = new Student();
+		System.out.println(st2); //주소값; st1과 주소값이 다르고 st2는 여기에 저장됨
+		
+		//객체명.필드명 = 값;
+		st1.name = "강승훈";
+		System.out.println(st1.name);
+		
+	}
+}

@@ -1,0 +1,9 @@
+package interfaceTest03;
+// 10번 : 클래스 단일 상속
+public class Main {
+	public static void main(String[] args) {
+		
+		
+		
+	}
+}

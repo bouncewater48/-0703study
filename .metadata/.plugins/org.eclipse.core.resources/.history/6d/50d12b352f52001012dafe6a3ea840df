@@ -1,0 +1,25 @@
+package StaticTest;
+// 4번 : 변수의 종류
+public class VariableTest01 {
+
+	int iVar;
+	static int sVar;
+	
+	void localVar() {
+		int lVar = 10;
+		System.out.println("지역변수 lVar의 값 : " + lVar);
+	}
+	
+	void parameterVar(int pVar) {
+		System.out.println("매개변수 pVar의 값 : " + pVar);
+	}
+	
+	void intstanceVar() {
+		System.out.println("인스턴스변수 iVar의 값 : " + iVar);
+	}
+	
+	
+	public static void main(String[] args) {
+		
+	}
+}

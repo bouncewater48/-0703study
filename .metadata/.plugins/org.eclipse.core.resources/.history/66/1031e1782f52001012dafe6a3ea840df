@@ -1,0 +1,38 @@
+package variableTest;
+// 4번 : 변수의 종류
+public class VariableTest01 {
+
+	int iVar;
+	static int sVar;
+	
+	void localVar() {
+		int lVar = 10;
+		System.out.println("지역변수 lVar의 값 : " + lVar);
+	}
+	
+	void parameterVar(int pVar) {
+		System.out.println("매개변수 pVar의 값 : " + pVar);
+	}
+	
+	void intstanceVar() {
+		System.out.println("인스턴스변수 iVar의 값 : " + iVar);
+	}
+	
+	static void staticVar() {
+		sVar = 100;
+		System.out.println("정적변수 sVar의 값 : " + sVar);
+	
+		VariableTest01 vt1 = new VariableTest01();
+		System.out.println("정적변수 sVar의 값(vt1) : " + vt1.sVar);
+		VariableTest01 vt2 = new VariableTest02();
+		System.out.println("정적변수 sVar의 값(vt2) : " + vt2.sVar);
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,22 @@
+package test_강승훈;
+
+public class WhileGugudan {
+	public static void main(String[] args) {
+//		while문 선언
+//		바깥for문 선언
+		int i;
+		int j;
+		int k;
+		while(true) {
+			for(i = 2; i <= 9; i++)
+				for(j = 1; j <= 9; j++) {
+					for(k = i; k <= i && k < 10; k++)
+					System.out.print(k + " * " + j + " = " + (k + j) + "\t" + (k + 1) + " * " + (j + 1) + " = " + (k + j) + "\n");
+//						System.out.println();
+						}if(i >= 10){
+							break;					
+			}
+		}
+		System.out.println();
+	}
+}

@@ -1,0 +1,21 @@
+package casting04;
+// 7번 : 캐스팅 예제
+public class Hero {
+	//필드
+	private String name;
+
+	//생성자
+	public Hero(String name) {
+		super();
+		this.name = name;
+	}
+
+	//getter 메소드
+	public String getName() {
+		return name;
+	}
+	
+	
+	
+	
+}

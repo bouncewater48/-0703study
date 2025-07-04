@@ -1,0 +1,7 @@
+package Method;
+//3번 : 메소드 사용이유3(유지보수에 유리함)
+public class MethodBasic03 {
+	public static void main(String[] args) {
+		
+	}
+}

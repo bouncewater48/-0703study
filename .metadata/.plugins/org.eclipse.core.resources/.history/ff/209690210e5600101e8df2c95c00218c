@@ -1,0 +1,22 @@
+package Review;
+
+public class Gugudan03 {
+	public static void main(String[] args) {
+//		9. 3단씩 출력하기 Gugudan03
+
+//		i 초기값 1 설정, i는 9 이하, i는 3씩 증가 <- 바깥반복문 3씩 증가를 통해 3단씩 증가
+		for(int i = 1; i <= 9; i++) {
+//		j 초기값 1 설정, j는 9 이하, j는 1씩 후열로 증가	
+			for(int j = 1; j <= 9; j++) {
+//				k 초기값은 i와 동일, k는 i +3이며 9 이하, 1씩 증가.
+//				k < i + 3; k++ 으로 안쪽반복문으로 3단씩 출력
+				for(int k = i; k < i + 3 && k <= 9; k++) {
+					System.out.print(k + " * " + j + " = " + (k + j) + "\t");
+				}
+				System.out.println();
+			}
+			System.out.println();
+		}
+		
+	}
+}

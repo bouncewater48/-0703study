@@ -1,0 +1,147 @@
+package review;
+
+public class Task01 {
+	public static void main(String[] args) {
+		//객체명.메소드명 호출
+		Task01 t1 = new Task01();
+		
+//		String str = "hello java";
+//		for(int i = 0; i < str.length(); i++) {
+//			System.out.println(str.charAt(i));
+//		}
+		
+		//1. 매개변수 o 리턴값 o => syso(객체명.메소드명(인수));
+		System.out.println(t1.countWord(null));
+		System.out.println(t1.countWord("i love java"));
+		System.out.println(t1.countWord("      안녕하세요   공백이 많아도 제대로 계산되는지 확인"));
+		
+		//2. 매개변수 x 리턴값 o =>
+		
+		
+		
+		
+	//1. 문자열 속의 단어를 공백 기준으로 세기
+	//메소드명 : countWord
+	//매개변수 : String str
+	//ex) I love java => 3개 출력
+	//ex) 안녕하세요 저는 강승훈입니다 java 공부 중입니다 => 6개 출력
+	
+	//1) 리턴타입 => void
+	//2) 메소드명 => countWord
+	//3) 매개변수 => String str
+	//4) 구현부
+	//	조건문(if문) str이 null과 같다면	str == null /입력값이 없을때 0(null)을 출력
+	//		return 0;
+	//	변수 2개 선언(정수형변수1(몇개의 그룹인지), 논리형변수2(반환여부 확인))
+	//	반복문 초기식 int i = 0;
+	//		 조건식 i < str.length();
+	//		 증감식 i++
+	//		문자형변수3 = str.charAt(i); /공백이 있는지 비교
+	//		조건문 if(변수3 != ' ' && ! 변수2) 
+	//			변수2 = true; /변수2를 다시 true로 바꾸기
+	//			변수1++;
+	//		조건문 else if(변수3 == ' ')
+	//			변수2 = false
+	//	return 변수1;
+	int countWord(String str) {
+		if(str == null) {
+			return 0;
+		}
+		
+		int count = 0;
+		boolean word = false;
+		
+		for(int i = 0; i < str.length(); i++) {
+			char c = str.charAt(i);
+			
+			//문자를 만나면 단어 시작
+			if(c != ' ' && !word) {
+				word = true;
+				count++;
+			}else if(c == ' ') { //c가 공백과 만나면 단어 끝
+				word = false;
+			}			
+		}		
+		
+		return count;
+	}
+
+	
+	//2. 주민등록번호로 성별 판단하기
+	//메소드명 : getGender "000505-3"
+	//1, 3 => 남자 / 2, 4 => 여자
+	//방법1) if문
+	//리턴타입 => void
+	//메소드명 => getGender
+	//매개변수 => String ssn
+	//구현부 => 조건문 (null || .length() <8 || .charAt(6) != '-') 
+	//null이거나 문자열길이가 8자리 이하이거나 문자열 6번째에 -가 안오는지 확인
+	//	return "잘못된 입력입니다"
+	//문자형 변수 => ssn.charAt(7);
+	//	앞자리 8번째 자리까지 확인(0부터 시작이라 7까지임)
+	//if	변수 == '1' || 변수 == '3'
+	//변수가 문자열 1과 같거나 3과 같다면
+	//	return "남자"
+	//else if	변수 == '2' || 변수 == '4'
+	//	return "여자"
+	//변수가 문자열 2와 같거나 4와 같다면
+	//else
+	//	return "알 수 없습니다"
+	
+	String getGender1(String ssn) {
+		if(ssn == null || ssn.length() < 8 || ssn.charAt(6) != '-') {
+			return "잘못된 입력입니다"
+		}
+		char code = ssn.charAt(7);
+		if(code =='1' || code == '3') {
+			return "남자";
+		}else if(code == '2' || code == '4') {
+	         return "여자";
+	      }else {
+	         return "잘못된 입력입니다";
+	      }
+	}
+	
+	//방법2) switch문
+	
+	String getGender(String ssn) {
+		if(ssn == null || ssn.length() < 8 || ssn.charAt(6) != '-') {
+			return "잘못된 입력입니다";
+		}
+		char code = ssn.charAt(7);
+	
+		switch (code) {
+		case '1', '3':
+			return "남자";
+			break; //한번 여기서 확인
+		case '2', '4':
+			return "여자";
+			break;
+	}
+}
+	
+	//3. 학생 3명의 수학점수, 국어점수, 영어점수를 받아서 평균을 구하여
+	//각 학생별 학점 구하기 (소수점 없이 정수형으로만, 등급은 평균점수로 계산)
+	//메소드명 : getGrade
+	// 95점 이상 A+
+	// 90점 이상 A
+	// 85점 이상 B+
+	// 80점 이상 B
+	// 75점 이상 C+
+	// 70점 이상 C
+	// 69점 이하 F
+
+	//방법1) if~else if~else문 이용
+	//리턴타입 => void => String //문자열로 리턴할것이기 때문
+	//
+	
+	
+	//방법2) 2차원 배열이용
+		
+		
+		
+		
+		
+		
+	
+}

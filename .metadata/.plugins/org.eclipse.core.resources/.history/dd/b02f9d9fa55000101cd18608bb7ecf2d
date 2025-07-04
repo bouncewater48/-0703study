@@ -1,0 +1,12 @@
+package Method;
+//4번 : stack 메모리
+public class StackMethod {
+	public static void main(String[] args) {
+		
+		
+	}
+	
+	
+	//두 정수의 합을 더하는 메소드
+	
+}

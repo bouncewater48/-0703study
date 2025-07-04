@@ -1,0 +1,10 @@
+package classBasic2;
+// 11-1번 : 클래스 특징1(사용자 정의 타입이다)
+public class Student {
+	
+	//필드메소드 무조건 주석으로 작성
+	String name;	//학생이름
+	int age;		//학생나이
+	double gpa;		//학점
+	
+}

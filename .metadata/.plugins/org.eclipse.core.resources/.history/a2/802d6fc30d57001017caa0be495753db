@@ -1,0 +1,15 @@
+package interfaceTest04;
+
+public class ClassC implements Inter1, Inter2, Inter3{
+
+	@Override
+	public void printText() {
+		Inter2.super.printText("메소드 오버라이딩"); 
+	}
+
+	public static void main(String[] args) {
+		ClassC c = new ClassC();
+		System.out.println(c);
+		c.printText();
+	}
+}

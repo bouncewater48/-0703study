@@ -1,0 +1,9 @@
+package Task;
+// 메소드 문제
+public class Task01 {
+	//1. 문자열 속의 단어를 공백 기준으로 세기
+	//메소드명 : countWord
+	//매개변수 : String str
+	//ex) I love java => 3개 출력
+	
+}

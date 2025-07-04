@@ -1,0 +1,22 @@
+package Mento;
+
+public class class1 {
+	public static void main(String[] args) {
+//		제어문2(143p) 3번 문제
+//		3. 1부터 100까지의 정수 중에서 짝수만ㅇ르 더해 출력하는 코드를 for문을 사용해 작성해보세요.
+		
+		int sum = 0;
+//		sum 값 초기화
+		
+		for(int i = 1; i <= 100; i++) {
+//			int가 100이 될때까지의 합을 구하기
+			if(i % 2 == 0 ) {
+//				i % 2가 0이 나올때
+				System.out.println(sum += i);
+			}else if(i % 2 != 0 ){
+//				System.out.println();
+			}
+		}System.out.println("짝수만의 합 : " + sum);
+		
+	}
+}

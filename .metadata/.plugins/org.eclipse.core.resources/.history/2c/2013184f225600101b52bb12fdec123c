@@ -1,0 +1,8 @@
+package test_강승훈;
+
+public class Person {
+	String name;
+	Person getName = new Person();
+	
+	
+}

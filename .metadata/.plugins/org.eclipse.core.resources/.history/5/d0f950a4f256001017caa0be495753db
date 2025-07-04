@@ -1,0 +1,14 @@
+package interfaceTest02;
+
+public class Ballad implements Music{
+
+	@Override
+	public void mode() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	
+}

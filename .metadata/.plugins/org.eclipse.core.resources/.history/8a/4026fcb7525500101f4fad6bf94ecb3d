@@ -1,0 +1,16 @@
+package inheritanceTest02;
+// 2번 : 상속기초
+public class AnimalMain {
+	public static void main(String[] args) {
+		//동물 클래스의 객체 생성	
+		Animal animal = new Animal();
+		System.out.println(animal);
+		
+		//Animal 클래스에 있는 필드와 메소드만 사용가능
+		animal.name = "사자야";
+		System.out.println(animal.name);
+		
+		animal.sleep(10, "초원");
+		
+	}
+}

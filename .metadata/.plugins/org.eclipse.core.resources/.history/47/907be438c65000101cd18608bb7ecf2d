@@ -1,0 +1,11 @@
+package classBasic;
+// 10-2번 : Student 클래스의 객체를 만들 클래스
+public class StudentMain {
+	public static void main(String[] args) {
+		
+		
+		
+		
+		
+	}
+}

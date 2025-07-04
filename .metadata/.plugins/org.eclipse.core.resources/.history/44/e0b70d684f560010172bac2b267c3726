@@ -1,0 +1,8 @@
+package casting02;
+// 6번 : 캐스팅의 특징
+public class Animal {
+	//필드
+	
+	
+	//생성자
+}

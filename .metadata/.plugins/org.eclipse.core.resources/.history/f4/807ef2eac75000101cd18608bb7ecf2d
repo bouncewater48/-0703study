@@ -1,0 +1,30 @@
+package classBasic;
+// 10-2번 : Student 클래스의 객체를 만들 클래스
+public class StudentMain {
+	public static void main(String[] args) {
+		//객체를 만들때는 반드시 {}시작점이 필요
+		Student st1 = new Student(); // new = 새로운 큰 메모리
+		//st1이라는 새로운 저장공간을 선언, st2라는걸 새로 선언하면 별도로 생성이다
+		System.out.println(st1); //주소값; st1이 여기에 저장됨
+		Student st2 = new Student();
+		System.out.println(st2); //주소값; st1과 주소값이 다르고 st2는 여기에 저장됨
+		
+		//객체명.필드명 = 값;
+		st1.name = "강승훈";
+//		System.out.println(st1.name); //강승훈
+//		System.out.println(st1.math); //0, 값을 안넣었음,기본값
+//		System.out.println(st2.name); //null, st1이라는 필드에는 객체를 넣었으나 st2엔 안들어있다
+//		System.out.println(st2.avg); //0.0, 값을 안넣었음, 기본값
+//		st1.을 누르면 현재 사용가능한 필드명이 전부 자동완성으로 나온다
+//		필드명, 저장가능타입, 클래스명 순으로 나옴
+//		메소드는 메소드명, 리턴타입,
+		st1.kor = 100;
+		st1.eng = 100;
+		st1.math = 100;
+	
+		//매개변수 x, 리턴값 o => syso(객체명.메소드명());
+		System.out.println(st1.getTotal());
+		
+		
+	}
+}

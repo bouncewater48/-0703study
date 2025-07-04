@@ -1,0 +1,30 @@
+package task01;
+
+public class Person {
+	//필드 : 이름, 나이
+	String name;
+	int age;
+//	int time;
+	
+	//기본생성자
+	public Person() {
+		this(이름없음, 0)
+	}
+
+	public Person(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+	
+
+	Person person = new Person(name, age);
+	
+	void introduce() {
+		System.out.println("이름 : " + this.name + ", 나이 : " + this.age);
+	}
+	void sleep() {
+		System.out.println(this.name + "은/는 몇시에 잠을 잡니다");
+	}
+
+}

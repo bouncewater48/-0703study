@@ -1,0 +1,10 @@
+package classBasic2;
+// 11-2번 : Student 클래스 main
+public class StudentMain {
+	public static void main(String[] args) {
+		
+		Student st1 = new Student();
+		//우측 참조변수를 왼쪽 참조값에 대입하여 주소 출력
+		
+	}
+}

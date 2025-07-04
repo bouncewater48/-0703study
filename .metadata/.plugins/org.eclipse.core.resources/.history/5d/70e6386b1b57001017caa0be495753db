@@ -1,0 +1,5 @@
+package InnerTask;
+// 25번 : 내부클래스
+public class Outer {
+	
+}

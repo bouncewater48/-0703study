@@ -1,0 +1,10 @@
+package inheritanceTest01;
+
+public class Tv2 extends Tv{
+				//extends로 키워드를 받아오겠다 선언, Tv에서 받아올거니 Tv를 작성 < Tv로부터 상속받음
+	//메소드
+	//netflex 모드
+	void netflex() {
+      System.out.println("넷플릭스 모드입니다");
+   }
+}

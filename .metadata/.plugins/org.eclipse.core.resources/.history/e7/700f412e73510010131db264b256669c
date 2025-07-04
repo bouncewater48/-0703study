@@ -1,0 +1,8 @@
+package constroctorBasic02;
+//2번 : 기본생성자 확인
+class Student{
+	
+}
+public class StudentMain {
+
+}

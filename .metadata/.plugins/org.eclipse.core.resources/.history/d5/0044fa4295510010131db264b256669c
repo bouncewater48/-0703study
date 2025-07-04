@@ -1,0 +1,9 @@
+package StaticTest;
+//9-1번 : 정적변수와 정적메소드
+public class MyClassB {
+	public static void main(String[] args) {
+		
+		
+		
+	}
+}

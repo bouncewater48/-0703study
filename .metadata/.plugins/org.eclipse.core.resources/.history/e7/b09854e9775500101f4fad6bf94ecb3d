@@ -1,0 +1,15 @@
+package gameTask;
+
+public class Main {
+	public static void main(String[] args) {
+		Charcter c = new Character();
+System.out.println("일반공격 실행 : ");	
+	if(maxHp > 2) {
+		System.out.println();
+	}
+
+
+		
+		
+	}
+}

@@ -1,0 +1,13 @@
+package interfaceTest01;
+// 8번 : 인터페이스 구현 클래스
+public class ClassA implements Inter{
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+
+	
+	
+}

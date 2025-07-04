@@ -1,0 +1,23 @@
+package test_강승훈;
+
+public class Student {
+//	필드 정의
+//	이름, 전공, 세 과목 점수 초기화
+//
+	Person person = new Person();
+	int javaScore = 0;
+    int dbmsScore = 0;
+    int htmlScore = 0;
+    Major major;
+//    메소드 작성
+// 세 점수의 총합    
+    void getTotalScore() {
+    	javaScore + dbmsScore + htmlScore
+    }
+//    세 정수의 평균
+    void  getAverageScore() {
+    	(javaScore + dbmsScore + htmlScore) / 3
+    }
+   
+	
+}

@@ -1,0 +1,10 @@
+package test_강승훈;
+
+public class Major {
+	
+	enum(final private koreanName){
+		
+	}
+		
+	
+}

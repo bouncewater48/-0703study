@@ -1,0 +1,10 @@
+package ex01_강승훈;
+
+public class Person {
+	
+	//필드 : 이름, 나이(접근제한자 private)
+	
+	
+	
+	
+}

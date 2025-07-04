@@ -1,0 +1,36 @@
+package constroctorThis03;
+// 6번 : this()	자기자신의 생성자 호출
+public class person {
+	//필드
+	String name;
+	int age;
+	String job;
+	//생성자
+	//기본생성자
+	public person() {	
+	}
+	//매개변수 2개 생성자
+	public person(String name, int age, String job) {
+		this()
+		this.age = age;
+	}
+	//매개변수 3개 생성자
+	public person(String name, int age, String job) {
+		this.name = name;
+		this.age = age;
+		this.job = job; //모든 job을 학생으로 출력
+	}
+	
+	//메소드(매개변수 x, 리턴값 x)
+	// printInfo() 정보 출력
+	void printInfo() {
+		System.out.println("이름 : " + this.name);
+		System.out.println("나이 : " + this.age);
+		System.out.println("직업 : " + this.job);
+	}
+
+	
+	
+	// greet() 000님 안녕하세요 출력
+	
+}

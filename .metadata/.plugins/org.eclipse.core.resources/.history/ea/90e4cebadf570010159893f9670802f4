@@ -1,0 +1,5 @@
+package exceptionTest02;
+// 14번 : 메소드 선언부에서의 throws
+public class ThrowsTest02 {
+
+}

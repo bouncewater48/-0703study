@@ -1,0 +1,25 @@
+package review02;
+// 복습 : 클래스
+public class Song {
+	//필드
+	String title;
+	String artist;
+	String album;
+	
+	//메소드
+	//정보출력메소드
+	void displayInfo() {
+		System.out.println("노래 제목 : " + title);
+		System.out.println("가수명 : " + artist);
+		System.out.println("앨범발매일 : " + album);
+	}
+	
+	//메인메소드
+	public static void main(String[] args) {
+		//객체화
+		Song song = new Song();
+	
+	
+	
+	}
+}

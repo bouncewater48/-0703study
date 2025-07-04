@@ -1,0 +1,5 @@
+package inheritanceConstructor02;
+
+public class SuperCar {
+
+}

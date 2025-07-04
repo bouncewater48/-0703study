@@ -1,0 +1,21 @@
+package Mento0630;
+
+public class Ex5_4 {
+	public static void main(String[] args) {
+//		*로 이등변삼각형 만들기 (별은 2개씩 증가, 역삼각형 모양으로 출력)
+		
+//		조건문 작성, 이등변삼각형 높이 설정
+		for(int i = 0; i < 7; i++) {
+//			해당 삼각형을 역삼각형으로 설정
+			for(int j = 0; j < (i - 1); j++) {
+				System.out.println(" ");
+//				
+				for()
+			}
+		}
+		
+		
+		
+		
+	}
+}

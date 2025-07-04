@@ -1,0 +1,6 @@
+package inheritance;
+// 5번 : this, this(), super, super()
+//자식 클래스
+public class Student {
+	//필드
+}

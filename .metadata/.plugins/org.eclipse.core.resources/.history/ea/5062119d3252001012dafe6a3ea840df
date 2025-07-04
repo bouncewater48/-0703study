@@ -1,0 +1,14 @@
+package variableTest;
+// 5번 : 가변길이 매개변수
+public class VariableTest02 {
+	public static void main(String[] args) {
+		VariableTest02 vt = new VariableTest02();
+		vt.printNumbers("가변길이매개변수", null)
+	}
+	
+	voi printNumbers(String name, int ... numbers) {
+		System.out.println(numbers);
+	}
+	
+	
+}

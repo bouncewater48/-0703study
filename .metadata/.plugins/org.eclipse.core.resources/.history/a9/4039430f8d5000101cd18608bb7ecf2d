@@ -1,0 +1,120 @@
+package MethodTest;
+
+public class MethodTask02_cord{
+    public static void main(String[] args) {
+        MethodTask02_cord task = new MethodTask02_cord();
+        // task 라는 객체(참조변수)를 생성함
+        System.out.println(task.checkNum(7));
+        //매개변수 task로 checkNum 메소드에 7을 전달하여 호출(받는게 아니라 전달임!)
+        // num(7) % 2 == 0 이 false이므로 뒤쪽 "홀수입니다" 출력
+        // 조건식은 항상 앞쪽 true를 먼저 대입하고 뒷쪽 false를 대입해본다
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        // arr 배열에 저장된 데이터를 정수타입으로 대입, 출력
+        //더하기 할당 연산자이므로 1~10까지를 하나씩 더해보고 10까지 더한 후 저장한다
+        System.out.println(task.getSum(arr));
+        //더하기 할당 연산자 getSum을 받고, arr 배열에 저장된 총합 출력
+        System.out.println(task.reverseStr("hello"));
+        //hello를 받고 reverse시켜서 반대로(=거꾸로) 나오게 한다
+        //누적 추가하겠다 했으므로 "olleh" 전체가 출력
+        System.out.println(task.contains(arr, 10));
+        //arr 배열을 받고 10이라는 value가 포함됐는지 확인
+        //value값 10이 포함됐으므로 true로 출력
+        task.printGugudan(3);
+        //dan x i(1~19) = (dan*(1~19))에서 dan에 3을 대입하고 출력하겠다
+        System.out.println(task.compareLength("java", "code"));
+        //java와 code는 둘 다 배열의 총합이 4로 같으므로 "같음"을 출력
+        task.loginTry("admin", "1234");
+    }//
+
+    	public String checkNum(int num) {
+    //   문자열 변수 checkNum을 정수형 변수 num으로 형변환
+        return (num % 2 == 0) ? "짝수입니다" : "홀수입니다";
+    }// num 변수를 2로 나눴을때 0이 true 인지 false 인지 물어봄
+    //    true라면 "짝수입니다"를 출력, false라면 "홀수입니다" 를 출력
+
+    public int getSum(int[] arr) {
+//    	아래에 return한 sum을 getSum에 넣고, 정수형 참조변수 arr에 하나씩 저장
+        int sum = 0;
+//        sum 변수를 초기화
+        for (int num : arr) {
+//       for-each문을 통해 정수형 변수 num에 arr배열 요소를 하나씩 저장 
+            sum += num;
+        } // 더하기 할당 연산자; sum 연산자자를 num 연산자에 더한후 다시 sum 연산자로 할당(선언)한다
+        return sum;
+    } //메소드를 즉시 종료하고 sum으로 반환한다. int type으로 반환하므로 정수형으로 반환된다
+
+    public String reverseStr(String str) {
+    	//String str 문자열을 하나 받아서, 결과도 문자열로 반환하고 reverseStr 메소드에 저장, 뒤집겠다 라는 의미
+        char[] chars = str.toCharArray();
+        //str 문자열 변수를 하나씩 분리해서 char 문자형 배열로 변환하고 chars에 저장
+        String result = "";
+//        result는 ""안에 문자열로 출력
+        for (int i = chars.length - 1; i >= 0; i--) {
+//       -1이 붙었으므로 배열의 시작이 아닌 끝에서부터 읽기 시작한다
+//        인덱스가 0보다 크거나 같아질때까지 반복할것이고, i를 빼기 할당 연산자를 사용해 1씩 감소할것이다
+            result += chars[i];
+        }// result에 chars[i] 문자를 하나씩 누적 추가한다
+        return result;
+    } //result를 String으로 반환하여 문자열로 반환한다. 
+    
+    public boolean contains(int[] arr, int value) {
+    	// value값을 찾아서 정수형 변수로 받고, 해당 변수가 포함됐는지 논리형으로 표기
+        for (int num : arr) {
+//          for-each문을 통해 정수형 변수 num에 arr배열 요소를 하나씩 저장 
+            if (num == value) {
+//            만약 num이 value와 같은지 확인
+                return true;
+                // 메소드를 즉시 종료시키고 num == value, 즉 동일하다면  true로 표기하고 아니면 넘어가겠다
+            }
+        }
+        return false;
+        // 메소드를 즉시 종료시키고 num != value, 즉 true가 아니라면(동일하지 않다면) false로 표기하겠다
+        //모든 요소가 조건을 만족하지 못했을 경우 false로 반환된다
+    }
+
+    public void printGugudan(int dan) {
+//    	정수형 변수 dan을 printGugudan 메소드에 저장
+        for (int i = 1; i <= 19; i++) {
+//        정수형 변수 i는 초기값이 1이고, 19가 될때까지 더하기 할당 연산자로 1씩 더한다
+            System.out.println(dan + " x " + i + " = " + (dan * i));
+        }//dan x i(1~19) = (dan*(1~19))로 세로로 한줄씩 표기
+    }
+
+    public String compareLength(String str1, String str2) {
+    	//str1, str2 문자열들의 배열의 총합을 비교하겠다
+        return (str1.length() == str2.length()) ? "같음" : "다름";
+    } //메소드를 즉시 종료시키고 str1과 str2의 배열의 총합이 같다면 "같음"으로 출력하고 아니라면 "다름"으로 출력
+
+    public void loginTry(String inputId, String inputPw) {
+    	//문자열 inputId와 inputPw를 받고 로그인시도를 할것이다
+        String adminId = "admin";
+        // adminId를 admin이라는 문자열로 변환한다
+        String adminPw = "1234";
+        // adminPw를 1234라는 '문자열'로 변환한다
+        int tryCount = 0;
+        // tryCount 정수형 변수를 초기화
+        while (tryCount < 3) {
+        	//tryCount 정수형 변수가 3보다 낮을때
+            if (inputId.equals(adminId) && inputPw.equals(adminPw)) {
+            	// adminId와 adminPw를 각각 입력(인풋)했을때 동일(equals)한지 여부를 확인 
+            	// &&은 and 연산자로, 두 조건식이 모두 참이여야만  true로 인식한다
+            	//만약 ||(or)이였으면 둘 중 하나만 맞아도 true로 인식했을것
+                System.out.println("로그인 성공");
+                //Id와 Pw의 입력값이 모두 동일하다면 true로 "로그인 성공"이 출력됨
+                return; //메소드를 즉시 종료시키고 다시 위로 올려보냄, 즉 아래 else문 밑으로는 갈 일이 없다
+            } else { // 위 if문이 true가 아닐때, 여기서는 Id와 Pw가 같지 않았을때 else문 아래로 읽는다
+                tryCount++;
+                //tryCount 정수형 변수를 1씩 증가시키겠다
+                System.out.println("로그인 실패 (" + tryCount + "회)");
+                // 로그인실패(tryCount회) 를 출력
+                if (tryCount == 3) {
+                	//trycount가 3이 됐을때
+                    System.out.println("잠금");
+                    //"잠금"으로 출력
+                }
+                break; //반복문(위 중괄호)를 탈출하겠다
+                //하지만 위에 return문이 쓰였으므로 else문부터 break문까지는 출력될 일이 없다
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+package inheritanceConstructor02;
+// 4번 : 상속관계-생성자 확인2
+public class SuperCar extends Car{
+	//필드
+	boolean booster;
+
+	//생성자
+//	public SuperCar() {
+//		super(); //부모생성자 호출
+//	}
+
+	public SuperCar(String brand, String color, int price) {
+		super(brand, color, price);
+	}
+//	Car클래스에 기본생성자가 없으니 super()안에 값을 직접 넣음
+
+//	public SuperCar(String brand, String color, int price, boolean booster) {
+//		super(brand, color, price);
+//		this.booster = booster;
+//	}
+
+	
+
+	
+	
+	
+}

@@ -1,0 +1,16 @@
+package interfaceTest03;
+// 12번 : 인터페이스 간 상속
+
+interface parentInter{
+	void method1();
+}
+
+interface ChildInter{
+	void mthod2();
+}
+
+
+
+public class Main3 {
+
+}

@@ -1,0 +1,11 @@
+package StaticTest;
+//9-2번 : 정적변수와 정적메소드
+public class MyClassB {
+	public static void main(String[] args) {
+		//1. 인스턴스 변수 출력 => 객체생성 필수
+		MyClassA a = new MyClassA();
+		System.out.println(a); //참조값
+		
+		
+	}
+}

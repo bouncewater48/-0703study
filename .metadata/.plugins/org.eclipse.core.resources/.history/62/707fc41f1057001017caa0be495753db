@@ -1,0 +1,8 @@
+package interfaceTest05;
+// 21번 :  
+public class CalculMain {
+	public static void main(String[] args) {
+		Calculator c = new CalculImpl();
+		System.out.println(c);
+	}
+}

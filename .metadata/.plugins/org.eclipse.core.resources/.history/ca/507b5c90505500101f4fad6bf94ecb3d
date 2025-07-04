@@ -1,0 +1,14 @@
+package inheritance;
+
+public class Tv2 extends Tv{
+				//extends로 키워드를 받아오겠다 선언, Tv에서 받아올거니 Tv를 작성
+	//필드
+	
+	
+	
+	//메소드
+	
+	
+	
+	
+}

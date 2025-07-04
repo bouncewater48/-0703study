@@ -1,0 +1,33 @@
+package StaticTest;
+//9-2번 : 정적변수와 정적메소드
+public class MyClassB {
+	public static void main(String[] args) {
+		//1. 인스턴스 변수 출력 => 객체생성 필수
+		MyClassA a = new MyClassA();
+//		System.out.println(a); //참조값
+//		System.out.println(a.instanceVar); //0, 아직 저장한게 없음
+//		a.instanceVar = 10;
+//		System.out.println(a.instanceVar); //10
+//		
+//		MyClassA aa = new MyClassA();
+//		System.out.println(aa);
+//		System.out.println(aa.instanceVar); //0
+//		aa.instanceVar = 100;
+//		System.out.println(aa.instanceVar); //100
+		
+		//2. 정적변수 출력 => 객체 생성x(생성해도 오류는 안나옴), 객체 생성으로 접근 가능하지만 권장하지는 않음
+		//클래스명.정적변수명으로 접근한다!! => 공통된 저장공간을 사용, 다른값이 나올 가능성이 있음!
+		
+		MyClassA.staticVar = 20;
+		System.out.println(a.staticVar); //바로 위 메소드 저장공간에 20을 저장해서 20이 반환
+		
+		//3. 다른 클래스에서 인스턴스 메소드 호출
+		a.instanceMethod1();
+		a.instanceVar = 20;
+		a.instanceMethod1();
+		
+		
+		
+		
+	}
+}

@@ -1,0 +1,7 @@
+package abstractTest02;
+// 5번 : 추상클래스와 강제성
+public class AnimalMain {
+	public static void main(String[] args) {
+		Animal animal = new Animal();
+	}
+}

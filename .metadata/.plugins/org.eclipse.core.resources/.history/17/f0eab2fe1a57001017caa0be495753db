@@ -1,0 +1,65 @@
+package Mento;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class AP2 {
+	public static void main(String[] args) {
+//		제어문2(143p) 4번 문제
+//		4.두 개의 주사위가 같은 값이 나올때까지 while문을 사용해 반복하고, 
+//		반복 횟수와 주사위 눈의 번호를 출력해보세요
+		
+//		입력메소드 선언
+		Scanner sc = new Scanner(System.in);
+//		int a = 0;
+//		int b = 0;
+		
+//		주사위눈 1~6 랜덤난수 선언
+	int a = (int)(Math.random()*6)+1;
+	int b = (int)(Math.random()*6)+1;
+	int Count = 0;
+	while(a != b) {
+		for(a = 1; a <= 6; a++) {
+			for(b = 1; b <= 6; b++) {
+				Count++;
+				continue;
+			}if(a == b) {
+				System.out.print("주사위 눈 2개가 일치합니다."
+						+ " 주사위 눈을 굴린 횟수는 " + Count + "이며, 두 주사위 눈은 " + 
+						a + "입니다.");
+			}
+			System.out.println();
+		}
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		random값 0~5
+//		int r1 = (int)(Math.random()*5+1);
+//		int r2 = (int)(Math.random()*5+1);
+//		int tryCount = 50;
+//		while(true) {
+//			if(r1 != r2) {
+//				System.out.println("두 주사위의 값이 일치하지 않습니다");
+//				continue;
+//			}else{
+//				System.out.println("반복 횟수는 " + r1 +"회 입니다.\n" + 
+//			"주사위 눈의 번호는" + r2 + "입니다.");
+//			}if(r2 > tryCount){
+//				System.out.println();
+//			}
+//			return;
+//		}
+		
+	}
+}

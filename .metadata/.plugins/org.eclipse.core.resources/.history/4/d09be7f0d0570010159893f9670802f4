@@ -1,0 +1,6 @@
+package lambdaTest02;
+
+public interface CombInter {
+
+	
+}

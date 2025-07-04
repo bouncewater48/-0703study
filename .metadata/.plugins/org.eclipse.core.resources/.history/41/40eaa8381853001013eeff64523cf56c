@@ -1,0 +1,206 @@
+package GithubTEAM;
+
+//0. 프로그램 구성 순서
+//전체 로직 짜기 -> 사용할 변수, 메소드 기능 도출 -> 메소드 세부 로직 -> 프로그램 구현
+
+//1. 전체로직 
+//프로그램 실행 
+//난이도 선택 메소드 호출
+//-> 난이도를 입력받고 저장 
+//-> 범위(최대값) 저장 
+//랜덤숫자 구하기 메소드 호출 
+//-> Random 클래스 객체를 사용해서 범위 내에서 랜덤숫자 구하고 저장 
+//-> 난이도에 따라 입력제한수 구하고 저장 
+//게임실행 메소드 호출 
+//-> 입력값을 입력받고 저장(반복)
+//-> 정답비교 메소드 호출
+//--> 입력값과 랜덤숫자 일치 여부 반환(true or false) 
+//-> 일치하면 반복 중지 
+//-> 시도횟수가 일정(입력제한수의 절반 or 입력제한수-1) 이 되면 힌트제공 메소드 호출 
+//--> 정답보다 큰지/작은지 정보 제공  
+//--> 난수 2개 구하고 저장 
+//--> 난수 2개를 정답에서 각각 더하고 빼서 좁혀진 범위 제공 
+//--> 시도횟수, 남은횟수 정보 제공 
+//-> 시도횟수가 입력제한수가 되면 반복 중지 
+//-> 게임종료 메소드 호출 
+//--> 종료메시지 출력 
+//프로그램 종료 
+
+//2. 사용할 필드와 메소드 기능 요약 
+//필드 
+//- 난이도(level), 범위(range), 랜덤숫자(answer), 입력제한수(limit), 입력값(input), 시도횟수(tryCount), 난수 2개(rn1,rn2)
+//메소드
+//- 난이도선택(setLevel) : 난이도(level) 저장, 범위(range) 저장
+//- 랜덤숫자구하기(setRandom) : 랜덤숫자(answer) 저장, 입력제한수(limit) 저장 
+//- 게임실행(getStart) : 입력값(input) 저장, 정답비교(checkAnswer) 호출, 힌트제공(getHint) 호출, 게임종료(quit) 호출 
+//- 정답비교(checkAnswer) : 입력값(input)과 랜덤숫자(answer) 일치여부 반환(true/false) 
+//- 힌트제공(getHint) : 큼/작음정보 출력, 난수 2개(rn1, rn2) 저장, 좁혀진범위 출력, 시도횟수(tryCount)와 남은횟수(limit - tryCount) 출력 
+//- 게임종료(quit) : 게임종료 출력 
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Game {
+	int answer; // 정답
+	int level; // 난이도
+	int tryCount; // 시도 횟수
+	int limit; // 입력제한수
+	int input; //사용자가 입력한 정답 시도 횟수
+	int rn1; // 난수1
+	int rn2; // 난수2
+	int range; // 범위설정
+//		4팀 하   랜덤숫자 맞추기
+//		   1~100사이의 랜덤숫자를 정하고 사용자가 맞출 때까지 계속 입력하게하기
+//		   메소드 : 난이도선택(1~5), 게임실행, 정답비교, 힌트제공, 게임종료
+//		   조건 : 최대시도횟수제한(10)
+
+	// setLevel() 최장현 : 난이도 선택
+
+	void setLevel(Scanner sc) {
+		//난이도 입력
+		//난이도 입력메소드. 난이도(level) 범위를 1~5로 지정하고
+		//"1부터 5까지 난이도 입력" 출력, 1~5를 입력
+		//입력범위가 1미만, 5초과라면 "다시 입력해주세요" 출력
+		while (true) { 
+			System.out.print("난이도를 입력하세요 (1부터 5까지!): ");
+			//2."난이도를 입력하세요 (1부터 5까지!): " 출력
+			this.level = sc.nextInt();
+			//레벨 입력메소드
+//			int level = this.level;
+			//level 참조값 생성
+			if (level <= 5 && level > 0) {
+				//1.레벨이 0초과, 5이하라면
+				range = level * 20;
+				// 범위는 레벨 * 20으로 설정
+
+				break;
+			} else {
+				System.out.println("레벨은 5레벨까지만 있습니다. 다시 입력해주세요");
+				//3. 레벨이 0이하, 5초과라면 "레벨은 5레벨까지만 있습니다. 다시 입력해주세요" 출력
+			
+			}
+		}
+	}
+		
+	void setRandom() {
+		Random r = new Random();
+		// r 연산자 할당(Random)
+		//answer 참조값 = range참조값 + 1;
+		// 출력
+		//limit 참조값 = level *5;
+		// 출력
+		this.answer = r.nextInt(range) + 1;
+//		System.out.println("선택한 난이도는 " + level + "입니다.");
+		System.out.println("선택한 난이도는 " + this.level + "입니다.");
+		System.out.println("범위는 1부터 " + range + "까지 입니다.");
+		this.limit = level * 5;
+		System.out.println("최대 시도 횟수는 " + limit + "입니다.");
+	}
+
+	// checkAnswer() 강승훈 : 정답비교
+	// 논리형 변수 checkAnswer 생성
+	// input 값과 answer 값이 같다면 정답입니다!! 출력
+	// input 값과 answer 값이 같지 않다면 정답입니다를 리턴하지 않고 틀렸습니다 출력
+	boolean checkAnswer() {
+		if (this.input == this.answer) {
+			System.out.println("정답입니다!!");
+			return true;
+		} else {
+			System.out.println("틀렸습니다!!");
+			return false;
+		}
+	}
+
+	// getHint() 이재빈 : 힌트제공
+
+	void getHint() {
+		// input이 answer 값보다 클 경우 큰 수 라는 힌트 출력
+		// input이 aswer보다 크지 않을 경우 작은 수 라는 힌트 출력
+		if (this.input > this.answer) {
+			System.out.println("!!힌트!! : 정답보다 큰수를 입력했습니다!!");
+		} else {
+			System.out.println("!!힌트!! : 정답보다 작은수를 입력했습니다!!");
+		}
+		
+		//tryCount 참조값이 limit 참조값의 절반일경우 if문 실행
+		//랜덤메소드로 0 ~ 1 사이 난수 설정(Math.random = 0 ~1), 
+		// 해당 난수에 10을 곱하고 난수1,2에 대입
+		if (this.tryCount == this.limit / 2) {
+			//(int) (Math.random() * 10) : 0 ~ 10 까지의 랜덤한 정수 입력
+			this.rn1 = (int) (Math.random() * 10);
+			this.rn2 = (int) (Math.random() * 10);
+		// tryCount 참조값이 limit 참조값보다 1 적을 경우 실행
+		// 랜덤메소드로 0 ~ 1 사이 난수 설정
+		// 해당 난수에 3을 곱하고 난수 1,2에 대입
+		} else if (this.tryCount == this.limit - 1) {
+			this.rn1 = (int) (Math.random() * 3);
+			this.rn2 = (int) (Math.random() * 3);
+		}
+
+		// 힌트 범위가 정답 범위를 벗어나면 (범위와 정답의 차이만큼만)으로 조정하기
+		//asnswer 참조값에서 난수1의 참조값을 뺀게 0보다 작으면, 
+		// 난수1은 answer값보다 1 작다
+		if ((this.answer - this.rn1) < 0) {
+			this.rn1 = this.answer - 1;
+		}
+		// answer 참조값과 난수 2를 더한 값이 level 참조값*20보다 크다면,
+		// 난수2는 level 참조값에 20을 곱한 값에서 answer 참조값을 뺀 값이다
+		if ((this.answer + this.rn2) > this.level * 20) {
+			this.rn2 = this.level * 20 - this.answer;
+		}
+
+		System.out.printf("정답은 %d에서 %d사이에 있습니다.\n", this.answer - this.rn1, this.answer + this.rn2);
+
+		System.out.printf("%d번 시도했습니다. %d번 남았습니다.\n", this.tryCount, this.limit - this.tryCount);
+
+	}
+
+	// getStart() 백정이 : 게임실행
+
+	void getStart(Scanner sc) {
+
+		while (true) {
+			System.out.print("숫자를 맞춰주세요!!! 입력 : ");
+			input = sc.nextInt();
+			System.out.println(input + "을 입력하셨습니다.");
+
+			tryCount++;
+			//input이 1보다 작거나 level*20보다 클 경우 
+			// 범위를 벗어난 입력입니다 조건문 출력
+			//위 조건이 아닐 경우(범위 안에 지정했을 경우)
+			// " 번 입력을 했습니다!" 출력
+			if (input < 1 || input > (this.level * 20)) {
+				System.out.println("!!!!!!!!범위를 벗어난 입력입니다.!!!!!!!!!");
+			} else {
+				System.out.println(tryCount + "번 입력을 했습니다!");
+				if (checkAnswer()) {
+					break;
+				}
+				if (this.limit / 2 == tryCount) {
+					getHint();
+				} else if (this.tryCount == this.limit - 1) {
+					getHint();
+				}
+			}
+
+			if (tryCount == this.limit) {
+				System.out.println("시도횟수를 초과했습니다!");
+				break;
+			}
+
+		}
+
+		quit();
+
+	}
+
+	// quit()강버들 : 종료
+
+	void quit() {
+
+		System.out.println("종료합니다!!!");
+
+	}
+
+}
+

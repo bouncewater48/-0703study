@@ -1,0 +1,5 @@
+package accessmModifier02;
+
+public class Child extends Parents{
+
+}

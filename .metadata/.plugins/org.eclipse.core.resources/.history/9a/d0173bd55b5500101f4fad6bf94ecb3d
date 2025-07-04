@@ -1,0 +1,6 @@
+package inheritance;
+// 5번 : this, this(), super, super()
+// 부모클래스
+public class Person {
+
+}

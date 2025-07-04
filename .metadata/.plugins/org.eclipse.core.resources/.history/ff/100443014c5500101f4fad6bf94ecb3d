@@ -1,0 +1,18 @@
+package review;
+
+public class Main {
+	public static void main(String[] args) {
+		//동물 클래스 작성
+		//- Animal 클래스 정의
+		//필드 : 이름(name), 나이(age)
+		//메소드 : 
+		//	eat(String food) 이름이 음식을 먹습니다 출력
+		//
+		
+		
+		
+		
+		
+		
+	}
+}

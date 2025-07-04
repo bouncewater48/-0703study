@@ -1,0 +1,14 @@
+package test_강승훈;
+
+public class ForGugudan {
+	public static void main(String[] args) {
+//		for 바깥반복문 선언, i = 2; i는 9 이하, i
+	for(int i = 2; i <= 9; i++) {
+		for(int j = 1; j <= 9; j++) {
+		for(int k = i; k <= i && k <= 9; k += 3)
+			System.out.println(k + " * " + j + " = " + (k * j) + "\t");
+			}
+		System.out.printf(k + " * " + j + " = " + (k * j) + "\t");		
+		}
+	}
+}

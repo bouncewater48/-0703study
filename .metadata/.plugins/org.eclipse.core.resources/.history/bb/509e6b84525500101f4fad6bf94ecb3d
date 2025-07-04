@@ -1,0 +1,11 @@
+package inheritanceTest02;
+// 2번 : 상속기초
+public class AnimalMain {
+	public static void main(String[] args) {
+			
+		Animal animal = new Animal();
+		System.out.println(animal);
+		
+		
+	}
+}

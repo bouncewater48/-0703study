@@ -1,0 +1,14 @@
+package interfaceTest06;
+
+public class TableFan {
+	public void on() {
+		System.out.println("탁자 선풍기를 켭니다");
+	}
+	public void off() {
+		System.out.println("탁자 선풍기를 끕니다");
+	}
+//	public void {
+//		
+//	}
+	
+}

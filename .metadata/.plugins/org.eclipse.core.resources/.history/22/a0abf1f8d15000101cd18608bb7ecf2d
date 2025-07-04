@@ -1,0 +1,5 @@
+package classBasic2;
+// 13번 : 클래스의 특징3(객체 생성의 틀)
+public class Car {
+
+}

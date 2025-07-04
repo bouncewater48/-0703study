@@ -1,0 +1,14 @@
+package Accessmodifier01;
+// 1번 : 접근제한자
+public class SameMain {
+	public static void main(String[] args) {
+		System.out.println("======= 같은 패키지 내 접근 =======");
+		
+		AccessTarget a1 = new AccessTarget(); //public 생성자
+		AccessTarget a2 = new AccessTarget(); //protected 생성자
+		AccessTarget a3 = new AccessTarget();
+		AccessTarget a4 = new AccessTarget();
+		
+		
+	}
+}

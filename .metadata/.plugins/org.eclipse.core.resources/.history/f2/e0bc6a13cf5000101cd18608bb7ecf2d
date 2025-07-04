@@ -1,0 +1,20 @@
+package classBasic2;
+// 11-2번 : Student 클래스 main
+public class StudentMain {
+	public static void main(String[] args) {
+		
+		
+		Student st1 = new Student();
+		//우측 참조변수를 왼쪽 참조값에 대입하여 주소 출력
+		System.out.println(st1); //classBasic2.Student@279f2327;
+		
+		st1.name = "홍길동";
+		st1.age = 17;
+		st1.gpa = 4.5;
+		
+		System.out.println("이름 : " + st1.name + "\n나이 : " +  st1.age
+				+ "\n학점 : " + st1.gpa);
+		
+		
+	}
+}

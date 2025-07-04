@@ -1,0 +1,6 @@
+package review;
+
+public class Animal {
+	//필드 //필드는 반드시 메인메소드 밖에서 만들어라
+	String name; //동물이름
+}

@@ -1,0 +1,5 @@
+package classBasic2;
+// 12번 : 클래스의 특징2(연관성 있는 데이터와 기능을 한 곳에 통합)
+public class Rectangle {
+
+}

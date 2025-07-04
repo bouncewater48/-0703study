@@ -1,0 +1,13 @@
+package Method;
+// 8번 : Call By Value
+public class Callbyvalue {
+	public static void main(String[] args) {
+		
+		
+	}
+	
+	static void modifyNum(int num) {
+		num = 20;
+	}
+	
+}

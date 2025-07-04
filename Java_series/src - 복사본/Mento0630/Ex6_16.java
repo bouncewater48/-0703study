@@ -1,0 +1,26 @@
+package Mento0630;
+
+public class Ex6_16 {
+	public static void main(String[] args) {
+		
+//	2차원 배열을 활용한 로또 출력
+//	2차원 배열,Random? 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

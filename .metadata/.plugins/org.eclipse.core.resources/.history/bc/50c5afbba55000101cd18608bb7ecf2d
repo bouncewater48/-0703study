@@ -1,0 +1,18 @@
+package Method;
+//4번 : stack 메모리
+public class StackMethod {
+	public static void main(String[] args) {
+		
+		StackMethod s = new StackMethod();
+		
+		
+	}
+	
+	
+	//두 정수의 합을 더하는 메소드
+	int add(int num1, int num2) {
+		System.out.println("num1의 값 : " + num1 + "num2의 값 " + num2);
+		return num1 + num2;
+	}
+	
+}

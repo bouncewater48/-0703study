@@ -1,0 +1,15 @@
+package constroctorThis03;
+
+//6-2번 : this() 자기자신의 생성자 호출
+public class PersonMain {
+	public static void main(String[] args) {
+		Person p1 = new Person();
+		Person p2 = new Person("홍길동");
+		Person p3 = new Person("짱구", 5);
+		Person p4 = new Person("유리", "학생");
+		Person p5 = new Person("강승훈", 5, "학생");
+		//하나의 class에서 5개의 객체를 만들었다
+		//5개의 객체는 전부 고유값을 가지고 있다
+		
+	}
+}

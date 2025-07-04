@@ -1,0 +1,12 @@
+package test_강승훈;
+
+public class Student {
+	Person person = new Person();
+	int javaScore;
+    int dbmsScore;
+    int htmlScore;
+    Major major;
+    
+	
+	
+}

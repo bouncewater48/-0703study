@@ -1,0 +1,10 @@
+package ex03_강승훈;
+
+public class Major {
+	
+	enum("이름, 전공"){
+		
+	}
+		
+	
+}

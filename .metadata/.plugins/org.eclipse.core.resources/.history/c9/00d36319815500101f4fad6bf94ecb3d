@@ -1,0 +1,9 @@
+package accessmModifier;
+
+public class ParentsMain {
+	public static void main(String[] args) {
+		
+		
+		
+	}
+}

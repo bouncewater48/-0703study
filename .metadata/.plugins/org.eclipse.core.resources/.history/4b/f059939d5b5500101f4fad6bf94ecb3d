@@ -1,0 +1,5 @@
+package inheritance;
+// 5번 : this, this(), super, super()
+public class Person {
+
+}

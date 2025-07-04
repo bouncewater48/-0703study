@@ -1,0 +1,27 @@
+package interfaceTest03;
+
+interface InterA{
+	void methodA();
+}
+
+interface InterB{
+	void methodB();
+}
+
+class ClassC implements InterA{
+
+	@Override
+	public void methodA() {
+	}
+}
+
+
+public class Main2 {
+	public static void main(String[] args) {
+		
+		
+		
+		
+		
+	}
+}

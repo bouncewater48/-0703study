@@ -1,0 +1,11 @@
+package InnerTest;
+// 25번 : 내부클래스
+public class Outer {
+	//Outer 클래스의 필드
+	int var1;
+	String data1 = "Outer"
+	
+	//Outer 클래스의 기본 생성자
+	
+	//Outer 클래스의 인스턴스 메소드
+}

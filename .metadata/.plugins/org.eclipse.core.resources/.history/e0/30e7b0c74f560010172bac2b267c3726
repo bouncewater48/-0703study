@@ -1,0 +1,10 @@
+package casting03;
+// 6번 : 캐스팅의 특징
+public class Dog extends Animal{
+
+	//생성자
+	public Dog(String name, int age) {
+		super(name, age);
+	}
+
+}

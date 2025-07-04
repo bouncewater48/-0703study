@@ -1,0 +1,39 @@
+package Mento;
+
+//랜덤 객체 생성을 위해 java.util에서 끌어오기
+import java.util.Random;
+
+public class Pr4 {
+	public static void main(String[] args) {
+//	143p Q4) 두개의 주사위가 같은 값이 나올 때까지 while문을 사용해 반복하고, 반복 횟수와 주사위 눈의 번호를 출력
+	
+		//주사위 변수 2개, 반복횟수 선언
+		int dice1,dice2;
+		int count = 0;
+		
+		//Random 객체 생성, 쌩으로는 생성이 불가하니 Random이 연결된 java.util에서 끌어옴
+		Random r = new Random();
+		
+		
+		//while(true)
+		while(true) {
+		//	랜덤값 주사위 변수 2개 생성
+		//random은 0부터 시작하므로 0~5, 실수형이라 소수점 표기되는걸 정수형으로 형변환, 주사위의 눈은 1부터니 6개로 선언 후 + 1
+			dice1 = (int)(Math.random()*6)+1;
+			dice2 = (int)(Math.random()*6)+1;
+		//반복횟수를 올리기 위한 count++;
+//			count++;
+			//여기서 하면 실제 반복횟수보다 1 낮게 출력 확인, 출력문에 전위형이 아닌 후위형으로 늦게 출력되게 변경
+			//syso
+			System.out.println("주사위 1의 값 :  " + dice1 + "\t, 주사위 2의 값 : " + dice2 + "\n반복횟수 : " + (++count));
+			//count를 여기에 붙히면 실제 반복횟수보다 
+			//if(dice1 == dice2)
+			if(dice1 == dice2) {
+				//두개의 값이 일치하다면 중단
+				break;
+			}
+//		System.out.println("\n반복횟수 : " + (++count));
+		
+		}
+	}
+}

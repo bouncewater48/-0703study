@@ -1,0 +1,13 @@
+package Accessmodifier02;
+
+import accessModifier01.AccessTarget;
+
+public class AccessTest extends AccessTarget{
+
+	public AccessTest() {
+		super();
+	}
+	
+	
+
+}

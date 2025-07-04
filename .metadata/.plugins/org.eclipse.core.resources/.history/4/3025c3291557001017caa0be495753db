@@ -1,0 +1,11 @@
+package interfaceTest06;
+
+public class TowerFan {
+	public void on() {
+		System.out.println("타워 선풍기를 켭니다");
+	}public void off() {
+		System.out.println("타워 선풍기를 끕니다");
+	}public void turbo() {
+		System.out.println("타워 선풍길르 터보모드로 전환합니다");
+	}
+}

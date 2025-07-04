@@ -1,0 +1,67 @@
+package constroctorBasic01;
+// 1-1번 : 생성자 기초
+public class Tv {
+	//필드
+	//채널, 볼륨, 전원, 색상, 브랜드
+	boolean power; //기본값 : false
+	int ch;
+	int vol;
+	String color;
+	String brand;
+	
+	//메소드
+	//전원이 꺼져있으면 키고, 켜져있으면 끄는 메소드
+	//메소드명 : powerOnOff()
+	void powerOnOff() { //매개변수 x, 리턴값 x
+		// 전원이 켜져있으면 끈다
+//		power = !power; //true로 바뀜
+		System.out.println("전원상태 : " + (power ? "켜짐" : "꺼짐"));
+//		삼항연산자 사용한거, 전원이 꺼진건지 켜진건지 확인
+		if(!power) { //현재 꺼져있는 상태
+			System.out.println("전원 상태 : 켜짐");
+		}else {
+			System.out.println("전원 상태 : 꺼짐");
+		}
+	}
+	
+	//볼륨을 올릴 수 있는 메소드
+	//메소드명 : increaseVolume()
+	// if~else문
+	// power => true 볼륨 +1
+	//		vol <= 99
+	//			볼륨 + 1
+	//		100 초과불가
+	// power => false 전원을 켜주세요
+	
+	void increaseVolume() {
+		System.out.println("현재 볼륨 : ");
+		for(int i = 0; i <= 99; i++) {
+			
+		}
+		if(vol <= 99) {
+			System.out.println("볼륨을 1 올립니다");
+		}else {
+			System.out.println("볼륨을 더 높힐 수 없습니다");
+		}
+		
+	//볼륨을 내릴 수 있는 메소드
+	//메소드명 : decreaseVolume()
+	//power => true
+	//		vol < 0
+	//		볼륨 내리기 불가
+		
+	void decreaseVolume() {
+		System.out.println("현재 볼륨 : " + (vol ? 0 : 1<=vol) );
+	}
+	
+	
+	//채널을 올리는 메소드
+	//메소드명 : nextChannel()
+	
+	//채널을 내리는 메소드
+	//메소드명 : previousChannel()
+	
+	
+	
+	
+}
