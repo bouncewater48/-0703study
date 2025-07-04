@@ -1,0 +1,31 @@
+git 명령어
+	add
+	init
+	status
+	log
+	config
+	checkout
+	log --pretty=oneline
+	git -v
+	--list
+	--global user.name ""
+	--global user.email ""
+
+windows 단축키
+	window + r 실행
+	window + e 파일탐색기
+	ctrl + shift + n 새폴더 생성
+	F2	이름 변경
+	ctrl + 마우스휠  글자크기변경
+	tab 들여쓰기
+	shift + insert 터미널, git bash에서 붙여넣기
+git 설치
+	2.49.0
+	버전관리(로컬/원격)
+	버전관리시스템 git,svn
+git 이론
+	git 버전관리시스템, github git을 관리할 수 있는 서버를 제공하는 사이트
+git 구조
+	local repository(로컬 저장소)
+	staging area(스테이징 영역)(스테이징=커밋하기 전 git이 관리가능한 영역)
+	working directory(작업 폴더)(작업 폴더를 만들었으면 반드시 init 할것)
