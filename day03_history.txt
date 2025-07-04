@@ -1,0 +1,502 @@
+$ history
+    2  git branch -r    :???????
+    3  git branch team4 :team4 브랜치 생성
+    4  git switch team4 :team4 브랜치 변경
+    5  git switch test : test 브랜치 변경
+    6  git switch main :
+    7  git init
+    8  git add .
+    9  git remote add origin https://github.com/bouncewater48/kdt_project04.git : 내 github 링크 가져오기
+   10  git branch team04
+   11  git branch
+   12  git switch team04
+   13  git push origin team04
+   14  git commit "ksh.txt"
+   15  git log
+   16  git stauts
+   17  git status
+   18  git branch
+   19  git switch main
+   20  git status
+   21  git restore --staged test.txt
+   22  git status
+   23  git push origin main
+   24  git remote -v
+   25  git switch team04
+   26  git log
+   27  git remote -v
+   28  git log
+   29  gig status
+   30  git status
+   31  git switch main
+   32  git log
+   33  git status
+   34  git push origin main
+   35  git push origin main
+   36  git commit -m "ksh.txt"
+   37  git log
+   38  git status
+   39  git remote -v
+   40  git init
+   41  git add .
+   42  git remote add https://github.com/bouncewater48/kdt_project04.git
+   43  git remote add origin https://github.com/bouncewater48/kdt_project04.git
+   44  git remote -v
+   45  git init
+   46  git init
+   47  git add .
+   48  git remote add origin https://github.com/bouncewater48/pt1.git
+   49  git remote -v
+   50  git branch -m master main
+   51  git branch
+   52  git branch ksh
+   53  git branch main
+   54  git switch ksh
+   55  git branch ace
+   56  git add .
+   57  git branch ace
+   58  git add .
+   59  git status
+   60  git branch 11
+   61  git branch add .
+   62  git add .
+   63  git log
+   64  git branch ksh
+   65  git remote -v
+   66  git commit -m "250612 17:00"
+   67  git log
+   68  git status
+   69  git restore --staged 11.txt
+   70  git status
+   71  git add .
+   72  git status
+   73  git log
+   74  git remote -v
+   75  git add pt2
+   76  git config --global name.user
+   77  git config --global name.user "bouncewater48"
+   78  git config --global name.email "bouncewater48@gmail.com"
+   79  git log
+   80  git pull origin main --all
+   81  git clone https://github.com/jh011228/team4.git .
+   82  git branch ksh
+   83  git switch ksh
+   84  git add commit add .
+   85  git
+   86  git add commit add .
+   87  git add ,
+   88  git add .
+   89  git log
+   90  git status
+   91  git branch -r
+   92  git commit -m "ksh.txt"
+   93  git log
+   94  git switch main
+   95  git log
+   96  git merge ksh.txt
+   97  git merge ksh
+   98  git log
+   99  git remote add origin5 https://github.com/bouncewater48/kdt_project04.git
+  100  git remote -v
+  101  git push origin5 main
+  102  git push origin5 main
+  103  get remote add origin6 https://github.com/jh011228/team4.git
+  104  get remote add origin5 https://github.com/jh011228/team4.git
+  105  get remote add origin7 https://github.com/jh011228/team4.git
+  106  git remote add origin7 https://github.com/jh011228/team4.git
+  107  git push origin7 ble to a
+  108  git push origin7 https://github.com/bouncewater48/kdt_project04.git
+  109  git push origin origin7 main
+  110  git push origin7 main
+  111  git push origin7 https://github.com/bouncewater48/project03_4_1.git
+  112  git remote origin7 https://github.com/bouncewater48/project03_4_1.git
+  113  git log
+  114  git remote add origin8 https://github.com/bouncewater48/project03_4_1.git
+  115  git remote -v
+  116  git push origin8 main
+  117  git init
+  118  git branch -m master main
+  119  git branch
+  120  git status
+  121  git add .
+  122  git commit -m "250612 14:32 초기 파일 생성"
+  123  git remote -v
+  124  git push origin main
+  125  git remote add origin https://github.com/bouncewater48/kdt_test03.git
+  126  git remote -v
+  127  git push origin main
+  128  git pull main
+  129  git pull origin main
+  130  git pull origin main --allow-unrelated-hisories
+  131  git pull origin main --allow-unrelated-histories
+  132  git push origin main
+  133  git log
+  134  git branch
+  135  git branch dev
+  136  git branch test
+  137  git branch
+  138  git switch test
+  139  git log
+  140  git status
+  141  git add .
+  142  git status
+  143  git commit -m "250612 14:47 test2 파일 생성"
+  144  git push origin test
+  145  git status
+  146  git add .
+  147  git switch dev
+  148  git status
+  149  git status
+  150  git commit -m "250612 14:51 커밋1개"
+  151  git log
+  152  git push origin main
+  153  git push origin dev
+  154  git switch main
+  155  git merge dev
+  156  git push origin main
+  157  git pull origin main
+  158  git status
+  159  git add .
+  160  git status
+  161  git commit -m "250612 15:13 test_dev파일 생성"
+  162  git push origin main
+  163  git log
+  164  git init
+  165  git add .
+  166  git remote add origin
+  167  git remote add origin https://github.com/bouncewater48/kdt_project04.git
+  168  git branch -m master main
+  169  git status
+  170  git log
+  171  git commit -m "ksh.txt"
+  172  git remote add origin https://github.com/jh011228/team4.git
+  173  git push origin main
+  174  git init
+  175  git add .
+  176  git branch -m master main
+  177  git branch test
+  178  git branch test
+  179  git log
+  180  git status
+  181  git add .
+  182  git branch test
+  183  git branch -m main master
+  184  git branch test
+  185  git branch master
+  186  git branch main
+  187  git config -m "test"
+  188  git config -m "test"
+  189  git conmit -m "test"
+  190  git commit -m "test"
+  191  git branch test
+  192  git branch team04
+  193  git branch
+  194  git switch test
+  195  git remote add origin https://github.com/bouncewater48/kdt_test04.git
+  196  git remote -v
+  197  git push origin test
+  198  git switch main
+  199  git branch
+  200  git switch master
+  201  git push origin master
+  202  git switch team04
+  203  git push origin team04
+  204  git remote -v
+  205  git status
+  206  git log
+  207  git commit -m "250613 9:00 연습장 작성"
+  208  git log
+  209  git switch master
+  210  git log
+  211  git status
+  212  git commit -m "250613 9:00 연습장 작성"
+  213  git log
+  214  git commit -m "250613 9:00 연습장 작성"
+  215  git add .
+  216  git commit -m "250613 9:02 연습장 작성"
+  217  git log
+  218  git status
+  219  git init
+  220  git add .
+  221  git init
+  222  git add .
+  223  git status
+  224  git rm --cached test1.txt
+  225  got status
+  226  git log
+  227  git branch -m master main
+  228  git rm --cached test1.txt
+  229  git status
+  230  git commit -m "250613 10:15 test1 파일 생성"
+  231  git status
+  232  git log
+  233  git fetch test2.txt
+  234  git status
+  235  git add test2.txt
+  236  git commit -m "250613 10:17 test2 파일 생성"
+  237  git stawtus
+  238  git status
+  239  git test1.txt
+  240  git log
+  241  git remote add origin https://github.com/bouncewater48/gitTest1.git
+  242  git remote -v
+  243  git add pull origin main
+  244  git push origin main
+  245  git pull origin main
+  246  git branch test1
+  247  git branch test2
+  248  git switch test1
+  249  git init
+  250  git add .
+  251  git branch -m master - main
+  252  git init
+  253  git branch -m master main
+  254  git config --list
+  255  git add .
+  256  git status
+  257  git rm --cached test1.txt
+  258  git remote add ori https://github.com/bouncewater48/gitTest1.git
+  259  git remote -v
+  260  git branch test1
+  261  git add .
+  262  git log
+  263  git status
+  264  git branch
+  265  git add .
+  266  git status
+  267  git rm --cached test1.txt
+  268  git status
+  269  git commit -m "3일차 수업"
+  270  git rm --cached test2.txt
+  271  git status
+  272  git commit -m "2일차 수업중"
+  273  git status
+  274  git log
+  275  git remote -v
+  276  git push ori main
+  277  git pull ori main
+  278  git merge
+  279  git merge test1
+  280  git branch
+  281  git branch test1
+  282  git branch test2
+  283  git merge test1
+  284  git merge test2
+  285  git pull ori main
+  286  git fetch --prune
+  287  git push ori main
+  288  git pull ori main
+  289  git log
+  290  git switch test1
+  291  git commit -m "250613 10:37 test1 파일 생성"
+  292  git add test1.txt
+  293  git commit -m "250613 10:37 test1 파일 생성"
+  294  git switch test2
+  295  git commit -m "250613 10:38 test2 파일 생성"
+  296  git add test2.txt
+  297  git commit -m "250613 10:38 test2 파일 생성"
+  298  git switch main
+  299  git merge test1
+  300  git merge test2
+  301  git pull ori main
+  302  git --allow-unrelated-histories
+  303  git pull ori main
+  304  git push ori main
+  305  got remote -v
+  306  got remote -v
+  307  git remote show or
+  308  git remote show ori
+  309  git push
+  310  git push --set-upstream ori main
+  311  git pull ori main
+  312  git init
+  313  git branch
+  314  git branch test1
+  315  git branch -m master main
+  316  git branch test1
+  317  git add .
+  318  git branch test1
+  319  git branch
+  320  git branch test1
+  321  git add .
+  322  git branch test1
+  323  git branch
+  324  git log
+  325  git status
+  326  git rm --cached test1.txt
+  327  git commit -m "250613 10:44 test1 파일 생성"
+  328  git --list
+  329  git status
+  330  git log
+  331  git switch test1
+  332  git branch test1
+  333  git branch tes2
+  334  git switch test1
+  335  git commit -m "250613 10:44 test2 파일 생성"
+  336  git add .
+  337  git commit -m "250613 10:44 test2 파일 생성"
+  338  git init
+  339  git commit -m "해방단 강승훈"
+  340  git add .
+  341  git commit -m "해방단 강승훈"
+  342  echo "해방단 강승훈"
+  343  git branch -m master main
+  344  git add .
+  345  git clone https://github.com/bjy5656/gitClone.git main
+  346  git echo "해방단 강승훈"
+  347  git clone https://github.com/bjy5656/gitClone.git master
+  348  git branch -m master main
+  349  git log
+  350  q
+  351  git status
+  352  git remote -v
+  353  git remote set-url origin https://github.com/bouncewater48/gitClone1.git
+  354  got remote -v
+  355  git remote -v
+  356  git add commit -m "강승훈"
+  357  git add .
+  358  git status
+  359  git log
+  360  git commit -m "강승훈"
+  361  git remote -v
+  362  git push origin main
+  363  git clone https://github.com/bjy5656/gitClone.git main
+  364  git remote -v
+  365  git add .
+  366  git branch -m master main
+  367  .git
+  368  git init
+  369  git branch -m master main
+  370  echo "3dlfck tndjq" > test1.txt
+  371  echo "3dlfck tndjq" > test1.txt
+  372  echo "3일차 수업" > test1.txt
+  373  echo "2일차 수업중" > test2.txt
+  374  git status
+  375  git add .
+  376  git status
+  377  git add test1.txt
+  378  git add test2.txt
+  379  git rm --cached test1.txt test2.txt
+  380  git commit -m "250613 10:52 파일 생성"
+  381  git add .
+  382  git add test1.txt test2.txt
+  383  git commit -m "250613 10:52 파일 생성"
+  384  git remote add origin https://github.com/bouncewater48/gitTest1.git
+  385  git remote -v
+  386  git pull origin main
+  387  git pull origin main
+  388  git pull origin main test1
+  389  git pull origin main test1.txt
+  390  git pull origin test1
+  391  git pull origin test1.txt
+  392  git merge origin main
+  393  git merge main test1.txt
+  394  git merge main
+  395  git merge main test1
+  396  git branch
+  397  git merge
+  398  git checkout main
+  399  git branch master -f
+  400  git checkout main
+  401  git pull origin main --allow-unrelated-histories
+  402  git pull origin main
+  403  git push origin main
+  404  git clone https://github.com/bouncewater48/gitTest1.git
+  405  git branch test-file
+  406  git branch test-dev
+  407  git switch test-file
+  408  git commit -m "250613 11:11 클론 내용"
+  409  git add test3.txt
+  410  git commit -m "250613 11:11 클론 내용"
+  411  git switch test-dev
+  412  git commit test1.txt -m "11"
+  413  git log
+  414  git switch main
+  415  git merge test-dev
+  416  git push origin main
+  417  git clone
+  418  git clone gitclone.txt
+  419  git clone https://github.com/bjy5656/gitClone.git main
+  420  git hisory
+  421  history
+  422  git log
+  423  git status
+  424  git add .
+  425  git add main
+  426  git status
+  427  git add .
+  428  git commit -m "강승훈"
+  429  git lgo
+  430  gig log
+  431  gitlog - git log 띄워쓰기
+  432  git log
+  433  git status
+  434  git clone https://github.com/bouncewater48/gitClone.git
+  435  git remote -v
+  436  git add .
+  437  git remote -v
+  438  git clone https://github.com/LeeTaeHo00/gitClone.git
+  439  git clone https://github.com/guandeh17/Self-Forcing.git
+  440  git log
+  441  git init
+  442  git add .
+  443  git branch -m master main
+  444  git branch test1
+  445  git init
+  446  git add .
+  447  git branch
+  448  git clone https://github.com/BuddleK/teamHB.git
+  449  git branch
+  450  git branch ksh
+  451  git branch
+  452  git switch ksh
+  453  git commit -m "250613 12:17 연습 파일 생성"
+  454  git add .
+  455  git commit -m "250613 12:17 연습 파일 생성"
+  456  git switch ksh
+  457  git log
+  458  git switch main
+  459  git branch -D ksh
+  460  git branch ksh
+  461  git commit -m "250613 12:24 강승훈 수정기능"
+  462  git add login.html
+  463  git commit -m "250613 12:24 강승훈 수정기능"
+  464  git switch ksh
+  465  git commit -m "250613 12:24 강승훈 수정기능"
+  466  git log
+  467  git add ksh
+  468  git switch main
+  469  git switch ksh
+  470  git commit -m "250613 12:24 강승훈 수정기능"
+  471  git add login.html
+  472  git commit -m "250613 12:24 강승훈 수정기능"
+  473  git log
+  474  git remote add https://github.com/BuddleK/teamHB.git
+  475  git pull https://github.com/BuddleK/teamHB.git
+  476  git remote add origin https://github.com/BuddleK/teamHB.git
+  477  git pull https://github.com/BuddleK/teamHB.git : pull로 다른 팀원 github 문서 내려받기
+  478  git remote add https://github.com/BuddleK/teamHB.git
+  479  git init
+  480  git add .
+  481  git branch -m master main
+  482  git branch ksh
+  483  git add main
+  484  git add .
+  485  git branch
+  486  git
+  487  git branch ksh
+  488  git add .
+  489  git branch
+  490  git branch ksh
+  491  git brnach
+  492  git branch
+  493  git branch ksh
+  494  git remote add https://github.com/BuddleK/teamHB.git
+  495  git clone https://github.com/BuddleK/teamHB.git
+  496  git add .
+  497  git pull
+  498  git pull https://github.com/BuddleK/teamHB.git
+  499  git push https://github.com/BuddleK/teamHB.git
+  500  git clone https://github.com/BuddleK/teamHB.git
+  501  history
+

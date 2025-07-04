@@ -1,0 +1,694 @@
+day03
+
+복습 -> 팀 깃 실습 -> 자바 설치
+
+0. 복습
+git, git-hub
+	git : 버전 관리 시스템(로컬에서 사용)(버전을 분리하기에 상대적으로 안전)
+	git-hub : git을 저장하고 공유할 수 있는 서버를 제공하는 사이트
+	
+git의 구조
+- Working Directory(작업 공간)
+         $ git init
+         파일 - untracked 상태
+	
+- Staging Area(스테이징 영역)
+	  실수를 최소화하기 위해 사용함.(되돌아가기 가능)
+
+          tracked(추적)상태
+          unmodified : 수정이 되지 않은 상태
+          modified   : (staging area에 들어온 파일이)수정이 된 상태
+          staged     : 로컬 저장소에 올릴 준비가 완료된 상태
+
+- Local Repository(로컬 저장소)
+	git commit -m "커밋메시지"
+	협업을 하는 경우 커밋을 수시로 하지 않으면 다른 사람의 작업물에
+	내 작업물이 묻혀 사라질 가능성이 있음
+
+	commit을 한번이라도 한 적이 있어야 되돌아가기 가능,
+	commit을 한번도 안한 상태면 뒤로 되돌아가기 X
+
+	내가 원할 때 언제든 이전에 저장한 버전으로(이전 commit 시점)으로 돌아갈 수 있다.
+
+-Remote Repository(원격 저장소)
+	git-hub에 레퍼지토리가 있어야 원격 업로드 가능
+	다른 사람의 주소로 올릴 경우 권한이 없기에 문제를 야기할 가능성 up!
+	
+	git-hub 원격 저장소에 저장공간(repository)를 만들고 그 주소를 로컬(git bash)에서	
+	연결해주는 작업 선행 필수!
+	
+	$ git remote add 이름 주소
+	  (동일한 이름 여러개 X, 고유임)
+	$ git remote -v
+	
+	$ git push 이름 브랜치명(내가 올릴때(업로딩할때))
+	$ git pull 이름 브랜치명(내가 내릴때(다운받을때))
+
+브랜치(Branch)
+	한 개의 저장소에서 여러 갈래로 나누어 관리할 수 있게 하는 개념
+	-브랜치끼리는 서로 독립적임(영향을 서로 받지 않음)
+	-브랜치를 만들기 위해서는 반드시 commit이 선행되거나 원격에서 pull을 해야함
+	-브랜치끼리는 서로 영향을 받지 않기 때문에 개별적인 작업을 진행할 수 있다
+	-Git은 기본적으로 master, Git-Hub는 main 메인으로 사용된다
+
+	$ git branch : 브랜치 확인
+	$ git branch 브랜치이름 : 브랜치 생성
+	$ git switch (- or 브랜치 이름) : 브랜치 변경
+	$ git switch -c 브랜치이름 : 브랜치 생성 후 변경
+	$ git branch -m 기존이름 변경할이름 : 브랜치 수정
+	$ git branch -D 브랜치이름 : 브랜치 삭제
+	$ git merge 병합할 브랜치이름 : 브랜치 병합
+	
+
+	(main)
+	$ 작업 진행, 커밋완료
+	test 브랜치에서 main에서 작업한 내용을 병합
+	(test브랜치로 이동)
+	$ git merge main (메인을 병합)
+	
+git log
+	커밋날짜, 시간, 메시지, 체크섬, 작업자
+	log에선 원격에서 작업한 push 내용 확인이 가능하다
+	원격에서 버튼으로 클릭한것은 log에 출력이 안될 수 있음
+	
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02
+git에 아직 작업하지 않아서 그냥 폴더인 상태
+
+git clone을 하게 될 경우 원격에서 복제해오기에 init을 하지 않아도 사용 가능하다
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (master)
+$ git config -list
+error: did you mean `--list` (with two dashes)?
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (master)
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=schannel
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=bouncewater48
+user.email=bouncewater48@gmail.com
+name.user=bouncewater48
+name.email=bouncewater48@gmail.com
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+
+git 확인
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (master)
+$ git init
+Reinitialized existing Git repository in D:/web_0900_ksh/GIT/workspace/git02/.gi
+t/
+
+git 사용가능하게
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (master)
+$ git branch -m master main
+
+git master를 main으로 변경
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git branch
+branch 확인
+
+day03_1.txt 문서 작성
+git 명령어 복습
+클론 시 명령어 작성
+git clone 주소 .(현재폴더)
+
+
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git add .
+
+현재 폴더 추가
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   day03_1.txt
+
+커밋가능한 상태로 변경
+
+"git rm --cached <file>..."
+언트랙티드 상태로 변경하는 명령어
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git rm --cached day03_1.txt
+rm 'day03_1.txt'
+변경
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        day03_1.txt
+
+언트랙티드로 변경됨 확인
+
+day03_2.txt 작성
+저장소의 종류
+로컬저장소, 원격저장소
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        day03_1.txt
+        day03_2.txt
+
+2개로 늘어남
+add할때 .을 찍으면 안됨, 둘다 올라감
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   day03_1.txt
+        new file:   day03_2.txt
+
+둘 다 올라간 상태
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git rm --cached day03_1.txt
+rm 'day03_1.txt'
+
+_1을 내림
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git commit -m "250613 09:35 3일차 1교시 첫번째 커밋"
+[main (root-commit) 4549d01] 250613 09:35 3일차 1교시 첫번째 커밋
+ 1 file changed, 2 insertions(+)
+ create mode 100644 day03_2.txt
+커밋
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        day03_1.txt
+
+_1에만 올라가고 _2엔 안올라감
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git log
+commit 4549d0106c2d3990e3c7bb97bf940bec19c4c03a (HEAD -> main)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 09:36:27 2025 +0900
+
+    250613 09:35 3일차 1교시 첫번째 커밋
+
+
+log에 1로 올라간게 확인됨
+
+kdt_day03 깃허브 생성
+
+README.md 1개 생성, 1커밋
+
+코드주소 복사
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git remote -v
+
+리모트한게 없어서 안나옴
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git remote add origin https://github.com/bouncewater48/kdt_day03.git
+
+
+origin으로 리모트 추가
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git push origin main
+To https://github.com/bouncewater48/kdt_day03.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/bouncewater48/kdt_day03.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+rejected 뜨면서 안됨, pull을 먼저 받아야한다는 설명문 안내
+
+git commit --amend -m "수정할 메시지" 
+
+맨 아랫줄에서 o 누르고 커밋메시지 작성
+작성 후 esc, : 누르고 wq 작성으로 나가기
+
+
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 855 bytes | 142.00 KiB/s, done.
+From https://github.com/bouncewater48/kdt_day03
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+Merge made by the 'ort' strategy.
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
+어멘드로 문구 수정
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git log
+commit 893aa448eb77d48732a6011831a795570bfe39af (HEAD -> main)
+Merge: 4549d01 c01ea14
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 09:41:17 2025 +0900
+
+    Merge branch 'main' of https://github.com/bouncewater48/kdt_day03
+    원격 저장소와 로컬 저장소 병합
+
+commit c01ea1453b0ebdbf091745f1e99a46f8aed1e430 (origin/main)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 09:37:34 2025 +0900
+
+    Initial commit
+
+commit 4549d0106c2d3990e3c7bb97bf940bec19c4c03a
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 09:36:27 2025 +0900
+
+    250613 09:35 3일차 1교시 첫번째 커밋
+
+수정한거 확인됨
+
+09:37:34 2025 +0900
+09:36:27 2025 +0900
+수정한 시간 확인가능
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git push origin main
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 651 bytes | 651.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/bouncewater48/kdt_day03.git
+   c01ea14..893aa44  main -> main
+
+파일 push해서 깃허브로 업로드
+
+day03_2.txt
+250613 09:35 3일차 1교시 첫번째 커밋
+7 minutes ago
+업로드된거 확인.
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        day03_1.txt
+
+day03_1도 올릴거임
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git push origin main
+To https://github.com/bouncewater48/kdt_day03.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/bouncewater48/kdt_day03.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+다시 내려 받아야 올릴 수 있게됨
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git pull origin main
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 1.83 KiB | 267.00 KiB/s, done.
+From https://github.com/bouncewater48/kdt_day03
+ * branch            main       -> FETCH_HEAD
+   893aa44..c4818f4  main       -> origin/main
+Updating 893aa44..c4818f4
+Fast-forward
+ day03_2.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+저장소의 종류
+로컬저장소, 원격저장소
+
+
+깃허브에서 내용 수정
+
+원격에서 수정한 내용이 반영된거 확인(_1이 되야하는데 2로 했었음 실수로)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git log
+commit c4818f4a8237ffb610fb805fc1e1d69fb11623f0 (HEAD -> main, origin/main)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 09:45:00 2025 +0900
+
+    Update day03_2.txt
+
+    깃허브에서 내용 수정
+
+commit d0a56b7ce72c8a9b615c489de321ab8c52480e8f
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 09:44:37 2025 +0900
+
+    Update day03_2.txt
+
+commit 893aa448eb77d48732a6011831a795570bfe39af
+Merge: 4549d01 c01ea14
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 09:41:17 2025 +0900
+
+    Merge branch 'main' of https://github.com/bouncewater48/kdt_day03
+    원격 저장소와 로컬 저장소 병합
+
+commit c01ea1453b0ebdbf091745f1e99a46f8aed1e430
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 09:37:34 2025 +0900
+
+    Initial commit
+
+commit 4549d0106c2d3990e3c7bb97bf940bec19c4c03a
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 09:36:27 2025 +0900
+
+    250613 09:35 3일차 1교시 첫번째 커밋
+
+main이 수정된거 확인!
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git add .
+
+지금은 전부 올라갈거라 . 상관없음
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git commit -m "250613 09:48 3일차 1교시 두번째 로컬에서 커밋"
+[main 4faaef6] 250613 09:48 3일차 1교시 두번째 로컬에서 커밋
+ 1 file changed, 3 insertions(+)
+ create mode 100644 day03_1.txt
+
+두번째도 커밋
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 440 bytes | 440.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/bouncewater48/kdt_day03.git
+   c4818f4..4faaef6  main -> main
+
+_1도 업로드
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git remote -v
+origin  https://github.com/bouncewater48/kdt_day03.git (fetch)
+origin  https://github.com/bouncewater48/kdt_day03.git (push)
+
+오리진 업로드 확인
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git remote rename origin ori
+Renaming remote references: 100% (1/1), done.
+
+origin에서 ori로 이름 변경 (rename)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git remote -v
+ori     https://github.com/bouncewater48/kdt_day03.git (fetch)
+ori     https://github.com/bouncewater48/kdt_day03.git (push)
+
+앞에 origin이 ori로 변경된 모습
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git remote remove ori
+
+ori 삭제
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git02 (main)
+$ git remote -v
+
+ori가 삭제되서 출력이 안되는 상태(remote 이름이 없으면 출력이 안됨)
+
+2.[실습1] 개인 실습
+	workspace에 gitTest1이라는 폴더 만들기(로컬)
+	test1.txt 파일에 "3일차 수업"으로 작성
+	test2.txt 파일에 "2교시 수업중"으로 작성
+	상태 확인 후 커밋까지 진행(커밋 메시지 형식 : 날짜 시간 어떤 파일을 생성했는지/수정했는	지 작성")
+	                     ex) 250613 10:10 test1 파일 생성
+	원격 레포지토리 gitTest1 이름으로 만들기, README.md 파일 생성(원격)
+	원격 레포지토리와 로컬 레포지토리 연결
+	test1.txt, test2.txt 파일 push
+
+[실습2] 클론 후 브랜치 생성 작업
+	원격저장소 클론 받기(workspace에 gitTest2 폴더)
+	새로운 브랜치 생성(test-file, test-dev)	
+	test-file 브랜치로 test3.txt 파일에 "클론 후 작업 중"
+	커밋메시지 "날짜 시간 클론 내용" 작성
+	test-dev 브랜치로 test4.txt파일 만들고 아무내용 작성x
+	test-dev 브랜치에서 test1.txt 파일에 내용 추가
+	커밋된 상태에서 main 브랜치로 이동후 test-dev 브랜치 병합
+	해당 내용을 main 브랜치에서 push
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/gitTest1
+$ git init
+Initialized empty Git repository in D:/web_0900_ksh/GIT/workspace/gitTest1/.git/
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/gitTest1 (master)
+$ git branch -m master main
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/gitTest1 (main)
+$ echo "3일차 수업" > test1.txt
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/gitTest1 (main)
+$ echo "2일차 수업중" > test2.txt
+문서 생성 명령어
+
+echo로 만들고 add .을 쓰면 워닝 나옴, 각각 add 해야함
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/gitTest1 (main)
+$ git add test1.txt
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/gitTest1 (main)
+$ git add test2.txt
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/gitTest1 (main)
+$ git rm --cached test1.txt test2.txt
+rm 'test1.txt'
+rm 'test2.txt'
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+[실습3] 팀별실습
+커밋메시지 : 날짜 시간 팀원1 홍길동 이름 추가
+			---
+
+팀원1이 레포지토리 gitClone 만들기(워크스테이지)(원격, 로컬)
+	원격에서는 readme.md 파일 추가
+	gitclone.txt 파일을 만들고 팀명과 본인 이름을 추가한다
+	본인이 만든 원격 레포지토리에 올린다
+
+팀원2가 팀원1이 만든 레포지토리 클론 후 gitclone.txt 파일 아래에 본인 이름을 추가한다
+	본인의 원격 레포지토리에 올린다
+
+팀원들이 모두 동일한 방식으로 진행 후 맨 마지막에 팀장이 받아서 본인 이름을 추가한다
+깃허브링크를 단톡방에 올린다
+
+remote 명은 origin으로만 간다
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+[팀실습]
+	팀원 1명이 개인 레포지토리를 만들고 나머지 팀원이 clone해서 사용
+	팀원이 직접 git remote add로 팀장의 레포지토리를 등록
+	
+	하나의 레포지토리 안에서 브랜치를 만들어 팀원이 각자 "파일 생성"
+	팀장은 각 팀원의 브랜치를 pull 받아서 병합(public)
+	
+	그냥 클론을 받으면 작성 권한이 없음, 권한을 받아야 가능함
+	settings - collaborators (비밀번호 입력) - add people 클릭 - 
+	팀원의 깃허브 아이디(내꺼는 bouncewater48)를 등록,추가 - 
+	화면 우상단 혹은 이메일로 온 초대 수락 후 accept invitation까지 해야 권한 받음
+
+	login.html 확장자로 만들기
+	메모장 - 제목을 login.html, 모든 확장자로 생성
+	
+	login.html	=> 로그인 기능
+	sign.html 	=> 회원가입 기능
+	write.html	=> 쓰기 기능
+	delete.html	=> 삭제 기능
+	update.html	=> 수정 기능
+
+	브랜치 명은 본인이름(영문자이니셜)(ksh)
+	커밋 메시지 날짜 시간 이름 어떤기능(난 수정기능!)
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git_team4_3/teamHB (main)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git_team4_3/teamHB (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   update.html
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git_team4_3/teamHB (main)
+$ git commit -m "250613 12:39 강승훈 수정기능"
+[main c2111b5] 250613 12:39 강승훈 수정기능
+ 1 file changed, 1 insertion(+)
+ create mode 100644 update.html
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git_team4_3/teamHB (main)
+$ git log
+commit c2111b5bc4fac8fa5f65303ebed6c13771751561 (HEAD -> main)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 12:39:34 2025 +0900
+
+    250613 12:39 강승훈 수정기능
+
+commit 59b9fa40017446260a5133f146493625fcb51fef (origin/main, origin/HEAD)
+Merge: 4109e66 25e76d1
+Author: BuddleK <kangbudle01@gmail.com>
+Date:   Fri Jun 13 12:37:02 2025 +0900
+
+    Merge branch 'bjy' of https://github.com/BuddleK/teamHB
+    delete 추가 과정에서 병합
+
+commit 25e76d1f5b5f1284de51233831886d47ac3926f2 (origin/bjy)
+Author: bjy5656 <qorwjddl1234@gmail.com>
+Date:   Fri Jun 13 12:31:39 2025 +0900
+
+    250613 12:31 백정이 삭제 기능
+
+commit 4109e6665d6183bf78f43360f34d40b3a428321a (origin/cjh)
+Author: jh011228 <jh01122844@gmail.com>
+Date:   Fri Jun 13 12:24:43 2025 +0900
+
+    250613 12:24 최장현 로그인 기능
+
+commit 2d26654d65ae8e7f0a16d9a6957ce25a545d52bf
+q
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git_team4_3/teamHB (main)
+$ git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 316 bytes | 316.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/BuddleK/teamHB.git
+   59b9fa4..c2111b5  main -> main
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git_team4_3/teamHB (main)
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/git_team4_5_1/teamHB2 (ksh)
+$ git log
+commit 5a667ac20ab5ecbb3c44e7fe6bbe56445656c923 (HEAD -> ksh)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Fri Jun 13 14:33:39 2025 +0900
+
+    250613 14:42 강승훈 수정 기능
+
+commit 102be498c642de66c4b7eb93835e9eac17d05a74
+Author: BuddleK <kangbudle01@gmail.com>
+Date:   Fri Jun 13 14:30:46 2025 +0900
+
+    250613 14:30 강버들 쓰기 기능 추가
+
+commit 020ed136253c8f8e60cea2274ac47da183aa28e9 (main)
+Merge: 733c96e b3caab3
+Author: bjy5656 <qorwjddl1234@gmail.com>
+Date:   Fri Jun 13 14:27:53 2025 +0900
+
+    Merge branch 'bjy' of https://github.com/bjy5656/teamHB2
+    병합2
+
+commit b3caab3bd4bd31b95ed5e78726ab0bfa03d47362
+Author: bjy5656 <qorwjddl1234@gmail.com>
+Date:   Fri Jun 13 14:23:42 2025 +0900
+
+    250613 14:23 백정이 삭제 기능
+
+commit 733c96e1fcbaa107495ed568474e3ffc34ae566e
+Author: jh011228 <jh01122844@gmail.com>
+Date:   Fri Jun 13 14:22:43 2025 +0900
+
+    250613 14:22 최장현 로그인 기능
+
+commit f8a19c36356b8acbde0aa011ac565340adf367be (origin/main, origin/HEAD)
+Author: bjy5656 <qorwjddl1234@gmail.com>
+Date:   Fri Jun 13 14:18:50 2025 +0900
+
+    Create README.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

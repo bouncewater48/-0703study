@@ -1,0 +1,142 @@
+
+0. 복습
+git, git-hub
+	git : 버전 관리 시스템(로컬에서 사용)(버전을 분리하기에 상대적으로 안전)
+	git-hub : git을 저장하고 공유할 수 있는 서버를 제공하는 사이트
+	
+git의 구조
+- Working Directory(작업 공간)
+         $ git init
+         파일 - untracked 상태
+	
+- Staging Area(스테이징 영역)
+	  실수를 최소화하기 위해 사용함.(되돌아가기 가능)
+
+          tracked(추적)상태
+          unmodified : 수정이 되지 않은 상태
+          modified   : (staging area에 들어온 파일이)수정이 된 상태
+          staged     : 로컬 저장소에 올릴 준비가 완료된 상태
+
+- Local Repository(로컬 저장소)
+	git commit -m "커밋메시지"
+	협업을 하는 경우 커밋을 수시로 하지 않으면 다른 사람의 작업물에
+	내 작업물이 묻혀 사라질 가능성이 있음
+
+	git commit --amend -m "수정할 메시지" : 메시지 내용 수정
+
+	commit을 한번이라도 한 적이 있어야 되돌아가기 가능,
+	commit을 한번도 안한 상태면 뒤로 되돌아가기 X
+
+	내가 원할 때 언제든 이전에 저장한 버전으로(이전 commit 시점)으로 돌아갈 수 있다.
+
+-Remote Repository(원격 저장소)
+	git-hub에 레퍼지토리가 있어야 원격 업로드 가능
+	다른 사람의 주소로 올릴 경우 권한이 없기에 문제를 야기할 가능성 up!
+	
+	git-hub 원격 저장소에 저장공간(repository)를 만들고 그 주소를 로컬(git bash)에서	
+	연결해주는 작업 선행 필수!
+	
+	$ git remote add 이름 주소
+	  (동일한 이름 여러개 X, 고유임)
+	$ git remote -v
+	
+	$ git push 이름 브랜치명(내가 올릴때(업로딩할때))
+	$ git pull 이름 브랜치명(내가 내릴때(다운받을때))
+
+브랜치(Branch)
+	한 개의 저장소에서 여러 갈래로 나누어 관리할 수 있게 하는 개념
+	-브랜치끼리는 서로 독립적임(영향을 서로 받지 않음)
+	-브랜치를 만들기 위해서는 반드시 commit이 선행되거나 원격에서 pull을 해야함
+	-브랜치끼리는 서로 영향을 받지 않기 때문에 개별적인 작업을 진행할 수 있다
+	-Git은 기본적으로 master, Git-Hub는 main 메인으로 사용된다
+
+	$ git branch : 브랜치 확인
+	$ git branch 브랜치이름 : 브랜치 생성
+	$ git switch (- or 브랜치 이름) : 브랜치 변경
+	$ git switch -c 브랜치이름 : 브랜치 생성 후 변경
+	$ git branch -m 기존이름 변경할이름 : 브랜치 수정
+	$ git branch -D 브랜치이름 : 브랜치 삭제
+	$ git merge 병합할 브랜치이름 : 브랜치 병합
+	만약 merge가 안된다면
+	$ git pull origin 브런치명 --allow-unrelated-histories
+	명령어를 통해 강제 병합을 실행시킬 수 있다
+	~세로줄 윗줄,맨 아랫줄에서 o 누르고 커밋메시지 작성
+	작성 후 esc, :(shift + ;) 누르고 wq(저장하고 나가기) 작성으로 나가기
+	
+
+
+
+	(main)
+	$ 작업 진행, 커밋완료
+	test 브랜치에서 main에서 작업한 내용을 병합
+	(test브랜치로 이동)
+	$ git merge main (메인을 병합)
+	
+git log
+	커밋날짜, 시간, 메시지, 체크섬, 작업자
+	log에선 원격에서 작업한 push 내용 확인이 가능하다
+	원격에서 버튼으로 클릭한것은 log에 출력이 안될 수 있음
+
+
+1. 원격 저장소 관련 명령어
+	$ git push 원격저장소이름 로컬브랜치이름 (원격에 올리기)
+	  로컬 브랜치의 변경 내용을 원격저장소로 보내기
+
+	$ git pull 원격저장소이름 로컬브랜치이름
+	  원격 저장소의 변경내용을 가져오고 현재 브랜치에 병합
+
+	$ git fetch 원격저장소이름
+	  원격 저장소의 변경내용을 가져오기만 하고 병합은 하지 않음
+
+	$ git remote -v
+	  현재 등록된 원격저장소를 확인
+
+	$ git remote show 원격저장소이름
+	  원격 저장소의 상세정보 보기
+
+	$ git fetch --prune
+	  원격 저장소에서 삭제된 브랜치를 로컬 저장소에서도 제거
+	  (이미 삭제된 원격 브랜치가 로컬에 남아있는 경우)
+
+	$ git remote rename 기존이름 변경할이름
+	  원격 저장소의 이름을 수정
+
+	$ git remote remove 원격저장소이름
+	  원격 저장소 이름 삭제
+
+	$ git remote set-url 원격저장소이름 원격저장소주소
+	  원격 저장소의 URL 주소 수정
+
+
+	파일을 리눅스 명령어를 이용하여 생성 시(ex : echo "3일차 수업"> test1.txt)
+	(리눅스 방식을 윈도우 방식으로 바꿔주는것)
+	warning: in the working copy of 'test1.txt', LF will be replaced by CRLF the 		next time Git touches it
+
+	원래 LF라는 방식으로 만들어진건데, 나중에 이거로 체크아웃하면 자동으로 바뀐다 라는 내용의 워닝문구
+	나중에 LF,CRLF라는 문구가 나오면 단순 경고 메시지일뿐 기능상 문제가 없으니 무시해도 됨
+	단순 경고 메시지, LF 방식으로 만들어진 test1.txt 파일이 나중에 CSLF로 바뀔 예정이다 라는 의미
+
+	vi 커밋메시지 : 메시지 메모장에 바로 추가
+
+	$ echo "문서 내용" : 문서 내용을 git bash에서 바로 생성하는게 가능하다
+
+	html 확장자 기능
+	login.html	=> 로그인 기능
+	sign.html 	=> 회원가입 기능
+	write.html	=> 쓰기 기능
+	delete.html	=> 삭제 기능
+	update.html	=> 수정 기능
+
+
+
+
+
+
+
+
+
+
+
+
+
+

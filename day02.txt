@@ -1,0 +1,2056 @@
+day02
+
+복습 -> 브랜치 -> 원격 레포지토리 -> 실습
+
+0. 복습
+버전
+	프로그램을 수정하여 개선한 것
+	1.1	메이저버전번호.마이너버전번호
+	1.1.1	메이저버전번호.마이너버전번호.패치버전번호
+
+
+버전번호
+	소프트웨어나 프로젝트의 업데이트 레벨을 식별하기 위해 사용
+	(안써도 문제는 없으나 나중에 구분하기가 매우 힘들어짐!)
+
+버전관리
+	로컬(Git)(내 pc)/원격(GitHub)(전체 공유)
+
+버전관리시스템
+	git, svn
+
+Git-Hub
+	git을 저장하고 공유할 수 있는 서버를 제공하는 사이트.
+	
+Git 구조
+	working directory(작업폴더)
+		작업하는 공간
+		git init => .git
+
+		파일의 상태	untracked
+
+	staging area(스테이징 영역)
+		스테이징 영역에 있는 파일들은 git의 관리 대상
+		git add . or git add 파일명
+		
+		파일의 상태	tracked
+		tracked 상태의 종류 3가지
+			unmodified	수정이 되지 않은 상태
+			modified	수정이 된 상태
+			staged		로컬 저장소에 올릴 준비가 완료된 상태
+
+	local repository
+		staged 상태의 파일을 commit 하면 로컬 저장소에 저장된다
+
+	remote repository
+		git-hub 원격 저장소
+		원격 저장소에 올리기 위해 git-hub 저장공간(repository)을 만들고	
+		그 주소를 git bash를 이용해 연결해주는 작업이 선행되어야한다
+		push(로컬저장소 -> 원격저장소로 올릴때 씀) 
+		pull(원격저장소 -> 로컬저장소로 내릴때 씀)
+
+기본명령어
+	git -v(버전 확인하기)
+	git config --list(설정 확인하기)
+	git config --global user.name "깃허브이름"
+	git config --global user.email "이메일주소"
+
+	-와 --는 갯수를 틀릴시 오류가 발생하니 주의
+
+	git init
+	git status
+	git add . or 파일명
+	git commit -m "커밋메시지"
+	git log
+	git log --pretty=oneline
+	git checkout 체크섬(앞 7자리) or 브랜치이름 or -(가장 최근 시점으로 되돌아가기)
+	git commit --amend -m "수정할 메시지" (커밋한 메시지를 수정할때)
+
+1) 브랜치(branch)
+	1. 일반적인 버전 업데이트
+		커밋a - 커밋 a + b - 커밋 a + b + c
+
+	2. c작업을 취소하고 d작업을 추가할 때
+		1)커밋a - 커밋 a + b - 커밋 a + b + c
+		2)커밋a - 커밋 a + d - 커밋 a + c + d
+		
+	3. 여러 버전을 나누어 작업하고 싶을 때
+		1.커밋a - 커밋 a + b - 커밋 a + b + c
+		2.커밋a - 커밋 a + b - 커밋 a + b + d
+			            (1에서 작업한 abc를 날리지 않고 새로 함)
+
+	한개의 저장소를 여러 갈래로 나누어 관리할 수 있게 해주는 개념
+	브랜치끼리는 서로 영향을 받지 않기 때문에 개별적인 작업을 진행할 수 있다
+	Git은 기본적으로 master 브랜치르 메인으로 사용한다
+	(브랜치라는 것은 독립적으로 작업할 수 있는 하나의 선이다)
+	GitHub는 기본적으로 main 브랜치를 메인으로 사용한다
+	
+
+- 브랜치 명령어
+	git branch
+		현재 브랜치의 목록을 보기
+	git branch 브랜치이름
+		새 브랜치 만들기
+	git checkout 브랜치 이름
+	git switch 브랜치 이름
+		브랜치 이동 명령어
+	git switch -c 브랜치이름
+		브랜치를 만들고 해당 브랜치로 바로 이동
+	git branch -D 브랜치이름
+		브랜치 삭제
+	git branch -m 기존이름 변경할 이름
+		브랜치명 수정			
+
+	git와 github는 마스터명이 다름, 그래서 github에선 main으로 바꿔올려야함
+
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (master)
+$ git branch -m master main
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test1.txt
+        test2.txt
+        test3.txt
+
+
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (master)
+$ git branch -m master main
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test1.txt
+        test2.txt
+        test3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git add .
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   test1.txt
+        new file:   test2.txt
+        new file:   test3.txt
+
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git commit -m "250612 9:30 파일생성"
+[main (root-commit) b8530ac] 250612 9:30 파일생성
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test1.txt
+ create mode 100644 test2.txt
+ create mode 100644 test3.txt
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git log
+commit b8530aca214e4938f00be9dd3c20d01ff7e5720f (HEAD -> main)
+Author: yeoungsun <koreait.sun21@gmail.com>
+Date:   Thu Jun 12 09:30:57 2025 +0900
+
+    250612 9:30 파일생성
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git branch test
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git branch
+* main
+  test
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git switch test
+Switched to branch 'test'
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (test)
+$ git status
+On branch test
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test4.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (test)
+$ git add test4.txt
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (test)
+$ git status
+On branch test
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test4.txt
+
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (test)
+$ git commit -m "250612 9:34 test브랜치에서 파일생성"
+[test 5c44d84] 250612 9:34 test브랜치에서 파일생성
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test4.txt
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (test)
+$ git log
+commit 5c44d8465016f7e058a8dfe3e7a575f944b46f36 (HEAD -> test)
+Author: yeoungsun <koreait.sun21@gmail.com>
+Date:   Thu Jun 12 09:34:48 2025 +0900
+
+    250612 9:34 test브랜치에서 파일생성
+
+commit b8530aca214e4938f00be9dd3c20d01ff7e5720f (main)
+Author: yeoungsun <koreait.sun21@gmail.com>
+Date:   Thu Jun 12 09:30:57 2025 +0900
+
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (test)
+$ git swtich main
+git: 'swtich' is not a git command. See 'git --help'.
+
+The most similar command is
+        switch
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (test)
+$ git switch main
+Switched to branch 'main'
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$
+
+======================================================================
+git merge 브랜치
+
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+.git/MERGE_MSG [unix] (09:40 12/06/2025)                                                                                                                                                                                       1,1 All
+"/d/web_0900_ksh/GIT/workspace/test02/.git/MERGE_MSG" [unix] 6L, 246B                                                                                                                                                  
+브랜치는 커밋을 한번이라도 해야 생성가능              
+merge 상태에서는 쓰고싶은 메시지를 작성한 후에 shuft+;를 눌러서 로딩상태로 바꾸고
+그 상태에서 esc를 두번 누른뒤, wq(저장하고 나가기)를 작성하면 나갈 수 있다
+이후 다시 git log로 확인하면 
+
+
+
+Merge made by the 'ort' strategy.
+ test4.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test4.txt
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02 (main)
+$ git log
+commit 4c4ec382ed4d99a7b1d94f62937d1e74eb5af413 (HEAD -> main)
+Merge: d59b422 1804ffa
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 09:40:48 2025 +0900
+
+    Merge branch 'test'
+    test 브랜치를 main 브랜치로 병합하다
+
+commit d59b422ceb9f1684a09861fab505fd77dcceba61
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 09:39:38 2025 +0900
+
+    250612 9:38 main파일생성
+
+commit 1804ffa812b61cef2a6ad4ab4162c837954a01b9 (test)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 09:35:16 2025 +0900
+
+    250612 9:34 test브랜치에서 파일생성
+
+commit 2d5150058e9f801d16d152bc386cae927e536978
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 09:31:29 2025 +0900
+
+    250612 9:30 파일생성
+
+로 merge가 된것을 볼 수 있다
+
+2번째 예제
+
+$ git init
+Initialized empty Git repository in D:/web_0900_kys/git/workspace/test02/.git/
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (master)
+$ git branch -m master main
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git branch test
+fatal: not a valid object name: 'main'
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git branch
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        main_branch.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git add .
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   main_branch.txt
+
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git commit -m "250612 9:49 main브랜치 파일생성"
+[main (root-commit) 9529886] 250612 9:49 main브랜치 파일생성
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 main_branch.txt
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git branch test
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git branch ksh
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$ git branch
+  ksh
+* main
+  test
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/test02 (main)
+$
+
+
+=========================================================================
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02-1 (main)
+$ git log
+commit 26563414492176f89fb294a302ce9998fbc9fc65 (HEAD -> main, test, log, ksh)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 09:49:42 2025 +0900
+
+    250612 9:49 main브랜치 파일생성
+
+log를 확인하면 하나만 나오는걸 확인가능(실제로는 3개에 다 들어간 상태이나, 출력만 1개임)
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02-1 (main)
+$ git switch test
+Switched to branch 'test'
+
+test 브랜치로 이동
+tes_branch.txt 문서 생성
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02-1 (test)
+$ git status
+On branch test
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test_branch.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02-1 (test)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02-1 (test)
+$ git status
+On branch test
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test_branch.txt
+
+test_branch.txt 문서 추가
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02-1 (test)
+$ git commmit -m "250612 10:06 test브랜치에서 파일생성"
+git: 'commmit' is not a git command. See 'git --help'.
+
+The most similar command is
+        commit
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02-1 (test)
+$ git branch
+  ksh
+  log
+  main
+* test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02-1 (test)
+$ git switch ksh
+A       test_branch.txt
+Switched to branch 'ksh'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02-1 (ksh)
+$ git branch
+* ksh
+  log
+  main
+  test
+
+문서파일 변경
+메인브랜치 ksh로 변경 후 확인
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/test02-1 (main)
+$ git merge ksh
+Updating 2656341..973ac88
+Fast-forward
+ test_branch.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test_branch.txt
+
+두개의 상태가 동일할때는 머지를 해도 추가창이 안뜨고 바로 가능
+
+브랜치를 사용하는 이유
+1. 협업이 굉장히 유리함
+	작업기록이 덮어쓰기로 날아갔을 경우, 브랜치로 다시 복구하는게 가능함
+	원본을 유지하고 다른 줄기로 나눠서 사용하다가 복구에 사용
+
+1,2일차에 배운 내용이 중간 프로젝트때 굉장히 많이 쓰임
+
+
+2)브랜치를 사용하는 이유
+	원본(main)을 안전하게 보호하기 위함
+	기능별로 따로 작업 가능하기 때문에 
+	협업에 유리함
+
+
+[실습1] 브랜치 생성, 병합, 삭제
+workspace > project02 폴더 생성
+git bash 열고 git init => .git 폴더 생성 확인
+
+
+1. main 브랜치에서 기본 파일을 만든다
+	기본파일 readme.txt
+	파일 내용 250612 10:28 기본 파일 생성
+
+	$ git branch -m master main
+	project02 폴더에 새 텍스트 파일 생성 => readme.txt 파일명으로 250612 10:28 기본 파일 생성 이라고 쓰고 저장
+	
+2. 커밋 메시지 날짜 시간 main브랜치-readme.txt 파일 생성
+	$ git status
+	$ git add .
+	$ git status
+	$ git commit -m "250612 11:28 main브랜치-readme.txt"
+	$ git status
+	
+3. 새로운 브랜치 생성 후 dev 브랜치로 이동한다
+	dev
+	sec
+	test
+	3개 생성하기
+	$ git branch dev
+	$ git branch sec
+	$ git branch test
+	$ git branch dev
+
+4. dev 브랜치에서 dev_note.txt 파일 생성 저장 후 커밋한다
+	이 공간은 dev 브랜치에서 작업중입니다
+	
+	project02 폴더에서 dev_note.txt 파일 생성, 이 공간은 dev 브랜치에서 작업중입니다 작성 후 저장
+	$ git status (브랜치 항상 확인!!!!)
+	$ git add .
+	$ git status
+	$ git commit -m "250612 11:30 dev_note.txt 파일 생성"
+	$ git log(2개)(main에서 commit해서)
+
+5. sec 브랜치에서 sec_note.txt 파일 생성 저장 후 커밋한다
+	이 공간은 sec 브랜치에서 작업중입니다
+	(4번이랑 동일)
+	
+	$ git switch sec
+	나머지는 4번과 동일
+
+6. test 브랜치에 dev 브랜치를 병합하고 상태 확인한다
+	$ git switch test
+	$ git status
+	$ git log (메인 1개만 존재)
+	$ git merge dev (merge 하기 전에 브랜치를 반드시 확인)(status,log 전부 다 )
+	$ git log (2개)(브랜치 3개 main,test,dev)
+
+7. test 브랜치에 있는 파일 dev_note.txt에서
+	dev 브랜치에서 test브랜치로 옮겨왔습니다 라는 내용을 추가한다
+
+	dev_note.txt 파일 내용을 수정한다
+
+	$ git status
+	$ git add .
+	$ git status
+	$ git commit -m "250612 11:33 test 브랜치-dev_note.txt 내용 추가"
+	$ git status
+	$ git log
+
+8. dev 브랜치에 test 브랜치를 병합하고 상태 확인한다 
+	$ git switch dev
+	$ git merge test
+	$ git log
+	
+
++. test 브랜치에서 dev_note.txt 내용 삭제 test만 쓴 후 커밋
+   dev 브랜치에서 test브랜치를 병합
+	(git merge test)
+
+	$ git switch test
+	dev_note.txt 파일 내용 모두 삭제 후 test 쓰고 저장
+	$ git status
+	$ git add .
+	$ git commit -m "날짜 시간 test브랜치-dev_note 파일 기존 내용 삭제, test만 추가"
+	$ git log
+	$ git switch dev
+	$ git merge test
+	$ git log 
+	
+아래 내용은 직접 한거고, 강사님이 올려주신거랑 비교해서 왜 잘못됐는지 확인해보기
+
+1.
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02
+$ git init
+Initialized empty Git repository in D:/web_0900_ksh/GIT/workspace/project02/.git/
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git statsu
+git: 'statsu' is not a git command. See 'git --help'.
+
+The most similar command is
+        status
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        readme.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   readme.txt
+
+2.
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git commit -m "250612 10:28 기본 파일 생성"
+[master (root-commit) ed67d34] 250612 10:28 기본 파일 생성
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 readme.txt
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git log
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (HEAD -> master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
+3.
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git branch
+* master
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git branch dev
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git branch sec
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git branch test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git log
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (HEAD -> master, test, sec, dev)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (master)
+$ git switch dev
+Switched to branch 'dev'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git add dev_note.txt
+fatal: pathspec 'dev_note.txt' did not match any files
+
+아직 add . 을 안해서 fatal이 뜨는 모습
+
+4.
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git log
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (HEAD -> dev, test, sec, master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git status
+On branch dev
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        dev_note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git status
+On branch dev
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   dev_note.txt
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git commit -m "이 공간은 dev브랜치에서 작업중입니다"
+[dev 933a961] 이 공간은 dev브랜치에서 작업중입니다
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 dev_note.txt
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git log
+commit 933a961025a54cba9d9bde5ebc69c800358aca8f (HEAD -> dev)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:38:12 2025 +0900
+
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (test, sec, master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
+    이 공간은 dev브랜치에서 작업중입니다
+
+5.
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git switch sec
+Switched to branch 'sec'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (sec)
+$ git commit -m "이 공간은 sec브랜치에서 작업중입니다"
+On branch sec
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        sec_note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (sec)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (sec)
+$ git commit -m "이 공간은 sec브랜치에서 작업중입니다"
+[sec 40a5410] 이 공간은 sec브랜치에서 작업중입니다
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 sec_note.txt
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (sec)
+$ git log
+commit 40a5410c86cace69a117013a70d553ecbb011858 (HEAD -> sec)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:39:47 2025 +0900
+
+    이 공간은 sec브랜치에서 작업중입니다
+
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (test, master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
+
+6.
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (sec)
+$ git switch dev
+Switched to branch 'dev'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git log
+commit 933a961025a54cba9d9bde5ebc69c800358aca8f (HEAD -> dev)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:38:12 2025 +0900
+
+    이 공간은 dev브랜치에서 작업중입니다
+
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (test, master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git switch test
+Switched to branch 'test'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git merge dev
+Updating ed67d34..933a961
+Fast-forward
+ dev_note.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 dev_note.txt
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git commit -m "dev 브랜치에서 test 브랜치로 옮겨왔습니다"
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git log
+commit 933a961025a54cba9d9bde5ebc69c800358aca8f (HEAD -> test, dev)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:38:12 2025 +0900
+
+    이 공간은 dev브랜치에서 작업중입니다
+
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git log
+commit 933a961025a54cba9d9bde5ebc69c800358aca8f (HEAD -> test, dev)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:38:12 2025 +0900
+
+    이 공간은 dev브랜치에서 작업중입니다
+
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git commit -m "dev브랜치에서 test브랜치로 옮겨왔습니다"
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git init
+Reinitialized existing Git repository in D:/web_0900_ksh/GIT/workspace/project02/.git/
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git commit -m "dev브랜치에서 test브랜치로 옮겨왔습니다"
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git commit -m "dev브랜치에서 test브랜치로 옮겨왔습니다"
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git status
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git switch dev
+Switched to branch 'dev'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git switch test
+Switched to branch 'test'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git branch
+  dev
+  master
+  sec
+* test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git status
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git init
+Reinitialized existing Git repository in D:/web_0900_ksh/GIT/workspace/project02/.git/
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git log
+commit 933a961025a54cba9d9bde5ebc69c800358aca8f (HEAD -> test, dev)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:38:12 2025 +0900
+
+    이 공간은 dev브랜치에서 작업중입니다
+
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
+7.
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git commit -m "dev브랜치에서 test브랜치로 옮겨왔습니다"
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git init
+Reinitialized existing Git repository in D:/web_0900_ksh/GIT/workspace/project02/.git/
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git commit -m "dev브랜치에서 test브랜치로 옮겨왔습니다"
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git commit -m "dev브랜치에서 test브랜치로 옮겨왔습니다"
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git status
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git switch dev
+Switched to branch 'dev'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git switch test
+Switched to branch 'test'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git branch
+  dev
+  master
+  sec
+* test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git status
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git init
+Reinitialized existing Git repository in D:/web_0900_ksh/GIT/workspace/project02/.git/
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git log
+commit 933a961025a54cba9d9bde5ebc69c800358aca8f (HEAD -> test, dev)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:38:12 2025 +0900
+
+    이 공간은 dev브랜치에서 작업중입니다
+
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
+8.
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git status
+On branch test
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (test)
+$ git switch dev
+Switched to branch 'dev'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git merge test
+Already up to date.
+
+Administrator@DESKTOP-HUJUVSS MINGW64 /d/web_0900_ksh/GIT/workspace/project02 (dev)
+$ git log
+commit 933a961025a54cba9d9bde5ebc69c800358aca8f (HEAD -> dev, test)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:38:12 2025 +0900
+
+    이 공간은 dev브랜치에서 작업중입니다
+
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
++.
+mERGE BRANCH 'TEST' INTO DEV
+
+commit 1d41a976616ae19fcb2ba695af9ca29a3eedfc6b (test)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:38:12 2025 +0900
+
+    test
+
+commit 933a961025a54cba9d9bde5ebc69c800358aca8f
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:38:12 2025 +0900
+
+    이 공간은 dev브랜치에서 작업중입니다
+
+commit ed67d349f459ae88ba41f716ea7860c24fe792e3 (master)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 10:35:05 2025 +0900
+
+    250612 10:28 기본 파일 생성
+
+
+=============================================================================================
+
+2. 원격 저장소(Remote Repository)
+
+1) 저장소의 종류
+	로컬 저장소	개인 pc에서 사용하는 저장소
+	원격 저장소 	git-hub 같은 사이트 등을 이용하여 어떤 서버에 올려놓고 사용하는 저장소이다
+
+깃허브 로그인 상태에서 원격 저장소를 만들어야함
+깃허브 사이트 좌측 상단 혹은 중단의 'Create a new repository' 클릭 ( 기존에 만들어둔게 있으면 'new'로 나옴)
+repository를 만들때는 기존 이름으로 만드는게 안되니 주의!
+
+kdt_test01로 생성, 이름은 매번 다르게 만들것
+
+
+Description (optional)
+설명문. 작성해도 되고 안해도 됨
+
+public - 모두에게 공유되는 전체공개
+private - 자신만 볼 수 있는 나만보기
+
+add a README file 체크하기
+
+Add .gitignore 설정시 특정 설정을 무시가능, 수업에선 안씀
+(팀원들마다 이클립스 등 다른 파일을 넣어도 깨지지 않음)
+
+우측위 녹색 <>Code 클릭하면 링크가 나옴
+https://github.com/bouncewater48/kdt_test01.git
+해당 링크를 배쉬에다가 하이퍼링크로 넣기
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/test03
+$ git init
+Initialized empty Git repository in C:/Users/Administrator/Desktop/web_0900_ksh/GIT/workspace/test03/.git/
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/test03 (master)
+$ git branch -m master main
+
+먼저 저장소로 지정하고, 메인으로 마스터명 바꾸기
+
+get remote add < 원격저장소 추가하기
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/test03 (main)
+$ git remote add origin https://github.com/bouncewater48/kdt_test01.git
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/test03 (main)
+$ git remote -v
+origin  https://github.com/bouncewater48/kdt_test01.git (fetch)
+origin  https://github.com/bouncewater48/kdt_test01.git (push)
+
+원격저장소 명을 origin으로 지정(이름 단축)하고 -v로 불러왔을때 링크 2개가 떠야함
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/test03 (main)
+$ git pull origin main
+From https://github.com/bouncewater48/kdt_test01
+ * branch            main       -> FETCH_HEAD
+
+파일탐색기에 README.md가 불러와짐
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/test03 (main)
+$ git log
+commit daa1cb1ab54e2eaa425727a3548172d0b85a3706 (HEAD -> main, origin/main, origin/HEAD)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 11:50:52 2025 +0900
+
+    Initial commit
+
+원격 저장소에 origin도 추가된걸 볼 수 있음
+
+# kdt_test01
+README.md를 열면 위와 같이 나옴
+
+kdt_test 파일 생성
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/test03 (main)
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/test03 (main)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/test03 (main)
+$ git commit -m "250612 12:09로컬에서 첫번째 파일생성"
+On branch main
+nothing to commit, working tree clean
+
+--------------------------------------------------------------------------------------------
+
+git clone < 원격 저장소에 있는 내용을 그대로 복사해옴
+클론을 받아올때는 초기화하지 않고 해당 링크를 그대로 붙여넣음
+
+전체를 복사해온다 > clone
+일부만 받아온다 > full
+
+2) 원격 저장소 관련 명령어
+	git remote add 우너격저장소이름 주소
+		원격 저장소를 먼저 만들어야한다!!
+		원격 저장소를 내 로컬과 명령하는 명령어
+		보통 원격 개인 저장소 이름은 origin을 많이 사용한다
+
+	git remote -v
+		원격 저장소와 연결이 잘 되었는지 확인하는 명령어
+		origin 주소 (fetch)
+		origin 주소 (push)
+		둘 다 떠야 정상이다
+		- fetch : 일종의 새로고침 역할
+		- push : 원격 저장소에 파일을 올릴 때 사용한다
+	
+	git pull 원격저장소이름 브랜치이름
+		원격 저장소에 저장한 파일들을 로컬 저장소로 가져오는 명령어
+	
+	git push 원격저장소이름 브랜치이름
+		로컬 저장소에 커밋한 파일을 원격 저장소에 저장하는 명령어
+
+	git clone 원격저장소주소 저장할경로
+		원격 저장소에 있는 파일들을 복사하여 로컬 저장소로 가져오는 명령어
+		다른 사람이 서버에 올려놓은 git 저장소를 내 컴퓨터에 똑같이 복사해오는 용도로 사용한다
+		보통 처음 세팅을 할 때 사용한다
+		주의사항!!! 클론할 때는 git init을 하지 않는다!!!
+		git init은 내 로컬에서 .git폴더를 생성해서 처음부터 관리하는것 이고
+		git clone은 다른 사람이 관리하던 log 내용까지 전부 복제해오는 것이다
+
+
+	fatal : refusing to merge unrelated histories 에러 발생
+	두개의 깃 저장소에 서로 다른 히스토리를 가지고 있을 때 발생한다
+	기본적으로 두 저장소가 공통의 부모 커밋이 없다고 판단되면 에러가 나타난다
+	발생 할 수 있는 경우
+	- 빈 저장소에서 git init 명령어를 사용해서 새로운 저장소를 만들었을 때
+	- 로컬 저장소를 초기화하고 리모트 저장소를 추가한 후에 리모트 저장소에서 변경사항을 가져올 때
+
+	해결 방안
+	git pull origin main --allow-unrelated-histories
+	두 저장소의 히스토리를 강제로 병합하는 명령어
+	항상 현재 변경사항의 내용을 백업하고 검토한 후에 사용해야한다(병합이 문제를 일으킬 가능성이 있기 때문에)
+
+깃허브에서 README 적힌걸 눌러서 Edit에 들어가면 마크다운 문법 사용 가능
+
+---------------------------------------------------------------------------------------------
+
+Commit changes 눌러서 아래 extended에 오전 수업 내용 git hub에 push
+를 적으면 
+아래에 해당 내용이 그대로 뜸
+
+이후 다시 배쉬에 가서 git remote add origin (링크)를 적고
+다시금 git remote -v를 누르면 정상적으로 뜨는게 확인가능함
+
+이후 git push origin main을 누르면 rejected가 뜸
+
+git pull origin main --allow-unrelated-histories
+강제로 병합하는 명령어
+
+브랜치를 다른거로 바꿔도 remote 연결은 그대로 남아있다
+
+로컬 저장소의 test 브랜치와 원격저장소 main브랜치 병합
+
+
+
+github에서 동일한 제목으로 만들라 하면 The repository kdt_test01 already exists on this account
+가 뜨면서 못하게 된다
+
+
+=======================================================================================
+remote02 파일에 git bash를 실행
+git init
+git branch -m master main < main으로 변경
+
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/remote02 (main)
+$ git push origin main
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 600 bytes | 600.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/yeoungsun/kdt_test03.git
+   bdb3445..09f0641  main -> main
+
+Administrator@Gclass MINGW64 /d/web_0900_kys/git/workspace/remote02 (main)
+$
+-------------------------------------------------------------------------------------
+아래는 위 예시를 받기 전 작업한것/나중에 확인해볼것
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test.txt
+
+
+add가 필요한 상태
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git commit -m "250612 14:32 초기 파일 생성"
+[main (root-commit) ad4e4dc] 250612 14:32 초기 파일 생성
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test.txt
+
+초기 파일 생성
+
+이 상태에선 원격 주소를 모르기에 push가 불가함
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git remote -v
+
+안나오는 상태
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git push origin main
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git remote add origin https://github.com/bouncewater48/kdt_test03.git
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git remote -v
+origin  https://github.com/bouncewater48/kdt_test03.git (fetch)
+origin  https://github.com/bouncewater48/kdt_test03.git (push)
+
+주소를 가져온 상태
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git push origin main
+To https://github.com/bouncewater48/kdt_test03.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/bouncewater48/kdt_test03.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+원격과 주소가 다름
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git pull origin main
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (6/6), 1.73 KiB | 53.00 KiB/s, done.
+From https://github.com/bouncewater48/kdt_test03
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+fatal: refusing to merge unrelated histories
+
+히스토리가 없음
+
+
+
+
+
+From https://github.com/bouncewater48/kdt_test03
+ * branch            main       -> FETCH_HEAD
+Merge made by the 'ort' strategy.
+ README.md | 3 +++
+ 1 file changed, 3 insertions(+)
+ create mode 100644 README.md
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git push origin main
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 591 bytes | 591.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/bouncewater48/kdt_test03.git
+   2f171a7..c9a934c  main -> main
+
+깃허브에서 확인이 가능해진 상태
+
+
+-------------------------------------------------------------------------------------
+
+
+
+HEAD -> main, origin/main
+main은 로컬, origin/main은 원격 저장소
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git branch
+* main
+
+메인만 뜸
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git branch dev
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git branch test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git branch
+  dev
+* main
+  test
+
+test와 dev도 추가 생성
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (test)
+$ git log
+commit c9a934c6c1b6cc37197438300dc5afa2c3a2ca54 (HEAD -> test, origin/main, main, dev)
+Merge: ad4e4dc 2f171a7
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 14:36:08 2025 +0900
+
+    Merge branch 'main' of https://github.com/bouncewater48/kdt_test03
+
+    원격 저장소와 로컬 저장소 경합
+
+commit ad4e4dc60780e17009f5356f8f5bb10f596ea46e
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 14:33:05 2025 +0900
+
+    250612 14:32 초기 파일 생성
+
+commit 2f171a773b6108598bb694a795b3b5e3adf697ac
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 14:28:28 2025 +0900
+
+    Update README.md
+
+commit 766b97cb00bcd2804eec7ad5be67ce4c2d32d692
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 14:27:30 2025 +0900
+
+    Initial commit
+
+test 브랜츠로 변경해도 README.md는 그대로 남아있음(원격과 로컬을 연결하고 브랜츠를 만들었기 때문에 들어있음
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (test)
+$ git status
+On branch test
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test2.txt
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (test)
+$ git log
+commit c9a934c6c1b6cc37197438300dc5afa2c3a2ca54 (HEAD -> test, origin/main, main, dev)
+Merge: ad4e4dc 2f171a7
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 14:36:08 2025 +0900
+
+    Merge branch 'main' of https://github.com/bouncewater48/kdt_test03
+
+    원격 저장소와 로컬 저장소 경합
+
+commit ad4e4dc60780e17009f5356f8f5bb10f596ea46e
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 14:33:05 2025 +0900
+
+    250612 14:32 초기 파일 생성
+
+commit 2f171a773b6108598bb694a795b3b5e3adf697ac
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 14:28:28 2025 +0900
+
+    Update README.md
+
+commit 766b97cb00bcd2804eec7ad5be67ce4c2d32d692
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 14:27:30 2025 +0900
+
+    Initial commit
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (test)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (test)
+$ git status
+On branch test
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test2.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (test)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (test)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (test)
+$ git status
+On branch test
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test2.txt
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (test)
+$ git commit -m "250612 14:47 test2 파일 생성"
+[test 81aa36b] 250612 14:47 test2 파일 생성
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test2.txt
+
+
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (test)
+$ git push origin test
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 348 bytes | 348.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'test' on GitHub by visiting:
+remote:      https://github.com/bouncewater48/kdt_test03/pull/new/test
+remote:
+To https://github.com/bouncewater48/kdt_test03.git
+ * [new branch]      test -> test
+
+새로운 브랜츠 생성
+깃허브에 브랜츠2개가 생성으로 바뀜,\
+
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (dev)
+$ git status
+On branch dev
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test3.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test_dev.txt
+
+
+이 상태에선 아래의 언트랙티드 파일때매 커밋이 불가함
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (dev)
+$ git push origin dev
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 289 bytes | 289.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'dev' on GitHub by visiting:
+remote:      https://github.com/bouncewater48/kdt_test03/pull/new/dev
+remote:
+To https://github.com/bouncewater48/kdt_test03.git
+ * [new branch]      dev -> dev
+
+branch기준을 main으로 잡고 진행하면 병합가능, 병합은 로컬에서 진행
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (dev)
+$ git switch main
+Switched to branch 'main'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git merge dev
+Updating c9a934c..b881055
+Fast-forward
+ test3.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test3.txt
+
+dev랑 메인 병합
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git push origin main
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/bouncewater48/kdt_test03.git
+   c9a934c..b881055  main -> main
+
+메인에 dev 파일이 push되서 병합된 상태
+
+컴페어&풀 리퀘스트 버튼을 누르면
+메인 안에 머지 풀 리퀘스트가 되서 합쳐진다
+Pull request successfully merged and closed
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git pull origin main
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 2 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (2/2), 966 bytes | 96.00 KiB/s, done.
+From https://github.com/bouncewater48/kdt_test03
+ * branch            main       -> FETCH_HEAD
+   b881055..d19247c  main       -> origin/main
+Updating b881055..d19247c
+Fast-forward
+ test2.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test2.txt
+원격에서도 병합 적용이 가능하나, 로컬에는 적용이 되지 않음
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test_dev.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test_dev.txt
+
+스테이징 파일을 저장하는것
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git commit -m "250612 15:13 test_dev파일 생성"
+[main e945674] 250612 15:13 test_dev파일 생성
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test_dev.txt
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/remote02 (main)
+$ git push origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 262 bytes | 262.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/bouncewater48/kdt_test03.git
+   d19247c..e945674  main -> main
+
+로컬에는 메인 커밋이 6개뿐이나, 원격에는 8개가 들어있음 << 원격에만 있는 2개는 로컬에 포함되지 않음
+
+---------------------------------------------------------------------------------------------
+    250612 14:51 커밋1개
+
+
+    250612 14:32 초기 파일 생성
+
+commit bdb3445187d93a09d535d3539b2df0461a98e85f
+Author: yeoungsun <koreait.sun21@gmail.com>
+Date:   Thu Jun 12 14:28:28 2025 +0900
+
+    Update README.md
+
+commit 3e7a7a741388b719bbf58f02693f0c1d3a7a41f3
+Author: yeoungsun <koreait.sun21@gmail.com>
+Date:   Thu Jun 12 14:27:25 2025 +0900
+
+    Initial commit
+--------------------------------------------------------------------------------------------
+[실습]
+1. 폴더 생성 / 원격 레포지토리 생성
+2. 초기 세팅(init)
+3. 원격 저장소와 로컬 저장소 연결(remote add, pull)
+4. 브랜치명은 main, team4, test
+5. test 브랜치 파일 3개를 push
+6. team 브랜치에는 본인이름 이니셜 파일 1개 생성 후 push
+
+ 
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4
+$ git init
+Initialized empty Git repository in C:/Users/Administrator/Desktop/web_0900_ksh/GIT/workspace/project03_4/.git/
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (master)
+$ git remote add origin https://github.com/bouncewater48/kdt_test04.git
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (master)
+$ git branch -m master main
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git remote add origin https://github.com/bouncewater48/kdt_test04.git
+error: remote origin already exists.
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git remote -v
+origin  https://github.com/bouncewater48/kdt_test04.git (fetch)
+origin  https://github.com/bouncewater48/kdt_test04.git (push)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git pull origin main
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 856 bytes | 57.00 KiB/s, done.
+From https://github.com/bouncewater48/kdt_test04
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git brunch
+git: 'brunch' is not a git command. See 'git --help'.
+
+The most similar command is
+        branch
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch
+* main
+  test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch team4
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch
+* main
+  team4
+  test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$
+
+!!먼저 원격으로 pull을 받고 그 다음에 브랜치 생성(안받으면 안생김)
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+[실습]
+1. 폴더 생성 / 원격 레포지토리 생성
+2. 초기 세팅(init)
+3. 원격 저장소와 로컬 저장소 연결(remote add, pull)
+4. 브랜치명은 main, team4, test
+5. test 브랜치 파일 3개를 push
+6. team 브랜치에는 본인이름 이니셜 파일 1개 생성 후 push
+
+
+$ git init
+Initialized empty Git repository in C:/Users/Administrator/Desktop/web_0900_ksh/GIT/workspace/project03_4/.git/
+-init으로 초기세팅 잡아주기
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (master)
+$ git remote add origin https://github.com/bouncewater48/kdt_project04.git
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (master)
+$ git remote -v
+origin  https://github.com/bouncewater48/kdt_project04.git (fetch)
+origin  https://github.com/bouncewater48/kdt_project04.git (push)
+-remopte add origin으로 깃허브 링크를 넣고, remote -v로 확인
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (master)
+$ git branch -m master main
+master를 main으로 변환
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git add .
+-git에 추가가능한 상태로 바꾸기
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git pull origin main
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 860 bytes | 5.00 KiB/s, done.
+From https://github.com/bouncewater48/kdt_project04
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+-원격저장소 파일을 로컬저장소로 가져와서 커밋하기
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch
+* main
+  team4
+  test
+-git branch 3개 생성
+
+
+전문
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4
+$ git init
+Initialized empty Git repository in C:/Users/Administrator/Desktop/web_0900_ksh/GIT/workspace/project03_4/.git/
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (master)
+$ git remote origin https://github.com/bouncewater48/kdt_project04.git
+error: unknown subcommand: `origin'
+usage: git remote [-v | --verbose]
+   or: git remote add [-t <branch>] [-m <master>] [-f] [--tags | --no-tags] [--mirror=<fetch|push>] <name> <url>
+   or: git remote rename [--[no-]progress] <old> <new>
+   or: git remote remove <name>
+   or: git remote set-head <name> (-a | --auto | -d | --delete | <branch>)
+   or: git remote [-v | --verbose] show [-n] <name>
+   or: git remote prune [-n | --dry-run] <name>
+   or: git remote [-v | --verbose] update [-p | --prune] [(<group> | <remote>)...]
+   or: git remote set-branches [--add] <name> <branch>...
+   or: git remote get-url [--push] [--all] <name>
+   or: git remote set-url [--push] <name> <newurl> [<oldurl>]
+   or: git remote set-url --add <name> <newurl>
+   or: git remote set-url --delete <name> <url>
+
+    -v, --[no-]verbose    be verbose; must be placed before a subcommand
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (master)
+$ git remote add origin https://github.com/bouncewater48/kdt_project04.git
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (master)
+$ git remote -v
+origin  https://github.com/bouncewater48/kdt_project04.git (fetch)
+origin  https://github.com/bouncewater48/kdt_project04.git (push)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (master)
+$ git branch -m master main
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch team
+fatal: not a valid object name: 'main'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch test
+fatal: not a valid object name: 'main'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git add .
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git log
+fatal: your current branch 'main' does not have any commits yet
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch team4
+fatal: not a valid object name: 'main'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch main
+fatal: not a valid object name: 'main'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=schannel
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=bouncewater48
+user.email=bouncewater48@gmail.com
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=https://github.com/bouncewater48/kdt_project04.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git log
+fatal: your current branch 'main' does not have any commits yet
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git remote -v
+origin  https://github.com/bouncewater48/kdt_project04.git (fetch)
+origin  https://github.com/bouncewater48/kdt_project04.git (push)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git pull origin main
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 860 bytes | 5.00 KiB/s, done.
+From https://github.com/bouncewater48/kdt_project04
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch team4
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch
+* main
+  team4
+  test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git push origin test
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'test' on GitHub by visiting:
+remote:      https://github.com/bouncewater48/kdt_project04/pull/new/test
+remote:
+To https://github.com/bouncewater48/kdt_project04.git
+ * [new branch]      test -> test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git remote -v
+origin  https://github.com/bouncewater48/kdt_project04.git (fetch)
+origin  https://github.com/bouncewater48/kdt_project04.git (push)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git log
+commit dd97a46661bfcbadcd4d44d990af3b3d8da55599 (HEAD -> main, origin/test, origin/main, test, team4)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 15:42:45 2025 +0900
+
+    Create README.md
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git git push team4 test
+git: 'git' is not a git command. See 'git --help'.
+
+The most similar command is
+        init
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git push main test
+fatal: 'main' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git switch team
+fatal: invalid reference: team
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git log
+commit dd97a46661bfcbadcd4d44d990af3b3d8da55599 (HEAD -> main, origin/test, origin/main, test, team4)
+Author: bouncewater48 <bouncewater48@gmail.com>
+Date:   Thu Jun 12 15:42:45 2025 +0900
+
+    Create README.md
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch
+* main
+  team4
+  test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git switch team4
+Switched to branch 'team4'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (team4)
+$ git push origin team4
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'team4' on GitHub by visiting:
+remote:      https://github.com/bouncewater48/kdt_project04/pull/new/team4
+remote:
+To https://github.com/bouncewater48/kdt_project04.git
+ * [new branch]      team4 -> team4
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (team4)
+$ git push origin test
+Everything up-to-date
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (team4)
+$ git push origin main
+Everything up-to-date
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (team4)
+$ git switch main
+Switched to branch 'main'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git merge team4
+Already up to date.
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git merge test
+Already up to date.
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git remote -v
+origin  https://github.com/bouncewater48/kdt_project04.git (fetch)
+origin  https://github.com/bouncewater48/kdt_project04.git (push)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git push origin main
+Everything up-to-date
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ gut push
+bash: gut: command not found
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git push
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin main
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git remote -v
+origin  https://github.com/bouncewater48/kdt_project04.git (fetch)
+origin  https://github.com/bouncewater48/kdt_project04.git (push)
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch -r
+  origin/main
+  origin/team4
+  origin/test
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git branch team4
+fatal: a branch named 'team4' already exists
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ git switch team4
+Switched to branch 'team4'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (team4)
+$ git switch test
+Switched to branch 'test'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (test)
+$ git switch main
+Switched to branch 'main'
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$ ^C
+
+Administrator@DESKTOP-HUJUVSS MINGW64 ~/Desktop/web_0900_ksh/GIT/workspace/project03_4 (main)
+$
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+[실습]
+팀장님 개인 원격 레포지토리(team04)
+	readme.md	
+	#  팀이름
+	#  팀장이름
+
+	개인 로컬 레포지토리(team04)
+	이니셜.txt
+	commit할때 개인브랜츠에 함
+
+브랜치 main, 이니셜
+	커밋은 무조건 이니셜 브랜치에서
+	push는 무조건 main 브랜치에서 진행
+
+경합할때는 main에서 이니셜 브랜치를 가져온 후 push 진행
+
+
+push를 할때는 원격 레파지토리 주소를 확인
+팀장꺼로 만들어진 상태로 다운받은 상태이므로, 내 이름으로 된 레파지토리 주소를 새로 만들어서 추가해야함
+git remote -v로 레파지토리 주소를 확인
+
+
+원격과 로컬 상태가 다르면 push 불가능, 따라서 git pull origin main --allow-unrelated-histories
+를 이용하여 강제 병합부터 시작
+
+병합할때 나오는 파란색 글씨창은 적을거 적고나서 esc - : 적고 - wq 적어서 저장 후 나가기로 나가기
+
+폴더 내에 .git 파일이 있는 상태로 병합하면 일반적인 폴더 형태가 아닌 링크 상태로 들어가게 됨
+그 상태로 .git 폴더를 제거하면 들어가도 log 확인이 불가능해짐
+
+링크가 걸려있는 상태에선 안에 .git 폴더가 있으면 안됨
+
+
+
+
+1. 첫 번째 파일을 생성하고 commit 한 상태이다. 두 번째 파일을 생성하고 
+   저장해야하는데 저장하지 않은 상태로 commit을 해버렸다.
+   이 전으로 돌아갈 수 있는 방법이 있는가?
+
+
+	$ git log로 체크섬 확인(7자리) => 첫 번째 파일 생성한 commit을 확인함
+	$ git checkout 체크섬7자리
+	돌아가서 다시 진행
+
+2. 팀원들끼리 색상을 한 줄씩 추가하면서 커밋을 하고 있다.
+	총 5명의 팀원이 있고 현재 4번째까지 완료한 상태이다 (main 브런치)
+	2번째 팀원이 잘 못 작성했다고해서 다시 브런치를 만들려고 한다 (test 브런치)
+	어떻게 할 수 있을까?
+
+	마지막 pull 한 상태로 test 브런치를 만들고 수정하고 commit 한 후 
+	main브런치에서 merge하고 push 한다
+	두번째부터 새로 만든다	
+	각자 브런치를 만들었다면 2번째 팀원만 제외하고 merge를 먼저 진행 후 
+	2번째 팀원이 수정 완료하면 최종 merge 한다
+	2번째 팀원이 본인이 작성한 부분만 수정하고 다시 push 한다
+
+	2번째 팀원이 commit 한 부분으로 돌아간다
+	test 브런치를 만들고 수정 후 test 브런치와 main 브런치를 병합한다
+	(즉 2번째만 브런치로 따로 빼내서 수정하고 다시 1,3,4번 메인과 병합)
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
