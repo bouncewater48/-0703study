@@ -1,0 +1,612 @@
+day17_작업물 (java 15일차)
+익명클래스 -> 람다식 -> 예외처리 -> API -> Objct 클래스 -> Wrapper 클래스
+
+
+package anonymousTest;
+// 1번 : 익명 클래스 객체화 위한 추상클래스
+public abstract class Animal {
+	//필드, 일반메소드, 추상메소드, 생성자
+//	추상메소드 생성
+	public abstract void speak();
+}
+
+=========================================================================
+
+package anonymousTest;
+// 2번 : 익명 클래스
+public class AnimalMain {
+	public static void main(String[] args) {
+		
+		Animal cat = new Animal() {
+
+			@Override
+			public void speak() {
+				System.out.println("야옹");
+			}
+		}; //세미콜론 반드시 넣기, 안넣으면 문장 끝이 안남, 내부클래스 중괄호 끝
+		System.out.println(cat);
+//		anonymousTest.AnimalMain$1@2ff4acd0
+//				패키지명.	클래스명 $ 내부클래스 1 익명클래스
+		
+		Animal dog = new Animal() {
+
+			@Override
+			public void speak() {
+				System.out.println("멍멍");
+				
+			} //내부클래스의 메소드 중괄호 끝
+		}; //내부클래스 중괄호 끝
+		System.out.println(dog);
+		
+		cat.speak();
+		dog.speak();
+	} //메인 끝
+} // 클래스 끝
+
+
+=========================================================================
+
+package anonymousTest;
+// 3번 : Calculator 인터페이스를 만들고 익명클래스로 객체 생성 후 메소드 호출
+interface Calculator{
+	//추상 메소드 2개 선언 = 인터페이스 2개를 만들고 2개 오버라이드
+	int add(int num1, int num2);
+	int mul(int num1, int num2);
+	
+}
+
+
+
+public class AnonymousTask {
+	public static void main(String[] args) {
+		//익명클래스로 객체 생성 후 메소드 호출
+	Calculator cal = new Calculator() {
+		
+		@Override
+		public int mul(int num1, int num2) {
+			return num1 * num2;
+		}
+		
+		@Override
+		public int add(int num1, int num2) {
+//			System.out.println(add(10, 20));
+			//출력문은 무조건 return 이전에 사용
+			return num1 + num2;
+		}
+	};
+	
+	
+	System.out.println(cal.add(10, 20));
+	System.out.println(cal.mul(10, 20));
+	
+	}
+}
+
+
+=========================================================================
+
+package anonymousTest;
+// 4번 : 익명클래스 객체화 위한 인터페이스
+@FunctionalInterface
+public interface InterA {
+	void method();
+//	void method2();
+}
+
+
+=========================================================================
+
+package anonymousTest;
+// 5번 : 인터페이스 객체화 위한 Main 메소드
+public class InterMain {
+	public static void main(String[] args) {
+		
+		InterA i = new InterA() {
+
+			@Override
+			public void method() {
+				System.out.println("익명 객체의 메소드 재정의");
+				
+			}
+			
+		};
+		
+		System.out.println(i);
+		i.method();
+		
+//		아래는 람다식으로 위에 과정을 줄인것
+		  InterA ii = () -> System.out.println("람다식");
+	      System.out.println(ii);
+	      ii.method();
+	}
+}
+
+
+=========================================================================
+
+package lambdaTest;
+// 6번 : 람다식 만드는 방법
+public class LambdaTest {
+//	매개변수 -> 바디(=구현부)
+	
+	void printHello() {
+		System.out.println("안녕하세요");
+	}
+	
+	//매개변수 x, 리턴값 x, 출력문 1개 메소드 생성
+//	void printHello() {System.out.println("안녕하세요");}
+	
+//	1. 이름을 없애고 ()뒤에 -> 를 붙힌다
+//	void () -> { System.out.println("안녕하세요");}
+//	2. 반환타입은 추론이 가능하므로 생략한다
+//	매개변수가 0개면 소괄호() 생략불가능(위치를 알려주려면 () 필요!)
+//	() -> { System.out.println("안녕하세요");}
+//	3. 명령문이 1줄이면 중괄호{}와 세미콜론; 생략이 가능하다(선택)
+//	() -> System.out.println("안녕하세요")
+	
+	
+	//매개변수 1개, return값 o, 명령문 1줄
+//	int addTen(int number) {return number + 10;}
+
+//	1. 이름을 없애고 -> 추가한다
+//		int (int number) -> {return number + 10; }
+//	2. 반환타입은 추론 가능하므로 생략한다
+//		(int number) -> {return number + 10; }
+//	3. 매개변수 타입은 추론이 가능하므로 생략 가능하다 (선택)
+//		(number) -> {return number + 10; }	
+//	4. 매개변수가 1개라면 () 생략 가능하다 (선택)
+//	단, 자료형을 생략하지 않았다면 ()를 생략할 수 없다.
+//		number -> {return number + 10; }	
+//	5. 명령문이 1줄이면 중괄호{}와 세미콜론; 생략이 가능하다 (선택)
+//	단, 중괄호와 세미콜론을 생략하면 return도 생략해야한다
+//	바디의 결과가 값이라면 자동으로 return된다
+//	단, 바디에 명령문이 1개이어야만 한다
+	 int add(int num1, int num2) {
+	      System.out.printf("%d + %d = %d", num1, num2, num1 + num2);
+	      return num1 + num2;
+	   }
+	   
+	//   매개변수 2개, 리턴값 o, 명령문 2줄
+	   
+	//   1. 이름을 지우고 -> 추가
+	//   2. 반환타입 추론 가능하므로 생략
+	//   3. 매개변수의 타입은 추론 가능하므로 생략 가능하다(선택)
+	//   4. 매개변수 2개 이상이므로 ()생략 불가
+	//   (num1, num2) -> {
+//	      System.out.printf("%d + %d = %d", num1, num2, num1 + num2);
+//	      return num1 + num2;
+	//   }
+	//   5. 명령문이 2개 이상이므로 {}와 ; 생략 불가
+	//   6. 반환할 값이 있다면 return 사용한다
+
+}
+
+=========================================================================
+
+package lambdaTest02;
+// 7번 : 함수형 인터페이스의 객체 람다식으로 만들기
+public class FunctionalMain {
+	public static void main(String[] args) {
+		//익명클래스로 객체 생성
+		Func1 fi1 = new Func1() {
+			
+			@Override
+			public void addTen(int number) {
+				System.out.println(number + 10);
+			}
+		};
+		
+		fi1.addTen(10);
+		
+		//람다식으로 객체 생성
+		Func1 f1 = number -> System.out.println(number + 10);
+//		1. 이름을 없애고 ()뒤에 -> 붙히기
+//				void (int number) -> { 출력메소드 }
+//		2. 반환타입 추론 가능하므로 생략한다
+//				(int number) -> { 출력문 }
+//		3. 매개변수의 타입 추론 가능하므로 생략가능
+//			타입 생략 시 매개변수가 1개이므로 ()를 없앨 수 있다
+//				number -> { 출력문 }
+//		4. 바디가 1줄이니 중괄호와 ; 생략 가능
+//				number -> 출력문
+			System.out.println(f1);
+			f1.addTen(100);
+			 Func2 f2 = (num1, num2) -> {
+		         System.out.println("num1 의 값 : " + num1 + ", num2의 값 : " + num2);
+		         return num1 + num2;
+		      };
+		      System.out.println(f2);
+		      System.out.println(f2.printSum(1, 2));
+//		      1. 이름을 없애고 ()뒤에 -> 추가
+//		      2. 반환타입 추론가능하므로 생략한다
+//		      3. 매개변수의 타입 추론 가능하므로 생략 가능하다
+//		      4. 매개변수가 2개이므로 () 생략 불가능
+//		      5. 명령문 2줄이므로 {}, ; 생략 불가능
+	}
+}
+
+
+=========================================================================
+
+package lambdaTest02;
+// 8번 : 함수형 인터페이스
+
+@FunctionalInterface
+public interface Func1 {
+	void addTen(int number);
+}
+
+
+=========================================================================
+
+package lambdaTest02;
+// 8번 : 함수형 인터페이스
+
+@FunctionalInterface
+public interface Func2 {
+	int printSum(int num1, int num2);
+	
+}
+
+
+=========================================================================
+
+package lambdaTask;
+//9번 : 람다 실습
+public class LambdaMain {
+   public static void main(String[] args) {
+
+//      인터페이스명 : CombInter(함수형 인터페이스)
+//      두 문자열을 입력받아 연결하는 추상 메소드를 만든다(명령문은 1줄)
+//      메인메소드에서 익명클래스로 객체화
+//      CombInter ci1 = new CombInter() {
+//         
+//         @Override
+//         public void combine(String str1, String str2) {
+//            System.out.println(str1 + str2);
+//         }
+//      };
+
+      CombInter ci2 = new CombInter() {
+
+         @Override
+         public String combine(String str1, String str2) {
+            return str1 + str2;
+         }
+      };
+
+//      메인메소드에서 람다식으로 객체화
+//      CombInter c1 = (str1, str2) -> System.out.println(str1 + str2);
+//      이름 지우고 -> 추가
+//      반환타입 추론가능 생략
+//      매개변수 타입 추론 가능하므로 생략가능
+//      매개변수가 2개이므로 소괄호 생략 불가능
+//      출력문1줄이므로 {} ; 생략가능
+
+      CombInter c2 = (str1, str2) -> str1 + str2;
+
+   }
+}
+
+
+=========================================================================
+
+package lambdaTask;
+//9번 : 람다 실습
+@FunctionalInterface
+public interface CombInter {
+//   void combine(String str1, String str2);
+   String combine(String str1, String str2);
+}
+
+=========================================================================
+
+package exceptionTest;
+// 10번 : Exception Basic
+public class ExceptionTest01 {
+		
+	public static void main(String[] args) {
+		
+		System.out.println("프로그램 시작");
+		try {
+			
+		int result = 10 / 0 ;
+		System.out.println(result);
+//		java.lang.ArithmeticException
+		}catch(Exception e) {
+			System.out.println("0으로 나눌 수 없습니다");
+		}
+		System.out.println("프로그램 끝");
+	}
+}
+
+
+=========================================================================
+
+package exceptionTest;
+// 11번 : Exception Basic
+public class ExceptionTest02 {
+	public static void main(String[] args) {
+		
+		ExceptionTest02 et = new ExceptionTest02();
+		System.out.println(et);
+		et.printLength("java");
+//		et.printLength(15.5);
+//		java.lang.Error
+//		에러코드에 뜬 주소를 복붙해놓고 ctrl 클릭하면 해당 주소를 따라갈 수 있음
+	
+//		미확인 에러, 출력하기 전까지는 확인이 불가함
+		try {
+			
+		et.printLength(null);
+//		java.lang.NullPointerException	
+		}catch(NullPointerException e) {
+			System.out.println("null은 입력할 수 없습니다");
+		}catch(Exception e) {
+			System.out.println("알 수 없는 예외가 발생했습니다");
+		}finally {
+			System.out.println("프로그램 실행 종료");
+		}
+		
+	}
+	
+	public void printLength(String data) {
+		int result = data.length();
+		System.out.println(data + "의 글자수는 " + result + "입니다");
+	}
+	
+	
+}
+
+
+=========================================================================
+
+package exceptionTest;
+// 12번 : 예외클래스 메소드
+public class ExceptionTest03 {
+	public static void main(String[] args) {
+		
+		ExceptionTest03 et = new ExceptionTest03();
+		System.out.println("프로그램 시작");
+		et.printLength("java");
+		et.printLength(null);
+		System.out.println("프로그램 종료");
+	}
+	
+	public void printLength(String data) {
+		try {
+			int result = data.length();
+			System.out.println("글자수 : " + result);
+		}catch(NullPointerException e) {
+//			System.out.println("null값은 입력 불가능합니다");
+			//예외 정보를 얻는 방법 3가지
+//			1. e.toString(); e => 예외 종류(클래스)와 발생한 이유를 반환
+//			System.out.println(e.toString());
+//			System.out.println(e);
+			
+//			2. e.printStackTrace(); => 예외가 어디서 발생했는지 추적한 내용까지 출력해줌!
+//			 e.printStackTrace();
+			 
+//			3. e.getMessage(); => 예외가 발생한 이유만 반환
+			 System.out.println(e.getMessage());
+			 
+		
+		}catch(Exception e) {
+			 //우리가 try에서 어떤 오류가 발생할 지 전부 예상하기 힘들다
+			 //예상치 못한 오류를 잡기 위해 Exception 타입의 매개변수를 사용한다
+			 //모든 예외 클래스의 조상은 Exception 클래스이다
+			 //즉, 어떤 예외가 발생하더라도 Exception 타입의 참조변수에 저장 가능하다(업캐스팅)
+			
+			System.out.println("예상치 못한 오류");
+		}
+	}	
+}
+
+
+=========================================================================
+
+package exceptionTest02;
+// 13번 : throws와 throw (throws 예외 던지기, 메소드 선언부에 사용한다)
+public class ThrowsTest01 {
+	public static void main(String[] args) {
+		method();
+	}
+	
+	
+	
+	static void method() {
+		for(int i = 0; i < 10; i++) {
+			System.out.println(i);
+//			try ~ catch 블록 단축키 : 예외처리할 부분을 드래그해서 지정하고 alt + shift + z; 
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//500 => 0.5초, 1000 => 1초
+		}
+	}
+}
+
+
+=========================================================================
+
+package exceptionTest02;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+//14번 : 메소드 선언부에서의 throws
+public class ThrowsTest02 {
+   public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+
+      try {
+         method(sc);
+      } catch (NumberFormatException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      } catch (InputMismatchException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+
+      System.out.println("출력끝");
+//      int num = sc.nextInt();
+//      if(num < 0) {
+//         
+//      }
+   }
+
+   static void method(Scanner sc) throws NumberFormatException, InputMismatchException {
+      System.out.println("양수만 입력하세요!!");
+      int result = sc.nextInt();
+      if (result <= 0) {
+//         java.util.InputMismatchException
+         throw new NumberFormatException();
+      }
+      System.out.println("입력한 숫자는 " + result + "입니다");
+
+   }
+}
+
+
+=========================================================================
+
+package exceptionTest02;
+// 15번 : 사용자 정의 예외 클래스
+public class MyException extends Exception{
+	public MyException() {
+		super("음수는 입력하면 안되요");
+	}
+}
+
+=========================================================================
+
+package exceptionTest02;
+
+import java.util.Scanner;
+
+public class MyExceptionMain {
+   public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      
+      int number = 0;
+      System.out.println("양의 정수만 입력하세요 : ");
+      number = sc.nextInt();
+      
+      if(number <= 0) {
+//         System.out.println("음수 입력불가");
+         try {
+            throw new MyException();
+         } catch (MyException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+         }
+      }else {
+         System.out.println("입력한 숫자는 " + number + "입니다");
+      }
+      System.out.println("프로그램 종료");
+   }
+}
+
+
+=========================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

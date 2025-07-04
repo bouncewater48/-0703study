@@ -1,0 +1,894 @@
+day05(java 3일차)
+
+1.review
+
+package review;
+//1번 : 복습
+public class Review {
+	public static void main(String[] args) {
+			
+		//printf() : 서식에 맞춰 출력하고 줄바꿈되지 않는 출력 메소드
+		System.out.printf("'%s' '%d' '%f' '%s'\n", "hello", 2025, 6.17, true);
+		System.out.printf("'%-7.2s' '%05d' '%10.2f' '%-5s'\n", "hello", 2025, 6.17, true);
+		// 줄바꿈 \n을 안했기에 옆에 그대로 출력
+		// 실수 xnf는 앞에 .을 붙혀야 적용!
+		// 문자열, 정수 앞에 -를 붙히면 좌측정렬, -를 안 붙히면 우측정렬
+		// f는 기본적으로 8자리를 지정하기에 그보다 큰 숫자를 지정하면 그만큼 공백도 추가됨
+		
+		//변수
+		byte num1 = 5;
+		byte num2 = 127; // byte는 -128~127이기에 128을 넣으면 오류가 뜸
+		System.out.println(num1);
+		System.out.println(num2);
+		int num3 = 128;
+//		byte num4 = num3; 더 큰 값을 넣을순 없음
+		byte num4 = (byte) num3; 
+		System.out.println(num4); 
+		//강제변환을 하니 출력은 되는데 overflow가 일어나 음수로 출력
+	}
+}
+
+=================================================================================
+
+2.TypeCasting01
+
+package review;
+//2번 : 다른 자료형 -> 문자열로
+// + "" 를 하면 마지막에 문자열로 바꾸는게 가능함!
+public class TypeCasting01 {
+	public static void main(String[] args) {
+		
+		int num1 = 10;
+		float num2 = 20.17f; //f 안붙히면 double타입이 됨
+		long num3 = 30L;
+		double num4 = 40.17;
+		boolean isTrue = true;
+		char alpha = 'a';
+		
+		System.out.println(num1);
+		System.out.println(num2);
+		System.out.println(num3);
+		System.out.println(num4);
+		System.out.println(isTrue);
+		System.out.println(alpha);
+		
+		
+		System.out.println(num1 + num3); //정수 + 정수 = 정수
+		System.out.println(num2 + num4); //실수 + 실수 = 실수
+		System.out.println(num1 + num4); //정수 + 실수 = 실수
+		// 실수 + 실수는 소수점 아래쪽도 정밀도때매 채워야해서 딱 떨어지지 않음!
+		
+		String result1 = num1 + num3 + ""; 
+		//변수가 있으면 저장공간을 만든다
+		//해석은 왼쪽부터 오른쪽으로 진행한다
+		//10 + 30 을 덧셈한 후 문자열로 연결해서 string에 저장함
+		String result2 = "" +  num1 + num3;
+		//+ "" 없이 그냥 하려하면 result를 float 타입으로 바꾸라 나옴
+		//"" 문자열과 num1을 먼저 연결하고 그 후에 num3를 연결함
+		// 앞의 10을 30과 덧셈한게 아니라 30 앞에 붙혀서
+		//				"10" + 30 =>1030 이 된거임
+		//같은 결과를 더해도 문자열을 어디서 연결하냐에 따라서 결과가 달라짐
+		System.out.println(result1); //40
+		System.out.println(result2); //1030
+		System.out.println(isTrue + "");
+		System.out.println(alpha + "");
+		//a라고 나오지만 저거 문자형 char가 아니라 문자열 string으로 바뀐거임	
+	}
+}
+
+=================================================================================
+
+3.TypeCasting02
+
+package review;
+//3번 : 문자열 자료형 => 다른 기본 자료형으로
+public class TypeCasting02 {
+	public static void main(String[] args) {
+		
+		//기본자료형 -> 문자열 자료형
+		String str1 = 3 + "";
+		String str2 = 6.17 + "";
+		String str3 = 'a' + "";
+		String str4 = true + "";
+		
+		System.out.println(str1); 
+		System.out.println(str2);
+		System.out.println(str3);
+		System.out.println(str4);
+
+		//결과로 나온거 전부 문자열로 바뀐거임
+		
+		//문자열 -> 기본 자료형으로
+		
+//		int number1 = str1; 이미 저장된 값이 있는 str은 못 씀
+		int number1 = Integer.parseInt(str1);
+		System.out.println(number1 + 3);
+		double number2 = Double.parseDouble(str2);
+		System.out.println(number2);
+		boolean isTrue2 = Boolean.parseBoolean(str4);
+		System.out.println(!isTrue2);
+		char ch = "hello".charAt(0); 
+		// 0은 1자리 h만 출력한다, 자릿수를 넘어가면 오류 발생!(0~4까지만 가능)
+		System.out.println(ch);
+	
+	}
+}
+
+=================================================================================
+
+4.TypeCasting03
+
+package review;
+//4번 : 문자열과 다른 자료형과의 형변환
+public class TypeCasting03 {
+	public static void main(String[] args) {
+		String data1 = "10";
+		String data2 = "abc";
+		
+		System.out.println(data1 + 1); //문자열 + 1 => 연결 / 101
+		System.out.println(data2); // abc
+
+		//abc에서 b만 뽑아내려한다
+		char alpha = data2.charAt(1); //문자열은 0부터 시작, 1을 적으면 2번째 문자열 출력
+		System.out.println(alpha); // b
+//		문자열 "True"
+		boolean result1 = Boolean.parseBoolean("True");
+		System.out.println(result1); 
+		// 문자열이 TRUE(대소문자 무관)이면 true를 반환하고, 그렇지 않으면 false를 반환함
+		// true 말고 true1을 넣으면 false로 나옴
+		// 문자열 스펠링이 정확하면(대소문자 상관없음) true 반환, 틀리면 false 반환
+	}
+}
+
+
+===================================================================================
+
+5. ScannerTest01
+
+package Scanner;
+
+import java.util.Scanner;
+
+//5번 : 입력클래스(Scanner)
+public class ScannerTest01 {
+	public static void main(String[] args) {
+		
+//		System.out.println();
+//		String name = "강승훈"
+		
+		//입력 클래스
+		//입력 메소드를 사용하기 위해서 11번 라인의 한줄이 반드시 작성되어야한다 ↓
+		//자동 import 단축키 : ctrl + shift + o
+		Scanner sc = new Scanner(System.in); //Scanner의 S는 무조건 대문자!!
+		//import를 한번만 받으면 scanner를 여러번 사용가능!
+		System.out.println("이름 입력 : ");
+//		String name = sc.next(); //next() 입력 메소드(이름뒤에 소괄호):
+		// 콘솔창에서 입력을 받고 입력받은 값을 String 타입으로 가져오는 기능을 한다
+//		System.out.println(name + "님 환영합니다.");
+		//콘솔에 빨간색 정지표시(Terminate)가 떠있을때는 콘솔창에 직접 입력 가능
+		//이 상태에서 콘솔창에 작성하고 엔터 누르면 콘솔창에 결과 나옴
+		// 띄워쓰기를 하면 띄워쓰기 전 내용만 입력되고 나머지는 입력되지 않음
+		
+		String name1 = sc.nextLine();
+		String name2 = sc.next();
+//		String name3 = sc.next();
+		System.out.println(name1);
+		System.out.println(name2);
+//		System.out.println(name3);
+//		String name4 = sc.next();
+		//next는 스페이스바와 엔터를 처리하는 역할
+		//nextLine : 문자열로 반환
+//		System.out.println(name4);
+		
+		
+		//sc.next();
+		//이 상태로 실행하면 콘솔창 입력대기상태
+		//next 메소드의 숫자만큼 입력문을 추가로 작성가능!
+		//이 상태로 작성시에 띄워쓰기를 포함한 모든게 buffer에 저장됐다가 출력됨
+	}
+}
+
+
+===================================================================================
+
+6. ScannerTest02
+
+package Scanner;
+
+import java.util.Scanner;
+
+//6번 : 입력클래스(next(), nextLine())
+public class ScannerTest02 {
+	public static void main(String[] args) {
+		//import 단축키 : ctrl + shift + o
+		Scanner sc = new Scanner(System.in);
+		//System.in으로 받은 자원은 낭비가 생길 수 있음
+		// next()는 임시 저장공간에서 엔터를 소모하지 않는다
+		// 값을 입력하지 않고 엔터만 누르면 next()입장에서는 할 일이 없기 때문에
+		//아무것도 하지 않고 계속 대기한다
+		
+//		1 2 3
+		sc.next(); //1 인식
+		sc.next(); //2 인식
+		sc.next(); //3 인식
+		
+		// nextLine()은 하는 일이 2가지이다
+		// 1) 엔터 이전까지의 값을 가져온다
+		// 2) 엔터를 임시 저장공간에서 지워준다(소모한다)
+		// 값을 입력하지 않고 엔터만 눌러도 nextLine()은 엔터를 소모해야하는 일을 해야하므로
+		// 엔터를 없애고 할 일을 마친다
+		sc.nextLine();
+		sc.nextLine();
+		sc.nextLine();	
+		// 엔터만 3번 쳐도 끝남, 엔터 횟수를 next와 다르게 소모한다
+		// 스페이스바 횟수로 인식하기에 1 2 3을 치고 엔터를 쳐도 1개분량의 여유가 아직 남아있다.
+		
+//		1 2 3
+//		1
+//		2
+
+//		sc.close(); //Scanner 객체를 종료하고 내부에서 사용한 자원(메모리, 스트림 등)을 해제함
+//		↑이거 쓰면 위에서 뭘 썼던간에 아예 종료됨
+//		Scanner sc1 = new Scanner(System.in);
+//		sc.next();
+		
+//	1 2 3
+//	2
+//	3
+//	Exception in thread "main" java.lang.IllegalStateException: Scanner closed
+//		at java.base/java.util.Scanner.ensureOpen(Scanner.java:1158)
+//		at java.base/java.util.Scanner.next(Scanner.java:1473)
+//		at Scanner.ScannerTest02.main(ScannerTest02.java:36)
+//		main에서 가져올 요소가 없는데 가져오려 했다는 뜻
+		
+		
+//		sc.close(); //Scanner 객체를 종료하고 내부에서 사용한 자원(메모리, 스트림 등)을 해제함
+//		↑이거 쓰면 위에서 뭘 썼던간에 아예 종료됨, 아래로는 뭘 써도 다시 못들어감
+//		Scanner sc1 = new Scanner(System.in); //System.in은 하나의 InputStream인데
+		// sc.close()라는 내용을 위에서 썼기에 이게 System.in까지 닫게된다
+		// new Scanner(System.in)을 사용하더라도 이미 닫힌 스트림의 재사용이기 때문에 에러발생
+//		sc.nextLine(); 
+		
+//		Scanner sc1 = new Scanner(System.in); //System.in은 하나의 InputStream인데
+//		sc.nextLine(); 
+//		sc.close(); //Scanner 객체를 종료하고 내부에서 사용한 자원(메모리, 스트림 등)을 해제함
+//	close 위에 쓰는건 적용됨
+	}
+}
+
+===================================================================================
+
+7. ScannerTest03
+
+package Scanner;
+
+import java.util.Scanner;
+
+//7번 : 입력클래스, 입력메소드 연습
+public class ScannerTest03 {
+	public static void main(String[] args) {
+		//1. 사용자로부터 입력받아 주소를 출력하기
+		//1) 입력 클래스 선언
+		Scanner sc = new Scanner(System.in);
+		//2) 입력 클래스 import(불러오기)
+//			ctrl + shift + o
+				
+		//3) 문자열 변수 선언
+		String address;
+				
+		//+) 출력 메시지
+		System.out.println("주소를 입력하세요.");
+		
+		//4) 입력메소드 사용
+//		address = "서울시 강남구 역삼동"; 
+//		address = sc.nextLine();
+//		address = sc.next();
+//		주소를 입력하세요.
+//		서울시 강남구 역삼동
+//		주소는 서울시입니다
+
+		
+		//5) 결과출력
+		System.out.println("주소는 " + address + "입니다");
+//		주소를 입력하세요.
+//		서울시 강남구 역삼동
+//		주소는 서울시 강남구 역삼동입니다	
+//		System.out.print("주소는 %s입니다.", address);
+//		주소를 입력하세요.
+//		코리아IT아카데미
+//		주소는 코리아IT아카데미입니다
+//		주소는 코리아IT아카데미입니다.
+		
+		 //6) 입력클래스 해제
+	      sc.close();
+
+//		↑이게 Logic임
+	}
+}
+
+===================================================================================
+
+8. ScannerTest04
+
+package Scanner;
+
+import java.util.Scanner;
+
+//8) 사용자로부터 숫자를 입력받고 10을 더한값 출력하기
+public class ScannerTest04 {
+	public static void main(String[] args) {
+		
+		//1) 입력 클래스 선언
+		Scanner sc = new Scanner(System.in);
+				
+		//2) 입력 클래스 import
+//			ctrl + shift + o
+				
+		//3) 입력 메시지 출력
+			System.out.println("숫자를 입력해주세요 : ");
+		
+		//4) 문자열 변수 선언, 입력메소드 사용
+		String number = sc.nextLine();
+		
+		//5) 변수 출력
+		System.out.println("입력한 값은 " + number + "입니다.");
+		
+		//6) 문자열 값을 정수형으로 형 변환
+		int result = Integer.parseInt(number);
+//		System.out.println(Integer.parseInt(number));와 동일하다
+		
+		//7) 결과 출력
+		System.out.println(result + 10);
+	}
+}
+
+===================================================================================
+
+9. ScannerTest05
+
+package Scanner;
+
+import java.util.Scanner;
+
+// 9번 : 입력 메소드 실습1
+public class Test01 {
+	public static void main(String[] args) {
+		//1. 본인의 이름과 성별을 입력받고 출력하기 (next()만 사용)
+		//입력 예> 이름 입력 :
+		//입력 예> 성별 입력 :
+		//출력 예> 이름은 000이고 00입니다
+		
+		//로직 구성
+		
+//		내가 한것
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("이름 입력 : .");
+//		System.out.println("성별 입력 : .");
+//		String name1 = sc.next(); //sc.next()의 소괄호는 무조건 비워두기!
+//		String name2 = sc.next(); //sc.next()의 소괄호는 무조건 비워두기!
+//		System.out.println("이름은 " + name1 + "이고 " + name2 + "입니다");
+////								   +와 + 사이에 String 지정한 									값을 채워넣기!
+//		System.out.println(name1 + name2);
+		
+		
+//		강사님꺼
+//		1) 입력 클래스 선언 + 입력 클래스 import
+		Scanner sc = new Scanner(System.in);
+//		2) 이름과 성별 입력 메시지 출력
+//		System.out.println("이름과 성별을 띄워쓰기로 입력하세요 : ");
+		System.out.println("이름 입력하세요 : ");
+//		3) 문자열 변수(name, gender) 선어
+		String name, gender;
+//		4)변수에 입력 메소드 사용(next())
+//		String name = sc.next() 위에서 따로 선언했기에 여기선 초기화만 해야함
+		name = sc.next();
+//		5) 성별 입력 메시지 출력
+//		gender = sc.next();
+		char gender2 = sc.next().charAt(0);
+		System.out.println("성별을 입력하세요 : ");
+//		6) 결과 출력
+		System.out.printf("이름은 %s이고, 성별은 %s입니다.", name, gender2);
+//		이름과 성별을 띄워쓰기로 입력하세요 : 
+//			강승훈 남성
+//			이름은 강승훈이고, 성별은 남성입니다.
+	
+//	클래스 선언과 클래스 import를 하나로 묶고 변수 선언과 메소드 사용을 하나로 묶으면 더 줄이기 가능!
+	}
+}
+
+===================================================================================
+
+10. ScannerTask01
+
+package Scanner;
+
+import java.util.Scanner;
+
+//10번 : 입력 클래스, 입력 메소드 실습2
+public class ScannerTesk01 {
+	public static void main(String[] args) {
+		
+		//1. 줄 단위로 입력받아 출력하기
+		//(입력은 반드시 3번 입력받을것, 출력은 1번만 사용해서 출력형태만들기)
+		//입력1 : 자바는 
+		//입력2 : 객체지향
+		//입력3 : 언어입니다
+		//[출력]
+		// 자바는
+		// 객체지향
+		// 언어입니다
+		
+		
+		
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("자바는");
+//		System.out.println("객체지향");
+//		System.out.println("언어입니다");		
+//		String name, number;
+//		String number1 = sc.nextLine();
+//		String number2 = sc.nextLine();
+//		String number3 = sc.nextLine();	
+//		name = sc.next();
+//		name = sc.next();
+//		name = sc.next();
+//		System.out.println("자바는");
+//		System.out.println("객체지향");
+//		System.out.println("언어입니다");		
+		
+		//1) 입력클래스 import
+		//2) 출력메시지1
+		//3) 문자열 변수 선언, next()
+		//4) 출력메시지2
+		//5) 문자열 변수2 선언, next()
+		//6) 출력메시지3
+		//7) 문자열 변수3 선언, next()
+		//8) 출력 println
+		Scanner sc = new Scanner(System.in);
+//		System.out.println("입력1 : ");
+//		String str1 = sc.nextLine();
+//		System.out.println("입력2 : ");
+//		String str2 = sc.nextLine();
+//		System.out.println("입력3 : ");
+//		String str3 = sc.nextLine();
+//		System.out.println(str1 + "\n" + str2 + "\n" + str3);
+	
+		
+//		입력1 : << 이거 한번에 입력 1,2,3 다 나오는거 아니고 입력1부터 입력해야 아래가 입력된다
+//		자바는
+//		입력2 : 
+//		객체지향
+//		입력3 : 
+//		언어입니다
+//		자바는
+//		객체지향
+//		언어입니다
+
+		
+		
+		
+		//2. 이름과 나이, 취미를 순서대로 입력받기
+				// (입력메소드 이름과 취미 nextLine()사용,나이는 next()사용)				
+				//출력 시 printf 사용, 형변환 반드시 적용해서 출력할 것, 덧셈연산자 사용
+				
+				//이름입력 : 홍길동
+				//나이입력 : 20
+				//취미입력 : 여행
+				//홍길동은 20살이고 취미는 여행입니다.
+				//홍길동은 2026년에 21살입니다.
+//	본인	
+//		System.out.printf("은 20살이고 " + "는 여행입니다");
+//		System.out.printf("은 2026년에 " + "살입니다");
+//		String name2 = sc.next();
+//		String age = sc.next();		
+//		String con = sc.next();		
+//		System.out.println(name2);
+//		System.out.println(age);	
+//		System.out.println(con);	
+//		char name2 = sc.next().charAt(0);
+//		System.out.printf("name2" +"은 20살이고" + "con" +"은 여행입니다" );
+//		System.out.printf("name2" +"은 2026년에" + "age" +  "살입니다");
+//		홍길동
+//		20
+//		여행
+//		은 20살이고 는 여행입니다은 2026년에 살입니다
+		
+		//1) 입력 클래스, import
+		//2) 입력 메시지 출력
+		System.out.print("이름 입력 :");
+		//3) String 변수 3개,
+		String name, age, hobby;
+		//4) name 변수 = nextLine()
+		name = sc.nextLine();
+		//5) 입력 메시지 출력
+		System.out.print("\n나이 입력 : ");
+		//6) age 변수 = next()
+		age = sc.next();
+		//7) 버퍼 비우기
+		sc.nextLine();
+		//8) 입력메시지 출력
+		System.out.print("\n취미 입력 : ");
+		//9) hobby 변수 = nextLine()
+		hobby = sc.nextLine();
+		//10) 결과 출력 printf(), 형변환 덧셈연산 후 출력
+		System.out.printf("%s의 나이는 %d이고 취미는 %s입니다\n", name, Integer.parseInt(age), hobby);
+		System.out.printf("%s은 2026년에 %d입니다", name, Integer.parseInt(age) + 1);
+		//여기서 보여주는 빨간줄(에러)표시는 컴파일러
+		
+//		이름 입력 : 홍길동
+//
+//		나이 입력 :  20
+//
+//		취미 입력 :  여행
+//		 홍길동의 나이는 20이고 취미는  여행입니다
+//		 홍길동은 2026년에 21입니다
+	}
+}
+
+===================================================================================
+
+11. ScanTask02
+
+package Scanner;
+
+import java.util.Scanner;
+
+//11번 : 두 정수를 입력받아 합을 출력하기(next() 메소드를 사용하기)
+public class ScannerTesk02 {
+	public static void main(String[] args) {
+		
+		//로직구성
+//		Scanner sc = new Scanner(System.in);
+//		String msg1 = "정수1 입력 : ", msg2 = "정수2 입력 : ";
+//		String num1 = sc.next();
+//		System.out.print("\n정수1 입력 : ");
+//		String num2 = sc.next();
+//		System.out.print("\n정수2 입력 : ");
+//		System.out.print("num1" + "num2");
+//		
+		//두 정수를 변수에 저장 후 합을 출력하기
+		//1) 정수형 변수 3개 선언
+		//2) 결과변수 = 정수1 + 정수2
+		//3) 출력
+//		int num1 = 10, num2 = 20;
+//		System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+		//마지막은 int 정수 2개의 합산이 나와야하니까 ()소괄호로 묶어서 자기들끼리 합산되게 만들기
+		
+		//두 정수를 입력받은 후 합을 출력하기
+		//1) 입력클래스 Import
+		Scanner sc = new Scanner(System.in);
+		//2) 문자열 변수(메시지) 2개,  정수형 변수 3개(입력변수 2, 결과변수1)
+		String msg1 = "정수1 입력 : ", msg2 = "정수2 입력 : ";
+		int num1, num2, result;
+				
+		//3) 메시지 출력1
+		System.out.println(msg1);
+		//4) 입력 메소드 사용(next())
+//		num1 = Integer.parseInt(sc.next()); 
+		num1 = sc.nextInt();
+//		String num = sc.next();
+//		int num3 = Integer.parseInt(num);
+		
+		//이미 위에 2번에서 문자열을 int 정수형으로 변환했기에 Integer을 사용하는거임
+		//5) 메시지 출력1
+		System.out.println(msg2);
+		//6) 입력 메소드 사용(next())
+//		num2 = Integer.parseInt(sc.next());
+		num2 = sc.nextInt(); //엔터를 소모하지 않는다
+		//7) 결과변수 = 변수1 + 변수2
+		result = num1 + num2;
+		//8) 출력
+		System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+		 //9) 스캐너 해제
+	    sc.close();
+		
+//	    정수1 입력 : 
+//	    	10
+//	    	정수2 입력 : 
+//	    	20
+//	    	10 + 20 = 30
+	    
+		//로직구성
+//		String msg1 = "정수1 입력 : ", msg2 = "정수2 입력 : ";
+
+	}
+}
+
+
+
+===================================================================================
+
+12. ScanTask03
+
+package Scanner;
+
+import java.util.Scanner;
+
+//12번 : nextLine(), next(), nextInt(), nextDouble()
+public class ScannerTesk03 {
+	public static void main(String[] args) {
+		
+		//입력클래스 Import
+		Scanner sc = new Scanner(System.in);
+		
+		//문자열 전체 입력(.nextLine())
+		System.out.println("한 줄 전체 입력 : ");
+		String line = sc.nextLine();
+		
+		//단어 하나 입력(.next())
+		System.out.println("한 단어 입력 : ");
+		String word = sc.next();
+		
+		//정수 입력(.nextInt())
+		System.out.println("정수 입력 : ");
+		int number = sc.nextInt();
+		
+		//실수 입력(.nextDouble())
+		System.out.println("실수 입력 : ");
+		double number2 = sc.nextDouble();
+		
+		System.out.println("==결과 출력==");
+		System.out.println("nextLine()으로 입력받은 값 : " + line);
+		System.out.println("next()으로 입력받은 값 : " + word);
+		System.out.println("nextInt()으로 입력받은 값 : " + number);
+		System.out.println("nextDouble()으로 입력받은 값 : " + number2);
+		
+//		한 줄 전체 입력 : 
+//			자바는 객체지향언어이다
+//			한 단어 입력 : 
+//			자바는 객체지향언어이다
+//			정수 입력 : 
+//			Exception in thread "main" java.util.InputMismatchException
+//				at java.base/java.util.Scanner.throwFor(Scanner.java:947)
+//				at java.base/java.util.Scanner.next(Scanner.java:1602)
+//				at java.base/java.util.Scanner.nextInt(Scanner.java:2267)
+//				at java.base/java.util.Scanner.nextInt(Scanner.java:2221)
+//				at Scanner.Test05.main(Test05.java:22)
+
+//		한 줄 전체 입력 : 
+//			자바
+//			한 단어 입력 : 
+//			자바 1
+//			정수 입력 : 
+//			실수 입력 : 
+//			13
+//			==결과 출력==
+//			nextLine()으로 입력받은 값 : 자바
+//			next()으로 입력받은 값 : 자바
+//			nextInt()으로 입력받은 값 : 1
+//			nextDouble()으로 입력받은 값 : 13.0	
+	}
+}
+
+===================================================================================
+
+13. OperTest01
+
+package Oper;
+//13번 : 산술연산자(+, -, *, /, %)
+public class OperTest01 {
+	public static void main(String[] args) {
+		
+		int num1 = 10, num2 = 20;
+		double num3 = 5.5, num4 = 2.5;
+		
+
+//		System.out.println("=====덧셈=====");
+//		System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+//		System.out.println(num3 + " + " + num4 + " = " + (num3 + num4));
+//		System.out.println(num1 + " + " + num2 + " = " + (num1 + num4));
+//		=====덧셈=====
+//				10 + 20 = 30
+//				5.5 + 2.5 = 8.0
+//				10 + 20 = 12.5
+
+//		System.out.println("\n=====뺄셈=====");
+//		System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
+//		System.out.println(num3 + " - " + num4 + " = " + (num3 - num4));
+//		System.out.println(num1 + " - " + num2 + " = " + (num1 - num4));
+//		=====뺄셈=====
+//				10 - 20 = -10
+//				5.5 - 2.5 = 3.0
+//				10 - 20 = 7.5
+	
+		
+//		System.out.println("\n=====곱셈=====");
+//		System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
+//		System.out.println(num3 + " * " + num4 + " = " + (num3 * num4));
+//		System.out.println(num1 + " * " + num2 + " = " + (num1 * num4));
+//		=====곱셈=====
+//				10 * 20 = 200
+//				5.5 * 2.5 = 13.75
+//				10 * 20 = 25.0
+		
+
+//		System.out.println("\n=====나눗셈=====");
+//		System.out.println(num1 + " / " + num2 + " = " + (num1 / num2));
+//		System.out.println(num3 + " / " + num4 + " = " + (num3 / num4));
+//		System.out.println(num1 + " / " + num2 + " = " + (num1 / num4));
+//		=====나눗셈=====
+//				10 / 20 = 0
+//				5.5 / 2.5 = 2.2
+//				10 / 20 = 4.0
+		
+
+//		System.out.println("\n=====나머지=====");
+//		System.out.println(num1 + " % " + num2 + " = " + (num1 % num2));
+//		System.out.println(num3 + " % " + num4 + " = " + (num3 % num4));
+//		System.out.println(num1 + " % " + num2 + " = " + (num1 % num4));
+//		=====나머지=====
+//				10 % 20 = 10
+//				5.5 % 2.5 = 0.5
+//				10 % 20 = 0.0
+
+		
+		//복합대입연산자
+		int num = 10;
+		System.out.println("num의 현재 값 : " + num);
+		num = num + 5;
+		//괄호 안 먼저 계산
+		// 좌측 num : 계산결과 , 우측 num : 값
+		System.out.println("num의 현재 값 : " + num);
+		num = num + 15;
+		System.out.println(num);
+		num += 5; //num = num + 5
+		//num 2번 쓰는거보다 간단하게 계산하는법, 15+15=30에 +5를 한것
+		System.out.println(num);
+		num -= 2.5; 		
+		System.out.println(num); 
+		//32, 35-2.5=32.5가 되어야하나,int 변수에 저장해서 정수가 되었기에 소수점 0.5가 버려짐
+		//즉 정수로 강제형변환이 이루어짐
+		System.out.println(35-2.5); // 정수 - 실수 = 실수
+		num *= 2;
+		System.out.println(num); 		
+	}
+}
+
+
+===================================================================================
+
+14. OperTask01
+
+package Oper;
+
+import java.util.Scanner;
+
+//13번 : 산술연산자 응용
+public class OperTest02 {
+	public static void main(String[] args) {
+		
+		//코인노래방 프로그램
+		//사용자에게 금액을 입력받고 부를 수 있는 곡 수, 잔 돈을 출력
+		//금액입력 : 1000
+		//[출력]
+		//3곡을 부를 수 있으며 잔돈은 100원입니다
+		
+		//로직구성
+//		입력클래스, 입력클래스 import, 정수형 변수 금액입력, 곡수, 잔돈, 산술연산자(/,%), 출력메소드
+		
+//		Scanner sc = new Scanner(System.in);
+//		int address;
+//		int number1 = sc.nextInt();
+//		int number2 = sc.nextInt();
+//		int number3 = sc.nextInt();
+//		System.out.println(number1);
+//		System.out.printf("금액입력 : " + "number1");
+//		System.out.println(number2);
+//		System.out.println("number2" + "곡을 부를 수 있으며");
+//		System.out.println(number3);
+//		System.out.printf("잔돈은" + "number3" +  "입니다");
+//		int result = Integer.parseInt(number1);		
+//		System.out.println(number1);
+//		System.out.print(number2);
+//		System.out.println(number3);
+//		System.out.println(name2 + "%s곡을 부를 수 있으며" + name3 " 잔돈은 %d입니다",
+//				Integer.parseInt(name2), Integer.parseInt(name3));
+//		
+		
+		//1) 입력클래스 import
+		//2) 금액을 입력하세요 메시지 출력
+		//3) 정수형 변수 = 입력메소드(nextInt())
+		//4) 상수 = 300
+		//5) 정수형 변수(곡수 저장할 변수)2 = 변수1 / 상수명
+		//6) 정수형 변수3 = 변수1 % 상수명
+		//7) 출력
+		//8) Scanner 해제
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("금액을 입력하세요 : ");
+		int money = sc.nextInt();
+//		System.out.println(money);
+		final int PRICE = 300;
+		int song = money / PRICE;
+		int change = money % PRICE;
+		System.out.println(song + "곡을 부를 수 있으며 잔돈은 " + change + "원입니다");
+		sc.close();
+				
+	}
+}
+
+===================================================================================
+
+15.OperTask02
+
+package Oper;
+//14번 : 증감연산자
+public class OperTask02 {
+	public static void main(String[] args) {
+		
+		int num = 1;
+		System.out.println("num의 값 : " + num);
+		System.out.println("num + 10의 값 : " + (num + 10));
+		
+		System.out.println("======증감연산자(전위형)======");
+		System.out.println("기존 num의 값 : " + num);
+		System.out.println("전위증감연산자를 사용한 num의 값 : " + ++num); //2
+		System.out.println("현재 num의 값 : " + num); //2
+//		num의 값 : 1
+//		num + 10의 값 : 11
+//		======증감연산자======
+//		기존 num의 값 : 1
+//		전위증감연산자를 사용한 num의 값 : 2
+//		현재 num의 값 : 2
+		
+		System.out.println("======증감연산자(후위형)======");
+		int num2 = 1;
+		System.out.println("기존 num2의 값 : " + num2); //1
+		System.out.println("후위증감연산자를 사용한 num2의 값 : " + num2++); //1
+		System.out.println("현재 num2의 값 : " + num2); //2
+		
+//		======증감연산자(후위형)======
+//				기존 num2의 값 : 1
+//				후위증감연산자를 사용한 num2의 값 : 1
+//				현재 num2의 값 : 2
+
+		System.out.println();
+		int num3 = 7, num4 = 7;
+		int result1 = 0, result2 = 0;
+		
+		result1 = --num3 + 4;
+//		저장공간	   (6-1) + 4 = 10
+		System.out.println(result1);
+		
+//		result2 = num4++ -4
+		result2 = num4++;
+		System.out.println(result2); //아직 num4 뒤의 ++는 적용이 안되서 7
+		System.out.println(num4); //한칸 내려가서야 +1해서 8
+		result2 = num4++ -4;
+		System.out.println(result2);
+				// 7     -4 +1 = 4, 먼저 연산이 진행된 후에 ++ 진행
+
+	}
+}
+
+
+==================================================================================
+[과제 제출 기한] 매일 pm 11시 30분까지 제출
+	* 코드 해석 - TypeCasting02, ScannerTask02,ScannerTest03, OperTask01~03
+	* 코드 작성 2문제(로직구성 필수)
+
+1. 물건값과 지불 금액을 입력받아 거스름돈을 출력하기
+단, 거스름돈을 1000원, 500원, 100원 짜리로 나누어 표시하세요.
+클래스명 : Day05-1
+
+[입출력 예시]
+물건값 : 2700
+지불금액 : 5000
+거스름돈은 2300원입니다.
+1000원 : 2개
+500원 : 0개
+100원 : 3개
+
+
+2. 이름과 나이를 입력받아 내년 나이를 출력하기(nextInt() 사용금지)
+클래스명 : Day05_2
+
+[입출력 예시]
+이름 : 홍길동
+나이 : 20
+홍길동님의 내년 나이는 21살입니다.
+만 나이는 19살입니다.
+(생일 안 지났다 가정하고 만 나이 작성)
+
+
+
+

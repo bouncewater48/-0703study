@@ -1,0 +1,1089 @@
+day11_작업
+
+package review02;
+//아래 Task02부분은 강사님꺼랑 같이 봐보기
+class Animal {
+	// 오버로딩을 할 때는 같은 패키지 내의 클래스 이름도 확인하고 달리 해야할것
+	// 필드 //필드는 반드시 메인메소드 밖에서 만들어라
+	String name; // 동물 이름
+	int age; // 동물 나이
+	String species; // 동물의 종
+
+	// 메소드
+	// 동물이 먹이를 먹는 메소드 매개변수 1개
+	// => 동물이름이 00을 먹습니다
+	void eat(String food) {
+		System.out.println(name + "이/가 " + food + "를/을 먹습니다");
+	}
+
+	// 동물이 잠을 잡니다 출력하는 메소드
+	// => 동물이름이 잠을 잡니다 출력
+	void sleep(String place) {
+		System.out.println(name + "이/가 " + place + "에서 잠을 잡니다");
+	}
+
+	// 동물의 생일 축하하는 출력 메소드
+	// => 동물이름의 나이 생일을 축하합니다 출력
+	void printBrithday() {
+		System.out.println(name + "의 " + age + "번째 생일을 축하합니다");
+	}
+}
+
+public class Task02 {
+	public static void main(String[] args) {
+
+		Animal dog = new Animal();
+		System.out.println(dog);
+		System.out.println(dog.name); // null
+		dog.name = "멍멍이";
+		dog.age = 1;
+		dog.species = "시츄";
+		System.out.println(dog.name);
+		dog.printBrithday();
+
+		Animal cat = new Animal();
+		cat.name = "빵빵이";
+		cat.age = 3;
+		cat.species = "코숏";
+		System.out.println(cat.name);
+		System.out.println(cat.age);
+		cat.eat("츄르");
+
+	}
+}
+
+
+===============================================================================================
+
+// 복습 : 클래스
+
+package review02;
+
+// 복습 : 클래스
+public class Song {
+	// 필드
+	String title;
+	String artist;
+	String album;
+
+	// 메소드
+	// 정보출력메소드
+	void diplayInfo() {
+		System.out.println("노래 제목 : " + title);
+		System.out.println("가수명 : " + artist);
+		System.out.println("앨범발매일 : " + album);
+	}
+
+	// 메인메소드 //메인메소드는 대표클래스 안에 있어야한다(public)
+	public static void main(String[] args) {
+		// 객체화
+		Song song = new Song();
+		song.title = "HAPPY";
+		song.artist = "DAY6";
+		song.album = "2025년 6월 25일";
+
+//		매개변수 x,리턴값 x
+		song.diplayInfo();
+
+	}
+}
+//메인 메소드는 public이 붙은 클래스(대표클래스)안에 존재해야한다
+//대표클래스 이름과 class 파일의 이름이 동일해야한다
+/*
+ * public class SongMain { //메인메소드 //메인메소드는 대표클래스 안에 있어야한다(public) public static
+ * void main(String[] args) { //객체화 SongMain song1 = new SongMain(); song1.title
+ * = "HAPPY"; song1.artist = "DAY6"; song1.album = "2025년 6월 25일";
+ * 
+ * // 매개변수 x,리턴값 x song1.diplayInfo();
+ * 
+ * } }
+ */
+
+===============================================================================================
+
+package review02;
+
+import java.util.Scanner;
+
+//메소드 문제
+public class Task01 {
+	public static void main(String[] args) {
+		// 객체명.메소드명 호출
+		Task01 t1 = new Task01();
+
+//	      String str = "hello java";
+//	      for(int i = 0; i < str.length(); i++ ) {
+//	         System.out.println(str.charAt(i));
+//	      }
+
+		// 1. 매개변수 o 리턴값 o => syso(객체명.메소드명(인수));
+		System.out.println(t1.countWord(null));
+		System.out.println(t1.countWord("i love java"));
+		System.out.println(t1.countWord("        안녕하세요   공백이 많아도 제대로 계산되는지 확인하기 !!!"));
+
+		// 2. 매개변수 o 리턴값 o => syso(객체명.메소드명(인수));
+		System.out.println(t1.getGender1("250625-0"));
+		System.out.println(t1.getGender2("250625-0"));
+
+		// 3. 매개변수 o 2차원배열 리턴값 o
+		Scanner sc = new Scanner(System.in);
+		int[][] scores = t1.inputScore(3, 3, sc);
+		System.out.println(scores);
+
+		System.out.println("----학점결과----");
+		for (int i = 0; i < scores.length; i++) {
+			String grade = t1.getGrade(scores[i][0], scores[i][1], scores[i][2]);
+			System.out.println((i + 1) + "번 학생의 학점 : " + grade);
+		}
+
+	}
+	// 1. 문자열 속의 단어를 공백 기준으로 세기
+	// 메소드명 : countWord
+	// 매개변수 : String str
+	// ex) I love java => 3개
+	// ex) 안녕하세요 저는 김영선입니다 java 공부 중입니다 => 6개
+
+	// 1) 리턴타입 => void
+	// 2) 메소드명 => countWord
+	// 3) 매개변수 => String str
+	// 4) 구현부
+	// 조건문(if문) str이 null과 같다면 str == null
+	// return 0;
+	// 변수 2개(정수형1, 논리형2)
+	// 반복문 초기식 int i = 0;
+	// 조건식 i < str.length();
+	// 증감식 i++
+	// 문자형변수3 = str.charAt(i);
+	// 조건문if(변수3 != ' ' && !변수2)
+	// 변수2 = true
+	// 변수1++;
+	// 조건문 else if(변수3 == ' ')
+	// 변수2 = false
+	// return 변수1;
+	int countWord(String str) {
+		if (str == null) {
+			return 0;
+		}
+
+		int count = 0;
+		boolean word = false;
+
+		for (int i = 0; i < str.length(); i++) {
+			char c = str.charAt(i);
+
+			// 문자를 만나면 단어 시작
+			if (c != ' ' && !word) {
+				word = true;
+				count++;
+			} else if (c == ' ') {
+				// 공백을 만나면 단어 끝
+				word = false;
+			}
+		}
+
+		return count;
+	}
+	// 2. 주민등록번호로 성별 판단하기
+	// 메소드명 : getGender
+	// 1, 3 => 남자 2, 4 => 여자
+	// 방법1) if문
+
+	// 리턴타입 => void => String
+	// 메소드명 => getGender
+	// 매개변수 => String ssn
+	// 구현부 =>
+	// 조건문 (null || .length() < 8 || .charAt(6) != '-' )
+	// return "잘못된 입력입니다"
+	// 문자형 변수 => ssn.charAt(7);
+	// if 변수 == '1' || 변수 == '3'
+	// return "남자"
+	// else if 변수 == '2' || 변수 == '4'
+	// return "여자"
+	// else
+	// return "알 수 없습니다"
+	String getGender1(String ssn) {
+		if (ssn == null || ssn.length() < 8 || ssn.charAt(6) != '-') {
+			return "잘못된 입력입니다";
+		}
+
+		char code = ssn.charAt(7);
+		if (code == '1' || code == '3') {
+			return "남자";
+		} else if (code == '2' || code == '4') {
+			return "여자";
+		} else {
+			return "잘못된 입력입니다";
+		}
+	}
+
+	// 방법2) switch문
+	String getGender2(String ssn) {
+		if (ssn == null || ssn.length() < 8 || ssn.charAt(6) != '-') {
+			return "잘못된 입력입니다";
+		}
+
+		char code = ssn.charAt(7);
+
+		switch (code) {
+		case '1', '3':
+			return "남자";
+		case '2', '4':
+			return "여자";
+		default:
+			return "알수없음";
+		}
+
+	}
+	// 3. 학생 3명의 수학점수, 국어점수, 영어점수를 받아 평균을 구하여(정수형)
+	// 각 학생별 학점 구하기
+	// 메소드명 : getGrade
+	// 95점 이상 A+
+	// 90점 이상 A
+	// 85점 이상 B+
+	// 80점 이상 B
+	// 75점 이상 C+
+	// 70점 이상 C
+	// 69점 이하 F
+
+	// 방법1) if~else if~else문이용
+	// 리턴타입 => void => String
+	// 메소드명 => getGrade
+	// 매개변수 => 정수형 3개
+	// 구현부 =>
+	// 정수형 변수 선언 = 매개변수3 합하고 / 3
+	// 조건문if~else if~else문
+	// 학점 계산하는 메소드
+	String getGrade(int math, int korean, int english) {
+		int avg = (math + korean + english) / 3;
+
+		if (avg >= 95)
+			return "A+";
+		else if (avg >= 90)
+			return "A";
+		else if (avg >= 85) {
+			return "B+";
+		} else if (avg >= 80) {
+			return "B";
+		} else if (avg >= 75) {
+			return "C+";
+		} else if (avg >= 70) {
+			return "C";
+		} else {
+			return "F";
+		}
+	}
+
+	// 방법2) 2차원 배열이용
+	// 1) 점수 입력 받는 메소드
+	// 리턴타입 => void => 배열[][]
+	// 메소드명 => inputScore
+	// 매개변수 => 정수형 학생수, 정수형 과목수, 입력클래스
+	// 정수형2차원배열 배열명 = new int[학생수][과목수];
+	// 반복문(바깥for문 초기식 int i = 0;
+//	            조건식 i < 학생수;
+//	            증감식 i++
+//	      번 학생의 점수를 입력하세요 출력
+//	      안쪽 for문   초기식 int j = 0;
+//	         조건식 j < 과목수;
+//	         증감식 j++
+//	         문자열 변수 subject = "";
+//	         if(j == 0) {
+//	            subject = "수학"
+//	         else if(j == 1){
+//	            subject = "영어"
+//	         else if(j == 2){
+//	            subject = "국어"
+//	         }
+//	         출력 메시지 subject + "점수 입력 : ";
+//	         배열[i][j] = sc.nextInt();
+//	      return 배열명;
+	int[][] inputScore(int studentCnt, int subjectCnt, Scanner sc) {
+		int[][] scores = new int[studentCnt][subjectCnt];
+
+		for (int i = 0; i < studentCnt; i++) {
+			System.out.println((i + 1) + "번 학생의 점수를 입력하세요!");
+			for (int j = 0; j < subjectCnt; j++) {
+//		            System.out.println(i + " " + j);
+				String subject = "";
+				if (j == 0) {
+					subject = "수학";
+				} else if (j == 1) {
+					subject = "국어";
+				} else if (j == 2) {
+					subject = "영어";
+				}
+
+				System.out.println(subject + "점수 입력 : ");
+				scores[i][j] = sc.nextInt();
+			}
+		}
+		return scores;
+	}
+
+}
+
+
+
+===============================================================================================
+
+1-1번 : 생성자 기초
+
+package constroctorBasic01;
+
+// 1-1번 : 생성자 기초
+public class Tv {
+	// 필드
+	// 채널, 볼륨, 전원, 색상, 브랜드
+	boolean power; // 기본값 : false
+	int ch;
+	int vol;
+	String color;
+	String brand;
+
+	// 생성자
+	// 알트 + 쉬프트 + s 누르고 컨스트럭터 using field 누르기
+
+//	생성자 alt + shift + s + o
+//	이게 생성자 오버로딩
+//	기본생성자 => 개발자가 생성자를 만들지 않으면 컴파일러가 자동으로 생성한다
+	public Tv() {
+
+	}
+
+	// 매개변수 4개가 있는 생성자
+	public Tv(int ch, int vol, String color, String brand) {
+		this.ch = ch;
+		this.vol = vol;
+		this.color = color;
+		this.brand = brand;
+	}
+
+	// 메소드
+	// 전원이 꺼져있으면 키고, 켜져있으면 끄는 메소드
+	// 메소드명 : powerOnOff()
+	void powerOnOff() { // 매개변수 x, 리턴값 x
+		// 전원이 켜져있으면 끈다
+//		power = !power; //true로 바뀜
+		System.out.println("전원상태 : " + (power ? "켜짐" : "꺼짐"));
+//		삼항연산자 사용한거, 전원이 꺼진건지 켜진건지 확인
+		if (!power) { // 현재 꺼져있는 상태
+			System.out.println("전원 상태 : 켜짐");
+		} else {
+			System.out.println("전원 상태 : 꺼짐");
+		}
+	}
+
+	// 볼륨을 올릴 수 있는 메소드
+	// 메소드명 : increaseVolume()
+	// if~else문
+	// power => true 볼륨 +1
+	// vol <= 99
+	// 볼륨 + 1
+	// 100 초과불가
+	// power => false 전원을 켜주세요
+
+	void inceaseVolume() {
+		if (power) {
+			System.out.println("현재 볼륨 : " + vol);
+			if (vol <= 99) {
+				vol++;
+				System.out.println("올린 후 현재 볼륨 : " + vol);
+			} else {
+				System.out.println("볼륨이 최대입니다");
+			}
+		} else {
+			System.out.println("전원을 먼저 켜주세요");
+		}
+	}
+	// 볼륨을 내릴 수 있는 메소드
+	// 메소드명 : decreaseVolume()
+	// power => true
+	// vol < 0
+	// 볼륨 내리기 불가
+
+	void decreaseVolume() {
+		if (power) {
+			System.out.println("현재 볼륨 : " + vol);
+			if (vol >= 1) {
+				vol--;
+				System.out.println("내린 후 현재 볼륨 : " + vol);
+			} else {
+				System.out.println("현재 볼륨이 0입니다");
+			}
+		} else {
+			System.out.println("전원을 먼저 켜주세요");
+		}
+	}
+
+	// 채널을 올리는 메소드
+	// 메소드명 : nextChannel()
+	void nextChannel() {
+		if (power) {
+			System.out.println("현재채널 : " + ch);
+			if (ch >= 1) {
+				ch--;
+				System.out.println("올린 후 현재 채널 : " + ch);
+			} else {
+				System.out.println("채널의 끝입니다");
+			}
+		} else {
+			System.out.println("전원을 먼저 켜주세요");
+		}
+	}
+
+	// 채널을 내리는 메소드
+	// 메소드명 : previousChannel()
+	void previousChannel() {
+		if (power) {
+			System.out.println("현재채널 : " + ch);
+			if (ch >= 1) {
+				ch--;
+				System.out.println("내린 후 현재 채널 : " + ch);
+			} else {
+				System.out.println("현재 채널이 0번입니다");
+			}
+		} else {
+			System.out.println("전원을 먼저 켜주세요");
+		}
+	}
+
+}
+
+===============================================================================================
+
+1-2번 : 생성자 기초
+
+package constroctorBasic01;
+
+//1-2번 : 생성자 기초
+public class Tvmain {
+	public static void main(String[] args) {
+//	Tv myTv = new Tv();
+//	Tv myTv = new Tv("LG", "black", 10, 5);
+//	The constructor Tv(String, String, int, int) is undefined
+//	매개변수의 순서에 맞게 안넣으면 오류 발생
+		Tv myTv = new Tv(10, 5, "LG", "black");
+		// 매개순서에 맞게 넣으니 오류 미발생
+		// 생성자의 역할을 초기화시켜줌
+		myTv.brand = "LG";
+		myTv.color = "black";
+		myTv.ch = 10; // 초기채널
+		myTv.vol = 5; // 초기 볼륨
+
+		System.out.println(myTv.brand + " tv 를 조작합니다");
+		System.out.println(myTv.color + "색상 tv의 채널은 " + myTv.ch);
+//	myTv.nextChannel();
+//	myTv.powerOnOff();
+//	myTv.nextChannel();
+//	myTv.decreaseVolume();
+
+		Tv myTv2 = new Tv(); // 기본생성자를 주석처리하면 newTv가 사라져서 빨간 오류줄이 생성
+		myTv2.brand = "삼성";
+		myTv2.color = "red";
+		myTv2.ch = 100;
+		myTv2.vol = 50;
+		System.out.println(myTv2.brand + " tv 를 조작합니다");
+		System.out.println(myTv2.power);
+		myTv2.previousChannel();
+		myTv2.powerOnOff();
+		myTv2.previousChannel();
+
+	}
+//	boolean power;   //기본값 : false
+//	   int ch;
+//	   int vol;
+//	   String color;
+//	   String brand;
+//	//볼륨을 올릴 수 있는 메소드
+//	//메소드명 : increaseVolume() 매개변수 x, 리턴값 x
+//	//	1) if 전원이 켜져있는지 확인
+//	//	 켜져있는경우 => 현재 볼륨 출력
+//	//	  2) if 현재 볼륨이 99이하라면 볼륨을 1증가, 증가된 볼륨 출력
+//	//	  3) else 현재 볼륨이 100이면 볼륨이 최대치입니다 출력
+//	//	4) else 꺼져있으면 전원을 먼저 켜주세요 출력
+//	void inceaseVolume() {
+//		if(power) {
+//			System.out.println("현재 볼륨 : " + vol);
+//			if(vol <= 99) {
+//				vol++;
+//				System.out.println("올린 후 현재 볼륨 : " + vol);
+//			}else {
+//				System.out.println("볼륨이 최대입니다");
+//			}
+//		}else {
+//			System.out.println("전원을 먼저 켜주세요");
+//		}
+//	}
+//	
+//	//볼륨을 내릴 수 있는 메소드
+//	// 메소드명 : decreaseVolume() 매개변수 x, 리턴값 x
+//	//1) if전원이 켜져있는지 확인
+//	//		현재 볼륨 출력
+//	//	2) if( vol이 1보다 크거나 같을떄)
+//	//		볼륨 1감소, 현재 볼륨 출력
+//	//	3) else 현재 볼륨이 0일때
+//	//		볼륨이 최소입니다 출력
+//	//4) else전원을 먼저 켜주세요
+//	void decreaseVolume() {
+//		if(power) {
+//			System.out.println("현재 볼륨 : " + vol);
+//			if(vol >= 1) {
+//				vol--;
+//				System.out.println("내린 후 현재 볼륨 : " + vol);
+//			}else {
+//				System.out.println("현재 볼륨이 0입니다");
+//			}
+//		}else {
+//			System.out.println("전원을 먼저 켜주세요");
+//		}
+//	}
+//	
+//	if (power) {
+//		ch++;
+//		if(ch >= 999) {
+//			ch = 1;
+//		}
+//		System.out.println();
+//	}
+//	
+//	//채널을 올리는 메소드
+//	//메소드명 : nextChannel() 매개변수x, 리턴값x
+//	void nextChannel() {
+//		if(power) {
+//			System.out.println("현재채널 : " + ch);
+//			if(ch >= 1) {
+//				ch--;
+//				System.out.println("올린 후 현재 채널 : " + ch);
+//			}else {
+//				System.out.println("채널의 끝입니다");
+//			}
+//		}else {
+//			System.out.println("전원을 먼저 켜주세요");
+//		}
+//	}
+//	 // 채널 내리는 메소드
+//	   // 메소드명 : previousChannel() 매개변수 x, 리턴값x
+//	   void previousChannel() {
+//	      if (power) {
+//	         System.out.println("현재채널 : " + ch);
+//	         if (ch >= 1) {
+//	            ch--;
+//	            System.out.println("내린 후 현재 채널 : " + ch);
+//	         } else {
+//	            System.out.println("현재 채널이 0번입니다");
+//	         }
+//	      } else {
+//	         System.out.println("전원을 먼저 켜주세요");
+//	      }
+//	   }
+
+}
+
+===============================================================================================
+
+2번 : 기본생성자 확인
+
+package constroctorBasic02;
+
+//2번 : 기본생성자 확인
+class Student {
+	// 필드
+	String name;
+	int age;
+
+	// 기본생성자
+	// 생성자는 값을 초기화해주므로, Student st1 = new Student();
+	// Student 안에는 메소드도 있고 객체도 있음
+//	  객체 생성시에 기본생성자를 호출해서 실행됨, 항상 먼저 실행된다
+	// Heap 메모리에 올라갈 때 실행된다는 뜻
+	public Student() {
+		System.out.println("기본 생성자가 호출되었습니다.");
+	}
+
+	// 매개변수가 1개 있는 생성자
+	public Student(String name) {
+		this.name = name;
+//		System.out.println("매개변수가 1개인 생성자가 호출되었습니다");
+		System.out.println(this);
+	}
+
+}
+
+// this는 객체 자기 자신의 참조값을 가지고 있다
+// this를 이용하면 여러개의 객체에 각각의 값을 넣어줄 수 있다
+public class StudentMain {
+	public static void main(String[] args) {
+		Student st1 = new Student(); // Student 객체 생성
+		System.out.println(st1); // constroctorBasic02.Student@279f2327
+
+		Student st2 = new Student("짱구");
+		System.out.println(st2);
+		System.out.println(st2.name);
+
+		Student st3 = new Student("강승훈");
+		System.out.println(st3);
+		System.out.println(st3.name);
+
+	}
+}
+
+===============================================================================================
+
+3-1번 : 생성자 this
+
+package constroctorThis01;
+
+//3-1번 : 생성자 this
+public class A {
+	// 필드
+	int num;
+	int num2;
+
+	// 메소드
+	void method(int num) {
+		int num2;
+		System.out.println(this);
+		System.out.println("매개변수 num : " + num);
+		System.out.println("필드의 num : " + this.num);
+
+	}
+}
+
+===============================================================================================
+
+3-2번 : 생성자 this
+
+package constroctorThis01;
+
+//3-2번 : 생성자 this
+//public class ClassTest {
+//	public static void main(String[] args) {
+//		A a = new A();
+//		System.out.println(a); 
+//		a.method(); //생성자가 아닌 메소드에서 this를 출력해도 주소값이 출력된다
+//	}
+//}
+public class ClassTest {
+	public static void main(String[] args) {
+		A a = new A();
+		System.out.println(a); // heap 메모리의 주소값
+		a.method(10);
+		a.num = 100;
+		a.method(10);
+	}
+}
+===============================================================================================
+
+4번 : this
+
+package constroctorThis02;
+
+// 4번 : this
+public class CarMain {
+	public static void main(String[] args) {
+		Car car1 = new Car("BMW");
+		System.out.println(car1);
+		car1.printInfo(); // 아래 void printInfo() 메소드를 그대로 호출해서 출력
+		// 객체마다 각자 다른 값을 저장할 수 있음
+		// 객체를 만들면 무조건 생성자부터! 호출된다
+		Car car2 = new Car("기아");
+		System.out.println(car2);
+
+	}
+}
+
+class Car {
+	// 필드
+	String brand;
+	int speed;
+
+	// 생성자 : alt + shift + s + o
+	public Car(String brand) {
+		this.brand = brand; // this문이 없으면 brand를 불러와도 null로 출력
+		System.out.println("생성자호출 : " + this);
+	}
+
+	// 매개변수의 타입이 다르다 => 생성자 오버로딩
+	public Car(int speed) {
+		this.speed = speed;
+	}
+
+	// 매개변수의 개수가 다르다 => 생성자 오버로딩
+	public Car(String brand, int speed) {
+		this.brand = brand;
+//		this.speed = speed
+	}
+
+	// 매개변수의 순서가 다르다 => 생성자 오버로딩
+	public Car(int brand, String speed) {
+		this.brand = brand;
+		this.speed = speed;
+	}
+
+	// 메소드
+	void printInfo() {
+		System.out.println("모델 : " + this.brand);
+		System.out.println("속도 : " + this.speed);
+	}
+}
+
+===============================================================================================
+
+5번 : 필드와 매개변수와 지역
+
+package constroctorThis02;
+
+//5번 : 필드와 매개변수와 지역
+class Student {
+	// 필드
+	String name;
+	int age;
+
+	// 생성자
+	public Student(String name, int age) {
+		this.name = name;
+		this.age = age;
+		System.out.println(this.name);
+		System.out.println(name);
+	}
+
+	// 메소드
+	void studentInfo() {
+		System.out.println("이름 : " + name + ", 나이 : " + age);
+		System.out.println("이름 : " + this.name + ", 나이 : " + this.age);
+
+	}
+
+	void studentInfo(String name, int age) {
+		System.out.println("이름 : " + name + ", 나이 : " + age);
+		// 23번 라인의 name, age는 매개변수에 전달된 값(인수) stack 메모리
+		System.out.println("이름 : " + this.name + ", 나이 : " + this.age);
+		// 25번라인의 this.name, this.age는 객체의 필드에 저장된 값 heap 메모리
+	}
+
+}
+
+public class StudentMain {
+	public static void main(String[] args) {
+		Student st1 = new Student("짱구", 5);
+		st1.studentInfo("철수", 6);
+		System.out.println(st1.name);
+//			System.out.println(name); //오류발생
+
+	}
+}
+
+===============================================================================================
+
+6-1번 : this()	자기자신의 생성자 호출
+
+package constroctorThis03;
+
+// 6-1번 : this()	자기자신의 생성자 호출
+public class Person {
+	// 필드
+	String name;
+	int age;
+	String job;
+
+	// 생성자
+	// 기본생성자
+	public Person() {
+	}
+
+	// 이름을 매개변수로 받는 생성자
+	public Person(String name) {
+		this.name = name;
+	}
+
+	// 이름과 나이를 매개변수로 받는 생성자
+	public Person(String name, int age) {
+		this(name);
+		this.age = age;
+	}
+
+	// 이름과 직업을 매개변수로 받는 생성자
+	public Person(String name, String job) {
+		this(name);
+		this.job = job;
+	}
+
+	// 이름과 나이와 직업을 매개변수로 받는 생성자
+	public Person(String name, int age, String job) {
+		this(name, job);
+		this.age = age;
+	}
+
+	// 메소드(매개변수 x, 리턴값 x)
+	// printInfo() 정보 출력
+	void printInfo() {
+		System.out.println("이름 : " + this.name + ", 나이 : " + this.age + ", 직업 : " + this.job);
+
+	}
+
+	// greet() 000님 안녕하세요 출력
+	void greet() {
+		System.out.println(this.name + "님 안녕하세요");
+	}
+}
+
+===============================================================================================
+
+6-2번 : this() 자기자신의 생성자 호출
+
+package constroctorThis03;
+
+//6-2번 : this() 자기자신의 생성자 호출
+public class PersonMain {
+	public static void main(String[] args) {
+		Person p1 = new Person();
+		Person p2 = new Person("홍길동");
+		Person p3 = new Person("짱구", 5);
+		Person p4 = new Person("유리", "학생");
+		Person p5 = new Person("강승훈", 5, "학생");
+		// 하나의 class에서 5개의 객체를 만들었다
+		// 5개의 객체는 전부 고유값을 가지고 있다
+		// Person에서 이름, 이름&나이, 이름&직업, 이름&나이&직업 케이스를 전부 만들었었음
+
+		System.out.println(p3);
+		System.out.println(p5);
+		p3.printInfo();
+		p5.printInfo();
+
+	}
+}
+
+===============================================================================================
+
+7-1. 생성자 오버로딩
+
+package constroctorOverloading;
+
+//7-1. 생성자 오버로딩
+public class Person {
+	// 필드
+	String name;
+	int age;
+	String job;
+
+	// 1. 기본생성자
+	public Person() {
+		this.name = "이름없음";
+		this.age = 0;
+		System.out.println("기본 생성자가 호출되었습니다");
+		System.out.println("생성자 : " + this);
+	}
+
+	// 2. 이름만 초기화하는 생성자
+	// 나이가 다 같고 이름만 다를때 사용가능!
+	public Person(String name) {
+		this.name = name;
+		this.age = 10;
+		System.out.println("이름은 인수로 받고 나이는 10살을 기본값으로 한 생성자가 호출되었습니다");
+	}
+
+	// 3. 이름과 나이를 초기화하는 생성자
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+		this.job = "미정";
+		System.out.println("이름과 나이를 초기화한 생성자가 호출되었습니다");
+	}
+
+	// 4. 나이와 이름을 초기화하는 생성자
+	// 타입 그대로 순서만 달리해서 넣을 수 있음!
+	public Person(int age, String name) {
+		this(name, age);
+	}
+
+	// 5. 이름과 직업을 초기화하는 생성자
+	public Person(String name, String job) {
+		this(name);
+		this.job = job;
+	}
+
+	// 6. 직업과 이름을 초기화하는 생성자 => 5번과 같은 타입의 매개변수를 사용하기에 오버로딩 불가함
+//	public Person(String name, String job) {
+//		this.name = name;
+//		this.job = job;
+//	}
+
+	// 7. 모든 필드를 초기화하는 생성자
+	// 5번 생성자 호출
+	public Person(String name, int age, String job) {
+		this(name, job);
+		this.age = age;
+	}
+
+}
+
+===============================================================================================
+
+7-2. 생성자 오버로딩
+
+package constroctorOverloading;
+
+//7-1. 생성자 오버로딩
+public class PersonMain {
+	public static void main(String[] args) {
+		Person p1 = new Person();
+//		      기본 생성자가 호출되었습니다
+//		      생성자 : constructorOverloading.Person@279f2327
+
+		Person p2 = new Person("유리");
+		System.out.println(p2.name); // 유리
+		System.out.println(p2.age); // 10
+
+		Person p3 = new Person("짱아", 2, null);
+		System.out.println(p3.age);
+	}
+}
+
+===============================================================================================
+
+8-1번 : 정적메소드
+
+package StaticTest;
+
+//8-1번 : 정적메소드
+public class MathUtils {
+	// 메소드
+	// 두 수를 비교해서 큰 수를 반환하는 메소드
+	static int getMax(int num1, int num2) {
+		return (num1 > num2) ? num1 : num2;
+	}
+
+	//
+	static double round(double num) {
+		return Math.round(num);
+		// Math 클래스 : 수학과 관련된 멤버들이 있는 클래스
+		// round() : 소수점 값을 가장 가까운 정수로 반올림하여 반환하는 메소드
+	}
+
+}
+
+===============================================================================================
+
+8-2번 : 정적메소드 호출
+
+package StaticTest;
+
+//8-2번 : 정적메소드 호출
+public class MathUtilsMain {
+	public static void main(String[] args) {
+		// getMax() 호출 => 매개변수 o, 리턴값 o
+		System.out.println(MathUtils.getMax(10, 20));
+		// round() 호출 => 매개변수 o, 리턴값 o
+		System.out.println(MathUtils.round(5.5));
+	}
+
+}
+
+===============================================================================================
+
+9-1번 : 정적변수와 정적메소드
+
+package StaticTest;
+
+// 9-1번 : 정적변수와 정적메소드
+public class MyClassA {
+	// 필드(인스턴스 변수, 스태틱 변수, 상수)
+	// 인스턴스 변수
+	int instanceVar;
+	// 스태틱 변수
+	static int staticVar;
+
+	// 생성자 => 컴파일러가 기본생성자를 만든다
+
+	// 메소드(인스턴스 메소드, 스태틱 메소드)
+	// 인스턴스메소드1
+	void instanceMethod1() {
+		System.out.println("인스턴스 메소드1 호출되었습니다");
+		this.instanceVar = this.instanceVar;
+		System.out.println("인스턴스메소드1에서의 인스턴스 변수값 : " + this.instanceVar);
+		staticVar = 100; // 기존 저장된 값을 무시하고 마지막 100으로 다시 저장
+		System.out.println("인스턴스메소드1에서의 스태틱 변수값 : " + staticVar);
+		instanceMethod2();
+		staticMethod1();
+	}
+
+	// 인스턴스메소드2
+	void instanceMethod2() {
+		System.out.println("인스턴스 메소드2 호출되었습니다");
+	}
+
+	// 스태틱 메소드1
+	static void staticMethod1() {
+		System.out.println("스태틱 메소드1 호출되었습니다");
+//		instanceMethod01(); //스태틱 메소드에서 인스턴스 메소드 호출 불가
+//		instanceVar = 1000; //스태틱메소드에서 인스턴스 변수 접근불가
+		staticVar = 1000;
+		System.out.println("스태틱메소드1에서 스태틱 변수값 : " + staticVar);
+		staticMethod2(); // 바로 아래 스태틱메소드2에 있는 staticMethod2를 호출
+		// this로 반드시 구분해야하는 이유, 안하면 위치가 어디인지 확인을 할 수가 없다
+
+	}
+
+	// 스태틱 메소드2
+	static void staticMethod2() {
+		System.out.println("스태틱 메소드2 호출되었습니다");
+	}
+	// ctrl + f11 눌렀을때 콘솔에 출력된걸 천천히 따라가면서 읽어보기
+}
+
+===============================================================================================
+
+9-2번 : 정적변수와 정적메소드
+
+package StaticTest;
+
+//9-2번 : 정적변수와 정적메소드
+public class MyClassB {
+	public static void main(String[] args) {
+		// 1. 인스턴스 변수 출력 => 객체생성 필수
+		MyClassA a = new MyClassA();
+//		System.out.println(a); //참조값
+//		System.out.println(a.instanceVar); //0, 아직 저장한게 없음
+//		a.instanceVar = 10;
+//		System.out.println(a.instanceVar); //10
+//		
+//		MyClassA aa = new MyClassA();
+//		System.out.println(aa);
+//		System.out.println(aa.instanceVar); //0
+//		aa.instanceVar = 100;
+//		System.out.println(aa.instanceVar); //100
+
+		// 2. 정적변수 출력 => 객체 생성x(생성해도 오류는 안나옴), 객체 생성으로 접근 가능하지만 권장하지는 않음
+		// 클래스명.정적변수명으로 접근한다!! => 공통된 저장공간을 사용, 다른값이 나올 가능성이 있음!
+
+		MyClassA.staticVar = 20;
+		System.out.println(a.staticVar);
+		// 현재 staticVar = 20, 이를 바로 호출
+
+		// 3. 다른 클래스에서 인스턴스 메소드 호출
+		a.instanceMethod1();
+		a.instanceVar = 20;
+		a.instanceMethod1();
+
+		// 4. 다른 클래스에서 스태틱 메소드 호출
+		MyClassA.staticMethod1();
+
+	}
+}
+
+===============================================================================================
+
+
+
+
+===============================================================================================
+
+
+
+
+===============================================================================================
+
+
+
+
+===============================================================================================

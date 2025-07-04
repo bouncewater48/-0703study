@@ -1,0 +1,942 @@
+day07_작업물
+
+0. 복습
+
+Oper.java
+
+package review;
+//1번 : 복습
+public class Oper {
+	public static void main(String[] args) {
+		int num1 = -4;
+		System.out.println(num1 >> 1);
+		System.out.println(num1 >>> 1);
+		/*num1 = -4
+		 * -2
+			2147483646
+		 */
+		System.out.println(Integer.toBinaryString(-4));
+		System.out.println(Integer.toBinaryString(-4 >>> 1));
+		/*
+		 * 11111111111111111111111111111100
+		   1111111111111111111111111111110
+
+		 */
+	}
+}
+
+===========================================================================================
+
+SingTask01. java
+
+package review;
+
+import java.util.Scanner;
+
+// 과제1 : 금액과 곡 당 가격을 입력받아서 부를 수 있는 곡 수와 잔돈 계산
+public class SingTask01 {
+	public static void main(String[] args) {
+		
+		//1) 입력클래스 import
+		//2) 정수형 변수 4개(금액, 곡 당 가격, 부를 수 있는 곡 수, 잔돈)
+		//3) 금액 입력 메시지 출력
+		//4) 변수1 nextInt() 입력받아 저장
+		//5) 곡 당 가격 입력메시지 출력
+		//6) 변수2 nextInt() 입력받아 저장
+		//7) if ~ else 문
+			//if문 조건식 변수1 < 변수2{
+			//입력한 금액과 부족한 금액 출력
+			//}else문{
+			//변수3 변수1 / 변수2
+			//변수4 변수1 % 변수2
+			//부를 수 있는 곡 수와, 잔돈 출력
+			//}
+		//8)scanner 닫기
+		
+		Scanner sc = new Scanner(System.in);
+		int money = 0, price = 0, song = 0, change = 0;	
+		System.out.println("금액 입력 : ");	
+		money = sc.nextInt();
+		System.out.println("곡 당 가격 입력 : ");
+		price = sc.nextInt();
+		if (money < price) {
+			System.out.printf("입력한 금액은 %d입니다. "
+			+ "한 곡당 가격은 %d원으로 %d원이 부족합니다", money, price, price-money);
+		}else {		
+			song = money / price;
+			change = money % price;
+			System.out.printf("%d곡을 부를 수 있으며 잔돈은 %d입니다", song, change);
+		}
+		
+		
+	}
+}
+
+
+
+===========================================================================================
+Review01. java
+
+package review;
+
+import java.util.Scanner;
+
+//3) 복습 문제
+public class Review01 {
+	public static void main(String[] args) {
+		//사용자로부터 입력받은 숫자가 1부터 10까지의 숫자인 경우에만 해당 숫자의 제곱을 출력하고
+		//그 외 숫자를 입력시에는 잘못 입력했습니다 출력하기
+		
+		//1) 입력클래스 import
+		Scanner sc = new Scanner(System.in);
+		/*
+		//2) 정수형 상수 선언
+		int number = 0
+		//3) 입력 메시지 출력
+		System.out.printf("입력받은 숫자 : ");
+		//4) 변수1 = 입력받은 숫자 nextInt();
+		number = sc.nextInt();
+		//5) 출력(사용자로부터 입력받은 숫자가 0이며 제곱은 0입니다)
+		System.out.printf("사용자로부터 입력받은 숫자가 %d이며 제곱은 %d입니다");
+		//+) if 숫자가 1~10인 경우
+		if (number >= 1 && number <= 10); 
+		//6) if else 숫자가 1~10이 아닌 경우
+		if (number < 1 && number > 10); 		
+		//7) 출력(숫자를 잘못 입력하셨습니다)
+		//8) sc.close()
+		 */
+		
+		//한글로만 로직구성
+		//1) 입력클래스 import
+		//2) 정수형 변수
+		//3) 출력 메시지
+		//4) 변수 정수형 입력메소드
+		//5) if 조건식 1 <= 변수 && 변수 <=10 , 0 < 변수 && 변수 < 11
+			//6) 변수 * 변수 출력, 제곱이니까
+		//7) else
+			//8) 잘못 입력했습니다 출력
+		//9) sc.close();
+		/*
+		Scanner sc = new Scanner(System.in);
+		int num = 0;
+		System.out.println("1부터 10 사이의 숫자만 입력하세요");
+		num = sc.nextInt();
+		if ( 1<= num && num < 11) {
+		System.out.println(num * num);
+		/*
+		1부터 10 사이의 숫자만 입력하세요
+		9
+		81
+		*/
+		/*
+		1부터 10 사이의 숫자만 입력하세요
+		11
+		잘못 입력했습니다 
+		 
+//		System.out.println(num * 2); 제곱할땐 *2 쓰는거아님
+		} else {
+		System.out.println("잘못 입력했습니다");
+		}
+		*/
+		
+		
+		//문자열끼리의 비교는 관계연산자(==)를 사용하지 않고
+		//.equals() 메소드를 사용해서 비교한다!
+		System.out.println("문자열1 입력 :");
+		String data1 = sc.nextLine();
+		System.out.println("문자열2 입력 :");
+		String data2 = sc.nextLine();	
+		System.out.println(data1.equals(data2)); //true
+		if(data1.equals(data2)) {
+			/*if(data1== data2)
+			 * .equals가 아닌 ==을 사용하면 제대로 안나옴
+			 * 문자열1 입력 :
+			ksh
+			문자열2 입력 :
+			ksh
+			true
+			두 문자열은 같지 않습니다
+			 */
+			System.out.println("두 문자열 같습니다");
+		}else {
+			System.out.println("두 문자열은 같지 않습니다")
+			;
+			/*문자열1 입력 :
+			ksh
+			문자열2 입력 :
+			ksh
+			true
+			두 문자열 같습니다
+			*/
+			
+		}
+		sc.close();
+	}
+}
+
+
+===========================================================================================
+
+SingTask04. java
+
+package review;
+
+import java.util.Scanner;
+
+public class SingTask04 {
+	public static void main(String[] args) {
+		
+//		남은 금액으로 음료 구매 가능 여부 추가(한 곡당 금액 200원, 음료 금액은 100원)
+//		총 부른 곡 수에 따른 보너스 곡 지급
+//		5곡을 부르면 1곡 추가 제공
+		
+		
+		//1) 입력클래스 import
+		Scanner sc = new Scanner(System.in); 
+		//2) 정수형 상수 2개 선언(한 곡당 금액, 음료금액), 정수형 6개 선언(금액입력1, 노래 곡 수2, 잔돈3, 
+		final int PRICE = 200, PRICE_DRINK = 100;
+		int money = 0, song = 0, change = 0, drinkSong = 0, drinkChange = 0, bonus = 0;
+		//final int에 여러개를 추가할수 있다!
+		//음료마실경우노래곡수4, 음료마실경우잔돈5, 보너스곡6) 
+		//3) 입력 메시지 출력
+		System.out.println("금액 입력 : ");
+		//4) 변수1 = 금액 입력 nextInt()
+		money = sc.nextInt();
+		//5) 변수2 = 변수1 / 상수1
+		song = money / PRICE;
+		//6) 변수3 = 변수1 % 상수1
+		change = money % PRICE;
+		//drinkSong = money % PRICE;		
+		//맨위에 drinkSong = 0으로 초기화를 진행하지 않고 그냥 drinkSong으로만 작성한채 실행하려하면, 아래에서 충돌나서 오류남
+		//7) 출력(몇곡 부를 수 있으며 잔돈은 얼마입니다)
+		System.out.printf("%d곡을 부를 수 있고 잔돈은 %d원입니다.\n", song, change);
+		/*
+		 * 금액 입력 : 
+			1100
+			5곡을 부를 수 있고 잔돈은 100원입니다.
+		 */
+		//+) if 음료금액보다 잔액이 크거나 같을 경우
+		if (change >= PRICE_DRINK) {
+			System.out.printf("음료를 마시고 싶으면 %d곡을 부를 수 있으며 잔돈은 %d원 입니다.\n", song, change - PRICE_DRINK);
+			/*
+			 * 금액 입력 : 
+				1100
+				5곡을 부를 수 있고 잔돈은 100원입니다.
+				음료를 마시고 싶으면 5곡을 부를 수 있으며 잔돈은 0원 입니다.
+			 */
+			/*
+			 * 금액 입력 : 
+				1000
+				5곡을 부를 수 있고 잔돈은 0원입니다.
+				출력
+				음료를 마시고 싶으면 4곡을 부를 수 있으며 잔돈은 100원입니다
+			 */
+//			if문으로 잔돈처리까지 넣어줘서 정상적으로 나옴
+		//8) 음료를 마시기 위해 한 곡을 줄이는 경우
+		//	if(노래곡수 > 0) && (금액 - ((노래곡수 - 1) * 노래가격) >= 음료금액)){
+			//						 여기 노래곡수-1을 drinkSong으로 바꿔서 넣어도 기본값0이라 문제없음
+		}else if(song > 0 && (money - (song -1) * PRICE) >= PRICE_DRINK) {
+			System.out.println("출력");
+			//한곡을 줄이면 음료를 마실 수 있는지 물어보는 if문
+			//9) 음료마실경우 노래곡수 = 노래곡수 - 1;		
+			drinkSong = song - 1;
+			//10) 음료마실경우의 잔돈 = 금액 - (음료마실경우노래곡수 * 노래가격 + 음료금액)
+			drinkChange = money - (drinkSong * PRICE + PRICE_DRINK);
+			System.out.printf("음료를 마시고 싶으면 %d곡을 부를 수 있으며 잔돈은 %d원입니다\n", drinkSong, drinkChange);
+		// }
+			//한줄로 작성하니까 println이 아니라 printf로 바꾸셈
+			/*
+			 * 조건
+			 * +) if문이 추가되기 전 결과
+			 * if(song > 0 && (money - (song -1) * PRICE) >= PRICE_DRINK) {
+			 * 금액 입력 : 
+				1100
+				5곡을 부를 수 있고 잔돈은 100원입니다.
+				출력
+				음료를 마시고 싶으면 4곡을 부를 수 있으며 잔돈은 200원입니다
+			 */
+			}
+		//11) 보너스곡 제공
+		//	보너스곡 = 노래곡수 / 5;
+		//12) if(보너스곡 > 0){
+		//	보너스로 몇곡이 추가되어 총 몇곡을 부를 수 있습니다
+		//}
+		bonus = song / 5;
+		if(bonus > 0) {
+			System.out.printf("보너스로 %d곡이 추가되어 총 %d곡을 부를 수 있습니다\n", bonus, song + bonus);
+		}
+		/*
+		 * 금액 입력 : 
+			1000
+			5곡을 부를 수 있고 잔돈은 0원입니다.
+			출력
+			음료를 마시고 싶으면 4곡을 부를 수 있으며 잔돈은 100원입니다
+			보너스로 1곡이 추가되어 총 6곡을 부를 수 있습니다
+		 */
+		/*
+		 * 금액 입력 : 
+			1100
+			5곡을 부를 수 있고 잔돈은 100원입니다.
+			음료를 마시고 싶으면 5곡을 부를 수 있으며 잔돈은 0원 입니다.
+			보너스로 1곡이 추가되어 총 6곡을 부를 수 있습니다
+		 */
+		//+)sc.close();
+		sc.close();
+	}
+}
+
+
+===========================================================================================
+
+ForTask01. java
+
+
+package ForTest;
+//6번 : for문 연습
+public class ForTask01 {
+	public static void main(String[] args) {
+		//for문만 사용
+		//1. 100부터 1까지 출력(tab키로 띄워쓰기)
+		
+		//2. 구구단 3단만 출력(3x1 ~ 3x9)
+		
+		//3. A ~ F 출력 (초기식 char i ='A')
+		
+		//4. A ~ F 출력 (초기식 int i = 0)
+		
+		//5. aBcDeFgHiJkLmNoPqRsTuVwXyZ
+		
+		
+		//1. 100부터 1까지 출력(tab키로 띄워쓰기)
+//		for(int i = 1; i <= 100; i++) 
+//				System.out.print(i + " ");
+		
+		
+//		강사님꺼
+		for(int i = 0; i < 100; i++) {
+			System.out.print(100 - i + "\t");
+		}
+		
+		/*
+		//2.  구구단 3단만 출력(3x1 ~ 3x9)
+		for(int i = 3; i <= 30; i++)
+			if(i % 3 == 0) {
+			System.out.print(i +  " ");
+			}
+		*/
+		
+//		 강사님꺼
+		 int dan = 3;
+		 for(int i = 1; i < 10; i++) {
+			 System.out.println(dan+ " x " + i + " = " + dan * i);
+		 }
+		
+	
+		//3. A ~ F 출력 (초기식 char i ='A')
+//		String A;
+//		for(char i = 'A'; i < 'G';) {
+//			System.out.println(i+1 + " ");
+//		}
+		
+//		강사님꺼
+		for(char i = 'A'; i <= 'F'; i++ ) {
+			System.out.printf(i + " ");
+		}
+		
+		for(char i = 'A'; i <= 70; i++ ) {
+			System.out.print(i + " ");
+		} // 70은 아스키코드 숫자임
+		System.out.println();
+//		//4. A ~ F 출력 (초기식 int i = 0)
+//		for(int i = 0; i < 7; i++) {
+//			System.out.println(i  " ");
+//		}
+		for(int i = 0; i < 6; i++)	{
+			System.out.print((char)(i + 65));
+		}
+		
+		//5. aBcDeFgHiJkLmNoPqRsTuVwXyZ
+		//홀수 => 소문자
+		//짝수 => 대문자
+		for(int i = 0; i < 26; i++)	{
+			if(i % 2 == 0) {
+				System.out.print((char)(i + 97));
+			}else {
+				System.out.print((char)(i + 65));
+			}
+		}
+		System.out.println();
+		for(int i = 0; i < 26; i++) {
+			System.out.print((char)(i % 2 == 0 ? i + 97 : i + 65));
+		}
+		//현재 i의 값 25
+		//26 + 65 = 91
+		//	조건식 25 < 26	true, 중괄호 영역 (char)(25 % 2 == 0 false, 25 + 65) => (char)91, 증감식 i++ => 25 + 1
+		//현재 i의 값 26
+		//	조건식 26 < 26	false,	for문 탈출!
+		
+		//첫번째 반복문
+		//초기식 i가 0, 조건식- < 26 true, 중괄호영역 (char)(97) => a, 증감식 i++ => i = 0 + 1
+//		System.out.println("\n" + 0 % 2);
+		//현재 i의 값 1
+		//			조건식 1 < 26 true, 중괄호영역 (char)(1 + 65) => (char)66 => B, 증감식 i++ => i = 1 + 1
+		//현재 i의 값 2
+		//			조건식 2 < 26 true
+		//..
+		
+	}
+}
+
+
+
+===========================================================================================
+
+package ForTest01;
+//4번 : for문 기초
+public class ForTest01 {
+	public static void main(String[] args) {
+/*		
+	//for(초기식; 조건식; 증감식) {}
+	for(; true; ) { //이 조건식이 true일 경우 실행
+	 System.out.println("행복하다!");
+	 break;
+	}	
+	/*
+	 * 읽는 순서 : 초기식, 조건식, syso(), true, 증감식
+	 */
+		/*
+	for(; true; ) { //이 조건식이 true일 경우 실행
+	 System.out.println("행복하다!");
+	}	
+	이 상태로 실행하면 처음 한번 "행복하다"를 실행하고, 위에 다시 돌아가서 true인걸 확인하고 
+	다시 실행하기를 무한반복함 (무한루트에 빠졌다; 라고 표현함)(무한루트에 빠질 경우 메모리 초과로 인해
+	과부하가 일어나거나 시스템이 망가질 수 있음)
+		 */
+		/*	for(; true; ) { //이 조건식이 true일 경우 실행
+	 	System.out.println("행복하다!");
+	 	break;
+		}	
+		
+		행복하다!
+		
+		break; 조건문을 사용하면 행복하다!를 한번만 출력하고 끝냄
+		*/
+/*		
+		System.out.println("행복하다!");
+		System.out.println("행복하다!");
+		System.out.println("행복하다!");
+//		syso로 입력한 횟수만큼 실행을 추가로 함; 3번 적었으니 3번 더
+		
+		for(int i = 0; i < 10; i++) { //이 조건식이 true일 경우 실행
+			System.out.println("행복하다!");
+//			break;
+			}
+//		for(;0 < 10; )은 0~10 사이를 무한정 읽어서 무한루트에 빠짐
+//		for(int i = 0; i < 10; ) 변수를 지정했으나 i가 0이라 무한루트
+//		for(int i = 0; i < 10; i++); i++로 i값이 매번 1씩 증가하게 만들고,
+//		i는 10미만이므로 9까지 올라가면 자동중지!
+//		for / int i = 0 / System.out.println("행복하다!") /
+//		i < 10 / i++ / i < 10 순으로 읽고 i값이 1씩 증가하며 실행
+//		i < 10이 true면 계속 실행하고, false가 나오면 중괄호 영역 안이 아닌 밖을 읽으러
+//		탈출해서 중단됨
+	
+	
+		for(int i = 0; i < 10; i++) { //이 조건식이 true일 경우 실행
+			//정수형 i가 0일 때부터 10보다 작을 때까지 i를 1씩 증가시키면서 반복
+			System.out.println(i + "번 행복하다!");
+//			break;
+			}
+	/*0번 행복하다!
+	1번 행복하다!
+	2번 행복하다!
+	3번 행복하다!
+	4번 행복하다!
+	5번 행복하다!
+	6번 행복하다!
+	7번 행복하다!
+	8번 행복하다!
+	9번 행복하다!
+	*/
+	
+/*	for(int i = 1; i < 10; i++) {
+		System.out.println(i);
+	}
+	/*
+	 * 초기식을 1로 시작하면 1~9만 읽음
+	 * 1
+		2
+		3
+		4
+		5
+		6
+		7
+		8
+		9
+	 */
+	
+		//이름 10번 출력
+		//초기식 i = 0;
+		//조건식
+		//증감식
+		//출력 => 1번 000
+		//		2번 00
+		//		10번 000
+		for(int i = 0; i < 10; i++) {
+			System.out.println(i+1 + "번 강승훈");	
+			//i+1을 먼저 실행하고 "번 강승훈"을 읽어서 i=0임에도 1번부터 시작함
+		}	
+	/*1번 강승훈
+	2번 강승훈
+	3번 강승훈
+	4번 강승훈
+	5번 강승훈
+	6번 강승훈
+	7번 강승훈
+	8번 강승훈
+	9번 강승훈
+	10번 강승훈
+	 */	
+	
+	//for문 사용
+	//for 초기식	=> int i = 10	int i = 0	int i = 1
+	//	조건식	=> i > 0		i < 10		i <= 10		i < 1
+	//	증감식	=> i--			i++			i++
+	//	출력		i 번째			10 - i 번째	11 - i 번째
+	
+	//10번째
+	//9번째
+	//8번쨰
+	//...
+	//1번쨰
+	
+//		}
+		
+//		for(int i = 10; i > 0 && i < 11; i--) {
+//			System.out.println(i-1 + "번 강승훈");	
+//		}
+//		
+			for(int i = 10;i > 0; i--) {
+				System.out.print(i-1 + "번째\t");	
+		}
+			System.out.println();
+		for(int i = 0; i < 10; i++) {
+			System.out.println(10 - i + "번째");	
+		}
+		
+		/*
+		9번째		8번째		7번째		6번째		5번째		4번째		3번째		2번째		1번째		0번째	
+		10번째
+		9번째
+		8번째
+		7번째
+		6번째
+		5번째
+		4번째
+		3번째
+		2번째
+		1번째
+		*/
+		
+		
+		
+		//첫번째 반복문
+		//초기식 i = 0	조건식	0	<	10 true	중괄호	10 - 0
+		//이므로 10번째 출력		증감식 i++	
+	
+		//두번째 반복문
+		//				조건식	1	<	10 true	중괄호	10 - 9
+		//이므로 9번째 출력		증감식 i++
+		
+		//세번째 반복문
+		//				조건식	2	<	10	true 중괄호	10 - 2
+		//이므로 8번째 출력
+		
+		System.out.println(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10);
+		
+		int result = 0;
+		for(int i = 1; i <= 10; i++) { 
+			//총합 저장할 변수
+			result += i;
+			System.out.println(result);
+		}
+		
+		/* 
+		 * result로 앞에서부터 누적해서 합산된 결과가 나옴,int 초기화를 중괄호 밖에서 해야함
+			마지막 Syso(result)가 중괄호 밖으로 나가서 선언되면 총합산 결과만 보여줌
+		1
+		3
+		6
+		10
+		15
+		21
+		28
+		36
+		45
+		55
+		*/
+		
+	}
+}
+
+===========================================================================================
+
+ForTest02. java
+
+package ForTest;
+
+import java.nio.file.spi.FileSystemProvider;
+import java.util.stream.IntStream;
+
+//5번 : for문
+public class ForTest02 {
+	public static void main(String[] args) {
+		
+		//1부터 100까지의 수 중에서 짝수만 출력하기
+		//초기식	int i = 1
+		//조건식	i <= 100 or i < 101
+		//증감식	i++
+		//{if (i % 2 == 0){
+		//	syso(i)
+		//}
+		//}
+		
+		//1) for문과 if문 사용
+		for(int i = 1; i <= 100; i++) {
+			if(i % 2 == 0) {
+				System.out.print(i + " ");
+			}
+		}
+			System.out.println();
+		//2) for문의 조건식을 50으로 사용
+		for(int i = 0; i < 50; i++) {
+			System.out.print((i + 1) * 2 + " ");
+		}
+			System.out.println();
+		//3) for문의 초기식을 2로 사용하여 증감식 변경
+		for(int i = 2; i <= 100; i+=2) {
+			System.out.print(i + " ");
+		}
+		
+		//Q. 1부터 100까지의 수 중에서 짝수의 합만 구하기
+		//1) 총합구할 변수 선언
+		//2) for문()	초기식 int i = 2	int i = 1 
+		//			조건식 i <= 100	i <= 50
+		//			증감식 i += 2		i++
+		//{		?					조건문(i % 2 == o){변수 += i;}}
+		//3) 최종 출력 짝수의 합 :
+		System.out.println();
+		/*
+		//방법1)
+		int total = 0;
+		for(int i = 0; i <= 100; i++) {
+			if(i % 2 == 0) {
+				System.out.println(i + " ");
+				total += i;
+			}
+		}
+		System.out.println("짝수의 총합 : " + total);
+		*/
+		
+		/*
+		//방법2)
+		for(int i = 1; i <= 50; i++) {
+//			System.out.println(i * 2);
+			total += i * 2; //total = total + i * 2
+		}
+		System.out.println(total);
+		*/
+		//방법3)
+		for(int i = 2; i <= 100; i += 2) {
+//			System.out.println(i);
+//			total += i; 
+//		}
+//		System.out.println(total);
+		
+		//방법4) for문 사용하지 않기
+		int num = 50;
+		int sum = 2 * (num * (num + 1)) / 2;
+		System.out.println(sum);
+		
+		//방법5) 스트림
+//		int sum1 = IntStream.rangeClosed(1, 100).filter(i -> i % 2 == 0).sum();
+//		System.out.println(sum1);
+//		IntStream.rangeClosed(1, 100) 1~100 범위 설정
+//		filter(i -> i % 2 == 0) 필터링
+		
+		}	
+	}
+}	
+
+===========================================================================================
+
+ForTetst03. java
+
+package ForTest;
+//7번 : for문과 기타제어문
+public class ForTest03 {
+	public static void main(String[] args) {
+		
+		// 1부터 10까지 출력하기    
+//		for(int i = 1; i <= 10; i++) {
+//			System.out.println(i);
+//		}
+		
+		// 1부터 10까지 총 5까지만 출력하기
+//		for(int i = 0; i <= 9; i++) {
+//			System.out.println(i + 1);
+//			if(i == 4) {	
+//				break;
+//			}
+//		}
+		
+		
+		
+		// 1부터 10까지 총 5만 제외하고 출력하기
+		for(int i = 0; i < 10 ; i++) {
+			if(i == 4) {	
+				break;
+			}
+			System.out.println("출력 끝");
+		}
+		
+		
+		//1부터 10까지 중 5만 제외하고 출력하기
+		for(int i = 0; i < 10; i++) {
+			System.out.println(i + 1);
+			if(i == 4)	{
+				continue;
+			}
+			System.out.println(i + 1);
+		}
+		
+	}
+}
+
+===========================================================================================
+
+WhileTest01. java
+
+package WhileTest;
+//8번 : while문 기초
+public class WhileTest01 {
+	public static void main(String[] args) {
+		
+		//안녕하세요 문자열을 10번 출력하기
+		//조건식을 true로 작성시 무한루프에 빠진다
+		 while(true) {
+			 for(int i = 0; i < 10; i++) {
+			 System.out.println("안녕하세요!");
+		 }
+		 break;
+	}
+		
+	//변수 선언
+	//while(조건식){}
+		int cnt = 0;
+		while(cnt < 10) {
+//			System.out.println(cnt); //여기까지만 작성하고 실행하면 계속 0으로 실행이라 무한루프임
+			cnt++; //cnt = cnt + 1; true상태, cnt가 0~9가 될때까진 true임, cnt가 10이 되면 중괄호 탈출
+//			cnt++가 작성되고 난 이후 코드부터 실행해서 1이 증가됨
+//			System.out.println(cnt); //cnt++로 cnt가 1 증가된 상태로 시작하기에 1~10이 출력
+			System.out.println("안녕하세요"); //안녕하세요 10번 출력
+		
+		}
+	}	
+}
+
+
+===========================================================================================
+
+WhileTest02. java
+
+package WhileTest;
+//9번 : while문 활용한 합계 구하기
+public class WhileTest02 {
+	public static void main(String[] args) {
+		//1부터 100까지 합 구하기(for문 이용)
+		//1) 총합 구할 변수 선언
+		//2) for문	(초기식 int i = 1)
+		//			조건식	i <= 100
+		//			증감식	i++
+		//3) 중괄호 영역
+		//		총합구할변수 += i	총합구할변수 = 총합구할변수 값 + 1
+		//4) 출력
+		
+		int result1 = 0;
+		for(int i = 1; i <= 100; i++) {
+			result1 += i;
+//		System.out.println("1부터 100까지의 합 : " + result1);
+		}
+		System.out.println("1부터 100까지의 합 : " + result1);
+		
+		//짝수의 합, 홀수의 합 추가적으로 구하기
+		//1부터 100까지의 합을 구하기(while문 이용)
+		//1) 변수 선언(총합구할변수,비교대상 변수 필요)
+		//2) while문(조건식	비교대상변수 <= 100 or < 101)(비교대상 변수가 0이면 < 100)
+		//3) while중괄호 영역
+		//		총합구할변수 += 비교대상변수
+		//+) 짝수 구할 조건문(if ~ else문)
+		//	if(조건식 cnt % 2 == 0){
+		//		짝수총합구할변수 += cnt;
+		//	}else{
+		//		홀수총합구할변수 += cnt
+		//	}
+		//		비교대상변수++ (1증가)
+		//4) 출력
+		
+		int result2 = 0, cnt = 0, even = 0, odd = 0;
+		while(cnt <= 100) { //100까지의 합을 구하기 라서 < 100이 아니라 <= 100임,100 포함!
+			result2 += cnt;
+			if(cnt % 2 == 0) {
+				even += cnt;
+			}else {
+				odd += cnt;
+			}
+			cnt++;	
+		}
+		System.out.println("1부터 100까지의 합(while문) : " + result2);
+		System.out.println("1부터 100까지의 짝수의 합(while문) : " + even);
+		System.out.println("1부터 100까지의 홀수의 합(while문) : " + odd);
+
+	}
+}
+
+
+===========================================================================================
+[실습] 패키지명 :  homework07
+
+//1~5번 클래스명 : Review01(클래스 하나에 묶어서 하기)
+//6번 클래스명   : AtmTest
+//7번 클래스명   : SingTest
+
+1. 한 개의 정수를 입력받아 짝수인지 홀수인지 출력하기(삼항 연산자 이용)
+
+2. 한 개의 정수를 입력받아 양수, 음수, 0인지 출력하기(조건문)
+
+3. 나이를 입력받아서 다음 기준으로 출력하기
+	0 ~ 12	: 어린이입니다
+	13 ~ 19	: 청소년입니다
+	20 이상	: 성인입니다
+	
+	나이입력 : 00(숫자 쓰기)
+	현재 나이는 00살이고 000입니다.
+
+4. 세 개의 정수를 입력받아 가장 작은 숫자부터 큰 숫자 순으로 정렬하여 출력하기
+	단, 세 개의 정수는 모두 다른 숫자이어야한다 (중복값 사용 X)
+
+	숫자 3개 입력 : 5 1 9
+	정렬된 숫자 : 9 5 1 
+
+5. 사용자가 문자열을 입력받고 "X"만 입력했을 경우에만 종료 메시지 출력하고 그 외에는 입력한 문자열을 출력하기(While문)
+	X는 대소문자 상관없이 편한 문자 넣어서 작성
+	
+
+6. ATM 메뉴에서 입금, 출금, 잔액조회 하기
+	[조건]
+	초기 잔액은 10,000으로 설정
+	메뉴 선택에 따라 작업 수행
+	종료시 프로그램 종료
+	숫자(번호)로 입력받기
+
+	String msg = "\nATM 기기의 메뉴 중 번호를 선택하세요: "
+		+ "\n1. 잔액조회"
+		+ "\n2. 입금"
+		+ "\n3. 출금"
+		+ "\n4. 종료"
+		+ "\n선택 : ";
+	그 외의 번호 입력시 다시 선택하세요 출력 후 메뉴 보이기
+		
+	위에 String msg부터 "선택 : "; 까지 다 그냥 2번 출력용 메세지임
+	번호 입력시 해당 메시지만 출력하고 끝
+
+7. 코인 노래방 시스템을 구현하는 개발자입니다.
+사용자로부터 금액을 입력받아 부를 수 있는 곡 수와 잔돈을 계산하고, 음료를 마실 수 있는지 여부도 안내하는 프로그램
+
+[요구사항]
+사용자에게 곡 당 가격을 입력받는다.
+반복문을 사용하여 사용자에게 금액을 계속 입력받는다.
+단, 0을 입력하면 프로그램은 종료된다.
+입력받은 금액으로 부를 수 있는 곡 수와 잔돈을 출력한다.
+곡 수 : 금액 ÷ 곡당 가격
+보너스 : 5곡당 1곡 보너스 (예: 5곡 → 6곡, 10곡 → 12곡)
+잔돈 : 금액 % 곡당 가격
+음료(100원)를 마시고 싶다면, 음료 가격을 차감하고 노래를 줄이는 방식으로 대체 제안을 출력한다.
+사용자에게 "음료를 구매하시겠습니까?" 라고 묻고
+YES를 입력하면 대체 결과를 출력 NO를 입력하면 원래 계산된 노래 수를 유지한다
+금액이 부족할 경우, 노래를 부를 수 없다는 안내 메시지를 출력한다.
+
+입력은 정수로 받되, nextLine()을 사용하여 입력 오류를 방지한다.
+nextInt() 다음에 반드시 nextLine()이 존재해야함
+대소문자 구분해서 YES/NO 처리한다.
+Scanner는 한 번만 생성하고 마지막에 .close()로 닫을 것
+
+[입출력 예시]
+곡 당 가격 입력: 300
+금액 입력 (0 입력 시 종료): 1000
+3곡을 부를 수 있으며 잔돈은 100원입니다
+음료를 마시고 싶으면 3곡을 부를 수 있으며 잔돈은 0원입니다
+음료를 구매하시겠습니까? (YES/NO): YES
+음료를 구매하셨습니다.
+3곡을 부를 수 있으며 잔돈은 0원입니다
+금액 입력 (0 입력 시 종료): 900
+3곡을 부를 수 있으며 잔돈은 0원입니다
+음료를 마시고 싶으면 2곡을 부를 수 있으며 잔돈은 200원입니다
+음료를 구매하시겠습니까? (YES/NO): YES
+음료를 구매하셨습니다.
+2곡을 부를 수 있으며 잔돈은 200원입니다
+금액 입력 (0 입력 시 종료): 900
+3곡을 부를 수 있으며 잔돈은 0원입니다
+음료를 마시고 싶으면 2곡을 부를 수 있으며 잔돈은 200원입니다
+음료를 구매하시겠습니까? (YES/NO): NO
+음료를 구매하지 않았습니다.
+금액 입력 (0 입력 시 종료): 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

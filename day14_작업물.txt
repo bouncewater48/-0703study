@@ -1,0 +1,709 @@
+day14_작업물 (java 12일차)
+복습 -> 상속 -> super, super() ->접근제한자
+
+package review;
+
+	class Animal{
+		//필드
+		String name;
+		int age;
+		
+		
+		//생성자
+		public Animal(String name, int age) {
+			this.name = name;
+			this.age = age;
+//			Animal a = new.Animal();
+//			name = "강아지";
+//			age = 8;
+			
+			
+		}
+		//	eat(String food) 이름이 음식을 먹습니다 출력
+		void eat(String food){
+			System.out.println(this.name + "이/가" + food + "를/을 먹고있습니다");
+		}
+		//	play()		 	 이름이 놀고있습니다 출력
+		void play() {
+			System.out.println(this.name + "이 놀고있습니다");
+		}
+		//	sleep()			 이름이 잠을 잡니다 출력
+		void sleep() {
+			System.out.println(this.name + "이/가 잠을 잡니다");
+		}
+		//	sleep(int time)	 이름이 몇시에 잠을 잡니다 출력
+		void sleep(int time) {
+			System.out.println(this.name + "이/가" + time + "시에 잠을 잡니다");
+		}
+	}
+
+public class Main {
+	public static void main(String[] args) {
+		//동물 클래스 작성
+		//- Animal 클래스 정의
+		//필드 : 이름(name), 나이(age)
+		//메소드 : 
+		
+		//main 메소드에서 객체 2개를 만들고 모든 메소드 호출하기	
+		Animal ani1 = new Animal("멍멍이", 2);
+		Animal ani2 = new Animal("야옹이", 3);
+		
+		  ani1.eat("간식");
+	      ani1.sleep();
+	      ani1.sleep(10);
+	      ani1.play();
+
+	      ani2.eat("츄르");
+	      ani2.sleep(15);
+	      ani2.sleep();
+	      ani2.play();
+
+	}
+}
+
+============================================================
+
+package inheritanceTest01;
+// 1번 : 상속 기초
+public class Tv {
+	//필드 
+	int ch;
+	int vol;
+	boolean power;
+	
+	//메소드
+	//전원 powerOnOff
+	void powerOnOff() {
+		if(power) {
+			System.out.println("tv가 켜져있습니다");
+		}else {
+			System.out.println("tv가 꺼져있습니다");
+		}
+	}
+
+	//chUp
+	void chUp() {
+		System.out.println("채널을 올립니다");
+	}
+	
+	//chDown
+	void chDown() {
+		System.out.println("채널을 내립니다");
+	}
+	
+	// volUp
+	void volUp() {
+		System.out.println("볼륨을 올립니다");
+	}
+	
+	//volDown
+	void volDown() {
+		System.out.println("볼륨을 내립니다");
+	}
+	
+}
+
+============================================================
+
+package inheritanceTest01;
+// 1번 : 상속 기초(Main 클래스)
+public class TvMain {
+	public static void main(String[] args) {
+		
+		Tv sTv = new Tv();
+		sTv.ch = 10;
+		sTv.vol = 5;
+		sTv.power = true;
+		
+		sTv.powerOnOff();
+		sTv.chUp();
+		System.out.println(sTv);
+//		sTv.netflex();
+//		netflex() 메소드는 Tv2 자식 클래스에서 추가된 멤버이므로
+//		부모 클래스의 객체로는 접근이 불가능하다
+		
+		Tv2 lTv = new Tv2();
+		System.out.println(lTv);
+		lTv.ch = 100;
+		lTv.netflex();
+	}
+}
+
+============================================================
+
+package inheritanceTest01;
+
+public class Tv2 extends Tv{
+//extends로 키워드를 받아오겠다 선언, Tv에서 받아올거니 Tv를 작성 < Tv로부터 상속받음
+	//메소드
+	//netflex 모드
+	void netflex() {
+      System.out.println("넷플릭스 모드입니다");
+   }
+}
+
+============================================================
+
+package inheritanceTest02;
+// 2번 : 상속기초
+public class Animal {
+	//필드
+	String name;
+	int age;
+	String type;
+	
+	//생성자
+	public Animal() {
+	}
+	
+	
+	//메소드
+	void eat(String food) {
+		System.out.println(this.name + "이/가 " + food + "을/를 먹고 있습니다");
+	}
+	
+	void sleep(int time, String place) {
+		System.out.println(this.name + "이/가 " + time + "시에 " + place + "잠을 잡니다");
+	}
+}
+
+
+============================================================
+
+package inheritanceTest02;
+// 2번 : 상속기초
+public class AnimalMain {
+	public static void main(String[] args) {
+		//동물 클래스의 객체 생성	
+		Animal animal = new Animal();
+		System.out.println(animal);
+		
+		//Animal 클래스에 있는 필드와 메소드만 사용가능
+		animal.name = "사자야";
+		System.out.println(animal.name);
+		
+		animal.sleep(10, "초원");
+//		animal.fly(); 자식이 부모에게 키워드 상속은 불가능!
+//		Bird 자식 클래스에서 생성한 메소드는 부모클래스 객체로 사용이 불가능
+		
+		//Bird 클래스를 만들고 객체 생성
+		Bird bird = new Bird();
+		System.out.println(bird);
+		
+		bird.name = "짹짹이";
+		bird.age = 2;
+		bird.type = "참새";
+		bird.fly();
+		bird.eat("새우깡");
+		
+		//강아지 클래스의 객체 생성
+		Dog dog = new Dog();
+		dog.name = "달이";
+		dog.age = 5;
+		dog.type = "말티즈";
+//		dog.fly(); 부모클래스가 아닌 다른 자식 클래스로부터 자식클래스로 상속이 불가능함
+		
+		//고양이 클래스의 객체 생성
+		Cat cat = new Cat();
+		cat.name = "별이";
+		cat.age = 6;
+		cat.type = "샴";
+		
+		System.out.println(cat);
+		System.out.println(cat.name);
+		cat.meow();
+		System.out.println(dog);
+		System.out.println(dog.name);
+		dog.bark();
+		
+		
+	}
+}
+
+
+============================================================
+
+package inheritanceTest02;
+// 2번 : 상속기초
+public class Bird extends Animal{
+				//extends Animal을 안적고 this.name을 적으니 오류 발생
+	
+	//필드
+	//메소드
+	//새 클래스의 고유 메소드
+	void fly() {
+		System.out.println(this.name + "이/가 하늘을 날고 있습니다");
+	}
+	//생성자
+	public Bird() {
+	}
+}
+
+
+============================================================
+
+package inheritanceTest02;
+// 2번 : 상속기초(Animal 클래스를 상속받은 Dog 클래스)
+public class Dog extends Animal{
+	
+	//강아지 고유 메소드
+	void bark() {
+		System.out.println(this.name + "이/가 멍멍 짖습니다.");
+	}
+}
+
+
+============================================================
+
+package inheritanceTest02;
+// 2번 : 상속기초(Animal 클래스를 상속받은 Cat 클래스)
+public class Cat extends Animal{
+
+	//고양이 고유 메소드
+	void meow() {
+		System.out.println(this.name + "이/가 야옹하고 웁니다.");
+	}
+}
+
+
+============================================================
+
+package inheritanceConstructor01;
+// 3번 : 상속관계-생성자 확인
+//부모클래스(슈퍼클래스)
+public class Parents {
+	//필드
+	int number;
+
+	//생성자
+	public Parents() {
+		super(); //부모클래스의 생성자, 모든 클래스의 부모클래스 Object 클래스!!
+		System.out.println("Parents 클래스 생성자 호출");
+	}
+
+	public Parents(int number) {
+		this.number = number;
+	}
+	//메소드
+	void printStr(String str) {
+		System.out.println("부모 클래스에서 메소드 호출 : " + str);
+	}
+}
+
+
+============================================================
+
+package inheritanceConstructor01;
+// 3번 : 상속관계-생성자 확인
+//자식클래스(서브클래스)
+public class Child extends Parents{
+	//필드
+	int num;
+
+	//생성자
+	public Child() {
+		super(); //부모클래스의 생성자 호출
+		System.out.println("Child 클래스 생성자 호출");
+	}
+	
+	//메소드
+	 void printInt(int num) {
+	      System.out.println("자식클래스에서의 메소드 호출 : " + num);
+	   }
+	
+}
+
+
+============================================================
+
+package inheritanceConstructor01;
+// 3번 : 상속관계-생성자 확인
+public class Main {
+	public static void main(String[] args) {
+//		Parents p = new Parents();
+//		stack메모리	heap메모리
+		Child c = new Child();
+		
+//		Parents 클래스 생성자 호출
+//		Child 클래스 생성자 호출
+//		항상 부모클래스가 먼저 호출되고 자식클래스가 호출된다
+//		모든 클래스의 최상위 클래스는 항상 Object 클래스이다
+	}
+}
+
+
+============================================================
+
+package inheritanceConstructor02;
+// 4번 : 상속관계-생성자 확인2
+public class Car {
+	//필드
+	String brand;
+	String color;
+	int price;
+	
+	//생성자
+	public Car(String brand, String color, int price) {
+		super();
+		this.brand = brand;
+		this.color = color;
+		this.price = price;
+	}
+	
+	//메소드
+	void enginStart() {
+		System.out.println(this.brand + "의 시동이 켜졌습니다");
+	}
+	void enginStop() {
+		System.out.println(this.brand + "의 시동이 꺼졌습니다");
+	}
+	
+}
+
+
+============================================================
+
+package inheritanceConstructor02;
+// 4번 : 상속관계-생성자 확인2
+public class SuperCar extends Car{
+	//필드
+	boolean booster;
+
+	//생성자
+//	public SuperCar() {
+//		super(); //부모생성자 호출
+//	}
+	
+	//생성자
+	public SuperCar(int price, boolean booster) {
+		super("BMW", "Red", price);
+		this.booster = booster;
+	}
+
+	public SuperCar(String brand, String color,int price, boolean booster) {
+		super(brand, color, price);
+		this.booster = booster;
+	}
+	
+
+	//메소드
+	void boosterOn() {
+		System.out.println("부스터 가동");
+	}
+	void boosterOff() {
+		System.out.println("부스터 중지");
+	}
+
+}
+
+
+============================================================
+
+package inheritanceConstructor02;
+// 4번 : 상속관계-생성자 확인2
+public class CarMain {
+	public static void main(String[] args) {
+		//부모클래스의 객체 2개 생성
+//		Car c1 = new Car(); 기본생성자가 없으므로 못만듦
+		Car c2 = new Car("기아", "black", 10000);
+		System.out.println(c2);
+		
+//		c2.boosterOn(); Car 클래스에 없으므로 가져오지 못함
+		c2.enginStart();
+		
+//		SuperCar sc1 = new SuperCar();
+		SuperCar sc2 = new SuperCar("BMW", "남색", 150000, true);
+		SuperCar bmw = new SuperCar(10000, true);
+		SuperCar kia = new SuperCar("kia", "black", 10000, false);
+		bmw.enginStart();
+		kia.enginStart();
+		
+	}
+}
+
+
+============================================================
+
+package inheritance;
+// 5번 : this, this(), super, super()
+// 부모클래스
+public class Person {
+	//필드
+	String name;
+	int age;
+	//기본생성자
+	public Person() {
+		super();
+	}
+	//매개변수 2개 있는 생성자
+	public Person(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+		System.out.println("person 매개변수 생성자 호출");
+	}
+	//메소드
+	void introduce() {
+		System.out.println("이름 : " + this.name + ", 나이 : " + this.age);
+	}
+}
+
+============================================================
+
+package inheritance;
+// 5번 : this, this(), super, super()
+// 자식 클래스
+public class Student extends Person{
+	//필드
+	String major;
+
+	//기본생성자
+	public Student() {
+		this("이름 없음" , 0, "전공없음"); //같은 클래스의 다른 생성자 호출(자기자신의 생성자 호출)
+		System.out.println("Student 기본 생성자 호출");
+	}
+
+	public Student(String name, int age, String major) {
+//		super(name, age); //부모클래스의 생성자 호출
+		this.major = major;
+		System.out.println("Students 매개변수 생성자 호출");
+	}
+	
+	//메소드
+	void introduce() {
+		super.introduce(); //부모클래스의 멤버 참조
+		System.out.println("전공 : " + this.major); //현재 객체 자신을 참조
+	}
+}
+
+============================================================
+
+package inheritance;
+// 5번 : this, this(), super, super()
+public class Main {
+	public static void main(String[] args) {
+		System.out.println("=====Student 기본 생성자======");
+		Student st1 = new Student();
+		
+		System.out.println("=====Student 매개변수 생성자=====");
+		Student st2 = new Student("강승훈", 27, "제약공학과");
+//		System.out.println();
+		
+		System.out.println("=====introduce()메소드 호출=====");
+		st2.introduce();	
+	}
+}
+
+============================================================
+
+package methodOverride01;
+// 6번 : 오버라이딩
+
+//부모클래스 Animal
+public class Animal {
+	//필드
+	String name;
+	
+	//메소드
+	void sound() {
+		//부모의 sound() 메소드도 호출
+//		super.sound();
+		System.out.println(this.name + "이/가 소리를 냅니다");
+	}
+}
+
+
+============================================================
+
+package methodOverride01;
+// 6번 : 오버라이딩
+// Animal 클래스 상속받은 자식 클래스
+public class Dog extends Animal{
+	//메소드 오버라이딩 : alt + shift + s + v
+	//@Override : 오버라이딩 의도를 명시
+	// 어노테이션, 컴파일러가 확인해줌
+	@Override
+	void sound() {
+		System.out.println("멍멍!!!");		
+	}
+}
+
+
+============================================================
+
+package methodOverride01;
+// 6번 : 오버라이딩
+public class Cat extends Animal{
+
+	@Override
+	void sound() {
+		System.out.println("야옹~");
+	}
+
+}
+
+
+============================================================
+
+package methodOverride01;
+
+public class Main {
+	public static void main(String[] args) {
+		Animal ani = new Animal();
+		ani.name = "동물";
+		ani.sound();
+		
+		Dog dog = new Dog();
+		dog.sound();
+		  
+		Cat cat = new Cat();
+		cat.name = "별이";
+		cat.sound();
+	}
+}
+
+============================================================
+
+package task01;
+//실습1
+public class Person {
+	   // 슈퍼 클래스 : Person
+//  필드 : 이름, 나이
+//  생성자
+//     기본생성자(이름없음, 0) 전달
+//     매개변수가 2개 있는 생성자
+// 		 Person 생성자 호출 출력
+	//필드
+	String name;
+	int age;
+	
+//	 기본생성자
+	public Person() {
+		this("이름없음", 0);
+	}
+
+	public Person(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+		System.out.println("Person 생성자 호출");
+	}
+	
+	//메소드
+//	Person person = new Person(name, age);
+//	introduce 메소드 : 이름, 나이 출력하는 메소드
+	void introduce() {
+		System.out.println("이름 : " + this.name + ", 나이 : " + this.age);
+	}
+	void sleep(int time) {
+	System.out.println(this.name + "은/는" + time + " 몇시에 잠을 잡니다");
+	}
+}
+
+
+============================================================
+
+package task01;
+//실습1
+public class Student extends Person{
+	//서브 클래스 : Student
+//  필드 : 학번, 전공
+	String studentId;
+	String major;
+	
+	//생성자
+	//기본생성자
+	public Student() {
+		this("이름없음", 0, "값없음","전공없음");
+	}
+
+	//매개변수가 4개 있는 생성자
+	//	student 생성자 호출 출력
+	public Student(String name, int age, String studentId, String major) {
+		super(name, age);
+		this.studentId = studentId;
+		this.major = major;
+		System.out.println("student 생성자 호출");
+	}
+	
+	
+	//부모 클래스의 introduce 메소드 오버라이딩
+//		부모 메소드 호출
+//		학번과 전공도 출력하는 메소드
+	@Override
+	void introduce() {
+		// TODO Auto-generated method stub
+    super.introduce();
+    System.out.println("학번 : " + this.studentId + ", 전공 : " + this.major);
+ }
+ //   반드시 오버라이딩 사용하며
+ // 생성자 호출, this, super 호출하는 코드 작성할 것
+}
+
+
+============================================================
+
+package task01;
+//실습1
+public class Main {
+	public static void main(String[] args) {
+		Student s1 = new Student();
+		s1.introduce();
+		s1.sleep(23);
+		
+		Student s2 = new Student("강승훈", 27, "260101", "제약공학과");
+	//슈퍼 클래스 : Person
+//	생성자 
+//		매개변수가 2개 있는 생성자
+//			Person 생성자 호출 출력
+//	메소드
+//		introduce 메소드 : 이름, 나이 출력하는 메소드
+//		sleep 메소드 : 이름은 몇시에 잠을 잡니다 출력하는 메소드
+//		
+	
+	//서브 클래스 : Student
+//	필드 : 학번, 전공
+//	생성자 
+//		
+//		기본생성자(이름없음, 0, 값없음, 전공없음) 전달
+//		매개변수가 4개 있는 생성자
+//			student 생성자 호출 출력
+//	부모클래스의 introduce 메소드 오버라이딩
+//		부모 메소드 출력
+//		학번과 전공도 출력하는 메소드
+
+		// 반드시 오버라이딩 하용하며
+		// 생성자 호출, this, super 호출하는 코드 작성할 것
+		
+		
+//	필드 : 이름, 나이
+//		기본생성자(이름없음, 0) 전달
+	}
+}
+
+
+============================================================
+
+
+
+============================================================
+
+
+
+============================================================
+
+
+
+============================================================
+
+
+
+============================================================
+
+
+
+============================================================
+
+
+
+============================================================

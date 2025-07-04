@@ -1,0 +1,971 @@
+day06
+Day05_1.java(과제1)
+
+package Review;
+
+import java.util.Scanner;
+
+public class Day05_1 { //클래스 중괄호 시작 영역
+	public static void main(String[] args) { //main 중괄호 시작 영역
+		
+	/*
+		1. 물건값과 지불 금액을 입력받아 거스름돈을 출력하기
+		단, 거스름돈을 1000원, 500원, 100원 짜리로 나누어 표시하세요.
+		클래스명 : Day05_1
+	
+		[입출력 예시]
+		물건값 : 2700
+		지불금액 : 5000
+		거스름돈은 2300원입니다.
+		1000원 : 2개, 500원 : 0개, 100원 : 3개
+	*/
+//방법1)
+		//로직구성
+		//1) 입력클래스 import
+		Scanner sc = new Scanner(System.in);
+		//2) 출력메시지 : 물건값
+		System.out.println("물건값 입력 : ");
+		//3) 정수형 변수1 입력메소드(next())
+		int price = Integer.parseInt(sc.next());
+		//4) 출력메시지 : 지불 금액
+		System.out.println("지불금액 : ");
+		//5) 정수형 변수2 입력메소드(next())
+		int paid = Integer.parseInt(sc.next());
+		//6) 정수형 변수3 변수2 - 변수1 (지불금액 - 물건값)(산술연산)
+		int change = paid - price;
+		//7) 출력(거스름돈은 00원입니다
+		System.out.println("거스름돈은 " + change + "원 입니다.");
+		
+//방법1)		
+		//8) 출력(변수3 / 1000)
+		//9) 출력((변수3 % 1000) / 500)
+		//10) 출력((변수3 % 1000) / 500) 100)) 
+		//2300일땐 /500을 생략해도 되는데 다른것도 하려면 이게 맞음
+		
+//방법2)		
+		//8) 정수형변수 선언 = 변수3 / 1000;
+		int thousand = change / 1000;
+		
+		
+		//9) 변수3 %= 1000; 1000원씩 거스르고 남은돈
+		change %= 1000;
+		//10) 정수형변수 선언 = 변수3 / 500;
+		int fiveHundred = change / 500;
+		//11) 변수3 %= 500; 위에서 거스르고 남은돈에서 다시 500원씩 거스르고 남은것
+		change %= 500;
+		//12) 정수형변수 선언 = 변수3 / 100;
+		int hundred = change / 100;
+		//13) 출력
+		System.out.println("1000원 : " + thousand + "개\n"
+				+ "500원 : " + fiveHundred + "개\n"
+				+ "100원 : " + hundred + "개");		
+	} // main 중괄호 끝 영역
+} // 클래스 중괄호 끝 영역
+
+===========================================================================
+
+Day05_2(과제2)
+
+package Review;
+
+import java.util.Scanner;
+
+public class Day05_2 {
+	public static void main(String[] args) { //main 시작
+	/*
+		2. 이름과 나이를 입력받아 내년 나이를 출력하기(nextInt() 사용금지)
+		클래스명 : Day05_2
+		
+		[입출력 예시]
+		이름 : 홍길동
+		나이 : 20
+		홍길동님의 내년 나이는 21살입니다.
+		만 나이는 19살입니다.
+		(생일 안 지났다 가정하고 만 나이 작성)	
+	*/
+		
+		//1) 입력 클래스 import
+		//2) 정수형 변수 2개 선언
+		//3) 입력 메시지
+		//4) 이름변수 = nextLine() 사용 int로 형변환 필요
+		//5) 입력메시지
+		//6) 나이변수 = nextLine() 사용 int로 형변환 필요
+		//7) 출력
+		
+		Scanner sc = new Scanner(System.in);
+		String name;
+		int age;
+		System.out.println("이름 입력 : ");
+		name = sc.nextLine();
+		System.out.println("나이 입력 : ");
+		age = Integer.parseInt(sc.nextLine();
+		System.out.println(name + "님의 내년 나이는 " + (age + 1) + "살 입니다.");
+		System.out.println("만 나이는" + (age - 2) + "살 입니다.");
+		
+	} //main 끝
+}
+
+=========================================================================================
+
+OperTest01. java
+
+package Oper;
+//3번 : 관계 연산자와 논리 연산자
+public class OperTest01 {
+	public static void main(String[] args) { //main 시작
+		
+		System.out.println("======관계 연산자======");
+		
+//		int num1 = 10, num2 = 20, num3 = 10;
+//		System.out.println("num1 > num2 : num1이 num2보다 크니? " + (num1 < num2));
+		/*
+		 * ======관계 연산자======
+		num1 > num2 : num1이 num2보다 크니? true
+		 */
+		
+//		int num1 = 10, num2 = 20, num3 = 10;
+//		System.out.println(num1 + " > " + num2 + " : " + (num1 > num2));
+//		System.out.println(num1 + " < " + num2 + " : " + (num1 < num2));
+//		System.out.println(num1 + " >= " + num2 + " : " + (num1 >= num2));
+//		System.out.println(num1 + " >= " + num2 + " : " + (num1 <= num2));
+//		System.out.println(num1 + " == " + num2 + " : " + (num1 == num2));
+//		System.out.println(num1 + " != " + num2 + " : " + (num1 != num2));
+		
+		/*
+		======관계 연산자======
+		10 > 20 : false
+		10 < 20 : true
+		10 >= 20 : false
+		10 >= 20 : true
+		10 == 20 : false
+		10 != 20 : true
+		 */
+		
+		int num1 = 10, num2 = 20, num3 = 10;
+		System.out.println(num1 + " > " + num2 + " : " + (num1 < num2));
+		System.out.println(num1 + " < " + num2 + " : " + (num1 < num2));
+		System.out.println(num1 + " >= " + num2 + " : " + (num1 <= num2));
+		System.out.println(num1 + " >= " + num2 + " : " + (num1 >= num2));
+		System.out.println(num1 + " == " + num2 + " : " + (num1 == num2));
+		System.out.println(num1 + " != " + num2 + " : " + (num1 != num2));
+		System.out.println(num1 + " == " + num3 + " : " + (num1 == num3));
+		
+		/*
+		 * ======관계 연산자======
+		10 > 20 : true
+		10 < 20 : true
+		10 >= 20 : true
+		10 >= 20 : false
+		10 == 20 : false
+		10 != 20 : true
+		10 == 10 : true
+		 */
+		
+//		System.out.println(10 >= "10"); 아래의 문자와 정수를 비교할 수 없다는 오류 발생!ㄴ
+		//The operator >= is undefined for the argument type(s) int, String	
+	} // main 끝
+}
+
+
+=========================================================================================
+
+OperTask01. java
+
+package Oper;
+
+import java.util.Scanner;
+
+//4번 : ~논리연산자까지 복습문제
+public class OperTask01 {
+	public static void main(String[] args) {
+		
+		//사용자가 입력한 값 2개의 값을 서로 비교하기(관계연산자 3개 확인)
+		//nextInt() 사용, 변수를 먼저 만들고 진행할 것!
+		//변수 만들 때 의미있는 문자로 사용
+		//로직 구성부터!
+		/*
+		Scanner sc = new Scanner(System.in);
+		int age;
+		int high;		
+		age = sc.nextInt(27);
+		high = sc.nextInt(182);
+		System.out.println(age + " > " + high + " : " + (age > high));
+		sc.close();
+		*/
+		
+		//항상 로직구성과 sc.close() 잊지말기
+		//1) 입력클래스 import
+		//2) 정수형 변수 2개 선언
+		//3) 입력 메시지 출력(숫자 2개를 입력(띄워쓰기로) : )
+		//4) 변수 입력메소드사용(nextInt())
+		//5) 출력
+		//+) sc.close();
+		
+		Scanner sc = new Scanner(System.in);
+		/*
+		int num1, num2;
+		System.out.println("숫자 2개를 띄워쓰기로 구분하여 입력하세요 : ");
+		num1 = sc.nextInt();
+		num2 = sc.nextInt();
+		//여기까지가 로직구성
+		System.out.println(num1 + " < " + num2 + " : " + (num1 < num2));
+		System.out.println(num1 + " > " + num2 + " : " + (num1 > num2));
+		System.out.println(num1 + " > " + num2 + " && " + (num1 > num2));
+		System.out.println(num1 + " > " + num2 + " || " + (num1 > num2));
+		System.out.println(num1 + " > " + num2 + " || " + " == " + " : " + (num1 > num2 || num1 == num2));
+		*/
+		
+		//실수 관계연산자 사용
+		double num3, num4;
+		System.out.println("실수 2개를 띄워쓰기를 구분하여 입력하세요 : ");
+		num3 = sc.nextDouble();
+		num4 = sc.nextDouble();	
+		System.out.println(num3 + " < " + num4 + " : " + (num3 < num4));
+		
+		/*
+		0.00000001 0.000000001
+		1.0E-8 < 1.0E-11 : false
+		1.0E-8: 10의 -8제곱(소수점아래 8자리)
+		1.0E-11: 10의 -11제곱(소수점아래 11자리)
+		*/
+
+	}
+}
+
+
+=========================================================================================
+
+OperTask01_1 (위에서 실습때 뇌정지와서 못한거 직접 해본것)
+
+
+package Oper;
+
+import java.util.Scanner;
+
+//4-1번 : ~논리연산자까지 복습문제
+public class OperTask01_1 {
+	public static void main(String[] args) {
+		
+		//사용자가 입력한 값 2개의 값을 서로 비교하기(관계연산자 3개 확인)
+		//nextInt() 사용, 변수를 먼저 만들고 진행할 것!
+		//변수 만들 때 의미있는 문자로 사용
+		//로직 구성부터!
+		
+		Scanner sc = new Scanner(System.in);
+		//입력메소드 선언
+		int num1, num2;
+		//num1, num2 라는 정수 선언
+		System.out.println("숫자 2개를 서로 비교하세요 : ");
+		//콘솔창에 기본으로 띄울 문구
+		num1 = sc.nextInt();
+		num2 = sc.nextInt();
+		//num1, num2를 입력가능하게 만드는 선언, 기본적인 로직구성
+		System.out.println(num1 + " > " + num2 + " : " + (num1 > num2));
+		System.out.println(num1 + " > " + num2 + " : " + (num1 < num2));
+		System.out.println(num1 + " > " + num2 + " : " + 
+		" || " + num1 + " < " + num2 + " : " +  (num1 > num2 || num1 < num2));
+		// 먼저 10 > 20을 확인, 그다음 10 < 20을 확인
+		// 그리고 10 > 20 과 10 < 20 중 하나라도 참이면 true가 출력되게 작성
+		
+		/*
+		숫자 2개를 서로 비교하세요 : 
+			10
+			20
+			10 > 20 : false
+			10 > 20 : true
+			10 > 20 :  || 10 < 20 : true
+		*/
+	}
+}
+
+
+=========================================================================================
+
+OperTest02. java
+
+package Oper;
+
+import java.util.Scanner;
+
+//6번 : 상향연산자 실습1
+public class OperTask02 {
+	public static void main(String[] args) {
+		
+		//두 수를 입력받아 비교
+		//1.크다, 작다, 같다를 각각 상황에 맞게 출력되도록 로직 구성
+		//1) 입력클래스 import
+		//2) 입력 메시지 출력
+		//3) 변수 선언, 입력메소드 사용
+		//4) 입력 메시지 출력
+		//5) 변수 선언, 입력메소드 사용
+		//6) 삼항연산자 사용하여 출력 => 크다/작다/같다가 출력되어야함
+		//조건식 ? 참일때의 값 : 거짓일때의 값
+		//조건식1 ? 참일 떄의 값 : 조건식2 ? 참일때의 값 : 거짓일때의 값
+		
+		Scanner sc = new Scanner(System.in);
+//		System.out.println("비교할 숫자를 입력하세요 : ");
+//		int num1 = sc.nextInt();
+//		int num2 = sc.nextInt();
+		/*
+		String result = num1 > num2 ? :;
+		String result = num1 < num2 ? :;
+		String result = num1 = num2 ? :;
+		*/
+//		String result = num1 > num2 ? "크다" :  +  num1 < num2 ? "작다" : +  num1 == num2 ? "같다" ;
+//		System.out.println(num1 +  + num2 );
+//		System.out.println(true ? num1 > num2 : "크다");
+//		System.out.println(true ? num1 < num2 : "작다");
+//		System.out.println(true ? num1 == num2 : "같다");
+//		System.out.println(true ? num1 > num2 : "크다" ++ true ? num < num2 : "작다" + );
+				
+//		강사님 답안지
+		System.out.println("크기 비교할 숫자 1 입력 : ");
+		int num1 = sc.nextInt();
+//		System.out.println("크기 비교할 숫자 2 입력 : ");
+		int num2 = sc.nextInt();
+		String result = num1 > num2 ? num1 + "가 큽니다" : (num1 == num2) ? "같은 수" : "큰 수 : " + num2;
+//		String result = num1 > num2 ? num1 + "가 큽니다" : (num1 == num2) ? "같은 수" : "큰 수 : " + num2
+//			:	? (num1 < num2) ? num2 + "가 작습니다"; 틀린건데 정확한 이유를 모르겠음, 작은거 어케 하냐
+		//              num1 > num2가 참인가?를 물어봄
+		//                                               num1==num2를 다시 한번 물어봄
+		//                                                                   같은 수와 큰 수 중 참을 출력
+		//				위에서 num1과 num2를 조건문 하나씩 선언해보고, 선언 결과 참이면 그대로 출력하고 아닐 시에는 뒤쪽을 출력
+		//
+		System.out.println(result);
+		
+//		System.out.println(result = num1 > num2 ? num1 + "가 큽니다" : (num1 == num2) ? "같은 수" : "큰 수 : " + num2 + "입니다"); 
+		
+		
+		
+		//2. 한개의 정수를 입력받아서 짝수인지 아닌지 출력하기
+		//짝수입니다 or 짝수가 아닙니다로 출력할 것
+		
+		//1) 입력 메시지 출력
+		//2) 정수형 변수 1개(입력 메소드), 문자열변수 1개(삼항연산자, 나머지연산자)
+		//3) 출력
+		System.out.println("숫자 1개 입력 : ");
+		int number = sc.nextInt();
+		String result1 = (number % 2 == 0) ? "짝수입니다" : "짝수가 아닙니다";
+		// number가 2로 나눠떨어지는 숫자(짝수)면 참이라 짝수입니다 가 출력, 아닌 숫자(홀수)면 짝수가 아닙니다 로 출력
+		// 0은 원래는 짝수도 홀수도 아닌 숫자이나, 컴퓨터는 짝수로 인식함
+		System.out.println("입력한 숫자는 " + result1);
+//		System.out.println("입력한 숫자 " + number + result1); number가 뭔지도 알 수 있게 바뀜!
+		sc.close();
+		
+		/*
+		 * 크기 비교할 숫자 1 입력 : 
+		1 2
+		큰 수 : 2
+		숫자 1개 입력 : 
+		5
+		입력한 숫자는 짝수가 아닙니다
+		 */	 
+	}
+}
+
+=========================================================================================
+
+OperTask02
+
+package Oper;
+
+import java.util.Scanner;
+
+//6번 : 상향연산자 실습1
+public class OperTask02 {
+	public static void main(String[] args) {
+		
+		//두 수를 입력받아 비교
+		//1.크다, 작다, 같다를 각각 상황에 맞게 출력되도록 로직 구성
+		//1) 입력클래스 import
+		//2) 입력 메시지 출력
+		//3) 변수 선언, 입력메소드 사용
+		//4) 입력 메시지 출력
+		//5) 변수 선언, 입력메소드 사용
+		//6) 삼항연산자 사용하여 출력 => 크다/작다/같다가 출력되어야함
+		//조건식 ? 참일때의 값 : 거짓일때의 값
+		//조건식1 ? 참일 떄의 값 : 조건식2 ? 참일때의 값 : 거짓일때의 값
+		
+		Scanner sc = new Scanner(System.in);
+//		System.out.println("비교할 숫자를 입력하세요 : ");
+//		int num1 = sc.nextInt();
+//		int num2 = sc.nextInt();
+		/*
+		String result = num1 > num2 ? :;
+		String result = num1 < num2 ? :;
+		String result = num1 = num2 ? :;
+		*/
+//		String result = num1 > num2 ? "크다" :  +  num1 < num2 ? "작다" : +  num1 == num2 ? "같		다" ;
+//		System.out.println(num1 +  + num2 );
+//		System.out.println(true ? num1 > num2 : "크다");
+//		System.out.println(true ? num1 < num2 : "작다");
+//		System.out.println(true ? num1 == num2 : "같다");
+//		System.out.println(true ? num1 > num2 : "크다" ++ true ? num < num2 : "작다" + );
+				
+//		강사님 답안지
+		System.out.println("크기 비교할 숫자 1 입력 : ");
+		int num1 = sc.nextInt();
+//		System.out.println("크기 비교할 숫자 2 입력 : ");
+		int num2 = sc.nextInt();
+		String result = num1 > num2 ? num1 + "가 큽니다" : (num1 == num2) ? "같은 수" : "큰 수 : " + num2;
+//		String result = num1 > num2 ? num1 + "가 큽니다" : (num1 == num2) ? "같은 수" : "큰 수 : " + num2
+//			:	? (num1 < num2) ? num2 + "가 작습니다"; 틀린건데 정확한 이유를 모르겠음, 작은거 어케 하냐
+		//              num1 > num2가 참인가?를 물어봄
+		//                                               num1==num2를 다시 한번 물어봄
+		//                                                      같은 수와 큰 수 중 참을 출력
+		//위에서 num1과 num2를 조건문 하나씩 선언해보고, 선언 결과 참이면 그대로 출력하고 아닐 시에는 뒤쪽을 출력
+		//
+		System.out.println(result);
+		
+//		System.out.println(result = num1 > num2 ? num1 + "가 큽니다" : 
+		(num1 == num2) ? "같은 수" : "큰 수 : " + num2 + "입니다"); 
+		
+		
+		
+		//2. 한개의 정수를 입력받아서 짝수인지 아닌지 출력하기
+		//짝수입니다 or 짝수가 아닙니다로 출력할 것
+		
+		//1) 입력 메시지 출력
+		//2) 정수형 변수 1개(입력 메소드), 문자열변수 1개(삼항연산자, 나머지연산자)
+		//3) 출력
+		System.out.println("숫자 1개 입력 : ");
+		int number = sc.nextInt();
+		String result1 = (number % 2 == 0) ? "짝수입니다" : "짝수가 아닙니다";
+		System.out.println("입력한 숫자는 " + result1);
+//		System.out.println("입력한 숫자 " + number + result1); number가 뭔지도 알 수 있게 바뀜!
+		sc.close();
+		
+		/*
+		 * 크기 비교할 숫자 1 입력 : 
+		1 2
+		큰 수 : 2
+		숫자 1개 입력 : 
+		5
+		입력한 숫자는 짝수가 아닙니다
+		 */
+		 
+	}
+}
+
+
+
+=========================================================================================
+
+BitOper. java
+
+package Oper;
+//7번 : 비트연산자
+public class BitOper {
+	public static void main(String[] args) {
+		/*
+		System.out.println(10 & 11); //1010 & 1011 => 1010
+		//두개 다 1이 있는거만 1로 표현
+		System.out.println(10 | 11); //1010 | 1011 => 1011
+		//두 비트 중 하나라도 1이 있으면 1로 표현
+		System.out.println(10 ^ 11); //1010 ^ 1011 => 0001
+		//
+		System.out.println(~10);     //-11
+		//
+		*/
+		
+		System.out.println("십진수 : " + 10 + " => 이진수 : " 
+		+ Integer.toBinaryString(10));
+		//십진수 : 10 => 이진수 : 1010
+		System.out.println("십진수 : " + 10 + " => 이진수 : " 
+		+ Integer.toBinaryString(11));
+		//십진수 : 10 => 이진수 : 1011
+		
+		//& 두 비트가 모두 1이면 1
+		System.out.println("10 $ 11의 십진수 : " + (10 & 11));
+		//10 $ 11의 십진수 : 10
+		System.out.println("10 $ 11의 이진수 : " + Integer.toBinaryString(10 & 11));
+		//10 $ 11의 이진수 : 1010
+		
+		//| 두 비트 중 하나라도 다르면 1
+		System.out.println("10 | 11의 십진수 : " + (10 | 11));
+		//10 | 11의 십진수 : 11
+		System.out.println("10 | 11의 이진수 : " + Integer.toBinaryString(10 | 11));
+		//10 | 11의 이진수 : 1011
+
+		//^ 두 비트가 서로 다르면 1
+		System.out.println("10 ^ 11의 십진수 : " + (10 ^ 11));
+		//10 ^ 11의 십진수 : 1, 앞의 0은 생략
+		System.out.println("10 ^ 11의 이진수 : " + Integer.toBinaryString(10 ^ 11));
+		//10 ^ 11의 이진수 : 1, 앞의 0은 생략
+		
+		//~ 0을 1로, 1을 0으로 바꿔줌
+		//~x = -(x+1)
+		System.out.println("~10의 십진수 : " + ~10);
+		//~10의 십진수 : -11
+		System.out.println("~10의 이진수 : " + Integer.toBinaryString(~10));
+		//~10의 이진수 : 11111111111111111111111111110101
+		System.out.println("~5의 십진수 : " + ~5);
+		//~5의 십진수 : -6
+		System.out.println("~5의 이진수 : " + Integer.toBinaryString(~5));
+		//~5의 이진수 : 11111111111111111111111111111010	
+	}
+}
+
+
+=========================================================================================
+
+Bitrtyption.java
+
+package Oper;
+//8번 : 비트연산자를 이용한 암호화와 복호화
+public class Bitcryption {
+	public static void main(String[] args) {
+		
+		//전달할 데이터(원본데이터)
+		int originalMsg = 42;
+		int key = 99; //비트 마스크(암호화, 복호화에 사용)(같은걸 사용하니 대칭키!)
+		System.out.println("원본 메시지 : " + originalMsg);
+		// 원본 메시지 : 42
+		
+		int encryptMsg = originalMsg ^ key; //xor 연산을 통한 암호화
+		// xor 연산을 사용한 이유 : 99와 42의 비트 연산값이 서로 달라서 엉뚱한 값이 나오기 때문
+		// 실제환경에선 이미 만들어져있는 각종 암호화 알고리즘을 이용함
+		System.out.println("암호화된 메세지 : " + encryptMsg);
+		// 암호화된 메세지 : 73
+		
+		int deryptMsg = encryptMsg ^ key; //암호화된 메시지를 동일한 키로 xor 연산을 통한 복호화
+		System.out.println("복호화된 메세지 : " + deryptMsg);
+		// 복호화된 메세지 : 42
+		
+//		XOR => 두 비트의 값이 서로 다르면 1 그 외에는 0을 반환
+//		0 XOR 0 => 0
+//		0 XOR 1 => 1
+//		1 XOR 0 => 1
+//		1 XOR 1 => 0
+
+	}
+}
+
+=========================================================================================
+
+ifTest01.java
+
+package IfTest;
+//9번 : 조건문(if문)
+public class IfTest01 { //클래스 시작
+	public static void main(String[] args) { //main 시작
+		
+		System.out.println("출력 시작");
+		
+//		if(true) { //if문 시작
+//			System.out.println("if문의 조건식이 true입니다");		
+//		출력 시작
+//		if문의 조건식이 true입니다
+//		출력 끝
+		
+//		if(false) { //if문 시작
+//			System.out.println("if문의 조건식이 true입니다");	
+//		출력 시작
+//		출력 끝
+
+//		int number = 10;
+//		if(number < 15) { //if문 시작
+//			System.out.println("if문의 조건식이 true입니다");		
+//		출력 시작
+//		if문의 조건식이 true입니다
+//		출력 끝
+		
+//		int number = 10;
+//		if(number < 15) { //if문 시작
+//			System.out.println("if문의 조건식이 true입니다");
+//			System.out.println("숫자는 " + number + "입니다");		
+//		출력 시작
+//		if문의 조건식이 true입니다
+//		숫자는 10입니다
+//		출력 끝
+		
+		int number = 10;
+		if(number == 10) { //if문 시작
+		//해석 : 만약 number가 10과 같다면, 10이라는 값을 저장한다, 그리고 출력한다
+//			System.out.println("if문의 조건식이 true입니다");
+//			System.out.println("숫자는 " + number + "입니다");
+//			출력 시작
+//			출력 끝		
+			//조건식에서 number에 저장된 값이 10과 같다면
+			//number 10을 더한 값을 저장 후 number 출력
+//			number += 10; //number = number + 10;
+//			System.out.println(number);
+//			출력 시작
+//			20
+//			출력 끝
+		
+			
+		} //if문 종료		
+		System.out.println("10이 아닙니다");
+		System.out.println("출력 끝");
+	} //main종료
+} //클래스 종료
+
+
+=========================================================================================
+
+IfTest02.java
+
+package IfTest;
+//10번 : if~else문
+public class IfTest02 { //클래스 시작
+	public static void main(String[] args) { //main 시작
+		
+		System.out.println("출력 시작");
+		
+		if(true) { //if문 영역
+			System.out.println("조건식이 true입니다");
+		}else {
+			//else 영역
+			System.out.println("조건식이 false입니다");
+		}
+		System.out.println("출력 끝");	
+	}
+	
+}//main 종료
+//클래스 종료
+
+=========================================================================================
+
+Iftask01.java
+
+package IfTest;
+
+import java.util.Scanner;
+
+//11번 : if~else문 실습1
+public class Iftask01 {
+	public static void main(String[] args) {
+		
+		//1. 사용자로부터 숫자를 입력받아서 짝수인지 홀수인지 출력하기
+		//로직구성
+		//1) 입력 클래스 import
+		//2) 정수형 변수 선언
+		//3) 입력 메시지 출력
+		//4) 변수 입력메소드 사용
+		//5) 조건문(if~else)문
+			//if 조건식 (산술연산자(%), 관계연산자(!=))
+			//	출력메소드
+			//else 
+			//	출력메소드
+		//6) 스캐너 닫기
+//		Scanner cs = new Scanner(System.in);
+//		System.out.println("출력 시작");
+//		if(true) {
+//		System.out.println("짝수입니다");
+//		}else{
+//		System.out.println("홀수입니다");
+//		}
+//		System.out.println("출력 끝");
+		
+		Scanner sc = new Scanner(System.in);
+		int choice = 0;
+		//굳이 =을 안적고 choice;로 적어도 문제없음, 그러면 기본값이 알아서 들어감
+		//자료형들의 기본값
+		//정수 0, 실수 0.0, 문자형 ' ', 문자열 "" or null, 논리형 false
+		System.out.println("숫자 1개 입력 : ");
+		choice = sc.nextInt();
+		if(choice % 2 == 0) {
+			System.out.println("짝수입니다");
+		}else {
+			System.out.println("홀수입니다");
+//			숫자 1개 입력 : 
+//				10
+//				짝수입니다
+			
+//			숫자 1개 입력 : 
+//				-17
+//				짝수입니다
+
+		}
+		sc.close();
+	}
+}
+=========================================================================================
+
+IfTest03.java
+
+package IfTest;
+//12번 : if ~ else if ~ else문
+public class IfTest03 {
+	public static void main(String[] args) {
+		//양수, 음수, 0인지 확인하기
+		System.out.println("출력 시작");
+		
+		int num = 10;
+		//int에 정수 10 저장
+		if (num > 0) {
+		//먼저 해당 영역에 int를 넣어봄
+			System.out.println("양수입니다");
+		} else if (num < 0) {
+		//중괄호 끝나는 지점에서 양수면 양수입니다 그대로 출력	
+		//음수라면 곧바로 else if를 실행해서 음수입니다까지 확인
+			System.out.println("음수입니다");
+		} else {
+		//음수입니다도 확인했는데 아니면 else문을 실행해서 0입니다 출력	
+		System.out.println("0입니다");
+		}
+		
+		if (num > 5 && num < 15) {
+			//num > 5 && num < 15 조건식을 쓸 때 같은 뜻이라고 5 < num < 15
+			//같은걸 적으면 자바에서는 적용이 안되기에 무조건 위처럼 작성하기
+			//조건식이 위,아래 다 true인 경우 아래는 무시하고 위에꺼만 실행!
+			System.out.println("5보다 큽니다");
+		} else if (num < 3) {
+			//중괄호 끝나는 지점에서 양수면 양수입니다 그대로 출력	
+			//음수라면 곧바로 else if를 실행해서 음수입니다까지 확인
+			System.out.println("3보다 큽니다");
+		} else {
+			//음수입니다도 확인했는데 아니면 else문을 실행해서 0입니다 출력	
+			System.out.println(num);
+		}
+		
+		System.out.println("출력 끝");
+	}
+}
+
+=========================================================================================
+
+SwitchTest01.java
+
+package SwitchTest;
+//14번 : switch문
+public class SwitchTest01 {
+	public static void main(String[] args) {
+		
+		String animal = "강아지";
+	/*	
+		switch ("고양이") {
+		case "강아지":
+			System.out.println("선택한 동물은 강아지입니다");
+			break;
+//			선택한 동물은 강아지입니다
+//			break;을 적으면 break 걸린곳 위만 나옴
+		case "고양이":
+			System.out.println("선택한 동물은 고양이입니다");
+			break;
+//			선택한 동물은 고양이입니다
+//			강아지에서 break를 걸었음에도 switch안에 "고양이"를 넣으니까 
+//			고양이가 나오고나서야 브레이크가 걸림
+		case "코알라":
+			System.out.println("선택한 동물은 코알라입니다");
+			break;
+		default:
+			System.out.println("선택한 동물이 없습니다");
+			break;
+			
+//			선택한 동물은 강아지입니다
+//			선택한 동물은 고양이입니다
+//			선택한 동물은 코알라입니다
+//			선택한 동물이 없습니다
+//			break문 안적으면 전부 출력
+//		}
+		*/
+		
+		switch (20) { 
+		case 10:
+				System.out.println("10입니다");
+				break;
+		case 100:	
+				System.out.println("100입니다");
+				break;
+		case 50:
+				System.out.println("50입니다");
+				break;
+//			100입니다
+		default:
+				System.out.println("case에 값이 없습니다");
+				break; // < break를 안적고 코드를 작성하면 어떤 문제가 생길지 모름, 그래서 필수작성
+//				case에 값이 없습니다 < case에 없는 값을 적어두면 마지막꺼가 출력
+		
+		}
+	}
+}
+
+
+=========================================================================================
+
+코인 노래방 프로그램
+
+한 곡당 300원인 코인노래방이다. 사용자에게 금액을 입력받고 부를 수 있는 곡 수, 잔 돈을 출력
+금액입력 : 1000
+[출력]
+3곡을 부를 수 있으며 잔돈은 100원입니다
+
+클래스명 : SingTask01(1,2번 같이 묶기)
+1) 한 곡당 금액도 입력받기
+금액입력 : 1000
+곡 당 가격 입력 : 300
+[출력]
+3곡을 부를 수 있으며 잔돈은 100원입니다
+
+2) 잔돈이 부족할 경우 안내하기
+금액입력 : 100
+곡 당 가격 입력 :
+[출력]
+입력한 금액은 100원입니다. 곡 당 가격은 000원으로 000원이 부족하여 노래를 부를 수 없습니다 출력
+
+클래스명 : SingTask02
+3) 남은 금액으로 음료 구매 가능 여부 추가(한 곡당 금액 200원, 음료 금액은 100원)(음료는 무조건 1잔만 가능)
+금액입력 : 1000원
+[출력]
+5곡을 부를 수 있으며 잔돈은 0원입니다
+음료를 마시고 싶으면 4곡을 부를 수 있으며 잔돈은 100원입니다
+
+클래스명 : SingTask03
+4) 총 부른 곡 수에 따른 보너스 곡 지급
+5곡을 부르면 1곡 추가 제공
+(6일차에 배운 내용만 사용)
+
+=========================================================================================
+과제: SinkTask01.java
+
+package SingTask;
+
+import java.util.Scanner;
+
+//과제 : 코인 노래방 프로그램
+public class SingTask01 {
+	public static void main(String[] args) {
+//		한 곡당 300원인 코인노래방이다. 사용자에게 금액을 입력받고 부를 수 있는 곡 수, 잔 돈을 출력
+//		금액입력 : 1000
+//		[출력]
+//		3곡을 부를 수 있으며 잔돈은 100원입니다
+//		클래스명 : SingTask01(1,2번 같이 묶기)
+//		1) 한 곡당 금액도 입력받기
+//		금액입력 : 1000
+//		곡 당 가격 입력 : 300
+//		[출력]
+//		3곡을 부를 수 있으며 잔돈은 100원입니다
+//
+//		2) 잔돈이 부족할 경우 안내하기
+//		금액입력 : 100
+//		곡 당 가격 입력 :
+//		[출력]
+//		입력한 금액은 100원입니다. 
+//		곡 당 가격은 000원으로 000원이 부족하여 노래를 부를 수 없습니다 출력
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("금액입력 : ");
+		System.out.println("곡 당 가격 입력 : ");
+		int money1 = sc.nextInt();
+		final int PRICE = 300;
+		int change1 = money1 % PRICE;
+		System.out.println("금액입력 : " + money1 + "원"+ "\n곡 당 가격 입력 : " + PRICE + "원" + "\n3곡을 부를 수 있으며 잔돈은 " + change1 + "입니다.");
+		/*
+		금액입력 : 
+		곡 당 가격 입력 : 
+		1000
+		금액입력 : 1000원
+		곡 당 가격 입력 : 300원
+		3곡을 부를 수 있으며 잔돈은 100입니다.
+		*/
+		
+//		Scanner sc = new Scanner(System.in);
+		System.out.println("금액입력 : ");
+		System.out.println("곡 당 가격 입력 : ");
+//		 1000원, 300원, 100원
+		int money2 = sc.nextInt();
+		final int PRICE2 = 300;
+		int change2 = money2 % PRICE2;
+		System.out.println("입력한 금액은 " + money2 + "원입니다.\n" + "곡 당 가격은 " + PRICE2 
+		+ "원으로 " + change2 + "원이 부족하여 노래를 부를 수 없습니다.");
+		
+		/*
+		
+		금액입력 : 
+		곡 당 가격 입력 : 
+		1000
+		입력한 금액은 1000원입니다.
+		곡 당 가격은 300원으로 100원이 부족하여 노래를 부를 수 없습니다.
+		 */
+		
+	}
+}
+
+
+=========================================================================================
+과제 : SinkTask02.java
+
+package SingTask;
+
+import java.util.Scanner;
+
+//과제 : 코인 노래방 프로그램
+public class SingTask02 {
+	public static void main(String[] args) {
+//		한 곡당 300원인 코인노래방이다. 사용자에게 금액을 입력받고 부를 수 있는 곡 수, 잔 돈을 출력
+//		금액입력 : 1000
+//		[출력]
+//		3곡을 부를 수 있으며 잔돈은 100원입니다
+		
+//		클래스명 : SingTask02
+//		3) 남은 금액으로 음료 구매 가능 여부 추가(한 곡당 금액 200원, 음료 금액은 100원)
+//		(음료는 무조건 1잔만 가능)
+//		금액입력 : 1000원
+//		[출력]
+//		5곡을 부를 수 있으며 잔돈은 0원입니다
+//		음료를 마시고 싶으면 4곡을 부를 수 있으며 잔돈은 100원입니다
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("금액입력 : ");
+//		1000원, 200원, 100원
+		int money = sc.nextInt();
+		int number = sc.nextInt();
+		int number2 = sc.nextInt();
+		final int PRICE = 200;
+		int pay = money % PRICE;
+//		4곡부르고 남은 200-100, number2 = 4
+		int pay2 = (money - (PRICE * number2))/2;
+		System.out.println(number + "곡을 부를 수 있으며 잔돈은 " + pay + "원입니다." +
+		"\n음료를 마시고 싶으면 " + number2 + "곡을 부를 수 있으며 잔돈은 " + pay2 + "원입니다.");
+	/*
+	금액입력 : 
+		1000
+		5
+		4
+		5곡을 부를 수 있으며 잔돈은 0원입니다.
+		음료를 마시고 싶으면 4곡을 부를 수 있으며 잔돈은 100원입니다.
+	*/
+	}
+}
+
+
+=========================================================================================
+과제:SinkTask03.java
+
+package SingTask;
+
+import java.util.Scanner;
+
+//과제 : 코인 노래방 프로그램
+public class SingTask03 {
+	public static void main(String[] args) {
+//		한 곡당 300원인 코인노래방이다. 사용자에게 금액을 입력받고 부를 수 있는 곡 수, 잔 돈을 출력
+//		금액입력 : 1000
+//		[출력]
+//		3곡을 부를 수 있으며 잔돈은 100원입니다
+		
+//		클래스명 : SingTask03
+//		4) 총 부른 곡 수에 따른 보너스 곡 지급
+//		5곡을 부르면 1곡 추가 제공
+//		(6일차에 배운 내용만 사용)
+		
+		Scanner sc = new Scanner(System.in);
+		int choice;
+		System.out.println("총 부른 곡 수에 따른 보너스 곡 지급");
+		choice = sc.nextInt();
+		if(choice <= 4) {
+			System.out.println("보너스 곡이 없습니다");
+		}else if(choice > 4){
+			System.out.println("보너스 1곡 추가 제공");
+			
+		}	
+	  }
+	} 
+
+
+
+=========================================================================================
+
+

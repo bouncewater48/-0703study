@@ -1,0 +1,169 @@
+java version "17.0.12" 2024-07-16 LTS
+Java(TM) SE Runtime Environment (build 17.0.12+8-LTS-286)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.12+8-LTS-286, mixed mode, sharing)
+	설치된거 확인
+
+
+d드라이브 - java - workspace 클릭 - 메모장 오픈 - 
+public class Test{
+	public static void main(String[] args{
+		System.out.println("hello");
+	}
+}
+
+저장할때 java - workspace 폴더에 [확장자명:Test.java,확장자:모든 파일]로 변경 후 저장
+
+cmd 키고 드라이브 변경 : 
+D: 엔터 / cd(체인지 디렉터리) 엔터
+
+:\>cd D:\web_0900_ksh\Java\workspace
+
+D:\web_0900_ksh\Java\workspace> 디렉터리
+'디렉터리'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+D:\web_0900_ksh\Java\workspace>Test java
+'Test'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+D:\web_0900_ksh\Java\workspace>dir
+ D 드라이브의 볼륨: 새 볼륨
+ 볼륨 일련 번호: 02B1-19A2
+
+ D:\web_0900_ksh\Java\workspace 디렉터리
+
+2025-06-13  오후 04:10    <DIR>          .
+2025-06-13  오후 04:10    <DIR>          ..
+2025-06-13  오후 04:10                98 Test.java
+               1개 파일                  98 바이트
+               2개 디렉터리  490,541,768,704 바이트 남음
+
+D:\web_0900_ksh\Java\workspace>javac Test.java
+Test.java:2: error: ',', ')', or '[' expected
+        public static void main(String[] args{
+                                             ^
+1 error
+
+public class Test{
+   public static void main(String[] args{
+      System.out.println("hello");
+   }
+}
+
+
+args{ 사이에 )를 안넣어서 error 출력됐음
+
+
+D:\web_0900_ksh\Java\workspace>javac Test.java
+
+D:\web_0900_ksh\Java\workspace>java Test
+hello
+
+D:\web_0900_ksh\Java\workspace>
+아래가 정상적인 코드
+
+public class Test{
+   public static void main(String[] args({
+      System.out.println("hello");
+   }
+}
+
+
+龕봅   = 
+      java/lang/Object <init> ()V	  	 
+   java/lang/System out Ljava/io/PrintStream;  hello
+      java/io/PrintStream println (Ljava/lang/String;)V  Test Code LineNumberTable main ([Ljava/lang/String;)V 
+SourceFile 	Test.java !                    *? ?            	       %     	? 
+? ?       
+            
+
+
+Test.class 오픈시 나오는 문구 > 해석불가능한 상태
+
+	압축 풀 때 반디집으로 압축풀기!!(기본 윈도우 압축풀기하면 오류남)	
+	최신 버전은 오류가 자주 뜨기에 작년 24년 12월꺼로 설치함
+	
+- 이클립스 설정(window > Preferences)
+	글씨체 변경
+	font 검색 > Colors and Fonts 클릭 > Basic - Text Font 클릭하고 Edit 클릭 > 원하는 글꼴과 크기 설정하고 확인
+	> Apply
+
+	인코딩 타입 변경(한글이 안깨지게 하기 위해서 타입 변경)(다른 인코딩 방식을 채용한 파일을 주고받으면 파일이 깨짐)
+	esc 검색 > Workspace 클릭 > Text file encoding > Other- UTF-8 설정된 것 확인
+
+	컴파일러 변경
+	compiler 검색 > level 21에서 17로 변경(JDK 설치버전에 맞게 변경) > Apply
+
+	관점 변경
+	perspective 검색 > 기본적으로 java EE로 되어있음 > JAVA로 변경 > Apply and Close
+
+이클립스 - 
+
+
+압축파일을 그대로 사용하면 오류가 높은 확률로 터지기에 압축해제용 프로그램 사용이 필요함(학원에서는 반디집)
+
+압축해제할때 반디집으로 해제
+압축폴더를 Java - resource로 지정, 실행파일 바로가기 만들기 생성 후 java폴더에 붙여넣기
+D:\web_0900_ksh\Java\workspace로 경로설정
+오픈했을때 나오는 welcome 화면은 x 눌러서 끄기
+
+
+
+이클립스 
+
+Create a java script 클릭 > 프로젝트 이름 day03 > JRE버전 JavaSE-21에서 17로 변경 > 아래 Module은 해제
+> 프로젝트를 만들때의 기본
+
+실수로 왼쪽ui를 지웠을 경우 : 위쪽 Window > Show View > Package Explorer 클릭하면 다시 나옴
+
+src 우클릭 > New > Package > Finish 클릭 
+day03 > New > Class > Name:Test01(제목의 첫글자는 반드시 대문자!)
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+[*Test01.java] < 파일명 앞쪽 *는 저장이 아직 안됐다는 표시이다(메모장과 동일, ctrl+s로 저장가능)
+
+package day03;
+
+public class Test01 {
+
+}
+
+
+class 뒤의 Test01 << 클래스 제목과 동일해야함, 다르면 오류 취급
+
+
+package day03;
+
+public class Test01 {
+	public static void main(String[] args) {
+		
+	}
+}
+
+
+위 모양이 기본 시작점이다
+
+package day03;
+
+public class Test01 {
+	public static void main(String[] args) {
+		System.out.println("hello");
+	}
+}
+
+상단 바에서 벌레모양 우측 재생버튼 누르면 아래에 Console 창에 결과가 출력됨
+hello
+
+[Test01.java],[console] 버튼이 있는 칸을 누르고 드래그해서 위치 변경 가능.
+
+**지금 모르는 내용이 있다고 그거 공부한다고 그거만 파지 말것, 남들보다 뒤쳐진다
+
+package day03;
+
+public class Test01 {
+	public static void main(String[] args) {
+		System.out.println("hello");
+	}
+}
+
+println << 메소드임

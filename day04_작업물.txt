@@ -1,0 +1,665 @@
+day04(java 2일차)
+목표 -> 복습 -> 자료형과 변수 -> 제어문자, 출력메소드, 서식문자 -> 형변환
+
+세로로 작성
+이름 맨 윗줄 왼쪽에 작성
+1. 자격증
+취득한 자격증 : x
+목표하는 자격증 : 정보처리기사,리눅스 마스터 2급, SQLD, PCCE
+
+- 정보처리기사, 정보처리 산업기사, 정보처리 기능사
+- 정보보안기사, 정보보안 산업기사
+- 리눅스 마스터 2급, 네트워크 관리사 2급
+- SQLD
+- PCCP / PCCE(프로그래머스 인증시험) - 코딩필수역량인증시험
+
+2. 취업 목표 일정(수료 후 바로 OR 수료 후 1개월 내, 수료 후 2개월 내, 수료 후 3개월 내)
+- 수료 후 바로, 안된다면 1개월 내에 하고 싶습니다
+3. 취업 직무(개발 / 보안 / 보안솔루션)
+- 개발, 보안
+4. 이번 달의 목표
+- GIT과 eclipse를 배우는 진도의 90% 이상은 소화하고 넘어가고 싶습니다.
+학점은행제도 이번주 내로 등록해서 시작하고 싶습니다.
+
+------------------------------------------------------------------------------------
+0. 복습
+
+컴퓨터 = 하드웨어 + 운영체제(os) + 소프트웨어
+컴퓨터 언어 : 저급언어, 고급언어
+저급언어 : 컴퓨터가 알기 쉬운 언어
+고급언어 : 사람이 알기 쉬운 언어
+
+사람과 컴퓨터가 소통하기 위한 한줄씩 번역 프로그램 : 컴파일러(자바에서 번역해주는 프로그램, 
+ jdk 설치시 'bin' 파일 안에 자동으로 설치됐음)
+파이썬 같은 동시번역 프로그램 : 인터프리터 
+
+.java 파일 ---------------> .class -----------> 실행결과
+	   javac.exe	   	   java.exe
+       (class 파일명 그대로)	   
+
+
+자바파일 생성 순서
+java 프로젝트 -> 패키지 -> 클래스 -> main 메소드
+
+jvm, jre, jdk
+- JVM(Java Virtual Machine)
+       운영체제 상관없이 실행가능
+       코드 변환 필요 x
+      운영체제 맞춰서 java로 만든 프로그램 실행시켜준다
+
+- JRE(Java Runtime Enviromnet)
+      JVM을 실행한다
+      JVM을 실행할 때 필요한 라이브러리 파일 등을 가지고 있다
+
+- JDK(Java Development Kit)
+      JRE를 포함한다
+      JRE 외에 개발에 필요한 도구들을 가지고 있다
+
+단축키(이클립스)
+	ctrl + n 프로젝트, 패키지, 클래스 생성 (단축키 입력후에 파일명 작성)
+	alt + v, 클래스 파일의 {}영역 안에서 main + ctrl + space bar 엔터 : 메인 메소드 생성
+	syso + ctrl + space bar :  출력 메소드 생성
+	ctrl + F11 : 실행 (F11만 누르면 디버깅 모드로 들어감, 반드시 ctrl 누르고 누를것!!)
+	ctrl + s : 저장
+	ctrl + alt + 방향키 위, 아래 : 라인 한 줄 복사
+	alt + 방향키 위, 아래 : 라인 한 줄 이동
+	F2 : 파일명, 패키지명, 프로젝트명 변경
+	ctrl + shift + f : 자동 정렬
+	ctrl + / : 해당 줄 전체를 주석처리
+
+용어 정리
+- 자바프로젝트
+	하나의 프로그램 단위
+	프로그램을 구성하는 모든 것들을 모아둔 폴더
+
+- 패키지
+	소스 파일들의 묶음 단위
+	프로젝트의 하위 폴더
+
+- 소스파일
+	.java로 끝나는 파일이며 소스코드가 작성된다
+	이클립스에서는 클래스를 생성하면 자동으로 클래스와 같은 이름으로 소스파일을 생성해준다
+
+- 클래스
+	자바에서 모든 코드를 작성하는 파일 / 자바에서 모든 코드는 클래스 내부에서 작성된다.
+	클래스 이름의 첫글자는 무조건 대문자로 작성해야한다.
+
+- 중괄호{}
+	자바에서는 중괄호로 영역을 표시한다.
+
+- 메소드
+	이름뒤에 소괄호()가 있는 대부분의 명령어는 메소드이다.
+	키워드 뒤에 ()가 있는 명령어는 메소드가 아니다(ex : for(){}) < 반복문
+
+- 메인 메소드
+	자바프로그램이 실행되면 메인 메소드의 코드가 실행된다
+	프로그램이 시작되는 시작점(entry point)
+
+- 출력 메소드
+	System.out.println("강승훈")
+		   (print 뒤에 ()가 왔으니 메소드)(뒤에 ()가 있는데도 글씨 색이 안바뀌면 메소드임)
+	콘솔창에 소괄호 안에 있는 것(값)을 출력한다
+	
+- 콘솔창
+	입력과 출력이 가능한 창
+	컴퓨터와 개발자가 의사소통할 수 있는 창
+	개발자가 제대로 된 코드를 작성했는지 확인하기 위해서 사용한다
+	
+- .(닷 연산자, 하위 연산자)
+	.
+	~안에 라고 해석한다
+
+- 세미콜론;
+	자바에서 문장의 끝은 ;로 표시한다
+
+- 들여쓰기
+	자바에서는 들여쓰기가 코드에 영향을 끼치지 않는다
+	가독성을 높히기 위해 사용한다
+
+-주석
+	코드에 영향을 끼치지 않는다
+	내가 쓴 코드를 다른 사람에게 설명하기 위한 설명글 작성용
+	잠시 일부 코드를 제외하고 실행시켜야할때 사용하기도 한다
+	자바를 배우는동안 주석을 통해 코드해석, 로직구성을 필수로 진행한다!
+	한 줄 주석 //, 범위 주석 /**/, api주석 /** */(주석의 색깔이 달라짐)
+	한줄주석을 제일 자주 사용하게 될거고, api주석은 뒷부분에서 배울 예정 
+
+
+
+package review;
+
+public class Test01 {	// 클래스의 중괄호 시작 영역
+		public static void main(String[] args) {	//메인 메소드의 중괄호시작 영역
+
+			System.out.println("4일차 수업");
+			System.out.println("2025년 6월 16일 월요일");
+			
+		}	// 메인 메소드의 중괄호 끝 영역
+}	// 클래스의 중괄호 끝 영역
+
+결과 : 4일차 수업
+2025년 6월 16일 월요일
+
+ln : 엔터의 역할(줄바꿈)을 한다
+
+확대 : 컨트롤 쉬프트 +/-
+줄 이동 : 알트 방향키 위아래
+
+Exception in thread "main" java.lang.Error: Unresolved compilation problems: 
+	ctrl cannot be resolved to a variable
+	Syntax error on token "+", invalid AssignmentOperator
+	shift cannot be resolved to a variable
+	or cannot be resolved to a variable
+	크기 cannot be resolved to a variable
+	Syntax error on token "조절", ; expected
+	단축키 cannot be resolved to a type
+	Syntax error on token ".", ; expected
+	out cannot be resolved
+
+	at review.Test01.main(Test01.java:9)
+---------------------------------------------------------------
+
+variable01.java
+
+package variable;
+// 1번 : 변수 선언
+public class Variable01 {
+	public static void main(String[] args) {
+		//변수선언
+		//자료형 변수명;
+		int number1;	//정수형 타입의 값을 저장할 수 있는 number1 변수를 만들었다.
+		boolean isTrue; //논리형 타입의 값을 저장할 수 있는 isTrue 변수를 만들었다.
+		double number2; //실수형 타입의 값을 저장할 수 있는 number2 변수를 만들었다.
+		
+		//변수에 값 저장(변수를 선언 후 값을 저장해야한다!!)
+		//변수명 = 값;(값을 변수명에 대입한다)(값은 저장공간의 이름)
+		number1 = 10;	//10이라는 정수형 값을 number1이라는 변수(저장공간)에 대입한다
+		isTrue = true;	//true라는 논리형 값을 isTrue라는 변수에 대입한다
+		number2 = 3.14;	//3.14라는 실수형 값을 number2라는 변수에 대입한다
+		
+		//출력
+		System.out.println(10); //10이라는 정수값을 콘솔창에 출력한다(변수 사용한거 아님!)
+		System.out.println(number1); //number1이라는 변수에 저장된 10이라는 정수형 값을 콘솔창에 출력한다
+		System.out.println(number2); //number2라는 변수에 저장된 3.14라는 실수형 값을 콘솔창에 출력한다
+		System.out.println(isTrue); //isTrue라는 변수에 저장된 true라는 논리형 값을 콘솔창에 출력한다
+		
+		//변수 선언과 동시에 초기화(처음으로 값을 저장하는 것)
+		//자료형 변수명 = 값;
+		int number3 = 100;//정수를 저장할 수 있는 변수 number3를 선언하고 100이라는 정수형 값으로 초기화했다(저장했다)
+		//int number3
+		//number3 = 100;
+		System.out.println(number3);
+		//ctrl + shift + f : 자동정렬 단축키
+	}
+}
+
+---------------------------------------------------------------------------------------------
+variable02.java
+
+package variable;
+
+public class Variable02 {
+	public static void main(String[] args) { //main 메소드 중괄호영역 시작
+		//여러개의 변수를 선언하기
+		int num1 = 10;
+		int num2 = 20; //정수형 변수 num2를 선언하고 20이라는 정수형 값을 대입한다
+		int num3 = 30;
+		System.out.println(num1);
+		System.out.println(num2); //num2 변수에 저장된 정수형 값을 출력하고 줄바꿈한다
+		System.out.println(num3);
+		System.out.println(num1 +num2 + num3); //정수형은 덧셈연산결과 확인이 가능하다
+		
+		int num4 = 10, num5 = 20, num6 = 30; //정수형변수 num4, num5, num6를 선언
+		//정수형 변수 num4에 10이라는 정수형값을 저장,정수형 변수 num5에 20이라는 정수형값 저장,정수형 변수 num6에 30이라는 정수형값 저장
+		//여러개의 변수를 선언 시 같은 타입이라면 ,를 이용해서 여러개 선언할 수 있다.
+		
+		//num4 = 1;
+		//num5 = 2;
+		//num6 = 3;
+		System.out.println(num4);
+		System.out.println(num5);
+		System.out.println(num6);
+		
+	} //main 메소드 중괄호 영역 끝	
+} //클래스 중괄호 영역 끝
+
+--------------------------------------------------------------------------------------------
+
+variable03
+
+package variable;
+
+public class Variable03 {
+public static void main(String[] args) {
+	
+	//1) 문자부터 시작한다
+//		int 1num = 10; 숫자부터 시작시 오류 발생
+		int num1 = 10;
+		int nu1m = 10;
+//		int num1 = 100; // 같은 영역 내에서 같은 이름의 변수 선언시 오류발생
+		
+	//2) 특수문자를 사용할 수 없다(단, _와 $는 가능)
+//		int @#$%^& = 100; //_, $가 아닌 특수문자 사용시 오류 발생!
+		int a$b_ = 100;
+		int _ab$ = 100; // _, $를 먼저  써도 가능하지만 1)문자부터 시작한다 를 생각하기!!
+		System.out.println(a$b_);
+		
+		//3) 공백을 사용할 수 없다(카멜표기법, 스네이크표기법, 파스칼표기법 등을 활용한다)
+		//String user name = "강승훈"; //user과 name을 각각 하나의 변수로 인식하여 오류 발생
+		//user과 name에 각각 ""를 사용하라고 오류문자가 출력
+		String userName = "강승훈";
+//		첫 단어는 소문자로 시작, 단어가 바뀔때 첫 문자를 대문자로 작성(=카멜 표기법, 자바의 기본 표기법,
+//		변수명/메소드 작성시 사용함)
+		String user_name = "강승훈";
+//		첫 단어 소문자로 시작, 단어가 바뀔 때 언더바_로 연결해서 작성(스네이크 표기법, 상수 작성시 사용)
+		String UserName = "강승훈";
+//		첫 단어의 첫 문자를 대문자로 시작, 나머지는 소문자로 사용. 단어가 바뀔 때 첫 문자를 대문자로 작성(파		스칼 표기법, class명 작성시 사용)
+		
+//		4) 키워드(예약어)를 사용할 수 없다
+//		int int = 10;
+//		int for = 10;
+//		int public = 10;
+		
+//		5) 되도록 소문자로 시작한다(대소문자를 구분)
+		int Abc = 100;
+		int abc = 200;
+		System.out.println(Abc);
+		System.out.println(abc);
+//		 대문자, 소문자가 하나만 달라도 다른 변수로 인식함!
+		
+//		name, age, data, number, num1, ... 평소에 쓰는 변수명들!
+		
+	}
+}
+
+
+----------------------------------------------------------------------------------------
+Constant.java
+
+package variable;
+//4번 : 상수
+public class Constant {
+	public static void main(String[] args) {
+	// final 키워드를 사용한다
+	
+	final int MAX_STUDENTS = 25; //최대 학생수 = 25
+	System.out.println(MAX_STUDENTS); //25로 출력
+	
+	}
+}
+
+----------------------------------------------------------------------------------------
+Variable04.java
+
+package variable;
+//5번 : 변수와 상수의 차이
+public class Variable04 {
+	public static void main(String[] args) {
+//			변수 선언
+//			자료형 변수명 = 값;
+			
+//			상수 선언
+//			final 자료형 변수명 = 값;
+		
+//			student라는 변수에 20이라는 값을 저장한다
+			int student = 20;
+		
+//			MAX_STUDENT라는 상수에 25라는 값을 저장한다
+			final int MAX_STUDENT = 25;
+			
+//			출력
+			System.out.println(student);
+			System.out.println(MAX_STUDENT);
+//			위 2개는 개발환경에서 해당 문자로 쓰기로 약속한것이므로, 다르게 쓰면 오류가 발생!
+			
+			
+//			변수에 저장되어있는 값 변경
+			student = 25; //값을 변경하고싶으면 아래에 새로운 값으로 다시 작성하면 됨
+			System.out.println(student);
+			
+//			상수에 저장되어있는 값 변경 불가능!
+//			MAX_STUDENT = 20; // Exception in thread "main" java.lang.Error: 					Unresolved compilation problem: 
+//			The final local variable MAX_STUDENT cannot be assigned. It must be 			blank and not using a compound assignment
+//			final을 지우라는 뜻 , 위에 final int MAX_STUDENT = 25;에서 final을 지우면 해결됨
+			
+			
+	}
+}
+
+------------------------------------------------------------------------------------------------
+
+Valiable05.java
+
+package variable;
+//6번 : 변수를 사용하는 이유
+public class Valiable05 {
+	public static void main(String[] args) {
+//		1) 반복되는 값을 쉽게 관리하기 위해서(값을 재사용하기 위함)
+//		같은 값을 여러곳에서 사용하거나 변경해야할 때 변수에 저장하면 코드 수정이 간편해진다
+//		변수값을 변경하면 해당 변수를 참조하는 모든 코드에 변경사항이 자동으로 적용된다
+		
+		int price = 100, quantity = 5; //가격은 100원, 수량은 5개
+		System.out.println("가격 : " + price); //가격 :100, 문자형과 정수형을 +로 묶으면 같이 출력 
+		System.out.println("수량 : " + quantity); //수량 : 5
+		System.out.println("총 가격 : " + (price * quantity)); //*를 사용하면 곱셈한 값이 출력  
+//		기본적으로 오른쪽에서 왼쪽으로 출력되나, 일반 수학과 같이 *,/가 +,-보다 우선순위가 높다.
+//		price * quantity는 (price * quantity)와 동일한 상태다.
+//		변수를 바꾸면 해당 내용은 즉시 반영됨!
+		
+		price = 200;
+		System.out.println("가격 : " + price); //가격 :100, 문자형과 정수형을 +로 묶으면 같이 출력 
+		System.out.println("수량 : " + quantity); //수량 : 5
+		System.out.println("총 가격 : " + (price * quantity)); //*를 사용하면 곱셈한 값이 출력  
+//		프로그램은 항상 위에서 아래로 실행되므로, 아래에서 수정해도 위에는 영향이 안간다.
+//		변수는 하나의 값만 저장하므로 바꾸면 이전꺼는 저장되지 않음.
+		
+//		2) 값에 의미를 부여하기 위해서 (값에 이름을 붙혀준다)
+//		변수에 이름을 붙히면 코드의 의미를 명확히 전달할 수 있다.
+//		문자열이나 숫자를 직접 사용하는 것보다 변수명을 통해서 코드의 목적을 쉽게 이해할 수 있다
+		
+		int userAge = 20; //변수명을 제대로 안쓰면 뒤의 값만 보고 무엇인지 알 수가 없음,그래서 의미있는 			단어로 작성해야함
+		final double PI = 3.141592; //상수는 대문자로!
+		boolean isStudent = false; 
+		
+		System.out.println("사용자 나이 : " + userAge); //+는 덧셈이 아닌 연결
+		System.out.println("원주율 값 :" + PI );
+		System.out.println("학생입니까? " + isStudent);
+		//문자열 + 변수명(값) => 연결되어 출력된다.
+		
+//		3) 프로그램의 가독성, 유지보수성, 재사용성을 높히기 위해서 사용한다
+//		코드에서 직접 값을 사용하는 매직넘버를 피하고 변수를 사용하면 수정과 유지보수가 용이하다
+		
+		int number; //RAM 안에 만들어지고, JVM이 관리한다. 이 상태에선 위치를 알 수 없음
+					//RAM에서 상자를 만들고 그 상자의 이름을 number로 지정
+//		System.out.println(number); Exception in thread "main" java.lang.Error: 		Unresolved compilation problem: 
+//		The local variable number may not have been initialized, 초기화 안됐으니 해라
+		number = 10; // number. 상자에 10이라는 정수형 값을 저장, 이 number 상자는 RAM에서 특정 주소		값을 가진다.
+		System.out.println(number); //number = 10;으로 변수명을 지정하니 출력
+//		컴퓨터는 number의 주소값을 보고 RAM에서 데이터를 읽어온다
+//		주소값에 있는 데이터를 출력한다.
+		
+	}
+}
+
+--------------------------------------------------------------------------------------------
+
+EscapeCharacter.java
+
+package print;
+//7번 : 이스케이프 문자
+public class EscapeCharacter {
+	public static void main(String[] args) {
+//		이스케이프 문자는 문자열 안에서 \를 이용하여 작성한다(문자열"" 안에서만!)
+//		"\n" "\t" "\'" "\"" "\\"를 표현한다
+		
+		
+//		줄바꿈 : \n
+		System.out.println("안녕하세요.\n4일차 수업중입니다.\n"); //바로 줄바꿈되는거 확인가능!
+//		System.out.println("안녕하세요.");
+//		System.out.println("4일차 수업중입니다."); //굳이 따로 적을 필요 없음
+		System.out.println("지금은\n이스케이프 문자\n배우는 중입니다.");
+		
+		//		탭 간격 : \t
+		System.out.println("이름 : 강승훈, 나이 : 20살");
+		System.out.println("이름 : 강승훈\t나이 : 20살");
+		System.out.println("자바는 정말 재미있다. 자바 2일차!");
+		System.out.println("자바는 정말 재미있다.\t자바 2일차!"); //결과에 간격이 안 긴 이유는 탭키를 		적용했을때 그만큼만 적용되서임
+		System.out.println("자바는 정말 재미있다.\t\t자바 2일차!"); //탭키 2번을 해야 큰 차이가 나는 		모습임
+ 
+//		문자열 안에서 작은 따옴표, 큰따옴표 표현 : \', \"
+		System.out.println("오늘 날씨는 \"흐림\"입니다."); //큰 따옴표가 어디를 자르는지 컴퓨터가 인식		을 못하고,한글로 이루어진 변수로 인식해서 문법오류 발생
+		System.out.println("오늘 날씨는 \'비\'가 옵니다."); //작은 따옴표 자체를 문장에서 처음 쓰기에 		제대로 인식함
+		
+		
+		//역슬래쉬 : \\
+		System.out.println("워크스페이스 경로는 D:\\web_0900_ksh입니다"); 
+		//Invalid escape sequence (valid ones are  \b  \t  \n  \f  \r  \"  \'  \\ )
+		//\하나만 쓰면 백슬래쉬 언어가 잘못됐다 나옴
+		
+//		복합사용
+		System.out.println("문자열 안에서 다양한 제어문자를 표현할 수 있다.\n\"\\n\"을 쓰면 줄바꿈이 		된다."
+				+ "\n\t\'\\t\'을 쓰면 탭키가 적용된다");
+		//한줄로 썼음에도 3줄로 출력되는걸 확인가능함
+				
+	}
+}
+
+---------------------------------------------------------------------------------------------
+
+PrintTest01
+
+package print;
+//8번 : println(), print() 출력메소드
+public class PrintTest01 {
+	public static void main(String[] args) {
+//		println() : 소괄호 안에 있는 값을 콘솔창에 출력하고 줄바꿈된다
+		System.out.println("\"println()\"는 출력메소드이다.");
+		System.out.println("자동으로 줄바꿈된다\n");
+		
+//		print() : 소괄호 안에 있는 값을 콘솔창에 출력하고 줄바꿈 되지 않는다.
+		System.out.print("\'print()\'도 출력메소드이다.");
+		System.out.print("자동으로 줄바꿈되지 않는다.");
+//		2줄로 썼으나 print()로 작성하여 줄바꿈이 안되고 한줄로 적혀짐
+		System.out.println("java 수업중입니다."); //윗줄에 줄바꿈이 없으므로 ln을 적었어도 줄바꿈이 안			됨
+		System.out.println("지금은 3시 11분입니다."); //윗줄에 ln을 적어서 줄바꿈이 되는 모습
+		
+	}
+}
+
+---------------------------------------------------------------------------------------------
+
+PrintTest02
+
+package print;
+//9번 : printf() 출력메소드
+public class PrintTest02 {
+	public static void main(String[] args) {
+		
+//		String name = "강승훈";
+//		int age = 20;
+//		System.out.println("제 이름은 강승훈이고, 나이는 20살입니다.");
+//		System.out.println("제 이름은 " + name + "이고, 나이는 " + age + "살 입니다.");
+//		System.out.printf("제 이름은 %s이고, 나이는 %d살 입니다.", name, age); // 뒤에다 메소드를 		추가하는건 printf만 가능!
+		
+//		정수형
+		int num1 = 200;
+		System.out.printf("10진수 : %d\n", num1); //""안에다 num1 값을 가져오기에 
+		System.out.printf("10진수 : %d\n", 10);
+		System.out.printf("8진수 : %o\n", 8); //10이 숫자 10이 아닌 0~7까지만 표현 가능하기에 1과 			0으로 표시된것
+		System.out.printf("16진수 : %x", 16); //16진수는 10 A, 11 B, .. 15 F, 16 => 10
+		
+//		실수형
+		System.out.printf("\n실수형 : %f\n", 3.1234567); 
+		//float 타입 => 소수점이하 6자리까지 정확히 출력되고, 7자리 이상이면 7번째 자리에서 반올림한다
+//		double num2 = 3.12345678912345; //소수점이하 15자리까지 정확히 나옴, 더 정확하게 표시가 가능			한 범위가 크기에 기본형임
+//		float num3 = 3.12345678912345; //소수점이하 6자리까지 정확히 나옴, 7자리가 넘어가면 7자리에서 		6자리로 반올림함
+//		System.out.println(num2);
+		System.out.printf("실수형 2자리까지 표현 : %.2f\n", 3.12345); //6자리까지 표시라서 6자리가 		0으로 표기됨,.2를 넣어서 2자리까지만 표기됨
+//		System.out.printf("\n실수형 2자리까지 표현 : %.2f\n", 3.0); 실수형 2자리까지 표현 : 3.00
+		
+//		문자형
+		System.out.printf("\n문자형 : %c",'a'); //character타입은 ''안에 하나의 문자만 넣을 수 있			다
+		
+//		문자열
+		System.out.printf("\n문자열 : %s", "hello");
+		String data = "hello, java";
+		System.out.println(data);
+		System.out.printf("문자열 : %.5s", data);
+		//data 변수에 저장된 hello, java를 출력함, .5를 적으면 앞 5자리만 출력
+	
+		//논리형(형식지정자 x)
+		System.out.printf("\n논리형 : %s", true);
+		System.out.printf("\n논리형 : %.1s", true); //마찬가지로 .1로 t만 뽑아내는게 가능함
+		
+	}
+}
+
+--------------------------------------------------------------------------------------------
+
+PrintTest03
+
+package print;
+//10번 : 서식문자의 옵션 printf()
+public class PrintTest03 {
+	public static void main(String[] args) {
+		System.out.println("===================");
+		//기본 형식지정자
+//		System.out.printf("이름 : %s, 나이 : %d\n", "강승훈", 20); //
+//		System.out.printf("%d %.2f 날씨 : %s\n", 2025, 6.16, "흐림" );
+//		=================
+//				이름 : 강승훈, 나이 : 20
+//				%d %f %s > 2025 6.160000 흐림
+//		2025.6.16 날씨:흐림 으로 만들 생각
+//		System.out.printf("%s %c", true, 'a' );
+		//("%s %c", 'a', true )에서 문자열은 문자형을 포함하기에 'a'까진 나오나, true는 논리형이라 에		러발생
+		//순서를 바꿔서 true가 앞에 오면 해결됨!
+		
+		
+//		자리수를 지정한 출력
+		System.out.println("===================");
+//		%[왼쪽 - or 0][n][.m]서식문자
+		String subject = "java";
+		System.out.printf("%10s\n", subject); //기본 10자리 기준 오른쪽 정렬, 좌측에 빈공간 생성
+		System.out.printf("%-10s\n", subject); //-를 쓰면 10자리 기준 왼쪽 정렬, 우측에 빈공간 생		성
+		System.out.printf("%10s %05d\n", subject, 500); //자릿수가 정해지면 오른쪽부터 정렬
+//		System.out.printf("%010s %05d", subject, 500); //자릿수가 정해지면 오른쪽부터 정렬
+//		s앞에 0을 채우면 오류가 발생함!
+		System.out.printf("%-5s\n", "강승훈");
+		
+//		상품명과 가격정렬
+		System.out.println("n==========메뉴=========");
+		System.out.printf("%-5s\t\t%5d원", "꼬북칩", 2500);
+		System.out.printf("\n%-5s\t\t%5d원", "누네띠네", 3000);
+		System.out.printf("\n%-5s\t\t%5d원", "껌", 800);
+//		-를 이용하여 좌측정렬하면 그럴싸하게 정렬된다!	
+	}
+}
+
+--------------------------------------------------------------------------------------------
+
+TypeCasting01
+
+package TypeCasting;
+//11번 : 자동 형변환
+public class TypeCasting01 {
+	public static void main(String[] args) {
+//		1)작은 자료형의 값을 큰 자료형으로 변환
+//			int(4byte) -> long(8byte)
+		int iVal = 100;
+		long result1 = iVal; //int형 값 100을 long타입 변수에 대입(자동형변환)
+		//자동형변환 한것, 100이 iVal에 담겨있고 iVal을 다시 long에 담은것
+		System.out.println(iVal);
+		System.out.println(result1);
+		
+//		long iVal = 100;
+		
+		// int(4byte) -> float(4byte)
+		float result2 = iVal;
+		System.out.println(result2); //%f(실수형)이 소수점까지 표현 가능하므로 더 크다
+		
+		// int(4byte) -> double(8byte)
+		double result3 = iVal;
+		System.out.println(result3);
+		
+		// double(8byte) -> long(8byte)
+//		long result4 = result3; 
+		//long에는 소수점이 담겨있으나 long에는 소수점이 안담겨있어서 담기지 않으므로 오류발생
+//		result3은 100.0 실수타입으로 정수형 변수에 담길 경우 소수점의 손실이 발생하므로 자동형변환 불가능
+		
+		// float(4byte) -> double(8byte)
+		double result4 = result2; //더 작은 바이트를 더 큰 바이트에 저장하므로 가능
+//		float result5 = result3; //float는 6자리까지만 표현되나 double은 15자리가 가능하므로 더 작		아서 못담음
+//		double 타입의 값은 float 타입에 담을 수 없다. 소수점의 손실이 발생하기 때문
+//		double 타입 : 소수점 이하 15자리까지, float 타입 : 소수점 이하 6자리까지
+		
+		//2) 연산시 자동 형변환
+		// 정수와 실수의 연산
+		int iVal2 = 10;
+		double dVal2 = 3.14;
+		System.out.println(iVal2 + dVal2);
+		double result6 = iVal2 + dVal2; //float는 담길 순 있으나 담지 못하므로 쓰지 말것
+		System.out.println(result6);
+		
+		//3) 문자형에서 정수형으로 변환
+		char letter = 'a';
+		int ascii = letter;
+		System.out.println(letter);
+		System.out.println(ascii);
+		
+		char letter2 = 'b';
+		int ascii2 = letter2;
+		System.out.println(letter2);
+		System.out.println(ascii2);
+		
+		char letter3 = 'A';
+		int ascii3 = letter3;
+		System.out.println(letter3);
+		System.out.println(ascii3);
+		
+		char letter4 = '가';
+		int ascii4 = letter4;
+		System.out.println(letter4);
+		System.out.println(ascii4);
+	}
+}
+
+---------------------------------------------------------------------------------------------
+
+TypeCasting02
+
+package TypeCasting;
+//12번 : 강제형변환
+public class TypeCasting02 {
+	public static void main(String[] args) {
+		// 형변환 연산자 (자료형)을 사용하여 강제 형변환을 한다
+		// 주로 큰 범위를 가진 자료형에서 작은 범위로 변환 시 데이터 손실이 발생할 수 있다
+		// 컴파일러는 명시적인 강제 변환이 없으면 오류를 발생시킨다
+		
+		// 1) 실수 -> 정수
+		double num1 = 3.141592;
+//		int result1 = num1; / cannot convert from double to int 
+		int result1 = (int)num1; //변환할 자리형을 넣어야 변환되서 출력됨
+		System.out.println(result1);
+		System.out.println("실수형 num1의 값 : " + num1 +","
+				+ " 정수형으로 변환된 값 : " + result1);
+		
+		// 2) 큰 범위 정수 -> 작은 범위 정수
+		long num2 = 1000L; //8byte
+//		int result2 = num2; //4byte, long타입에 만든것을 int타입에 담을수는 없음ㄴ
+		int result2 = (int)num2; 
+		System.out.println("long 타입 num2의 값 : " + num2
+				+", int타입으로 변환된 값 :" + result2);
+		
+		
+		// 3) 범위 초과
+		long num3 = 2147483648L;
+		int result3 = (int) num3;
+		System.out.println("long타입 num3 값 : " + num3 +", 왜곡된 값 : " + result3);
+//		int타입이 표현할 수 있는 값인 2147483647을 넘어서 초과했기에 왜곡되서 음수로 나옴, 오버플로우
+		// 음수가 나타나는 이유(overflow의 원리)
+		// int의 범위는 32bit 자료형
+		// 값의 범위 -2,147,483,648 ~ 2,147,483,647 < 중간에 0이 포함되므로 647로 끝남
+		// long에서 int로 변환 => 2147483648은 int의 범위를 초과하므로 상위비트(초과된 비트)가 잘리게 		된다
+		// 잘린값은 2의 보수 형식으로 계산되며 음수값으로 변환된다
+		// 32비트 : 1000 0000 0000 0000 0000 0000 0000 0000(0 하나가 0과 1을 표현가능한 bit)
+		
+		// 값 왜곡은 작은 자료형으로 형변환시 발생할 수 있는 문제이고 강제 형변환은 값의 범위를 
+		// 초과하지 않을 때만 사용해야한다
+		// 필요한 경우 변환하기 전에 범위를 먼저 확인해야한다!
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

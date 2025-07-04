@@ -1,0 +1,1040 @@
+day16_작업물 (java 14일차)
+복습 -> 추상클래스 -> 인터페이스 -> 어댑터클래스 -> 내부클래스 -> 익명클래스
+
+package review;
+
+public class Person {
+//	부모클래스 : Person
+//	자식클래스 : Student, Teacher, Employee
+//
+//	공통메소드 : introduce()   자식클래스에서는 오버라이딩
+//	모든 필드는 private
+//	생성자는 이름을 갖고있는 생성자
+//
+//	Person 클래스
+//	필드 : 이름, 나이, 생년월일(8자리)
+//	메소드 : introduce() 이름, 나이입니다 출력
+	
+	//이클립스 그리드 모드 : alt + shift + a
+	//필드
+	private String name;
+	private int age;
+	private String birth;
+
+	//생성자
+	public Person(String name) {
+		super();
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getBirth() {
+		return birth;
+	}
+
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	void introduce() {
+		System.out.println("이름 : " + this.name + 
+							"이고, 나이는 " + this.age +"살입니다.");
+	}
+}
+
+=========================================================================
+
+package review;
+
+public class Student extends Person{
+//	Student 클래스 
+//	필드 : Boolean stu
+//	생성자 : 매개변수 stu도 포함
+//	메소드 : study()
+//	           이름이 공부합니다 출력
+//	메소드 오버라이딩 : 이름은 학생입니다 출력
+	
+	//필드
+	private boolean stu;
+
+	public Student(String name, boolean stu) {
+		super(name); //부모의 생성자
+		this.stu = stu;
+	}
+
+	//메소드 오버라이딩
+	//alt + shift + s + v
+	@Override
+	void introduce() {
+		System.out.println(this.getName() + "은 학생입니다.");
+	}
+	
+	
+	//자식클래스의 메소드 추가
+	void study() {
+		System.out.println(this.getName() + "이/가 공부합니다.");
+	}
+}
+
+=========================================================================
+
+package review;
+
+public class Teacher extends Person{
+
+//	Teacher 클래스
+//	필드 : x
+//	메소드 : teach()
+//	            이름이 가르칩니다 출력
+//	메소드 오버라이딩 : 저는 선생님입니다 출력
+	
+	
+	//생성자
+	public Teacher(String name) {
+		super(name);
+	}
+
+	//메소드 오버라이딩
+	@Override
+	void introduce() {
+		System.out.println("저는 선생님입니다.");
+	}
+	
+	//메소드
+	void teach() {
+		System.out.println(getName() + "이/가 가르칩니다.");
+	}
+}
+
+
+=========================================================================
+
+package review;
+
+public class Employee extends Person{
+
+//	Employee 클래스
+//	필드 : x
+//	메소드 : work()
+//	            업무를 처리중입니다 출력
+//	메소드 오버라이딩 : 저의 이름은 이고 회사원입니다 출력
+	
+	
+	//생성자
+	public Employee(String name) {
+		super(name);
+	}
+
+	//메소드 오버라이딩
+	@Override
+	void introduce() {
+		System.out.println("저의 이름은 " + getName() + "이고 회사원입니다.");
+	}
+	
+	//메소드
+	void work() {
+		System.out.println("업무를 처리중입니다.");
+	}
+}
+
+
+=========================================================================
+
+package review;
+
+public class Main {
+	public static void main(String[] args) {
+//		Main 클래스
+//		static 메소드(printInfo())
+//		객체타입에 따라 다운 캐스팅하여 전용 메소드 실행
+
+		Person p = new Person("강승훈");
+		Student s = new Student("짱구", true);
+		Teacher t = new Teacher("김철수");
+		Employee e = new Employee("최유리");
+		printInfo(p);
+		printInfo(s);
+		printInfo(t);
+		printInfo(e);
+		
+//		Person p = new Student("신짱구",true);
+
+	}
+
+	// static 메소드 정의
+	static void printInfo(Person p) {
+		p.introduce();
+
+		// 조건문(if~else if~else if)
+		if (p instanceof Student) {
+			// 다운캐스팅
+			((Student) p).study();
+		} else if (p instanceof Teacher) {
+			((Teacher) p).teach();
+		} else if (p instanceof Employee) {
+			((Employee) p).work();
+		}
+	}
+}
+
+
+=========================================================================
+
+package abstractTest01;
+// 1번 : 일반클래스
+public class ClassA {
+	//메소드
+	void method1() {
+		System.out.println("메소드1 실행");
+	}
+}
+
+=========================================================================
+
+package abstractTest01;
+// 2번 : 추상 클래스(추상메소드와 일반메소드)
+public abstract class ClassB { //class 명에 abstract가 있어야 추상클래스 생성가능!
+	//추상 메소드
+	abstract void method1();
+	
+	//일반 메소드
+	void method2() {
+		System.out.println("추상클래스의 method2 호출");
+	}
+}
+
+
+=========================================================================
+
+package abstractTest01;
+// 3번 : 추상클래스를 상속받은 일반 클래스
+public class ClassC extends ClassB{
+
+	@Override
+	void method1() {
+		System.out.println("추상 클래스를 상속받은 일반 클래스 - 메소드 오버라이딩");
+	}
+	
+	void printNumber() {
+		System.out.println("숫자 출력 메소드");
+	}
+}
+
+=========================================================================
+
+package abstractTest01;
+// 4번 : 일반 클래스와 추상 클래스 객체화
+public class AbstractTest {
+	public static void main(String[] args) {
+		//일반 클래스 ClassA 객체화
+		ClassA a = new ClassA();
+		System.out.println(a);
+		a.method1();
+		
+		//추상클래스 ClassB 객체화 불가능 - 미완성된 클래스이기 때문
+//		ClassB b = new ClassB();
+		
+		//추상클래스 ClassB를 상속받은 일반 클래스 ClassC 객체화
+		ClassC c = new ClassC();
+		System.out.println(c);
+		c.method1(); //추상클래스에 정의된 추상 메소드, ClassC에서 재정의
+		c.method2();
+		
+		//up Casting, 오버라이딩
+		ClassB b = new ClassC();
+		System.out.println(b);
+		b.method1(); //오버라이딩 된 메소드 호출
+		
+		//b라는 객체로 printNumber 메소드 호출; Down Casting
+		((ClassC)b).printNumber();
+		
+	}
+}
+
+
+
+=========================================================================
+
+package abstractTest02;
+// 5번 : 추상 클래스와 강제성
+public abstract class Animal {
+	//필드
+	String name;
+	int age;
+	
+	//추상 메소드
+	abstract void crying();
+	
+	
+	
+//	void crying() {
+//		System.out.println(this.name + "이/가 운다");
+//	}
+}
+
+
+
+=========================================================================
+
+package abstractTest02;
+// 5번 : 추상 클래스와 강제성
+public class Cat extends Animal{
+
+	@Override
+	void crying() {
+		System.out.println("야옹");
+	}
+}
+
+
+
+=========================================================================
+
+package abstractTest02;
+
+public class Dog extends Animal{
+
+	@Override
+	void crying() {
+		System.out.println("멍멍");
+	}
+}
+
+
+
+=========================================================================
+
+package abstractTest02;
+// 5번 : 추상클래스와 강제성
+public class AnimalMain {
+	public static void main(String[] args) {
+//		Animal animal = new Animal(); 
+//		미완성된 클래스인 추상 클래스는 객체화 시킬 수 없다
+		
+		Animal dog = new Dog(); 
+//		상속받은 자식 클래스에서 메소드 오버라이딩이 되면
+//		부모타입(추상클래스타입)의 변수에 자식의 참조값을 넣어서 객체화 가능하다
+//		이를 업캐스팅 이라고 한다
+		
+		Animal cat = new Cat();
+		dog.crying(); //오버라이딩 된 메소드가 실행된다
+		cat.crying();
+		
+		
+	}
+}
+
+=========================================================================
+
+package abstractTest02;
+
+public abstract class Test {
+//	클래스 생성 시에 클래스명 작성하고 아래에 abstract 체크란 체크하면 추상메소드로 생성가능!
+}
+
+
+=========================================================================
+
+package interfaceTest01;
+// 6번 : 인터페이스
+public interface Inter {
+//	생성 시 class가 아니라 interface로 생성
+	//상수, 추상메소드
+	public final static int VAR1 = 10; //상수
+	
+	public abstract void method1(); //추상메소드
+	
+	int VAR2 = 20;
+	void method2();
+}
+
+
+=========================================================================
+
+package interfaceTest01;
+// 8번 : 인터페이스 구현 클래스
+public class ClassA implements Inter{
+
+	 @Override
+	   public void method1() {
+	      System.out.println("method1 오버라이딩!");
+	   }
+
+	   @Override
+	   public void method2() {
+	      System.out.println("method2 오버라이딩!");
+	   }
+
+}
+
+
+
+=========================================================================
+
+package interfaceTest01;
+// 7번 : 인터페이스 객체화와 구현한 클래스 객체화 확인
+public class InterMain {
+	public static void main(String[] args) {
+//		인터페이스 객체화 불가능 => 추상 메소드를 구현한 클래스로 객체화
+//		Inter i = new Inter();
+		
+		ClassA a = new ClassA();
+		System.out.println(a);
+		a.method1();
+		System.out.println(a.VAR1);
+		System.out.println(Inter.VAR1);
+		
+		Inter i = new ClassA(); //업캐스팅
+		System.out.println(i);
+
+	}
+}
+
+=========================================================================
+
+package interfaceTest02;
+// 9번 : 인터페이스 연습
+public class Main {
+	public static void main(String[] args) {
+		//Music 인터페이스를 만들고 각 메소드를 호출하기
+		
+		//음악 재생 프로그램
+		//부모는 Music 인터페이스
+		//구현되지 않은 mode 메소드 만들기 << 추상 메소드 만들기
+		
+		//참조변수를 따로 만들지 않고
+		//매개변수의 다형성을 활용하여 모든 클래스 타입의 메소드 호출
+
+	
+	
+	
+//	Ballad b = new Ballad();
+//	b.mode();
+//	b.onlyBallad();
+//	System.out.println(" ");
+//	Hiphop h = new Hiphop();
+//	h.mode();
+//	h.onlyHiphop();
+//	System.out.println(" ");
+//	Rock r = new Rock();
+//	r.mode();
+//	r.onlyRock();
+//	
+	
+	
+	check(new Ballad());
+	check(new Hiphop());
+	check(new Rock());
+	
+}
+
+//check 메소드 static 메소드, 매개변수		리턴값
+//review 패키지 Main클래스 참고!!!
+
+	static void check(Music music) {
+		if(music instanceof Ballad) { 
+			((Ballad) music).mode();
+			((Ballad) music).onlyBallad();
+			} else if(music instanceof Hiphop) {
+				((Hiphop) music).mode();
+				((Hiphop) music).onlyHiphop();
+				}else if(music instanceof Rock) {
+					((Rock) music).mode();
+					((Rock) music).onlyRock();
+					}
+			}
+		}
+
+=========================================================================
+
+package interfaceTest02;
+// 9번 : 인터페이스 연습
+public interface Music {
+	//Music 인터페이스를 만들고 각 메소드를 호출하기
+	
+	//음악 재생 프로그램
+	//부모는 Music 인터페이스
+	//구현되지 않은 mode 메소드 만들기 << 추상 메소드 만들기
+	public abstract void mode();	
+}
+
+=========================================================================
+
+package interfaceTest02;
+// 9번 : 인터페이스 연습
+public class Ballad implements Music{
+	
+	//발라드 클래스
+	//	"발라드 모드"를 출력하는 mode 구현
+	//	"오직 발라드만 실행" 출력하는 onlyBallad 메소드 만들기
+	
+	@Override
+	public void mode() {
+		System.out.println("발라드 모드");
+	}
+	
+	void onlyBallad() {
+		System.out.println("오직 발라드만 실행");
+	}
+}
+
+
+
+=========================================================================
+
+package interfaceTest02;
+// 9번 : 인터페이스 연습
+public class Hiphop implements Music{
+	
+	//힙합 클래스
+	//	"힙합 모드"를 출력하는 mode 메소드
+	//	"오직 힙합만 실행" 출력하는 onlyHiphop 메소드 만들기
+	
+	@Override
+	public void mode() {
+		System.out.println("힙합 모드");
+	}
+	
+	void onlyHiphop() {
+		System.out.println("오직 힙합만 실행");
+	}
+}
+
+
+
+=========================================================================
+
+package interfaceTest02;
+// 9번 : 인터페이스 연습
+public class Rock implements Music{
+
+	//락 클래스
+	//	"락 모드" 출력하는 mode 메소드
+	//	"오직 락만 실행" 출력하는 onlyRock 메소드 만들기
+
+	@Override
+	public void mode() {
+		System.out.println("락 모드");
+	}
+	
+	void onlyRock() {
+		System.out.println("오직 락만 실행");
+	}
+	
+	
+}
+
+
+=========================================================================
+
+
+package interfaceTest03;
+// 10번 : 클래스 단일 상속
+class Parents{
+	void printInfo() {
+		System.out.println("부모 클래스");
+	}
+}
+
+class Parents2{
+	void printInfo2() {
+		System.out.println("부모 클래스2");
+	}
+}
+
+class Child extends Parents2{
+	void printShow() {
+		System.out.println("자식 클래스");
+	}
+}
+
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+}
+
+
+=========================================================================
+
+package interfaceTest03;
+// 11번 : 인터페이스 다중 구현
+interface InterA{
+	void methodA();
+}
+
+interface InterB{
+	void methodB();
+}
+
+class ClassC implements InterA, InterB{
+
+	@Override
+	public void methodB() {
+		System.out.println("InterA의 메소드 구현");
+	}
+
+	@Override
+	public void methodA() {
+		System.out.println("InterB의 메소드 구현");
+	}
+}
+
+public class Main2 {
+	public static void main(String[] args) {
+		
+		ClassC c = new ClassC();
+		InterA a = new ClassC();
+		InterB b = new ClassC();
+		
+		a.methodA(); //InterB의 메소드 구현
+		b.methodB(); //InterA의 메소드 구현
+		c.methodA(); //InterB의 메소드 구현
+		c.methodB(); //InterA의 메소드 구현
+	}
+}
+
+
+=========================================================================
+
+package interfaceTest03;
+// 12번 : 인터페이스 간 상속
+
+interface ParentInter{
+	void method1();
+}
+
+interface ChildInter extends ParentInter{
+	void method2();
+}
+
+class ClassA implements ChildInter{
+	
+
+
+
+	@Override
+	public void method1() {
+	System.out.println("ParentInter의 메소드 구현");
+	
+}
+
+
+	@Override
+	public void method2() {
+	System.out.println("ChildInter의 메소드 구현");
+	
+}
+
+
+public class Main3 {
+	public static void main(String[] args) {
+		 ClassA a = new ClassA();
+	      a.method1();
+	      a.method2();
+		}
+	}
+}
+
+
+=========================================================================
+
+package interfaceTest03;
+
+class Parents{
+	void parentsMethod() {
+		System.out.println("Parents 클래스의 메소드");
+	}
+}
+
+interface InterC{
+	void interMethod1();
+}
+
+interface InterD{
+	void interMethod2();
+}
+
+class C extends Parents implements InterC, InterD{
+
+	
+	@Override
+	public void interMethod2() {
+		System.out.println("InterA의 메소드 구현");
+	}
+
+	@Override
+	public void interMethod1() {
+		System.out.println("InterB의 메소드 구현");
+	}
+
+	@Override
+	void parentsMethod() {
+		System.out.println("자식클래스에서 메소드 오버라이딩");
+		}
+	
+}
+
+public class Main4 {
+	public static void main(String[] args) {
+		C obj = new C();
+		obj.parentsMethod();
+		obj.interMethod1();
+		obj.interMethod2();
+	}
+}
+
+
+=========================================================================
+
+package interfaceTest04;
+// 14번 : 다중상속(모호성 해결방법 예제)
+public class ClassA {
+	public void printText() {
+		System.out.println("ClassA printText 호출");
+	}
+}
+
+
+=========================================================================
+
+package interfaceTest04;
+// 15번 : 다중상속(모호성 해결방법 예제)
+public interface Inter1 {
+	 default void printText() {
+	      System.out.println("Inter1 printText() 호출");
+	   }
+}
+
+
+=========================================================================
+
+package interfaceTest04;
+// 16번 : 다중상속(모호성 해결방법 예제)
+public class ClassB extends ClassA implements Inter1{
+	//ClassA와 Inter1 양쪽에 printText() 메소드가 존재하지만 오류가 발생하지 않는다
+	//구현하는 인터페이스보다 상속받는 부모클래스의 우선순위가 높기 때문이다
+}
+
+
+=========================================================================
+
+package interfaceTest04;
+// 17번 : 다중상속(모호성 해결방법 예제)
+public interface Inter2 {
+	default void printText() {
+		System.out.println("Inter2의 printText() 호출");
+	}
+}
+
+
+=========================================================================
+
+package interfaceTest04;
+// 18번 : 다중상속(모호성 해결방법 예제)
+public interface Inter3 {
+	default void printText() {
+		System.out.println("Inter3의 printText() 호출");
+	}
+}
+
+
+=========================================================================
+
+package interfaceTest04;
+// 19번 : 다중상속(모호성 해결방법 예제)
+public class ClassC implements Inter1, Inter2, Inter3{
+
+	@Override
+	public void printText() {
+		//어차피 부모에 정의된 default 메소드를 사용할 것이기 때문에
+		//어떤 부모의 메소드를 사용할 지 정해서 사용한다
+		Inter2.super.printText(); //굳이 여기에 3줄 안적고 아래 syso안에 적으면 해당으로 자동출력
+		Inter1.super.printText(); 
+		Inter3.super.printText(); 
+		
+		
+	}
+
+	public static void main(String[] args) {
+		ClassC c = new ClassC();
+		System.out.println(c);
+		c.printText();
+	}
+}
+
+
+=========================================================================
+
+package interfaceTest05;
+// 20번 : static 메소드, default 메소드, private 메소드
+public interface Calculator {
+	default int add(int num1, int num2) {
+		return validate(num1, num2) == 1 ? num1 + num2 : 0;
+	}
+	
+	default int subtract(int num1, int num2) {
+		return num1 - num2;
+	}
+	
+	private int validate(int num1, int num2) {
+		if(num1 < 0 || num2 < 0) {
+			System.out.println("음수값은 사용 불가합니다. 양수만 가능합니다.");
+			return 0;
+		}
+		return 1;
+	}
+	
+	static void into() {
+		System.out.println("계산기 인터페이스입니다. 양수만 가능합니다.");
+	}
+}
+
+
+=========================================================================
+
+package interfaceTest05;
+// 21번 : 구현하는 클래스 
+public class CalculImpl implements Calculator{
+}
+
+
+=========================================================================
+
+package interfaceTest05;
+// 22번 : 메인 메소드(인터페이스 내에서 static 메소드, private 메소드, default 메소드만
+//			                            있어도 인터페이스 자체로 객체화는 불가능하다)
+public class CalculMain {
+	public static void main(String[] args) {
+		Calculator c = new CalculImpl();
+		System.out.println(c);
+		System.out.println(c.add(10, 20));
+		System.out.println(c.add(10, -20));
+		Calculator.into();
+	}
+}
+
+
+=========================================================================
+
+
+
+=========================================================================
+
+package markerINter;
+// 24번 : 마커 인터페이스
+public class Main {
+	public static void main(String[] args) {
+		
+		Carnivore[] h = {new Tiger(), new Eagle()};
+		//그룹을 지어서 묶음
+		
+	}
+}
+
+
+=========================================================================
+
+package markerINter;
+
+public class Horse implements Herbivore{
+
+}
+
+
+=========================================================================
+
+package markerINter;
+
+public class Tiger implements Carnivore{
+
+}
+
+
+=========================================================================
+
+package markerINter;
+
+public class Eagle implements Carnivore{
+
+}
+
+
+=========================================================================
+
+package markerINter;
+
+public class Dog implements Omnivore{
+
+}
+
+=========================================================================
+
+package markerINter;
+// 초식동물 마커인터페이스
+public interface Herbivore {
+
+}
+
+
+=========================================================================
+
+package markerINter;
+// 24번 : 육식동물 마커인터페이스
+public interface Carnivore {
+
+}
+
+
+=========================================================================
+
+package markerINter;
+// 24번 : 잡식동물 인터페이스
+public interface Omnivore {
+
+}
+
+
+=========================================================================
+
+package InnerTest;
+// 25번 : 내부클래스
+public class Outer {
+	//Outer 클래스의 필드
+	int var1;
+	String data1 = "Outer";
+	
+	//Outer 클래스의 기본 생성자
+	public Outer() {
+		super(); //Object 클래스의 생성자
+		System.out.println("외부 클래스의 기본 생성자");
+	}
+	
+	//Outer 클래스의 인스턴스 메소드
+	void outerMethod() {
+		System.out.println("외부 클래스의 메소드 호출");
+	}
+	
+	//내부 클래스 Inner 정의
+	class Inner{
+		//필드, 생성자, 메소드
+		//Inner 클래스의 필드
+		int var2 = 10;
+		String data2 = "Inner";
+		
+		//Inner 클래스의 생성자
+		public Inner() {
+			super(); //Object 클래스의 생성자
+			System.out.println(this);
+			System.out.println("내부클래스의 생성자");
+		}
+		
+		//Inner 클래스의 메소드
+		void innerMethod() {
+			System.out.println("내부 클래스의 메소드 호출");
+			this.var2 = 20;
+			var1 = 100; //var1은 외부클래스의 필드임, 내부로 가져와서 쓸때는 this를 붙히지 않고 그냥 씀
+//			this.var1 = 100; 오류발생
+			System.out.println("내부 클래스의 메소드에서 var1의 값 : " + var1);
+			System.out.println("내부 클래스의 메소드에서 var2의 값 : " + var2);
+		
+		}
+		
+	}//내부 클래스의 중괄호 끝
+	
+}//외부 클래스 중괄호 끝
+
+
+=========================================================================
+
+package InnerTest;
+// 26번 : 내부클래스와 외부클래스의 객체화
+public class InnerMain {
+	public static void main(String[] args) {
+		
+	//외부클래스의 객체 생성
+	Outer outer = new Outer();
+	System.out.println("외부 클래스의 참조값 : " + outer);
+	System.out.println("외부 클래스의 참조값 : " + outer.var1);
+//	System.out.println("내부 클래스의 참조값 : " + outer.var2);
+	//외부 클래스의 객체로는 내부 클래스 멤버에 접근 불가
+	
+	//내부클래스의 객체 생성
+//	내부 클래스는 외부 클래스의 인스턴스를 통해서만 생성해야한다!!!!
+//	Inner inner = new Inner();
+	Outer.Inner inner = outer.new Inner();
+//	Outer.Inner inner2 = outer.new Inner();
+	Outer.Inner inner2 = new Outer().new Inner(); 
+	System.out.println(inner);
+//	참조값에 $ 표시가 있으면 무조건! 내부 클래스라는 뜻, $표시 뒤가 내부클래스
+//	참조값은 외부클래스가 먼저 표기, 내부클래스는 그 이후에 표기
+//	외부클래스의 기본생성자 - 내부클래스의 기본생성자 순으로 호출
+	
+	
+	}
+}
+
+
+=========================================================================
+
+package anonymousTest;
+//28번 : 인터페이스 구현 클래스
+public class ClassA implements InterA{
+
+	@Override
+	public void printText() {
+		System.out.println("구현하는 클래스에서 메소드 오버라이딩");	
+	}
+}
+
+
+=========================================================================
+
+package anonymousTest;
+//27번 : 인터페이스
+public interface InterA {
+	void printText();
+}
+
+
+=========================================================================
+
+package anonymousTest;
+// 29번 : 익명 클래스 - 메인 클래스
+public class AnonymousMain {
+	public static void main(String[] args) {
+		InterA a = new ClassA();
+		System.out.println(a);
+		a.printText();
+		
+		InterA aa = new InterA() {
+
+			@Override
+			public void printText() {
+				System.out.println("익명클래스에서 오버라이딩");
+				System.out.println("수업끝!");
+			}
+		}; //문장의 끝, 세미콜론을 안 쓰면 오버라이딩이 불가
+			
+		System.err.println(aa);	
+		aa.printText();	
+	}
+}
+
+
+=========================================================================
+
+
+
+=========================================================================

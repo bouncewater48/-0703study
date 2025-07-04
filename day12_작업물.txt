@@ -1,0 +1,245 @@
+day12_작업물 (java 10일차)
+
+ 1번 : 정적 블록
+
+package StaticTest;
+
+// 1번 : 정적 블록
+public class StaticBlock {
+	public static void main(String[] args) {
+		System.out.println("메인메소드 실행");
+	}
+
+	// 정적블록 : 클래스가 로드될 때 먼저 실행된다(main 메소드보다 먼저 출력)
+	static {
+		System.out.println("클래스가 로드될 때 이 블록이 실행됩니다");
+		// 스태틱블록이 메인메소드보다 먼저 실행됨
+		// 클래스에 로드 작업이 일어나면 스태틱블록 - 메인메소드 순으로 실행
+	}
+
+}
+
+=======================================================================
+
+2번 : 클래스 상수와 인스턴스 상수
+
+package StaticTest;
+
+// 2번 : 클래스 상수와 인스턴스 상수
+public class ConstantTest {
+	// 필드
+	// 클래스 내부에서 상수 선언
+	final double PI = 3.14159265359; // 인스턴스 상수
+	// Heap 영역, 객체 생성시 초기화,
+	// 객체마다 독립적임;같은값이 나온거처럼 보여도 실제론 Heap메모리 2개가 생성된것
+	// 특정 객체마다 고유한 상수를 정의할 때 사용한다
+
+	static final int MAX_LENGTH = 100; // 클래스 상수(스태틱 상수)
+	// 스태틱이 붙지 않고 쓰이면 인스턴스 상수이다
+	// method 영역, 클래스 로드시 초기화, 모든 객체가 공유, 클래스 전체에서 공통으로 사용하는 상수
+
+	// 메소드
+	public static void main(String[] args) {
+		ConstantTest ct = new ConstantTest();
+		// 메인메소드 안이 아닌 밖에 객체를 작성했으므로 필드가 반드시 필요
+
+		System.out.println(ct.PI); // 3.14159265359
+//		System.out.println(ct.MAX_LENGTH);//사용은 가능하나, 하나의 값으로만 고정된 상태
+		System.out.println(ConstantTest.MAX_LENGTH); // 100
+		System.out.println(new ConstantTest().PI); // Heap메모리에 바로 만들고 PI값 출력, 사용가능
+
+	}
+}
+
+=======================================================================
+
+3번 : enum
+
+package StaticTest;
+
+// 3번 : enum
+public class EnumTest01 {
+	// enum
+	enum Day {
+		MONDAY(true), TUESDAY(true), WEDESDAY(true), 
+		THURSDAY(true), FRIDAY(true), SATURDAY(false), SUNDAY(false);
+
+		// 필드
+		boolean week;
+
+		// 생성자
+		private Day(boolean week) {
+			this.week = week;
+		}
+
+		// 메소드
+		boolean weekday() {
+			return this.week;
+		}
+
+//		this.week=week;
+
+	}
+
+	// 메인메소드
+	public static void main(String[] args) {
+//		Day today = Day.THURSDAY;
+		Day today = Day.FRIDAY;
+
+		System.out.println("오늘은 " + today + "입니다"); // 오늘은 THURSDAY입니다
+
+		String result;
+
+		// switch문을 사용하여 열거형 상수 처리
+		switch (today) {
+		case MONDAY:
+//			System.out.println("월요일입니다");
+			result = "월요일";
+			break;
+		case THURSDAY:
+//			System.out.println("목요일입니다");
+			result = "목요일";
+			break;
+		case WEDESDAY:
+//			System.out.println("수요일입니다");
+			result = "수요일";
+			break;
+		default:
+//			System.out.println("다른요일입니다");
+			result = "다른요일";
+			break;
+
+		}
+
+		System.out.println("오늘은 " + result + "입니다.");
+
+		// 조건문 오늘이 평일인지 주말인지 확인
+//		if (today.weekday()) { // today에는 Day today = Day.FRIDAY;가 등러있음
+		if (today == Day.SUNDAY) {
+			System.out.println("오늘은 평일입니다");
+		} else {
+			System.out.println("오늘은 주말입니다");
+		}
+//			오늘은 FRIDAY입니다
+//			오늘은 다른요일입니다.
+//			오늘은 평일입니다
+
+//		오늘은 FRIDAY입니다
+//		오늘은 다른요일입니다.
+//		오늘은 주말입니다		
+//		today와 Day가 안맞으니 주말입니다로 넘어감
+
+		// 모든 열거형 값을 배열로 가져오는 메소드
+		Day[] days = Day.values();
+		System.out.println(days);
+		for (Day day : days) {
+			System.out.println(day);
+			/*
+			 * [LStaticTest.EnumTest01$Day;@31befd9f 
+			 * MONDAY TUESDAY WEDESDAY THURSDAY FRIDAY
+			 * SATURDAY SUNDAY
+			 */
+		}
+	}
+}
+
+=======================================================================
+
+4번 : 변수의 종류
+
+package variableTest;
+
+// 4번 : 변수의 종류
+public class VariableTest01 {
+
+	// 필드
+	int iVar; // 인스턴스 변수
+	static int sVar; // 스태틱 변수
+
+	// 메소드
+	// 인스턴스 메소드
+	int localVar() {
+		int lVar = 100; // 지역변수
+		System.out.println("지역변수 lVar의 값 : " + lVar);
+		return lVar;
+	}
+
+	// 인스턴스 메소드
+	void parameterVar(int pVar) { // 매개변수
+		System.out.println("매개변수 pVar의 값 : " + pVar);
+	}
+
+	// 인스턴스 메소드
+	void intstanceVar() {
+		iVar += 5;
+		System.out.println("인스턴스변수 iVar의 값 : " + iVar);
+	}
+
+	// 스태틱 메소드(=정적 메소드)
+	static void staticVar() {
+		sVar = 100; // 스태틱 변수, 앞에 자료형.sVar이 되어야 지역변수임
+		System.out.println("정적변수 sVar의 값 : " + sVar);
+
+		VariableTest01 vt1 = new VariableTest01();
+		System.out.println("정적변수 sVar의 값(vt1) : " + vt1.sVar);
+		VariableTest01 vt2 = new VariableTest01();
+		System.out.println("정적변수 sVar의 값(vt2) : " + VariableTest01.sVar);
+
+	}
+
+	public static void main(String[] args) {
+		VariableTest01 vt = new VariableTest01();
+		int lVar = vt.localVar(); // 지역변수 lVar의 값 : 10
+		System.out.println(lVar); // 10
+		vt.parameterVar(lVar);
+
+		vt.intstanceVar(); // 인스턴스변수 iVar의 값 : 0
+		vt.intstanceVar();
+
+		VariableTest01.staticVar();
+
+		/*
+		 * 지역변수 lVar의 값 : 100 
+		 * 100
+		 * 매개변수 pVar의 값 : 100 
+		 * 인스턴스변수 iVar의 값 : 5 
+		 * 인스턴스변수 iVar의 값 :
+		 * 10 정적변수 sVar의 값 : 100 
+		 * 정적변수 sVar의 값(vt1) : 100 
+		 * 정적변수 sVar의 값(vt2) : 100
+		 */
+	}
+}
+=======================================================================
+
+5번 : 가변길이 매개변수
+
+package variableTest;
+
+// 5번 : 가변길이 매개변수
+public class VariableTest02 {
+	public static void main(String[] args) {
+		VariableTest02 vt = new VariableTest02();
+		vt.printNumbers("가변길이매개변수", 1);
+		vt.printNumbers("가변길이매개변수", 1, 2);
+		vt.printNumbers("가변길이매개변수", 1, 2, 3, 4, 5, 6);
+		for(int i = 0; i <= 100000; i++) {
+//			vt.printNumbers(null, i);
+		}
+	}
+
+	// 총합 구하는 메소드
+	void printNumbers(String name, int... numbers) {
+		System.out.println(numbers);
+		int total = 0;
+		for (int num : numbers) {
+			total += num;
+//			System.out.println(num);
+		}
+		System.out.println(total);
+		System.out.println(name);
+	}
+}
+
+
+=======================================================================
