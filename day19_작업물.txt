@@ -1,0 +1,208 @@
+day19_작업물 (java 17일차)
+복습 -> 컬렉션 프레임워크(Map) -> DBMS -> 능력단위평가2 시험
+
+
+package mapTest;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+
+// 1번 : HashMap
+public class MaPtest01 {
+	public static void main(String[] args) {
+		ArrayList al = new ArrayList<>();
+//		HashMap<K, V> key와 value가 한쌍이다
+		System.out.println(al.toString());
+//		al.add(al);
+		al.add(1);
+		al.add(2);
+		al.add(3);
+		System.out.println(al); //[1, 2, 3]
+		System.out.println(al.get(1));
+		
+		HashMap<String, Integer> map = new HashMap<>();
+//		HashMap map = new HashMap<>();
+		System.out.println(map.toString());
+//		map.put(map, map);
+		map.put("a", 1);
+		map.put("b", 2);
+		map.put("c", 3);
+		System.out.println(map); //{key=value}
+		System.out.println(map.get("b"));
+		//인덱스를 몰라도 key값으로 해당 value를 출력할 수 있다; 가장 큰 차이!!
+		
+		map.put("a", 10);
+		System.out.println(map);
+//		a의 키 값은 그대로이나, value값이 바뀜
+//		key 값은 추가할시 기존꺼가 바뀜!
+		map.put("d",4);
+		System.out.println(map);
+//		기존에 없었으나, d라는 자리에 4를 해싱해서 새로이 출력해준다
+		
+//		put(key, value) 한쌍으로 추가
+//		 메뉴가격이 있는 가격표 같은걸 만들때 key와 value에 메뉴와 가격을 넣는식으로 활용가능
+//		get(key) 해당 key의 value값 반환
+//		size()		해당 요소의 길이 반환
+//		keySet()
+//		values()
+		
+		System.out.println(map.keySet()); //문자열 리스트로 반환, 반환타입 Set 인터페이스
+//		key값만 뽑아줌	
+		System.out.println(map.values()); //반환타입 Collection 인터페이스
+//		value값만 뽑아줌
+		Collection co = map.values();
+//		ListSet의 최상위 클래스, 인터페이스에서 Collection으로 반환하여 출력
+		System.out.println(co);
+		
+	}
+}
+
+=====================================================================
+
+package mapTest;
+
+import java.util.HashMap;
+
+// 2번 : 메뉴에 맞는 값 출력하기
+public class MapTest02 {
+	public static void main(String[] args) {
+		
+		HashMap<String, Integer> coffee = new HashMap<>();
+		
+		//추가 put
+		coffee.put("아메리카노", 2000);
+		coffee.put("카페라떼", 2400);
+		coffee.put("카푸치노", 2400);
+		coffee.put("카라멜마끼아또", 3000);
+		
+		System.out.println(coffee);
+//		{카푸치노=2400, 아메리카노=2000, 카페라떼=2400, 카라멜마끼아또=3000}
+//		중복만 안될뿐, 순서가 없다
+		
+//		조회 get
+		System.out.println(coffee.get("아메리카노"));//2000
+		
+		//삭제 remove
+		System.out.println(coffee.remove("카라멜마끼아또"));
+//		remove에서 key값을 넣어서 해당하는 타입으로 value값 반환되고 삭제
+		System.out.println(coffee.remove("카라멜마끼아또", 3000));
+//		remove에서 key값과 value값을 넣어서 boolean으로 삭제 성공여부 반환 후 삭제
+		System.out.println(coffee);
+		
+//		containsKey
+//		Key에 해당값이 들어있는지 true, false로 확인 가능
+		System.out.println(coffee.containsKey("새우깡"));
+//		containsValue
+//		Value에 해당 값이 들어있는지 true, false로 확인 가능
+		System.out.println(coffee.containsValue(2000));
+
+//		Iterator
+//		keySet -> key만 가져오기
+		System.out.println(coffee.keySet());
+//		하나씩 출력하기
+		Iterator<String> iter = coffee.keySet().iterator();
+//		참조값, 위치확인 / $가 존재한다 = 내부클래스
+//		System.out.println(iter);
+		
+		System.out.println(iter.hasNext());
+		System.out.println(iter.next());
+		
+		while(iter.hasNext()) {
+			System.out.println(iter.next());
+		}
+		
+		//Values -> value만 가져오기
+		System.out.println(coffee.values());
+//		하나씩 출력하기
+		Iterator<Integer> iter2 = coffee.values().iterator();
+//		참조값, 위치확인 / $가 존재한다 = 내부클래스
+//		System.out.println(iter2);
+		while(iter2.hasNext()) {
+			System.out.println(iter2.next());
+		}
+		
+		System.out.println(coffee);
+		
+		//Entry :  key, value 한쌍씩 가져오기
+		System.out.println(coffee.entrySet());
+//		{}에서 []로 바뀜, 반환타입이 Set이였으므로 HashSet으로 바뀜
+//		하나씩 가져오기
+		Set<Entry<String, Integer>> items = coffee.entrySet();
+//		entrySet에 컨트롤 클릭해서 나오는 서식과 똑같이 작성
+//		Set 안에 <Entry<String, Integer>>가 존재
+		System.out.println(items);
+//		반복문 돌리기
+		for(Entry<String, Integer> entry : items) {
+			System.out.println(entry);
+//			카푸치노=2400
+//			아메리카노=2000
+//			카페라떼=2400
+//			entry를 활용해서 한쌍씩 출력
+			
+		}
+	}
+}
+
+
+
+=====================================================================
+
+
+
+
+=====================================================================
+
+
+
+
+=====================================================================
+
+
+
+
+=====================================================================
+
+
+
+
+=====================================================================
+
+
+
+
+=====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

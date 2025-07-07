@@ -225,6 +225,7 @@ Q. 메모리를 더 많이 차지하는 Wrapper 클래스는 언제 사용될까
 	Collection	List	순서를 유지하고 저장(순서를 index)		ArrayList, Vector, 									LinkedList
 				중복값 저장 가능
 			Set	순서를 유지하지 않고 저장			HashSet, TreeSet
+	
 	Map			키(key)와 값(value)으로 구성된 엔트리 저장
 				카는 중복 불가능, 값은 중복 가능		HashMap, TreeMap, 									Properties
 
@@ -237,6 +238,8 @@ Q. 메모리를 더 많이 차지하는 Wrapper 클래스는 언제 사용될까
 	ArrayList : 배열과 동일하게 인덱스로 데이터를 관리한다(단, 유동적이라 늘어나고 줄어드는게 자유롭다)
 		컬렉션 클래스 중 실무에서 가장	많이 사용되는 클래스이다
 		추가, 삭제는 느리지만 탐색이 상대적으로 빠르다
+		List 객체 = new ArrayList<E>();	//업캐스팅	
+		ArrayList<E> 객체 = new ArrayList<E>();
 	LinkedLIst : 추가, 삭제는 빠르지만 탐색이 상대적으로 느리다
 
 2) 제네릭(Generic)
