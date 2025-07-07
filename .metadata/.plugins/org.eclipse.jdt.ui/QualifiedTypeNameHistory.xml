@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="java.util.stream.IntStream"/>
-    <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="Method.MethodOverloading02"/>
-    <fullyQualifiedTypeName name="java.lang.Object"/>
-    <fullyQualifiedTypeName name="classBasic2.Student"/>
-    <fullyQualifiedTypeName name="classBasic2.Rectangle"/>
-    <fullyQualifiedTypeName name="Task.Task01_1"/>
-    <fullyQualifiedTypeName name="java.nio.file.spi.FileSystemProvider"/>
     <fullyQualifiedTypeName name="variableTest.VariableTest01"/>
     <fullyQualifiedTypeName name="variableTest.VariableTest02"/>
     <fullyQualifiedTypeName name="inheritance.Tv2"/>
@@ -24,7 +14,6 @@
     <fullyQualifiedTypeName name="casting02.Parents"/>
     <fullyQualifiedTypeName name="casting03.CastingTest"/>
     <fullyQualifiedTypeName name="casting03.Animal"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="review.Student"/>
     <fullyQualifiedTypeName name="review.Teacher"/>
     <fullyQualifiedTypeName name="review.Employee"/>
@@ -53,6 +42,22 @@
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="exceptionTest.ExceptionTest03"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthOptionPaneUI"/>
     <fullyQualifiedTypeName name="exceptionTest02.MyException"/>
+    <fullyQualifiedTypeName name="lambdaTask.CombInter"/>
+    <fullyQualifiedTypeName name="apitest2.Calc"/>
+    <fullyQualifiedTypeName name="apiTest2.Calc"/>
+    <fullyQualifiedTypeName name="ObjectTest01.Student"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="ObjectTest01.ToStringTest"/>
+    <fullyQualifiedTypeName name="listTetst.ArrayListTest01"/>
+    <fullyQualifiedTypeName name="apitest.MyClass"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthOptionPaneUI"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="setTest.HashSetTest01"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Collection"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
 </qualifiedTypeNameHistroy>
