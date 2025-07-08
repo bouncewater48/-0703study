@@ -1,0 +1,8 @@
+-- 스크립트 파일 단축키 : ctrl + ]
+-- sql문 한줄 주석 ctrl + /
+/*  sql문의 여러줄 주석 ctrl + shift + / */
+-- 실행 단축키 : 실행하려는 곳에서 커서를 둔 상태로 ctrl + enter
+-- 글씨 키우기 : ctrl + shift + + or -
+SELECT * FROM employees;
+SELECT first_name FROM employees;
+-- first_name 열만 실행하겠다

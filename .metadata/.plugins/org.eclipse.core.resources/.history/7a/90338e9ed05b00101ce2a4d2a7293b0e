@@ -1,0 +1,125 @@
+-- 4번 : 연산자 실습
+
+/*	모든 이름은 이름과 성을 띄워쓰기 포함하여 연결
+ * 
+ *[연습] 모든 직원의 이름, 급여, 연봉이라는 이름으로 출력하기
+ */
+SELECT * FROM employees;
+SELECT first_name ||' '|| last_name 이름,
+	salary 급여,
+	salary * 12 연봉
+FROM employees;
+
+/*
+	따로 컬럼명이 명시가 안될 경우 조회할 컬럼명 : 직원번호, 이름, 급여, 입사일
+
+1. 모든 직원의 이름, 급여, 커미션, 커미션을 포함한 연봉을 총 보상이라는 이름으로 출력
+단, 커미션이 NULL인 경우 0으로 처리할 것
+
+2. 직원번호와 이메일을 연결해서 직원번호_이메일이라는 별칭으로 출력
+조회할 컬럼명 : 직원번호, 이메일, 급여
+
+3. 급여가 7000 초과인 직원의 이름과 급여 출력하기
+
+4. 부서번호가 50 또는 80번이 아닌 직원들만 출력하기
+
+5. 급여가 4000이상 7500이하인 직원을 조회하기
+조회할 컬럼명 : 직원번호, 이름, 급여, 입사일
+
+6. 직무ID가 IT_PROG, SA_REP, SA_MAN인 직원만 조회하기
+
+7. 커미션을 받는 직원만 조회하기
+
+8. 이름에 D와 e가 포함되는 직원들만 조회하기
+
+9. 직무ID가 IT_PROG가 아닌 직원만 조회하기
+*/
+
+--1. 모든 직원의 이름, 급여, 커미션, 커미션을 포함한 연봉을 
+--   총 보상이라는 이름으로 출력
+--단, 커미션이 NULL인 경우 0으로 처리할 것
+--SELECT *
+SELECT first_name ||' '||last_name 이름, salary 급여, 
+COMMISSION_PCT 커미션, NVL(commission_pct, 0) "커미션 비율",
+salary * 12 총보상
+FROM employees;
+
+
+SELECT 
+first_name ||' '||last_name 이름,
+salary 급여,
+COMMISSION_PCT 커미션,
+salary * 12 * NVL2(commission_pct, commission_pct, 0) "총보상"
+FROM employees;
+
+--NVL2(커미션, 커미션, 0) : 커미션_PCT가 NULL이 아니면 그 값을 반환, NULL이면 0을 반환
+
+-- 커미션이 전체 연봉 대비
+-- 월마다 대비 총보상 = 월급 * 12 + (월급 * 커미션 비율 * 12)
+-- 커미션은 매달 받는 비율(%) 연봉에 포함되어야한다
+-- salary 월급(급여)
+-- 기본 연봉 : salary * 12
+-- 커미션도 매달 나온다 : salary * commission_pct * 12
+
+SELECT 
+first_name ||' '||last_name 이름,
+salary 급여,
+COMMISSION_PCT 커미션,
+salary * 12 + NVL2(salay * commission_pct * 12, commission_pct, 0) "총보상"
+FROM employees;
+
+-- 2. 직원번호와 이메일을 연결해서 직원번호_이메일이라는 별칭으로 출력
+-- 조회할 컬럼명 : 직원번호, 이메일, 급여
+SELECT employee_id 직원번호,employee_id || '_' ||email 직원번호_이메일, 
+salary 급여
+FROM employees;
+
+--3. 급여가 7000 초과인 직원의 이름과 급여 출력하기
+SELECT first_name ||' '||last_name 이름, SALARY 급여, EMPLOYEE_ID 직원번호,HIRE_DATE 입사일
+FROM employees
+WHERE salary > 7000
+ORDER BY salary;
+
+--4. 부서번호가 50 또는 80번이 아닌 직원들만 출력하기
+SELECT DEPARTMENT_ID 부서번호,first_name ||' '||last_name 이름, 
+salary 급여, employee_id 직원번호, hire_date 입사일 
+FROM employees
+WHERE DEPARTMENT_ID != 50 AND DEPARTMENT_ID != 80
+--WHERE DEPARTMENT_ID != 50 or DEPARTMENT_ID != 80
+ORDER BY DEPARTMENT_ID;
+
+--5. 급여가 4000이상 7500이하인 직원을 조회하기
+--조회할 컬럼명 : 직원번호, 이름, 급여, 입사일
+SELECT first_name ||' '||last_name 이름, SALARY 급여, EMPLOYEE_ID 직원번호,HIRE_DATE 입사일
+FROM employees
+--WHERE salary >= 4000 AND salary <= 7500
+WHERE salary BETWEEN 4000 AND 7500
+--ORDER BY salary;
+
+--6. 직무ID가 IT_PROG, SA_REP, SA_MAN인 직원만 조회하기
+SELECT first_name 이름, SALARY 급여, 
+EMPLOYEE_ID 직원번호,HIRE_DATE 입사일, job_id 직무ID
+FROM employees
+--WHERE JOB_ID = 'IT_PROG' or 'JOB_ID' = 'SA_REP' or JOB_ID = 'SA_MAN'
+WHERE JOB_ID IN('IT_PROG', 'SA_REP', 'SA_MAN');
+--ORDER BY JOB_ID;
+
+--7. 커미션을 받는 직원만 조회하기
+SELECT first_name ||' '||last_name 이름, SALARY 급여, 
+EMPLOYEE_ID 직원번호,HIRE_DATE 입사일, COMMISSION_PCT 커미션
+FROM employees
+WHERE COMMISSION_PCT IS NOT NULL;
+
+--8. 이름에 D와 e가 포함되는 직원들만 조회하기
+SELECT first_name ||' '||last_name 이름, salary 급여,
+EMPLOYEE_ID 직원번호,HIRE_DATE 입사일
+FROM employees
+--WHERE first_name ||' '|| last_name LIKE '%D%e%';
+WHERE first_name LIKE '%D%' AND last_name LIKE '%e%';
+
+--9. 직무ID가 IT_PROG가 아닌 직원만 조회하기
+SELECT first_name ||' '||last_name 이름, salary 급여,
+EMPLOYEE_ID 직원번호,HIRE_DATE 입사일, job_id 직무ID
+FROM employees
+WHERE JOB_ID != 'IT_PROG';
+

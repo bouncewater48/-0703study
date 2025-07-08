@@ -1,0 +1,363 @@
+2025-07-07 16:33:55.696 - DBeaver 25.1.2.202507061449 is starting
+2025-07-07 16:33:55.696 - OS: Windows 10 10.0 (amd64)
+2025-07-07 16:33:55.696 - Java version: 21.0.5 by Eclipse Adoptium (64bit)
+2025-07-07 16:33:55.696 - Install path: 'D:\web_0900_ksh\dbms\resource\dbeaver-ce-25.1.2-win32.win32.x86_64\dbeaver'
+2025-07-07 16:33:55.696 - Instance path: 'file:/D:/web_0900_ksh/dbms/workspace/'
+2025-07-07 16:33:55.696 - Memory available 64Mb/1024Mb
+2025-07-07 16:33:55.711 - Create display
+> Start Eclipse IDE UI [org.eclipse.ui.ide 3.22.600.v20250523-1502]
+2025-07-07 16:33:55.812 - Initialize desktop platform...
+2025-07-07 16:33:55.896 - BounceCastle bundle found. Use JCE provider BC
+> Start Core File Systems [org.eclipse.core.filesystem 1.11.200.v20250513-1234]
+> Start Core Resource Management [org.eclipse.core.resources 3.22.200.v20250513-1234]
+> Start Team Support Core [org.eclipse.team.core 3.10.700.v20250313-0656]
+> Start DBeaver UI Navigator [org.jkiss.dbeaver.ui.navigator 1.0.158.202507061449]
+2025-07-07 16:33:56.068 - Initialize base platform...
+2025-07-07 16:33:56.087 - Platform initialized (275ms)
+2025-07-07 16:33:56.087 - Resetting workbench due to the version change (null -> 25.1.2)
+2025-07-07 16:33:56.125 - Starting instance server at http://localhost:52890
+2025-07-07 16:33:56.129 - Run workbench
+> Start Eclipse e4 Workbench SWT [org.eclipse.e4.ui.workbench.swt 0.17.800.v20250422-1254]
+> Start Eclipse Application Services [org.eclipse.e4.core.services 2.5.200.v20250326-1945]
+> Start Eclipse UI Application Services [org.eclipse.e4.ui.services 1.6.500.v20250123-0754]
+> Start Eclipse e4 Progress View [org.eclipse.e4.ui.progress 0.4.800.v20250422-1254]
+> Start Eclipse Bindings Support [org.eclipse.e4.ui.bindings 0.14.600.v20250331-1050]
+> Start Eclipse e4 core commands [org.eclipse.e4.core.commands 1.1.600.v20250307-1331]
+> Start EMF XML/XMI Persistence [org.eclipse.emf.ecore.xmi 2.39.0.v20250414-1351]
+> Start Eclipse CSS SWT Theme Support [org.eclipse.e4.ui.css.swt.theme 0.14.500.v20250213-1508]
+> Start Eclipse e4 Workbench Add-ons [org.eclipse.e4.ui.workbench.addons.swt 1.5.700.v20250422-1254]
+> Start Eclipse e4 Workbench SWT Renderer [org.eclipse.e4.ui.workbench.renderers.swt 0.16.800.v20250519-1609]
+> Start Eclipse Dependency Injection Extensions [org.eclipse.e4.core.di.extensions 0.18.300.v20240413-1529]
+> Start Eclipse CSS SWT Support [org.eclipse.e4.ui.css.swt 0.15.600.v20250409-1135]
+2025-07-07 16:33:56.964 - Configure workbench window
+> Start DBeaver SQL Model [org.jkiss.dbeaver.model.sql 1.0.148.202507061449]
+2025-07-07 16:33:57.080 - Total database drivers: 124 (124)
+> Start Help System Core [org.eclipse.help 3.10.500.v20250423-1201]
+> Start Default Text Editor [org.eclipse.ui.editors 3.20.0.v20250514-1719]
+> Start Text Editor Framework [org.eclipse.ui.workbench.texteditor 3.19.200.v20250514-1719]
+2025-07-07 16:33:57.148 - Create actions
+2025-07-07 16:33:57.158 - Disable Eclipse action set 'org.eclipse.ui.edit.text.actionSet.annotationNavigation'
+2025-07-07 16:33:57.159 - Disable Eclipse action set 'org.eclipse.ui.WorkingSetActionSet'
+2025-07-07 16:33:57.159 - Disable Eclipse action set 'org.eclipse.ui.actionSet.openFiles'
+2025-07-07 16:33:57.159 - Create workbench actions
+2025-07-07 16:33:57.960 - Initialize workbench window
+2025-07-07 16:33:57.963 - Finish initialization
+> Start DBeaver UI Editors - Data [org.jkiss.dbeaver.ui.editors.data 1.0.158.202507061449]
+> Start Equinox Java Authentication and Authorization Service (JAAS) [org.eclipse.equinox.security 1.4.600.v20250521-0413]
+> Start Internet Connection Management UI [org.eclipse.ui.net 1.5.400.v20240413-1529]
+> Start Internet Connection Management [org.eclipse.core.net 1.5.700.v20250313-0656]
+> Start DBeaver UI Editors - SQL [org.jkiss.dbeaver.ui.editors.sql 1.0.158.202507061449]
+> Start GEF Classic Draw2d [org.eclipse.draw2d 3.20.0.202505280821]
+> Start GEF Classic GEF (MVC) [org.eclipse.gef 3.22.0.202505280821]
+> Start DBeaver ERD UI [org.jkiss.dbeaver.erd.ui 3.0.118.202507061449]
+> Start DBeaver ERD Model [org.jkiss.dbeaver.erd.model 1.0.118.202507061449]
+> Start DBeaver Dashboard UI [org.jkiss.dbeaver.ui.dashboard 1.0.155.202507061449]
+> Start DBeaver Sample Database [org.jkiss.dbeaver.ui.config.sample 1.0.195.202507061449]
+2025-07-07 16:34:03.815 - Open [https://dbeaver.io/product/version.xml]
+> Start DBeaver Oracle UI [org.jkiss.dbeaver.ext.oracle.ui 1.0.145.202507061449]
+> Start DBeaver Oracle Model [org.jkiss.dbeaver.ext.oracle 2.1.243.202507061449]
+> Start DBeaver JDBC Model [org.jkiss.dbeaver.model.jdbc 1.0.51.202507061449]
+2025-07-07 16:35:10.879 - Service 'org.jkiss.dbeaver.ui.UIServiceConnectionEditor' not found
+2025-07-07 16:35:10.920 - Auth model 'native' was replaced by 'oracle_native'
+2025-07-07 16:35:10.927 - Service 'org.jkiss.dbeaver.runtime.ui.UIServiceSecurity' not found
+2025-07-07 16:37:31.839 - Open [https://repo1.maven.org/maven2/com/oracle/database/jdbc/ojdbc11/23.2.0.0/ojdbc11-23.2.0.0.pom]
+2025-07-07 16:37:32.403 - Open [https://repo1.maven.org/maven2/com/oracle/database/nls/orai18n/23.2.0.0/orai18n-23.2.0.0.pom]
+2025-07-07 16:37:32.539 - Open [https://repo1.maven.org/maven2/com/oracle/database/xml/xdb6/18.3.0.0/xdb6-18.3.0.0.pom]
+2025-07-07 16:37:32.685 - Open [https://repo1.maven.org/maven2/com/oracle/database/xml/xmlparserv2/18.3.0.0/xmlparserv2-18.3.0.0.pom]
+2025-07-07 16:37:32.831 - Open [https://repo1.maven.org/maven2/com/oracle/database/xml/xmlparserv2/23.2.0.0/xmlparserv2-23.2.0.0.pom]
+2025-07-07 16:41:26.445 - Connect with 'Oracle' (oracle_thin-197e3d19155-75450792b7c9c1c8)
+2025-07-07 16:41:26.471 - Execution context opened (Oracle; Main; 0)
+2025-07-07 16:41:26.710 - Connected (oracle_thin-197e3d19155-75450792b7c9c1c8, Oracle JDBC driver [11.2.0.2.0])
+2025-07-07 16:41:26.724 - Execution context closed (Oracle, 0)
+2025-07-07 16:41:26.724 - Disconnected (oracle_thin-197e3d19155-75450792b7c9c1c8)
+2025-07-07 16:41:40.609 - Connect with 'XE' (oracle_thin-197e3cf6b03-5d780cf132caf3b8)
+2025-07-07 16:41:40.610 - Execution context opened (XE; Main; 1)
+2025-07-07 16:41:40.619 - Execution context opened (XE; Metadata; 2)
+2025-07-07 16:41:40.633 - Connected (oracle_thin-197e3cf6b03-5d780cf132caf3b8, Oracle JDBC driver [11.2.0.2.0])
+2025-07-07 16:41:45.337 - Error reading statistics of 'XE'
+org.jkiss.dbeaver.DBDatabaseException: Can't read tablespace statistics
+	at org.jkiss.dbeaver.ext.oracle.model.OracleDataSource.collectObjectStatistics(OracleDataSource.java:939)
+	at org.jkiss.dbeaver.ui.navigator.itemlist.ItemListControl$ItemLoadService.evaluate(ItemListControl.java:314)
+	at org.jkiss.dbeaver.ui.navigator.itemlist.ItemListControl$ItemLoadService.evaluate(ItemListControl.java:1)
+	at org.jkiss.dbeaver.ui.LoadingJob.run(LoadingJob.java:88)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:119)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.sql.SQLSyntaxErrorException: ORA-00942: table or view does not exist
+
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:440)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:396)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:837)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:445)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:191)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:523)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:193)
+	at oracle.jdbc.driver.T4CStatement.executeForDescribe(T4CStatement.java:848)
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1153)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1275)
+	at oracle.jdbc.driver.OracleStatement.executeQuery(OracleStatement.java:1477)
+	at oracle.jdbc.driver.OracleStatementWrapper.executeQuery(OracleStatementWrapper.java:392)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCStatementImpl.executeQuery(JDBCStatementImpl.java:360)
+	at org.jkiss.dbeaver.ext.oracle.model.OracleDataSource.collectObjectStatistics(OracleDataSource.java:920)
+	... 5 more
+2025-07-07 16:42:06.995 - Can't get column 'PLUGGED_IN': Invalid column name
+> Start DBeaver GIS Support [org.jkiss.dbeaver.data.gis 1.0.182.202507061449]
+2025-07-07 16:42:45.229 - Can't get column 'COLUMN_NAMES_NUMS': Invalid column name
+2025-07-07 16:43:53.070 - Can't parse numeric value [ojdbc6.jar] using formatter: Character o is neither a decimal digit number, decimal point, nor "e" notation exponential mark.
+2025-07-07 16:43:53.070 - Can't parse numeric value [ojdbc6.jar] using formatter: Character o is neither a decimal digit number, decimal point, nor "e" notation exponential mark.
+2025-07-07 16:43:53.070 - Can't parse numeric value [ojdbc6.jar] using formatter: Character o is neither a decimal digit number, decimal point, nor "e" notation exponential mark.
+2025-07-07 16:43:53.070 - Can't parse numeric value [ojdbc6.jar] using formatter: Character o is neither a decimal digit number, decimal point, nor "e" notation exponential mark.
+2025-07-07 16:43:53.070 - Can't parse numeric value [ojdbc6.jar] using formatter: Character o is neither a decimal digit number, decimal point, nor "e" notation exponential mark.
+2025-07-07 16:46:22.714 - Service 'org.jkiss.dbeaver.ui.UIServiceConnectionEditor' not found
+2025-07-07 16:46:22.750 - Auth model 'native' was replaced by 'oracle_native'
+2025-07-07 16:46:22.754 - Service 'org.jkiss.dbeaver.runtime.ui.UIServiceSecurity' not found
+2025-07-07 16:46:42.278 - Service 'org.jkiss.dbeaver.runtime.ui.UIServiceSecurity' not found
+2025-07-07 16:46:55.517 - Connect with 'ORCL' (oracle_thin-197e3da2b8e-35473add15573ab2)
+2025-07-07 16:46:55.518 - Execution context opened (ORCL; Main; 3)
+2025-07-07 16:46:55.536 - Connected (oracle_thin-197e3da2b8e-35473add15573ab2, Oracle JDBC driver [11.2.0.2.0])
+2025-07-07 16:46:55.548 - Execution context closed (ORCL, 3)
+2025-07-07 16:46:55.549 - Disconnected (oracle_thin-197e3da2b8e-35473add15573ab2)
+2025-07-07 16:47:13.381 - Connect with 'ORCL' (oracle_thin-197e3da7156-5b6e518baaef9e8c)
+2025-07-07 16:47:13.382 - Execution context opened (ORCL; Main; 4)
+2025-07-07 16:47:13.397 - Connected (oracle_thin-197e3da7156-5b6e518baaef9e8c, Oracle JDBC driver [11.2.0.2.0])
+2025-07-07 16:47:13.409 - Execution context closed (ORCL, 4)
+2025-07-07 16:47:13.409 - Disconnected (oracle_thin-197e3da7156-5b6e518baaef9e8c)
+2025-07-07 16:47:21.056 - Connect with 'XE' (oracle_thin-197e3d9ab76-719c6129136dfb85)
+2025-07-07 16:47:21.056 - Execution context opened (XE; Main; 5)
+2025-07-07 16:47:21.066 - Execution context opened (XE; Metadata; 6)
+2025-07-07 16:47:21.080 - Connected (oracle_thin-197e3d9ab76-719c6129136dfb85, Oracle JDBC driver [11.2.0.2.0])
+> Start DBeaver SQL Terminal [org.jkiss.dbeaver.ui.editors.sql.terminal 1.0.134.202507061449]
+> Start Core Compare Support [org.eclipse.compare.core 3.8.700.v20250120-0641]
+> Start Console [org.eclipse.ui.console 3.14.300.v20250509-1251]
+> Start Debug Core [org.eclipse.debug.core 3.23.0.v20250509-1924]
+2025-07-07 16:47:54.943 - Delete empty SQL script '\day19(dbms_01)\Scripts\Script.sql'
+2025-07-07 16:48:00.179 - Execution context opened (XE; SQLEditor <Script.sql>; 7)
+> Start DBeaver Tasks - Native Tools UI [org.jkiss.dbeaver.tasks.native.ui 1.0.136.202507061449]
+> Start DBeaver Tasks - General UI [org.jkiss.dbeaver.tasks.ui 1.0.136.202507061449]
+2025-07-07 16:48:08.632 - Execution context opened (XE; SQLEditor <Script-1.sql>; 8)
+2025-07-07 16:48:10.747 - Execution context opened (XE; SQLEditor <Script-2.sql>; 9)
+2025-07-07 16:48:11.321 - Execution context opened (XE; SQLEditor <Script-3.sql>; 10)
+2025-07-07 16:48:11.715 - Execution context opened (XE; SQLEditor <Script-4.sql>; 11)
+2025-07-07 16:48:18.816 - Delete empty SQL script '\day19(dbms_01)\Scripts\Script.sql'
+2025-07-07 16:48:18.827 - Execution context closed (XE, 7)
+2025-07-07 16:48:19.802 - Delete empty SQL script '\day19(dbms_01)\Scripts\Script-1.sql'
+2025-07-07 16:48:19.813 - Execution context closed (XE, 8)
+2025-07-07 16:48:22.359 - Delete empty SQL script '\day19(dbms_01)\Scripts\Script-2.sql'
+2025-07-07 16:48:22.369 - Execution context closed (XE, 9)
+2025-07-07 16:48:22.919 - Delete empty SQL script '\day19(dbms_01)\Scripts\Script-3.sql'
+2025-07-07 16:48:22.929 - Execution context closed (XE, 10)
+2025-07-07 16:48:24.765 - Delete empty SQL script '\day19(dbms_01)\Scripts\Script-4.sql'
+2025-07-07 16:48:24.777 - Execution context closed (XE, 11)
+2025-07-07 16:48:25.766 - Execution context opened (XE; SQLEditor <Script.sql>; 12)
+> Start DBeaver SQL Language Semantic Model [org.jkiss.dbeaver.model.lsm 1.0.53.202507061449]
+2025-07-07 16:50:39.390 - org.jkiss.dbeaver.model.sql.DBSQLException: SQL Error [1013] [72000]: ORA-01013: user requested cancel of current operation
+
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCPreparedStatementImpl.executeStatement(JDBCPreparedStatementImpl.java:208)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCObjectCache.loadObjects(JDBCObjectCache.java:116)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCObjectCache.getObject(JDBCObjectCache.java:86)
+	at org.jkiss.dbeaver.ext.oracle.model.OracleSchema.getChild(OracleSchema.java:400)
+	at org.jkiss.dbeaver.model.sql.SQLSearchUtils.findNestedObject(SQLSearchUtils.java:241)
+	at org.jkiss.dbeaver.model.sql.SQLSearchUtils.findObjectByPath(SQLSearchUtils.java:189)
+	at org.jkiss.dbeaver.model.sql.SQLSearchUtils.findObjectByFQN(SQLSearchUtils.java:106)
+	at org.jkiss.dbeaver.model.sql.SQLSearchUtils.findObjectByFQN(SQLSearchUtils.java:54)
+	at org.jkiss.dbeaver.model.sql.semantics.context.SQLQueryDataSourceContext.findRealObjectImpl(SQLQueryDataSourceContext.java:125)
+	at org.jkiss.dbeaver.model.sql.semantics.context.SQLQueryDataSourceContext.findRealObject(SQLQueryDataSourceContext.java:103)
+	at org.jkiss.dbeaver.model.sql.semantics.model.select.SQLQueryRowsTableDataModel.propagateContextImpl(SQLQueryRowsTableDataModel.java:206)
+	at org.jkiss.dbeaver.model.sql.semantics.model.select.SQLQueryRowsSourceModel.propagateContext(SQLQueryRowsSourceModel.java:111)
+	at org.jkiss.dbeaver.model.sql.semantics.model.select.SQLQueryRowsProjectionModel.propagateContextImpl(SQLQueryRowsProjectionModel.java:165)
+	at org.jkiss.dbeaver.model.sql.semantics.model.select.SQLQueryRowsSourceModel.propagateContext(SQLQueryRowsSourceModel.java:111)
+	at org.jkiss.dbeaver.model.sql.semantics.model.select.SQLQueryRowsSourceModel.applyContext(SQLQueryRowsSourceModel.java:99)
+	at org.jkiss.dbeaver.model.sql.semantics.model.SQLQueryModel.propagateContext(SQLQueryModel.java:100)
+	at org.jkiss.dbeaver.model.sql.semantics.SQLQueryModelRecognizer.recognizeQuery(SQLQueryModelRecognizer.java:170)
+	at org.jkiss.dbeaver.model.sql.semantics.SQLQueryModelRecognizer.recognizeQuery(SQLQueryModelRecognizer.java:1066)
+	at org.jkiss.dbeaver.ui.editors.sql.semantics.SQLBackgroundParsingJob.doWork(SQLBackgroundParsingJob.java:595)
+	at org.jkiss.dbeaver.ui.editors.sql.semantics.SQLBackgroundParsingJob$1.run(SQLBackgroundParsingJob.java:83)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:119)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.sql.SQLTimeoutException: ORA-01013: user requested cancel of current operation
+
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:440)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:396)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:837)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:445)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:191)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:523)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:207)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:859)
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1153)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1275)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3576)
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3677)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1374)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCPreparedStatementImpl.execute(JDBCPreparedStatementImpl.java:261)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCPreparedStatementImpl.executeStatement(JDBCPreparedStatementImpl.java:205)
+	... 21 more
+2025-07-07 16:53:28.082 - Execution context opened (XE; SQLEditor <day19(dbms_01).sql>; 13)
+2025-07-07 16:53:29.058 - Execution context opened (XE; SQLEditor <day19(dbms_01).sql>; 14)
+2025-07-07 16:53:29.614 - Execution context closed (XE, 14)
+2025-07-07 16:53:36.642 - Execution context opened (XE; SQLEditor <day19(dbms_01).sql>; 15)
+2025-07-07 16:53:37.205 - Execution context closed (XE, 15)
+2025-07-07 16:53:38.434 - Execution context opened (XE; SQLEditor <day19(dbms_01).sql>; 16)
+2025-07-07 16:53:39.083 - Execution context closed (XE, 16)
+2025-07-07 17:19:51.503 - Execution context opened (XE; SQLEditor <Script.sql>; 17)
+2025-07-07 17:25:15.201 - SWT resource leak detected
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:191)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:124)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:229)
+	at org.jkiss.dbeaver.ui.editors.sql.SQLEditor.doSetInput(SQLEditor.java:2416)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.setInputWithNotify(AbstractTextEditor.java:4249)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.setInput(AbstractTextEditor.java:4269)
+	at org.eclipse.ui.texteditor.AbstractTextEditor$ElementStateListener$1.run(AbstractTextEditor.java:537)
+	at org.eclipse.ui.texteditor.AbstractTextEditor$ElementStateListener.execute(AbstractTextEditor.java:598)
+	at org.eclipse.ui.texteditor.AbstractTextEditor$ElementStateListener.elementMoved(AbstractTextEditor.java:565)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider$FileBufferListener.underlyingFileMoved(TextFileDocumentProvider.java:335)
+	at org.eclipse.core.internal.filebuffers.TextFileBufferManager$6.run(TextFileBufferManager.java:710)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.fireUnderlyingFileMoved(TextFileBufferManager.java:707)
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.handleFileMoved(ResourceFileBuffer.java:422)
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer$FileSynchronizer$3.execute(ResourceFileBuffer.java:163)
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer$SafeFileChange.run(ResourceFileBuffer.java:86)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4111)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3727)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.block(ModalContext.java:167)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:369)
+	at org.eclipse.ui.internal.WorkbenchWindow.lambda$7(WorkbenchWindow.java:2335)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:67)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2332)
+	at org.jkiss.dbeaver.runtime.RunnableContextDelegate.run(RunnableContextDelegate.java:39)
+	at org.jkiss.dbeaver.ui.UIUtils.runInProgressService(UIUtils.java:1812)
+	at org.jkiss.dbeaver.ui.navigator.actions.NavigatorHandlerObjectRename.renameNode(NavigatorHandlerObjectRename.java:88)
+	at org.jkiss.dbeaver.ui.navigator.actions.NavigatorHandlerObjectRename.execute(NavigatorHandlerObjectRename.java:62)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:277)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:98)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:299)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:233)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:174)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:165)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:485)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:204)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:320)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:581)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:662)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.filterKeySequenceBindings(KeyBindingDispatcher.java:451)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher$KeyDownFilter.handleEvent(KeyBindingDispatcher.java:104)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:91)
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1340)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1213)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1238)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1223)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1265)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1261)
+	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1994)
+	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:5213)
+	at org.eclipse.swt.widgets.Tree.WM_KEYDOWN(Tree.java:6282)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4811)
+	at org.eclipse.swt.widgets.Tree.windowProc(Tree.java:6150)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5106)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3722)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:678)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:583)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.jkiss.dbeaver.ui.app.standalone.DBeaverApplication.start(DBeaverApplication.java:323)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:219)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:149)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:115)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:467)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:298)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.jkiss.dbeaver.launcher.DBeaverLauncher.invokeFramework(DBeaverLauncher.java:823)
+	at org.jkiss.dbeaver.launcher.DBeaverLauncher.basicRun(DBeaverLauncher.java:648)
+	at org.jkiss.dbeaver.launcher.DBeaverLauncher.run(DBeaverLauncher.java:1604)
+2025-07-07 17:25:17.806 - No active connection
+2025-07-07 17:25:23.609 - No active connection
+2025-07-07 17:25:52.259 - Execution context closed (XE, 12)
+2025-07-07 17:26:30.860 - Service 'org.jkiss.dbeaver.ui.UIServiceConnectionEditor' not found
+2025-07-07 17:26:30.891 - Auth model 'native' was replaced by 'oracle_native'
+2025-07-07 17:26:30.913 - Service 'org.jkiss.dbeaver.runtime.ui.UIServiceSecurity' not found
+2025-07-07 17:26:40.583 - Connect with 'Oracle' (oracle_thin-197e3fe9037-1657843cd165462d)
+2025-07-07 17:26:40.583 - Execution context opened (Oracle; Main; 18)
+2025-07-07 17:26:40.599 - Connected (oracle_thin-197e3fe9037-1657843cd165462d, Oracle JDBC driver [11.2.0.2.0])
+2025-07-07 17:26:40.610 - Execution context closed (Oracle, 18)
+2025-07-07 17:26:40.610 - Disconnected (oracle_thin-197e3fe9037-1657843cd165462d)
+2025-07-07 17:26:51.805 - No active connection
+2025-07-07 17:26:58.916 - Execution context opened (XE; SQLEditor <day19(dbms_01).sql>; 19)
+2025-07-07 17:27:00.429 - Connect with 'XE' (oracle_thin-197e3fe6a4c-7c278d7a49bb24c7)
+2025-07-07 17:27:00.430 - Execution context opened (XE; Main; 20)
+2025-07-07 17:27:00.438 - Execution context opened (XE; Metadata; 21)
+2025-07-07 17:27:00.450 - Connected (oracle_thin-197e3fe6a4c-7c278d7a49bb24c7, Oracle JDBC driver [11.2.0.2.0])
+2025-07-07 17:27:13.725 - No active connection
+2025-07-07 17:27:17.003 - Can't get column 'PLUGGED_IN': Invalid column name
+2025-07-07 17:27:46.682 - No active connection
+2025-07-07 17:27:51.874 - No active connection
+2025-07-07 17:30:13.197 - Execution context closed (XE, 17)
+2025-07-07 17:30:18.861 - No active connection
+2025-07-07 17:30:20.170 - No active connection
+2025-07-07 17:30:25.164 - No active connection
+2025-07-07 17:30:40.310 - Can't get column 'EXTERNAL_NAME': Invalid column name
+2025-07-07 17:30:40.310 - Can't get column 'ACCOUNT_STATUS': Invalid column name
+2025-07-07 17:30:40.311 - Can't get column 'LOCK_DATE': Invalid column name
+2025-07-07 17:30:40.311 - Can't get column 'EXPIRY_DATE': Invalid column name
+2025-07-07 17:30:40.311 - Can't get column 'DEFAULT_TABLESPACE': Invalid column name
+2025-07-07 17:30:40.311 - Can't get column 'TEMPORARY_TABLESPACE': Invalid column name
+2025-07-07 17:30:40.311 - Can't get column 'PROFILE': Invalid column name
+2025-07-07 17:30:40.311 - Can't get column 'INITIAL_RSRC_CONSUMER_GROUP': Invalid column name
+2025-07-07 17:31:06.471 - No active connection
+2025-07-07 17:31:07.185 - No active connection
+2025-07-07 17:31:09.637 - No active connection
+2025-07-07 17:31:47.741 - Execution context closed (XE, 19)
+2025-07-07 17:32:20.641 - No active connection
+2025-07-07 17:32:27.908 - Can't get column 'COLUMN_NAMES_NUMS': Invalid column name
+2025-07-07 17:32:44.825 - Can't get column 'EXTERNAL_NAME': Invalid column name
+2025-07-07 17:32:44.825 - Can't get column 'ACCOUNT_STATUS': Invalid column name
+2025-07-07 17:32:44.825 - Can't get column 'LOCK_DATE': Invalid column name
+2025-07-07 17:32:44.825 - Can't get column 'EXPIRY_DATE': Invalid column name
+2025-07-07 17:32:44.825 - Can't get column 'DEFAULT_TABLESPACE': Invalid column name
+2025-07-07 17:32:44.825 - Can't get column 'TEMPORARY_TABLESPACE': Invalid column name
+2025-07-07 17:32:44.825 - Can't get column 'PROFILE': Invalid column name
+2025-07-07 17:32:44.825 - Can't get column 'INITIAL_RSRC_CONSUMER_GROUP': Invalid column name
+2025-07-07 17:33:29.755 - No active connection
+2025-07-07 17:33:52.992 - Execution context opened (XE; SQLEditor <day19(dbms_01).sql>; 22)
+2025-07-07 17:34:01.120 - No active connection
+2025-07-07 17:34:02.681 - No active connection
+2025-07-07 17:35:01.465 - No active connection
+> Start DBeaver Tasks View [org.jkiss.dbeaver.tasks.ui.view 1.0.107.202507061449]
+2025-07-07 17:35:43.608 - No active connection
+2025-07-07 17:35:44.997 - No active connection
+2025-07-07 17:36:26.878 - No active connection
+2025-07-07 17:36:28.006 - No active connection
+2025-07-07 17:37:52.859 - No active connection
+2025-07-07 17:37:53.751 - No active connection
+2025-07-07 17:37:54.627 - No active connection
+2025-07-07 17:38:07.619 - Service 'org.jkiss.dbeaver.ui.UIServiceConnectionEditor' not found
+2025-07-07 17:38:07.647 - Auth model 'native' was replaced by 'oracle_native'
+2025-07-07 17:38:07.654 - Service 'org.jkiss.dbeaver.runtime.ui.UIServiceSecurity' not found
+2025-07-07 17:38:18.356 - Connect with 'Oracle' (oracle_thin-197e40935d9-4596e012c2bbc1cc)
+2025-07-07 17:38:18.356 - Execution context opened (Oracle; Main; 23)
+2025-07-07 17:38:18.369 - Connected (oracle_thin-197e40935d9-4596e012c2bbc1cc, Oracle JDBC driver [11.2.0.2.0])
+2025-07-07 17:38:18.380 - Execution context closed (Oracle, 23)
+2025-07-07 17:38:18.380 - Disconnected (oracle_thin-197e40935d9-4596e012c2bbc1cc)
+2025-07-07 17:38:26.835 - No active connection
+2025-07-07 17:38:27.809 - No active connection
+2025-07-07 17:38:28.759 - No active connection
+2025-07-07 17:38:58.033 - No active connection
+2025-07-07 17:40:10.641 - Execution context opened (XE; SQLEditor <강승훈.sql>; 24)
+2025-07-07 17:41:10.651 - Can't get column 'PLUGGED_IN': Invalid column name
+2025-07-07 17:55:44.225 - Execution context closed (XE, 22)
+2025-07-07 17:55:44.293 - Execution context closed (XE, 24)
+2025-07-07 17:55:44.375 - Dispose navigator model
+2025-07-07 17:55:44.390 - DBeaver is stopping
+2025-07-07 17:55:44.390 - Stop instance server
+2025-07-07 17:55:45.402 - DBeaver shutdown completed

@@ -1,0 +1,10 @@
+-- 3번 : 연산자2
+/*
+SELECT [DISTINCT] 컬럼명 [AS "별칭"]
+FROM 테이블명
+WHERE 조건식
+ORDER BY 정렬할컬럼명 [ASC or DESC]
+*/
+
+
+

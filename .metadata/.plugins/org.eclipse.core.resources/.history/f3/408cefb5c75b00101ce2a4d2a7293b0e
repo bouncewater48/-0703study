@@ -1,0 +1,16 @@
+-- 4번 : 연산자 실습
+
+/*	모든 이름은 이름과 성을 띄워쓰기 포함하여 연결
+ * 
+ *[연습] 모든 직원의 이름, 급여, 연봉이라는 이름으로 출력하기
+ */
+SELECT * FROM employees;
+SELECT first_name ||' '|| last_name 이름,
+	salary 급여,
+	salary * 12 연봉
+FROM employees;
+
+/*
+1. 모든 직원의 이름, 급여, 커미션, 커미션을 포함한 연봉을 총 보상이라는 이름으로 출력
+단, 커미션이 NULL인 경우 NULL로 처리하기
+2.
