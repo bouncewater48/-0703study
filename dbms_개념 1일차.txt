@@ -1,0 +1,210 @@
+day19_개념 (dbms 1일차)
+dbms -> 오라클 설치, 디비버 설치 -> 능력단위평가2 시험
+(4~6일 진행예정)
+
+중간 프로젝트 발표일 : 08/29 (금)
+못해도 08/25까지는 발표자료 및 포트폴리오가 완성되어야 함!
+
+
+1. 데이터베이스(DataBase)
+	data -> 데이터, base -> 기지 라는 뜻
+	데이터가 저장되고 관리되는 저장소 = 데이터베이스
+
+공군기지 : 항공작전을 수행하는 군사 기지
+방공센터 : 적의 공습을 방어하기 위해 감시, 탐지, 대응을 지휘하는 군사시설
+
+	데이터는 물리적인 파일로 저장되어있었으나 직접 열어서 수정하는 것이 아니라
+	DBMS에서 SQL 이라는 언어로 조회, 수정, 삭제, 삽입 등을 하게 된다
+
+1) DB(DataBase)
+	여러가지 데이터를 모아둔 공간
+	ex) 카카오톡 메시지, 카드결제내역, 인스타그램에 등록한 사진, 유튜브에 업로드한 동영상, ...
+	일상생활에서 사용하는 정보가 모두 데이터베이스에 기록된다
+
+2) DBMS(DataBase Management System)
+	데이터베이스 관리 시스템
+	
+	DB를 관리할 수 있는 구체적인 체계(시스템)
+	- Oracle, MySQL, MariaDB, MS-SQL, MongoDB, ...
+
+- 데이터베이스의 특징
+	데이터베이스는 데이터 일관성, 데이터 독립성, 동시접속, 데이터 공유가 중요하다
+	데이터 일관성 : 여러 파일에 중복해서 저장되어 있는 데이터를 하나로 모아
+		하나의 저장방식으로 종합해서 관리하는 것
+	데이터 독립성 : 통합해서 저장한 데이터를 컴퓨터 운영 체제와는 별도로 
+		데이터 관리시스템에서 관리하자는 것
+	동시접속 : 데이터 베이스는 여러 사용자 또는 여러 응용프로그램이 동시에 데이터를
+		읽고 쓸 수 있는 환경을 지원해야한다
+	데이터 공유 : 데이터 베이스는 여러 사용자 또는 여러 응용 프로그램들 간에 데이터를
+		공유하는데 사용이 된다
+
+3) DBMS의 종류
+
+(1) 관계형 데이터 베이스 관리시스템 << 수업시간에 주로 배울 내용
+	테이블 형식으로 데이터를 저장하며 테이블간의 관계를 설정하는 데이터베이스 시스템
+	가장 이반적인 SQL 쿼리언어를 사용하여 데이터를 추가, 수정, 삭제, 검색
+	ex) Oracle, MySQL(MariaDB), MS-SQL, Microsoft SQL Server, SQLite, 등등...
+	(당장은 Oracle 위주로 배우고, 보안쪽 배울떄 MariaDB도 배울 예정,
+	다 배우고 나면 Oracle, MySQL, MariaDB를 다룰 수 있을 예정)
+	MySQL과 MariaDB는 문법이 서로 같아서 하나만 배워도 나머지 하나를 쓰는데 어려움이 없음
+		
+	MS-SQL은 현재는 잘 안 쓰이는 DB, 만약 이걸 쓰는 회사에 취직하면 이직할때도 MS-SQL을 사용하는
+	회사로만 가능하다
+
+(2) NoSQL(Not Only SQL) 데이터 베이스 관리시스템
+	관계형 데이터베이스와는 다른 데이터 모델을 사용하는 데이터베이스 시스템
+	비정형 데이터나 대규모 분산 데이터 처리에 적합함
+	ex) MongDB(문서기반), Cassandra(분산형), Redis(키-값 저장소), Neo4j(그래프 데이터베이스)
+	
+(3) 객체 지향 데이터 베이스 관리시스템
+	객체 지향 프로그램의 개념을 데이터베이스에 적용하는 데이터베이스 시스템
+	객체로 데이터를 저장하고 관리하는 데 사용됨
+	객체 지향 언어와 통합하기 쉬운 장점
+	ex) ObjectDB, Versant, 등등...	
+	
+(4) 분산 데이터베이스
+	여러 컴퓨터 노드에 데이터를 분산하여 저장하고 처리하는 데이터베이스 시스템
+	가용성, 확장성, 장애복구를 개선하기 위해 사용됨
+	ex) Apache Hadoop(HDFS), Google Bigtable, Amazon DynamoDB, 등등...
+
+2. RDBMS(Relational DataBase Management System)
+	관계형 데이터베이스 관리 시스템
+	데이터를 2차원의 테이블(표) 형태로 저장해 놓은 데이터베이스
+	(행, 열, 테이블, 열 하나하나 = 열이름 으로 정의)
+	
+	테이블이라는 최소 단위로 구성되며 이 테이블은 하나 이상의 열(Column)과 행(Row)로 이루어져있다
+	
+	Oracle : 대기업이 주로 사용, AS가 굉장히 빠름(대신 비용이 그만큼 비싸다)
+		중견기업에서도 유료버전으로 많이 사용함, 교육용 오라클은 무료이다
+	MySQL, MariaDB : 중소기업에서 주로 사용(무료버전)
+
+3. 데이터베이스 언어(DataBase Language : DL)
+	데이터베이스로부터 필요한 데이터를 질의(Query : 문의)하기 위한 언어
+
+SQL(Structured Query Language)
+	구조화된 표준 쿼리 언어
+	명령어를 SQL문, 쿼리문, 질의문이라고 한다
+	관계형 데이터베이스에 데이터를 관리하기 위해 사용하는 언어
+	SQL문을 통해 데이터베이스에서 데이터를 추가, 수정, 삭제, 조회가 가능하다
+	한 줄 씩 실행되는 인터프리터 언어이다 (=java 컴파일러와 같다)
+
+테이블(Table) < 정처기,SQLD 시험칠때 알아야하는 내용
+	행(row)과 열(column)로 이루어진 2차원의 표
+	행(row) : 가로줄, 튜플(tuple), 레코드(record), 인스턴스(instance)
+	열(column) : 세로줄, 필드(field), 속성(attribute)
+	
+4. 오라클 설치
+1) 오라클 버전
+	오라클 버전은 홀수로 간다(9, 11, 17, 21,...)	
+버전 뒤에 붙는 단어들	
+	인터넷이 발전하면서 i가 붙음
+	i : internet을 의미
+	8i : 1998년 출시
+	9i : 2001년 출시
+	
+	기술이 발전하면서 g가 붙음
+	g : 그리드 컴퓨팅(grid computing)을 의미
+	10g release1 : 2003년 출시
+	11g release1 : 2007년 9월 출시
+
+	c : 클라우드(cloud) 의미
+	
+	수업과정에선 11g를 이용하고, 중간 프로젝트에서는 21c를 이용할 예정!
+
+2) 오라클 설치 여부 확인하기
+	cmd(터미널) > sqlplus > Enter user-name : 뜨면 설치가 되어있는것
+	'sqlplus'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+	배치 파일이 아닙니다. < 설치가 안되어있는것
+	
+	오라클 설치나 삭제는 잘못하면 컴퓨터 포맷이 필요한 경우가 생길수도 있음!
+	
+오라클 삭제
+	제어판 > 프로그램 제거 > oracle dataBase 제거
+	제거할때 cmd가 켜져있는 상태로 하거나, eclipse가 켜진 상태에서 하게 되면 충돌이 발생, 삭제불가
+	> 레지스트리 들어가서 삭제해야하는데, 이때 잘못하면 포맷될수도 있음
+	
+	기존에 오라클이 있는 상태에서 새로운 버전으로 깔고 싶으면, 기존 버전을 먼저!! 삭제하고
+	그 이후에 원하는 버전으로 설치해야함!
+
+집에서 다운 받을때 링크
+https://www.oracle.com/database/technologies/xe-prior-release-downloads.html
+		▲드라이브 oracle 11g 버전▲
+
+
+1) 오라클의 기본 계정
+	sys : Oracle DBMS 관리자 계정(총 관리자)
+		테이블 삭제, 다른 사용자의 접근 권한 제어 등을 할 수 있다
+	system : DBMS 운영을 위한 관리자계정
+		이미 만들어진 것들을 관리하기 위한 계정으로 계정 접근권한 제어는 불가능하다
+	hr(휴먼리소스) : 학습을 위한 계정(기본적인 데이터가 들어있다)
+
+4) 권한
+	sysdba : 데이터 베이스 생성 및 삭제 등 모든 권한을 의미한다(sys만 갖는 권한)
+	sysoper : 데이터 베이스 운영을 위한 권한(system이 갖는 권한)
+		생성이나 삭제는 불가능하다(생성 및 삭제는 최고관리자(sysdba)만 가능하다)
+
++) 오라클 설치	
+
+https://dbeaver.io/download/
+이클립스처럼 DBMS를 편하게 툴로 사용 가능한 프로그램
+windows - (zip) 파일 다운로드 받기
+
+dbeaver-ce-25.1.2-win32.win32.x86_64.zip
+OracleXE112_Win64.zip 
+
+dbms - workspace에 ctrl + x, 붙여넣기
+OracleXE112 그대로 파일에 압축풀기
+DISK1 - setup.exe - 실행
+C드라이브에 oraclexe 파일 설치경로
+비밀번호 입력 : 1234 (전원 통일)
+
+홈경로
+Destination Folder: C:\oraclexe\
+Oracle Home: C:\oraclexe\app\oracle\product\11.2.0\server\
+Oracle Base:C:\oraclexe\
+오라클 포트번호(1521이 기본번호)
+Port for 'Oracle Database Listener': 1521
+서버 접속가능한 기본 포트번호
+Port for 'Oracle Services for Microsoft Transaction Server': 2030
+
+install - finish
+
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
+경로 들어가서 ojdbc5.jar, ojdbc6.jar, ojdbc6_g.jar 있는지 확인(있으면 ok)
+
+5) 오라클 정상 설치 확인
+	cmd -> sqlplus > Enter user-name : 정상 설치 됨을 확인할 수 있다(한글로 출력될 수도 있음)
+
+	hr 계정으로 로그인
+	처음에는 hr계정이 잠금상태
+	sqlplus > Enter user-name : sys as sysdba > 비밀번호 : 1234
+	alter = 수정
+	hr 계정 잠금 해제 > alter user hr account unlock;
+	hr 계정 잠금 해제 후 계정 비밀번호 변경 > alter user hr identified by 비밀번호;
+	현재 접속한 계정 확인 : show user; 
+	유저 변경 : conn hr/1234(비밀번호);
+	현재 접속한 계정 확인 > show user;
+	
+워크스페이스 경로 지정 : DBeaver 실행 - file - other - 경로지정 : workspace
+파일 아래 전원버튼(파란 +버튼) 클릭
+oracle 클릭 - DataBase랑 Client를 XE로 설정
+username : hr / password : 1234
+Test connection 클릭 (툴에 설치하려는 버전 연결)
+(처음에 반드시 설정!)
+Edit driver 클릭
+Libraries 탭 클릭
+안에 있는 파일 전부 Delete
+Add file 클릭 - 
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
+- ojdbc6.jar 열기 - ok 2번 후 finish
+
+내 pc ip 확인 : cmd에서 ipconfig
+
+Port : 내 컴퓨터 고유 포트번호
+
+
+시험 : 쿼리문과 결과를 같이 찍으라 나오면 쿼리문과 결과창 맨 아랫줄이 보이게끔 캡쳐
+
+
+
+
