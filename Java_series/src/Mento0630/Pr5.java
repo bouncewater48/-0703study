@@ -11,7 +11,7 @@ public class Pr5 {
 */
 	public static void main(String[] args) {
 //		바깥 for문 선언
-		for(int i =0; i < 5; i++) {
+		for(int i = 0; i < 5; i++) {
 //			안쪽 for문 선언, 공백 갯수를 줄이기 위해 i만큼 감소; - i 안넣으면 직각이등변삼각형 형태로 나옴
 			for(int j = 1; j < 5 - i; j++) {
 //				왼쪽으로 안쏠리게 공백을 추가

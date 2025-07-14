@@ -12,7 +12,7 @@ public class Pr4 {
 		int count = 0;
 		
 		//Random 객체 생성, 쌩으로는 생성이 불가하니 Random이 연결된 java.util에서 끌어옴
-		Random r = new Random();
+//		Random r = new Random();
 		
 		
 		//while(true)
@@ -25,7 +25,8 @@ public class Pr4 {
 //			count++;
 			//여기서 하면 실제 반복횟수보다 1 낮게 출력 확인, 출력문에 전위형이 아닌 후위형으로 늦게 출력되게 변경
 			//syso
-			System.out.println("주사위 1의 값 :  " + dice1 + "\t, 주사위 2의 값 : " + dice2 + "\n반복횟수 : " + (++count));
+			System.out.println("주사위 1의 값 :  " + dice1 + "\t, 주사위 2의 값 : " 
+			+ dice2 + "\n반복횟수 : " + (++count));
 			//count를 여기에 붙히면 실제 반복횟수보다 
 			//if(dice1 == dice2)
 			if(dice1 == dice2) {

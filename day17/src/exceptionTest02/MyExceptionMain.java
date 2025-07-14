@@ -15,7 +15,6 @@ public class MyExceptionMain {
          try {
             throw new MyException();
          } catch (MyException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
          }
       }else {

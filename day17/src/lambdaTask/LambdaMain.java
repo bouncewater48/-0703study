@@ -14,7 +14,7 @@ public class LambdaMain {
 //         }
 //      };
 
-      CombInter ci2 = new CombInter() {
+      CombInter c1 = new CombInter() {
 
          @Override
          public String combine(String str1, String str2) {
@@ -30,7 +30,7 @@ public class LambdaMain {
 //      매개변수가 2개이므로 소괄호 생략 불가능
 //      출력문1줄이므로 {} ; 생략가능
 
-      CombInter c2 = (str1, str2) -> str1 + str2;
+      CombInter ci1 = (str1, str2) -> str1 + str2;
 
    }
 }

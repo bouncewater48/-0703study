@@ -1,43 +1,36 @@
 package ex01_강승훈;
 
 public abstract class Person {
-	
+
+		
 	//필드 : 이름, 나이(접근제한자 private)
 	//생성자 : 매개변수 모두 받는 생성자(접근제한자 public)
 	//점수계산메소드(접근제한자 public, 메소드명 score) => 점수가 없습니다 출력
 	
-//	private void name() {
-//		System.out.println("강승훈");
-//	}
-//	private void age() {
-//		System.out.println(27);
-//	}
-//	
-//	public void score(name + age,"강승훈",27);
+//	필드
+	private String name;
+	private int age;
 	
-//	public void score() {
-//	}
-	String name;
-	int age;
-	
-//	기본생성자
-	public Person() {
-		super();
-	}
-
 //	생성자
-	public Person(String name, int age) {
-		super();
-		this.name = name;
-		this.age = age;
-	}
-//	추상메소드 생성
-	public abstract void score();
-	private void syso() {
-		
-	}
-	
-	
-	
-	
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+//  getter
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+
+//	점수계산 메소드
+    public void score() {
+        System.out.println("점수가 없습니다");
+    }
+    
+
 }
