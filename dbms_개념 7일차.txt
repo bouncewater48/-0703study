@@ -1,0 +1,240 @@
+day25 개념 (dbms 7일차)
+JOIN -> 집합 -> 시퀀스 -> VIEW -> TCL -> DCL
+
+1. JOIN
+
+1) join 종류
+	내부조인	공통 존재 컬럼의 값이 같은 경우 추출하는 기법(등가조인/비등가조인)
+	외부조인	왼쪽 외부조인   : 왼쪽 테이블의 모든 데이터와 오른쪽 테이블의
+			동일 데이터를 추출하는 기법
+		오른쪽 외부조인 : 오른쪽 테이블의 모든 데이터와 왼쪽 테이블의
+			동일 데이터를 추출하는 기법
+		완전 외부조인   : 양쪽의 모든 데이터를 추출하는 기법
+	교차조인	조인조건이 없는 모든 데이터 조합을 추출하는 기법
+	셀프조인	자기자신에게 별칭을 지정한 후 다시 조인하는 기법
+
+2) 외부조인
+
+	A테이블		B테이블
+	책번호	책이름	책번호	가격
+	1	aaa	1	100
+	2	bbb	3	300
+	3	ccc	5	500
+	
+
+- 왼쪽 외부조인	왼쪽 테이블 기준	/ 오른쪽 테이블에 일치하는 컬럼이 없을때는
+		오른쪽의 컬럼 값은 NULL로 채워짐
+	SELECT A.컬럼1, A.컬럼2, B.컬럼2, B.컬럼2
+	FROM 테이블1 A LEFT [OUTER] JOIN 테이블2 B
+	ON 조인조건
+	[WHERE 검색조건];
+
+	A.책번호	A.책이름	B.책번호	B.가격
+	1	aaa	1	100
+	2	bbb	NULL	NULL
+	3	ccc	3	300
+
+- 오른쪽 외부조인	오른쪽 테이블 기준 / 왼쪽 테이블에 일치하는 컬럼이 없을때는
+		왼쪽의 컬럼 값은 NULL로 채워짐
+	SELECT A.컬럼1, A.컬럼2, B.컬럼1, B.컬럼2
+	FROM 테이블1 A RIGHT [OUTER] JOIN 테이블2 B
+	ON 조인조건
+	[WHERE 검색조건];
+
+	A.책번호	A.책이름	B.책번호	B.가격
+	1	aaa	1	100
+	2	bbb	3	300
+	NULL	NULL	5	500
+
+- 완전 외부조인	양쪽에 모든 값을 기준 / 없는 컬럼 값은 NULL로 채워짐
+	SELECT	A.컬럼1,	A.컬럼2,	B.컬럼1,	B.컬럼2
+	FROM 테이블1 A FULL [OUTER] JOIN 테이블2 B
+	ON 조인조건
+	[WHERE 검색조건];
+
+	A.책번호	A.책이름	B.책번호	B.가격
+	1	aaa	1	100
+	2	bbb	NULL	NULL
+	3	ccc	3	300
+	NULL	NULL	5	500
+
+3) 교차조인(CROSS JOIN)
+	조건 없이 두 테이블의 모든 조합을 생성(카티션 곱)
+	
+	STUDENT 3명, COURSE 2개 -> 3 X 2 = 6행
+	
+4) 셀프조인(SELF JOIN)
+	하나의 테이블을 자기 자신과 조인하는 방식
+	ex) 직원과 그 직원의 매니저 이름을 출력	
+
+2. 집합
+	UNION : 합집합, 중복을 허용하지 않는다
+	UNION ALL : 합집합, 중복을 허용한다
+	INTERSECT : 교집합
+	MINUS : 차집합
+
+1) 집합연산자가 있는 이유
+	데이터베이스에서 여러 쿼리의 결과를 조합하고 특정 방식으로 결과를 출력하기 위해 존재
+	여러 테이블이나 쿼리의 결과를 효과적으로 비교, 병합, 차집합 등으로 처리해야하는
+		데이터의 요구사항 때문에 존재한다
+
+	하나의 테이블에서 WHERE절을 사용하면 특정 조건을 만족하는 데이터를 조회할 수 있지만
+	집합연산이 필요한 경우가 존재하기 때문에 따로 알고 있어야한다
+
+		집합연산				WHERE 조건
+쿼리실행방식	각 SELECT쿼리가 독립적으로 실행	단일 쿼리로 실행	
+결과처리단계	개별 쿼리 결과를 결합해서 비교		조건 필터링만 수행
+중복제거여부	UNION 중복제거, UNION ALL중복제거X	중복제거 따로 수행하지 않음
+데이터 소스	여러테이블, 쿼리 조합 가능		단일 테이블에서만 작동
+성능		SORT, 비교 등의 추가 단계 느릴 수 있음	단일 조건 처리로 비교적 빠름
+사용목적		독립된 결과를 병합하거나 차집합,	단일 테이블에서 특정 조건만 
+		교집합을 구할 때 사용		필터링 할 때 사용
+
+
+	SELECT EMPLOYEE_ID FROM EMPLOYEES 
+	WHERE EMPLOYEE_ID =100;
+
+
+	SELECT EMPLOYEE_ID FROM EMPLOYEES_B
+	UNION
+	SELECT EMPLOYEE_ID FROM EMPLOYEES_A
+
+	1) EMPLOYEES_B에서 EMPLOYEE_ID를 읽어서 첫번째 결과 집합 생성
+	2) EMPLOYEES_A에서 EMPLOYEE_ID를 읽어서 두번째 결과 집합 생성
+	3) 두 결과 집합을 결합하고 중복제거(정렬단계 포함)
+	4) 최종 결과 반환
+
+2) 집합 연산을 써야만 하는 상황(WHERE으로는 안되는 경우)
+- 서로 다른 테이블끼리 비교
+	EMP테이블과 DEPT테이블 → 하나의 WHERE 조건으로는 합칠 수 없음
+
+- 조건이 겹치거나 복잡할 때(SAL = SALARY)
+	SELECT * FROM EMP
+	WHERE (SAL BETWEEN 1000 AND 2000) OR (SAL BETWEEN 10000 AND 30000);
+
+	SELECT * FROM EMP WHERE SAL BETWEEN 1000 AND 2000
+	UNION
+	SELECT * FROM EMP WHERE SAL BETWEEN 10000 AND 30000
+
++) 실무활용
+	상황				 	이유
+	서로 다른 조건 결과를 한 번에 출력하고 싶을 때	조건이 복잡하거나 명확한 구분이 필요한 경우기 때문	UNION, UNION ALL
+	서로 다른 테이블의 결과 병합		 	조인 대신 간단히 병합할 때			UNION
+	중복 데이터도 모두 보고싶을 때 			성능이 좋고 확인하기 쉽기 때문			UNION ALL
+	공통 데이터만 추출할 때			두 조건을 동시에 만족하는 경우			INTERSECT
+	한 쿼리 결과에서 다른 쿼리 결과를 빼야할 때		제외 조건을 명확하게 할 수 있기 때문		MINUS
+
+
+- EMPLOYEES 테이블과 DEPARTMENT 테이블
+	1) 급여가 10000 이상인 직원과 SA_REP 직무를 가진 직원의 목록을 합쳐서 출력(중복 제외)	UNION
+	2) Roma 지역에서 근무하는 부서의 소속 직원 중 급여가 5000이상인 직원만 출력		INTERSECT
+	3) 모든 직원 목록 중에서 부서 배정이 안된 직원만 출력					MINUS
+
+
+
+3. 시퀀스(SEQUENCE)
+	PRIMARY KEY는 중복이 안된다, NULL도 안된다
+	오라클에서 자동으로 고유한 숫자(일련번호)를 생성해주는 객체
+	
+1) 시퀀스를 사용하는 이유
+	중복 없는 숫자 자동 생성
+	NULL 허용하지 않음
+	사람이 입력할 필요 없이 자동으로 컴퓨터가 사용해줌
+	여러 테이블에서도 사용가능
+
+2) 기본 문법
+	CREATE SEQUENCE 시퀀스이름
+	START WITH 시작값
+	INCREMENT BY 증가값
+	[MINVALUE 최소값]
+	[MAXVALUE 최대값]
+	[CYCLE | NOCYCLE]
+	[CACHE | NOCACHE];
+
+	INSERT INTO TBL_TABLE
+	VALUES(시퀀스명.NEXTVAL, 다른컬럼명...)
+	
+	시퀀스명.NEXTVAL	시퀀스에서 다음 숫자를 생성(자동으로 중복되지 않는 숫자를 넣어줌)
+
+CREATE SEQUENCE 			
+HR.SEQ_USER_ID 				HR 계정에 시퀀스를 생성
+INCREMENT BY 1 				시퀀스가 1씩 증가
+MINVALUE 1 				최소값1
+MAXVALUE 9999999999999999999999999999 	최대값은 매우 큰 숫자(27)자리
+NOCYCLE 				최대값 도달시 다시 1로 돌아가지 않음
+CACHE 20 				시퀀스 번호를 20개까지 미리 메모리에 저장(성능 향상)		NOCACHE(번호가 빠지면 안될때 사용)
+NOORDER 				멀티세션 환경에서 번호 순서를 보장하지 않음(성능 위주)
+
+시퀀스로 날짜만 자동생성은 불가능
+날짜 + 시퀀스 조합으로 문자열로 생성하는건 가능하다
+
++) 형변환 함수
+	TO_CHAR() : CHAR형으로 변환
+		날짜형식을 변경할 때 유용하다
+		TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+		형식 : 'YYYYMMDD', 'YYYY/MM/DD'
+		년 : YYYY	월 : MM		일 : DD
+		24시간 : HH24	12시간 : HH	분 : MI		초 : SS
+
+	TO_NUMBER() : NUMBER형으로 변환
+	TO_DATE() : DATE형으로 변환
+
+4. VIEW
+	기존의 테이블은 그대로 놔둔 채 필요한 컬럼들 및 새로운 컬럼을 만든 가상의 테이블
+	실제 데이터가 저장되는 것은 아니지만 VIEW를 통해서 데이터를 관리할 수 있다
+
+1) VIEW를 사용하는 이유
+	- 보안성 : 기존의 쿼리문이 보이지 않고, 권한을 가진 사람들만 접근할 수 있도록 따로 제한해줄 수 있다
+	- 독립성 : 다른 곳에서 원본 테이블에 접근하지 못하도록 하는 성질
+	- 편리성 : 긴 쿼리문을 짧게 만드는 성질
+
+2) VIEW 문법
+	- VIEW 생성
+	CREATE VIEW 뷰이름 AS 쿼리문;
+
+	- VIEW 사용
+	SELECT * FROM 뷰이름;
+
+	- VIEW 삭제
+	DROP VIEW 뷰이름;
+
+	
+5. DCL : 데이터 제어 언어
+	데이터 베이스에 접근하는 권한을 제어하는 명령어
+	GRANT	계정에 권한을 부여하는 명령어
+		GRANT 권한 ON 테이블명 TO 계정명;
+
+	REVOKE	계정에 권한을 회수하는 명령어
+		REVOKE 권한 ON 테이블명 FROM 계정명;
+
+- 계정 만들기
+	SYS AS SYSDBA 접속하여만 계정 생성 가능
+	CREATE USER 계정명 IDENTIFIED BY 비밀번호; ←필수과정!	
+	
+- 권한 부여하기
+	grant create session to 계정명;
+	grant create table, create view, resource to 계정명;
+					 여러계정에 한번에 권한부여
+	
+	create session	데이터베이스에 로그인 할 수 있는 권한
+	create table	테이블 생성 가능한 권한
+	create view	뷰 생성 가능한 권한
+	resource	여러객체(시퀀스, 프로시저 등) 생성 가능한 권한
+
+- 현재 로그인 한 계정의 권한 확인하기
+	select * from user_tab_privs_recd;
+
+- 현재 로그인 한 계정이 부여한 권한 확인하기
+	select * from user_tab_privs_made;
+
+- 계정 삭제없이 권한 회수하기
+	revoke 권한 on 테이블명 from 계정명;
+
+- 계정 삭제
+	drop user 계정명;
+
+
+6. TCL : 트랜잭션 제어어
+	트랜잭션 : 하나의 작업 단위 - 여러개의 쿼리문(SQL문)의 묶음
+	COMMIT	: 모든 작업(트랜잭션)을 확정짓는 명령어
+	ROLLBACK: 이전 커밋시점으로 되돌아가는 명령어
