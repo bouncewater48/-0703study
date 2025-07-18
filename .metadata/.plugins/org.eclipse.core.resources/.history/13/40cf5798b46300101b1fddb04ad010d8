@@ -1,0 +1,6 @@
+SELECT * FROM test;
+
+INSERT INTO test
+values(1);
+
+

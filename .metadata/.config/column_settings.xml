@@ -9,11 +9,32 @@
 	<item id="NodeList/OracleSchema">
 		<column name="Name" visible="true" order="0" width="130"/>
 	</item>
+	<item id="NodeList/OracleSchemaTrigger">
+		<column name="Name" visible="true" order="0" width="100"/>
+		<column name="Object Type" visible="true" order="1" width="100"/>
+		<column name="Trigger Type" visible="true" order="2" width="100"/>
+		<column name="Event" visible="true" order="3" width="100"/>
+		<column name="Column" visible="true" order="4" width="100"/>
+		<column name="Status" visible="true" order="5" width="100"/>
+		<column name="Action Type" visible="true" order="6" width="100"/>
+	</item>
+	<item id="NodeList/OracleSequence">
+		<column name="Sequence Name" visible="true" order="0" width="132"/>
+		<column name="Value" visible="true" order="1" width="100"/>
+		<column name="Min Value" visible="true" order="2" width="100"/>
+		<column name="Max Value" visible="true" order="3" width="209"/>
+		<column name="Increment" visible="true" order="4" width="100"/>
+		<column name="Cache" visible="true" order="5" width="100"/>
+		<column name="Cycle" visible="true" order="6" width="100"/>
+		<column name="Ordered" visible="true" order="7" width="100"/>
+	</item>
 	<item id="NodeList/OracleTable">
-		<column name="Name" visible="true" order="0" width="106"/>
+		<column name="Name" visible="true" order="0" width="100"/>
 		<column name="Partitioned" visible="true" order="1" width="100"/>
-		<column name="Created" visible="true" order="2" width="126"/>
-		<column name="Last Changed" visible="true" order="3" width="126"/>
+		<column name="Created" visible="true" order="2" width="100"/>
+		<column name="Last Changed" visible="true" order="3" width="100"/>
+		<column name="Partition keys" visible="true" order="9" width="100"/>
+		<column name="Subpartition keys" visible="true" order="10" width="107"/>
 		<column name="Stat Row Count" visible="true" order="4" width="100"/>
 		<column name="Tablespace" visible="true" order="5" width="100"/>
 		<column name="Comment" visible="true" order="6" width="100"/>
@@ -29,10 +50,49 @@
 		<column name="Default" visible="true" order="5" width="100"/>
 		<column name="Comment" visible="true" order="6" width="717"/>
 	</item>
+	<item id="NodeList/OracleTableConstraint">
+		<column name="Name" visible="true" order="0" width="100"/>
+		<column name="Owner" visible="true" order="1" width="100"/>
+		<column name="Type" visible="true" order="2" width="100"/>
+		<column name="Condition" visible="true" order="3" width="100"/>
+		<column name="Status" visible="true" order="4" width="100"/>
+	</item>
+	<item id="NodeList/OracleTableConstraint/OracleTableConstraintColumn">
+		<column name="Name" visible="true" order="0" width="134"/>
+		<column name="Column" visible="true" order="1" width="100"/>
+		<column name="Owner" visible="true" order="2" width="100"/>
+		<column name="Type" visible="true" order="3" width="100"/>
+		<column name="Condition" visible="true" order="4" width="359"/>
+		<column name="Status" visible="true" order="5" width="100"/>
+	</item>
+	<item id="NodeList/OracleTableTrigger">
+		<column name="Name" visible="true" order="0" width="146"/>
+		<column name="Table" visible="true" order="1" width="100"/>
+		<column name="Object Type" visible="true" order="2" width="100"/>
+		<column name="Trigger Type" visible="true" order="3" width="122"/>
+		<column name="Event" visible="true" order="4" width="176"/>
+		<column name="Column" visible="true" order="5" width="100"/>
+		<column name="Status" visible="true" order="6" width="100"/>
+		<column name="Action Type" visible="true" order="7" width="100"/>
+	</item>
+	<item id="PrefPageConfirmationsEditor">
+		<column name="Confirmation" visible="true" order="0" width="309"/>
+		<column name="Show dialog" visible="true" order="1" width="122"/>
+		<column name="Confirm" visible="true" order="2" width="99"/>
+		<column name="Group" visible="true" order="3" width="143"/>
+	</item>
+	<item id="PrefPageNotifications">
+		<column name="Notification name" visible="true" order="0" width="346"/>
+		<column name="Notification sound" visible="true" order="1" width="180"/>
+		<column name="Show popup" visible="true" order="2" width="149"/>
+	</item>
+	<item id="SchemaSelector">
+		<column name="Name" visible="true" order="0" width="131"/>
+	</item>
 	<item id="Suggestion/NodeList/OracleTableColumn">
-		<column name="Column Name" visible="true" order="0" width="119"/>
+		<column name="Column Name" visible="true" order="0" width="110"/>
 		<column name="#" visible="true" order="1" width="27"/>
-		<column name="Type" visible="true" order="2" width="94"/>
+		<column name="Type" visible="true" order="2" width="100"/>
 		<column name="Type Mod" visible="false" order="3" width="100"/>
 		<column name="Not Null" visible="true" order="3" width="60"/>
 		<column name="Default" visible="true" order="4" width="53"/>
@@ -45,7 +105,7 @@
 		<column name="Folder" visible="true" order="3" width="82"/>
 	</item>
 	<item id="sqlFilterValueEditPopup">
-		<column name="Value" visible="true" order="0" width="159"/>
+		<column name="Value" visible="true" order="0" width="150"/>
 		<column name="Count" visible="true" order="1" width="47"/>
 	</item>
 </items>

@@ -1,0 +1,90 @@
+-- 1번 : 조인(외부조인, 교차조인, 셀프조인)
+
+-- 테이블 생성
+CREATE TABLE TBL_STUDENT(
+	STU_SID NUMBER,
+	STU_NAME VARCHAR2(100),
+	STU_MAJOR VARCHAR2(100),
+	CONSTRAINT PK_STUDENT PRIMARY KEY(STU_SID)
+);
+
+--SELECT * FROM TBL_STUDENT;
+
+INSERT INTO TBL_STUDENT
+--VALUES( 1, '홍길동', '컴퓨터공학');
+--VALUES( 2, '김영희', '컴퓨터공학');
+--VALUES( 3, '이철수', '정보보안학');
+--VALUES( 4, '신호등', '정보보안학');
+VALUES( 5, '신짱구', '정보보안학');
+
+SELECT * FROM TBL_STUDENT;
+
+-- 테이블 생성
+CREATE TABLE TBL_ENROLL(
+	ENR_SID NUMBER, --학생ID
+	ENR_CID NUMBER, --과목ID
+	ENR_GRADE CHAR(2), --학점
+	CONSTRAINT PK_ENROLL PRIMARY KEY(ENR_SID, ENR_CID),
+	CONSTRAINT FK_ENROLL FOREIGN KEY(ENR_SID) 
+	REFERENCES TBL_STUDENT(STU_SID) ON DELETE CASCADE
+-- ON DELETE CASCADE 옵션은 부모테이블의 행이 삭제될 경우, 자식테이블의 관련된 행도 자동 삭제된다
+);
+
+
+-- 데이터 삽입
+INSERT INTO TBL_ENROLL
+--VALUES( 1, 101, 'A');
+--VALUES( 2, 102, 'B');
+--VALUES( 3, 101, 'C');
+--VALUES( 4, 102, 'A');
+--VALUES( 4, 101, 'B');
+SELECT * FROM TBL_ENROLL;
+
+-- 1) 왼쪽 외부조인(OUTER JOIN)
+-- LEFT OUTER JOIN
+-- 모든 학생 정보 기준으로 수강 정보가 있는 경우 함께 출력하고 없는 경우 NULL출력
+-- 학생테이블 왼쪽, 수강테이블 오른쪽
+
+SELECT STU_SID, STU_NAME, STU_MAJOR, ENR_CID, ENR_GRADE
+FROM TBL_STUDENT S LEFT JOIN TBL_ENROLL E
+--FROM TBL_STUDENT S RIGHT JOIN TBL_ENROLL E
+ON S.STU_SID = E.ENR_SID;
+
+-- RIGHT OUTER JOIN	
+-- 수강 정보 기준으로 수강한 학생이 없는 경우에도 학생 정보는 NULL로 표시
+SELECT * FROM TBL_ENROLL;
+SELECT * FROM TBL_STUDENT;
+
+INSERT INTO TBL_ENROLL
+VALUES ( 6, 103, NULL);
+
+SELECT * FROM TBL_BOOKS;
+CREATE TABLE TBL_BP (
+	BP_ID NUMBER,
+	BP_PRICE NUMBER,
+	CONSTRAINT PK_BP PRIMARY KEY(BP_ID),	
+)
+
+-- 렌탈정보를 기준으로 빌려간 사람이 없는 경우에도
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
