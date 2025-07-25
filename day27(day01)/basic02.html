@@ -1,0 +1,36 @@
+<!-- 2번 : a태그<a></a>, img태그<img />, br태그<br /> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>a태그와 이미지 태그</title>
+</head>
+<body>
+  <h1>a 태그 : 링크 태그</h1>
+  <a href="https://www.naver.com" target="_blank">네이버</a><br>
+  <a href="https://www.google.com">구글</a><br>
+  <a href="D:\web_0900_ksh\web\workspace\day27(day01)\basic01.html">basic01 절대경로</a><br>
+  <a href="./..basic01.html">basic01 상위폴더경로</a><br>
+  <a href="./basic01.html">basic01 상대경로</a><br>
+  <!-- 절대 경로로 하이퍼링크를 달면 보안정책에 의해 링크 접속이 막힘, 고로 상대 경로로만 하이퍼링크를 달아둘것 -->
+
+  <h1>img 태그 : 이미지태그</h1>
+  <img src="./cat2.jpg" alt="고양이사진" width="150" height="150">
+  <img src="./img/cat.jpg">
+  <!-- img에도 상대 경로로 작성한다.
+  ./ 현재 폴더를 의미하고 ../ 상위폴더를 의미한다 -->
+
+  <h1>img태그와 a태그 함께 사용</h1>
+  <a href="https://www.naver.com" target="_blank">
+    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MjRfMjAg%2FMDAxNjMyNDczNTgwNjI4.iYfC0qKtUDC0QOyYakbO-E7xTiUjSRDVs51vy94X3hcg.vyBP7_CXKQc19jUOa6cYs3lSm5gCMJDjLV1ywOcko8Ag.PNG.artistbyun%2Fimage.png&type=sc960_832"
+    width="30%" height="30%" >
+    <!-- 링크로 넣어줄 때 이미지 주소 복사도 가능하다, 높이와 너비는 기본 px단위로 설정되고 %단위로도 사용 가능하다 -->
+  </a>
+</body>
+</html>
+
+
+
+
+

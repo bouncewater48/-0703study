@@ -1,0 +1,62 @@
+<!-- 5번 : flexbox02 -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flexbox</title>
+  <style>
+  *{
+      margin:0;
+      padding:0;
+   }
+   .main{
+    display: flex;
+    flex-direction: column;
+    /* flex-direction: column; 기본 row(가로)로 된걸 column(세로)로 변경 */
+    height: 500px;
+   }
+   .header, .footer{
+    height: 100px;
+   }
+   .header{
+    background-color: aqua;
+   }
+   .aside{
+    width: 150px;
+    background-color: blueviolet;
+    text-align: center;
+    line-height: 300px;
+   }
+    .section{
+    background-color: chocolate;
+    flex:1;
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    font-weight: bold;
+   }
+   .section-container{
+    flex:1;
+    display:flex;/* 메인에서 행 > 열로 바꾼거 다시 열에서 행으로 변경 */
+   }
+   .footer{
+    background-color: beige;
+    text-align: center;
+    line-height: 100px;
+   }
+  </style>
+ </head>
+ <body>
+  <div class="main" >
+    <div class="header"></div>
+    <!-- header, footer 높이 : 100px 
+      main 높이 : 500px, aside 너비 : 150px 나머지 section -->
+    <div class="section-container">
+     <div class="aside">aside</div>
+     <div class="section">section</div>
+    </div>
+    <div class="footer">footer</div>
+  </div>
+ </body>
+ </html>

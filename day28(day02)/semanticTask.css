@@ -1,0 +1,9 @@
+  *{
+      margin: 0;
+      padding: 0;
+    }
+    .header{
+      background-color: rgb(122, 201, 43);
+      color: white;
+      text-align: center;
+    }
