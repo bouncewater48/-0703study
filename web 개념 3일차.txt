@@ -1,0 +1,246 @@
+day29(웹표준 3일차)
+복습 -> position -> transition/transform -> 고급 선택자 -> 드롭다운 메뉴 -> 개인프로젝트 -> javascript
+
+css flex box 연습 사이트(개구리 위치 이동)
+   https://flexboxfroggy.com/#ko
+css flex box 연습사이트(타워 디펜스 게임)
+   http://www.flexboxdefense.com/
+
+0. 복습
+1) 인라인/블록요소
+   인라인요소 : 내용물의 크기만큼만 영역을 차지하고 다른요소와 같은 줄에 위치할 수 있다
+      ex) span, img, a, strong, i, ..
+   블록요소 : 한 줄을 다 차지하므로 다른 요소와 같은 줄에 위치할 수 없다(너비속성이 100%)
+      ex) div, hn~/hn, p, li, br, ..
+
+2) id와 class
+   id : 특정 태그에 식별가능한 고유한 값을 부여한다
+      #id명
+   class : 여러 태그를 그룹화한다
+      .class명
+
+3) Box Model
+   margin : 바깥여백
+      4방향;
+      상하 좌우;
+      상 좌우 하;
+      상 우 하 좌;
+   border : 테두리
+      굵기 모양 색상;
+   padding : 안쪽여백
+      4방향;
+      상하 좌우;
+      상 좌우 하;
+      상 우 하 좌;
+   contents : 컨텐츠(내용)
+      width : 너비;
+      height : 높이;
+      text-align : center| ...;
+   
+4) flex box
+   flex container   레이아웃을 적용하여 배치하려는 요소들을 감싸고 있는 부모 요소
+   flex item   실질적으로 배치하려는 요소
+   주축      자식요소가 배치되는 방향
+   교차축      주축을 가로지르는 방향
+   
+   display : flex;      flex container를 지정하는 속성
+   flex-direction : row | column;   
+      row(기본값)    아이템들을 가로방향으로 정렬
+      column      아이템들을 세로방향으로 정렬
+
+   justify-content : center | space-between | space-around | space-evenly | flex-start | flex-end;
+      주축 기준의 정렬방식
+      center       가운데 정렬
+      space-between   양끝 정렬, 나머지 간격 균등
+      space-around   양쪽 포함해 균등 간격
+      space-evenly   모든 간격이 동일
+      flex-start(기본값) 시작 지점 정렬
+      flex-end   끝 지점 정렬         
+
+   align-items : center | flex-start | flex-end | stretch | baseline;
+      교차축 기준의 정렬 방식
+      center       가운데정렬
+      flex-start   위쪽 정렬
+      flex-end   아래쪽 정렬
+      stretch(기본값)   컨테이너 높이에 맞게 늘림
+      baseline   텍스트 기준선 정렬
+   flex-wrap : nowrap | wrap | wrap-reverse;
+      아이템 줄바꿈 여부
+      nowrap(기본값)   한줄에 모두 배치
+      wrap      공간 부족시 자동 줄바꿈
+      wrap-reverse   줄바꿈 방향 반대로
+
+1. position
+	웹 사이트에서 특정 위치에 고정시켜서 화면을 스크롤해도 같은 위치에 있는 요소들이 있다
+	어떤 위치에 고정시키거나 위치를 변경시킬 때 position 속성을 사용한다
+
+1) position 속성
+	HTML 요소를 배치하는 속성
+
+
+	static   
+   		position 속성의 기본 값
+   		일반적인 흐름으로 배치된다
+
+	relative
+  		static과 동일하게 배치되지만 relative는 현재 자신의 위치를 기준으로 배치를 변경할 수 있다
+   		top, right, bottom, left 속성을 사용한다
+
+   	absolute
+     		일반적인 흐름과 무관하게 배치할 수 있다
+     		postion:static이 아닌 부모요소를 기준으로 배치한다
+     		만약 조상요소 중 static이 아닌 요소가 없다면 body를 기준으로 배치된다
+	
+	fixed	
+		브라우저 화면상으로 보이는 영역(viewport)에 고정되도록 배치한다	
+		즉, 스크롤해도 고정된다
+
+	sticky
+		처음에는 흐름에 배치되고 스크롤이 특정위치에 도달하면 fixed처럼 화면에 고정된다
+		주의사항 : 부모요소에 height가 지정되어 있어야만 작동한다
+
+2) z-index
+	요소가 배치될 때 겹치게 된다면 어떤 요소가 위로 올라올 지 순서를 정하는 속성
+	기본값은 auto이며 지정하는 값은 1, 10, 100, -1, -100 등의 숫자를 사용한다
+	숫자가 높을수록 요소가 앞으로 나오게 된다
+	주의 사항 : position이 static이 아닌 요소에만 적용된다!!
+
+
++) head 태그 안에서 자주 사용되는 요소
+
+<head>
+  <meta charset="UTF-8">
+	문자 인코딩을 UTF-8로 설정(한글 포함 모든 문자 표현 가능)
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	↑ 위 태그가 없으면 모바일 어플을 데스크탑에서 실행시, 전부 다 깨져서 보이게 됨(즉 매우 중요함)
+	반응형 웹을 위한 설정, 화면 너비에 맞춰서 보여줌
+	<meta>		문서의 메타데이터를 정의하는 태그
+	name="viewport" 뷰포트(화면영역)에 대한 설정임을 지정
+	content="..."	설정 내용을 명시
+	width=device-width	장치의 실제 화면 너비에 맞게 브라우저 너비를 설정
+	initial-scale=1.0	초기 줌 배율을 100%로 설정(기본 배율)
+  <title>Document</title>
+	브라우저 탭 제목을 설정
+</head>
+
+
+2. transform, transition
+1) transform
+	요소의 크기 조절, 이동, 회전 효과를 나타낼 때 사용한다
+	transform 함수를 이용한다
+	주의사항 : 요소의 display 속성이 block이거나 inline-block이어야한다
+
+2) transform 함수
+	translate(x, y), translateX(x), translateY()
+		넘겨준 값 만큼 x, y 좌표 이동
+	scale(x, y), scaleX(x), scaleY(y)
+		넘겨준 값 만큼 확대, 축소
+	rotate(각도deg)
+		넘겨준 값 만큼 회전
+
+
+3) transition
+	변형에 시간을 설정하여 마치 하나의 애니메이션처럼 포현할 수 있다
+	transform과 달리 완전히 다를 스타일로 변경시킬 수 있다
+
+4) transition 속성
+	transition-property : all | none | 속성명
+		트랜지션을 적용할 속성을 설정
+	transition-duration : 시간s
+		트랜지션의 진행시간을 설정
+	transition-timeing-function : 속성값
+		속성값의 종류
+		ease : 천천히 ~ 점점 빨리 ~ 천천히 (기본값)
+		linear : 시작부터 끝까지 같은 속도로
+		ease-in : 느리게 시작
+		ease-out : 느리게 끝
+		ease-in-out : 느리게 시작해서 느리게 끝
+	transition-delay : 시간s
+		트랜지션을 바로 시작하지 않고 지연시간을 설정한다
+	transition : property | duration | timing-function | delay
+		위의 모든 속성을 간편하게 설정할 수 있다
+
+3. 고급 선택자
+1) 연결선택자
+- 하위선택자
+	상위요소 하위요소{}
+	상위 요소에 포함된 모든 하위 요소를 선택한다
+	자식을 포함한 모든 자손이 선택된다
+
+- 자식선택자
+	부모요소 > 자식요소{}
+	부모요소 바로 아래에 속한 자식 요소를 선택한다
+
+- 인접형제선택자
+	요소1 + 요소2
+	
+- 형제선택자
+	요소1 ~ 요소2
+
+
+2) 속성선택자
+- 선택자[속성]
+- 선택자[속성=속성값]
+
+3) 가상선택자
+- 가상 클래스
+	선택자:가상클래스 {}
+		실제로 존재하는 요소의 특정 상태에 따라서 CSS를 주고 싶을 때 사용
+	link	href 속성을 가진 태그 중 아직 방문하지 않은 상태
+	visitied 이미 방문한 상태
+	hover	사용자가 마우스를 올린 상태
+	focus	입력 가능한 칸을 선택한 상태
+	nth-child	형제 중 순서로 선택한다
+	not(선택자)	해당 선택자를 제외하고 선택한다
+
+- 가상 요소
+	선택자::가상요소{}
+		요소의 특정 부분에 스타일을 지정하거나 새로운 요소를 삽입하기 위해 사용한다
+	first-letter	첫 글자만 선택(블록요소에서만 가능)
+	first-line	첫 줄만 선택(블록요소에서만 가능)
+	before		선택한 요소의 컨텐츠 앞에 다른 요소 삽입
+	after		선택한 요소의 컨텐츠 뒤에 다른 요소 삽입
+
+4. 드롭다운 메뉴(Dropdown Menu)
+	사용자가 클릭하거나 마우스를 올렸을 때 하위 메뉴 항목들이 아래로 펼쳐지는 인터페이스
+	네비게이션 메뉴나 옵션 선택창에서 사용된다
+
+1) 동작방식
+	마우스 오버시 펼침		:hover
+	클릭 시 펼침/접힘		display : none
+				display : block
+
+
+개인 프로젝트 => 웹 표준 (html, css) < 이거로 웹 표준 시험 대신함, 개인 포트폴리오에 들어감
+	메가박스
+	무신사
+	weniv
+	outstanding
+
+- 07/29/화 => 개인 클론코딩 완성(16시 확인)
+사이트 선택
+git-hub 클론코딩 레포지토리 만들기
+
+
+클론코딩 시 주의사항
+1. 반드시 구조(html 뼈대)부터 잡는다
+2. 시맨틱 태그를 활용한다(header, footer, main, section 등)
+3. 백그라운드 색이나 border를 활용해서 구조 먼저 잡는다
+4. 위에서부터 차근차근 작성하면서 내려간다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
